@@ -7,3 +7,25 @@ http://re-factor.blogspot.com
 This project contains various small utilities and libraries implemented in the
 Factor programming language (http://factorcode.org).
 
+These include:
+
+* calc: an EBNF-based infix string calculator
+
+* cgi: support for writing Factor CGI programs
+
+* daytime: simple DAYTIME server
+
+* ipinfodb: IP address geolocation tools using ipinfodb.com
+
+* memcached: client for memcached server
+
+* ntp: simple NTP client
+
+* time: simple TIME server
+
+* wordcount: implementation of "counting words" meme
+
+* wordgen: example of statistical paragraph generation
+
+* wp: implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
+
