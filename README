@@ -15,6 +15,8 @@ These include:
 
 * daytime: simple DAYTIME server
 
+* elapsed: "pretty" elapsed times
+
 * ipinfodb: IP address geolocation tools using ipinfodb.com
 
 * memcached: client for memcached server
