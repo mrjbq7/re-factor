@@ -17,6 +17,8 @@ These include:
 
 * elapsed: "pretty" elapsed times
 
+* fake-data: generate "fake" information
+
 * ipinfodb: IP address geolocation tools using ipinfodb.com
 
 * memcached: client for memcached server
