@@ -23,6 +23,8 @@ These include:
 
 * memcached: client for memcached server
 
+* n-partition: evenly partition an integer
+
 * ntp: simple NTP client
 
 * time: simple TIME server
