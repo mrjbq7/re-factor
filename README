@@ -29,6 +29,8 @@ These include:
 
 * ntp: simple NTP client
 
+* ten-ten: calculate the 10:10 code for geographic locations
+
 * time: simple TIME server
 
 * wordcount: implementation of "counting words" meme
