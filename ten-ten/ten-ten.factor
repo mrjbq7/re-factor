@@ -14,8 +14,7 @@ MEMO: BASE ( -- base ) ALPHABET length ;
 
 : p ( lat lon -- p )
     [ 90 + ] [ 180 + ] bi*
-    [ 10000 * ] [ 10000 * ] bi*
-    [ floor >fixnum ] bi@
+    [ 10000 * floor >fixnum ] bi@
     [ 3600000 * ] dip + ;
 
 : tt ( p -- tt )
