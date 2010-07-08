@@ -21,6 +21,8 @@ These include:
 
 * fake-data: generate "fake" information
 
+* flip-text: turns text upside-down
+
 * ipinfodb: IP address geolocation tools using ipinfodb.com
 
 * memcached: client for memcached server
