@@ -13,6 +13,8 @@ These include:
 
 * cgi: support for writing Factor CGI programs
 
+* core-services: some functions from Mac OS X CoreServices
+
 * daytime: simple DAYTIME server
 
 * dice: rolling dice
