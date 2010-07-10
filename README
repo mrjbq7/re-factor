@@ -37,6 +37,8 @@ These include:
 
 * time: simple TIME server
 
+* trash: send files to the trash bin
+
 * wordcount: implementation of "counting words" meme
 
 * wordgen: example of statistical paragraph generation
