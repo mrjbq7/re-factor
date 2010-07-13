@@ -5,6 +5,8 @@ USING: environment trash unix.stat ;
 
 IN: trash.unix
 
+! Implements the FreeDesktop.org Trash Specification 0.7
+
 <PRIVATE
 
 : (lstat) ( path -- stat )
