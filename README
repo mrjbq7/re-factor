@@ -25,6 +25,8 @@ These include:
 
 * flip-text: turns text upside-down
 
+* ini-file: parsing INI configuration files
+
 * ipinfodb: IP address geolocation tools using ipinfodb.com
 
 * memcached: client for memcached server
