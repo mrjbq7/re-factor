@@ -84,9 +84,7 @@ SYMBOL: option
 
 : name=value ( line -- )
     option [
-        [
-            swap [ first2 ] dip
-        ] [
+        [ swap [ first2 ] dip ] [
             CHAR: = over index [
                 [ head unspace unquote unescape-string "" ] [ 1 + tail ] 2bi
             ] [ "" "" ] if*
