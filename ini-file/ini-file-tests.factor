@@ -5,28 +5,28 @@ USING: tools.test ;
 
 IN: ini-file
 
-[ H{ } ] [ "" parse-ini ] unit-test
+[ H{ } ] [ "" string>ini ] unit-test
 
-[ H{ { "section" H{ } } } ] [ "[section]" parse-ini ] unit-test
+[ H{ { "section" H{ } } } ] [ "[section]" string>ini ] unit-test
 
-[ H{ { "section" H{ } } } ] [ "[\"section\" ]" parse-ini ] unit-test
+[ H{ { "section" H{ } } } ] [ "[\"section\" ]" string>ini ] unit-test
 
 [ H{ { "   some name with spaces " H{ } } } ]
-[ "[ \"   some name with spaces \"]" parse-ini ] unit-test
+[ "[ \"   some name with spaces \"]" string>ini ] unit-test
 
-[ H{ { "[]" H{ } } } ] [ "[\\[\\]]" parse-ini ] unit-test
+[ H{ { "[]" H{ } } } ] [ "[\\[\\]]" string>ini ] unit-test
 
-[ H{ { "foo" "bar" } } ] [ "foo=bar" parse-ini ] unit-test
+[ H{ { "foo" "bar" } } ] [ "foo=bar" string>ini ] unit-test
 
 [ H{ { "foo" "bar" } { "baz" "quz" } } ]
-[ "foo=bar\nbaz= quz" parse-ini ] unit-test
+[ "foo=bar\nbaz= quz" string>ini ] unit-test
 
 [ H{ { "section" H{ { "foo" "abc def" } } } } ]
 [
     """
     [section]
     foo = abc def
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "abc def" } } } } ]
@@ -35,7 +35,7 @@ IN: ini-file
     [section]
     foo = abc    \\
           "def"
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "abc def" } } } } ]
@@ -44,14 +44,14 @@ IN: ini-file
     [section]
     foo = "abc " \\
           def
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "abc def" } } } } ]
 [
     """
     [section]   foo = "abc def"
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "abc def" } } } } ]
@@ -59,7 +59,7 @@ IN: ini-file
     """
     [section]   foo = abc \\
     "def"
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "" } } } } ]
@@ -67,7 +67,7 @@ IN: ini-file
     """
     [section]
     foo=
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "section" H{ { "foo" "" } } } } ]
@@ -75,7 +75,7 @@ IN: ini-file
     """
     [section]
     foo
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "" H{ { "" "" } } } } ]
@@ -83,7 +83,7 @@ IN: ini-file
     """
     []
     =
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "owner" H{ { "name" "John Doe" }
@@ -102,7 +102,7 @@ IN: ini-file
     server=192.0.2.62     ; use IP address in case network name resolution is not working
     port=143
     file = "payroll.dat"
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 [ H{ { "a long section name"
@@ -111,7 +111,7 @@ IN: ini-file
     """
     [a long section name ]
     a long key name=  a long value name
-    """ parse-ini
+    """ string>ini
 ] unit-test
 
 

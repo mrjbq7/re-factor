@@ -13,7 +13,7 @@ HELP: read-ini
     "."
 } ;
 
-HELP: parse-ini
+HELP: string>ini
 { $values { "str" string } { "assoc" assoc } }
 { $description
     "Parses the specified " { $link string } " as an INI file"

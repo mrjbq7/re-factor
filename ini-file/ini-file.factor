@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays assocs combinators combinators.short-circuit
-hashtables io io.streams.string kernel make math namespaces
-quoting sequences strings strings.parser ;
+formatting hashtables io io.streams.string kernel make math
+namespaces quoting sequences strings strings.parser ;
 
 IN: ini-file
 
@@ -72,14 +72,15 @@ SYMBOL: option
 : line-continues? ( line -- ? )
     { [ empty? not ] [ last CHAR: \ = ] } 1&& ;
 
-: add-section ( -- )
+: section, ( -- )
     section get [ first2 >hashtable 2array , ] when* ;
 
-: add-option ( name value -- )
+: option, ( name value -- )
     2array section get [ second push ] [ , ] if* ;
 
 : [section] ( line -- )
-    unwrap unspace unquote unescape-string V{ } clone 2array section set ;
+    unwrap unspace unquote unescape-string V{ } clone
+    2array section set ;
 
 : name=value ( line -- )
     option [
@@ -94,34 +95,38 @@ SYMBOL: option
             dup length 1 - head unspace unquote unescape-string
             dup last space? [ " " append ] unless append 2array
         ] [
-            unspace unquote unescape-string append add-option f
+            unspace unquote unescape-string append option, f
         ] if
     ] change ;
 
 : parse-line ( line -- )
     uncomment unspace dup section? [
-        add-section 1 + cut [ [section] ] [ unspace ] bi*
+        section, 1 + cut [ [section] ] [ unspace ] bi*
     ] when* [ name=value ] unless-empty ;
 
 PRIVATE>
 
 : read-ini ( -- assoc )
     f [ section set ] [ option set ] bi
-    [ [ parse-line ] each-line add-section ] { } make
+    [ [ parse-line ] each-line section, ] { } make
     >hashtable ;
 
-: parse-ini ( str -- assoc )
-    [ read-ini ] with-string-reader ;
-
 : write-ini ( assoc -- )
+    ! FIXME: escape-string!
     [
         dup string?
-        [ [ write ] dip "=" write write nl ]
+        [ "%s=%s\n" printf ]
         [
-            [ "[" write write "]" write nl ] dip
-            [ [ write ] dip "=" write write nl ] assoc-each
+            [ "[%s]\n" printf ] dip
+            [ "%s=%s\n" printf ] assoc-each
             nl
         ] if
     ] assoc-each ;
 
+
+: string>ini ( str -- assoc )
+    [ read-ini ] with-string-reader ;
+
+: ini>string ( str -- assoc )
+    [ write-ini ] with-string-writer ;
 
