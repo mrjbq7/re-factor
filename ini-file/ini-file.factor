@@ -1,16 +1,13 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays combinators combinators.short-circuit hashtables
-io io.streams.string kernel make math namespaces sequences
-strings.parser ;
+USING: arrays assocs combinators combinators.short-circuit
+hashtables io io.streams.string kernel make math namespaces
+quoting sequences strings.parser ;
 
 IN: ini-file
 
 <PRIVATE
-
-SYMBOL: section
-SYMBOL: option
 
 : space? ( ch -- ? )
     {
@@ -62,12 +59,8 @@ SYMBOL: option
 : unspace ( str -- str' )
     [ space? ] trim ;
 
-: unquote ( str -- str' )
-    dup {
-        [ length 1 > ]
-        [ first CHAR: " = ]
-        [ last CHAR: " = ]
-    } 1&& [ unwrap ] when unescape-string ;
+SYMBOL: section
+SYMBOL: option
 
 : section? ( line -- index/f )
     {
@@ -86,7 +79,7 @@ SYMBOL: option
     2array section get [ second push ] [ , ] if* ;
 
 : [section] ( line -- )
-    unwrap unspace unquote V{ } clone 2array section set ;
+    unwrap unspace unquote unescape-string V{ } clone 2array section set ;
 
 : name=value ( line -- )
     option [
@@ -94,14 +87,14 @@ SYMBOL: option
             swap [ first2 ] dip
         ] [
             CHAR: = over index [
-                [ head unspace unquote "" ] [ 1 + tail ] 2bi
+                [ head unspace unquote unescape-string "" ] [ 1 + tail ] 2bi
             ] [ "" "" ] if*
         ] if*
         dup line-continues? [
-            dup length 1 - head unspace unquote
+            dup length 1 - head unspace unquote unescape-string
             dup last space? [ " " append ] unless append 2array
         ] [
-            unspace unquote append add-option f
+            unspace unquote unescape-string append add-option f
         ] if
     ] change ;
 
@@ -120,6 +113,11 @@ PRIVATE>
 : parse-ini ( str -- assoc )
     [ read-ini ] with-string-reader ;
 
-
+: write-ini ( assoc -- )
+    [
+        [ "[" write write "]" write nl ] dip
+        [ [ write ] dip "=" write write nl ] assoc-each
+        nl
+    ] assoc-each ;
 
 
