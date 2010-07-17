@@ -3,21 +3,11 @@
 
 USING: arrays assocs combinators combinators.short-circuit
 hashtables io io.streams.string kernel make math namespaces
-quoting sequences strings.parser ;
+quoting sequences strings strings.parser ;
 
 IN: ini-file
 
 <PRIVATE
-
-: space? ( ch -- ? )
-    {
-        [ CHAR: \s = ]
-        [ CHAR: \t = ]
-        [ CHAR: \n = ]
-        [ CHAR: \r = ]
-        [ HEX: 0c = ] ! \f
-        [ HEX: 0b = ] ! \v
-    } 1|| ;
 
 : escape ( ch -- ch' )
     {
@@ -49,15 +39,25 @@ IN: ini-file
 : unescape-string ( str -- str' )
     [ (unescape-string) ] "" make ;
 
+: space? ( ch -- ? )
+    {
+        [ CHAR: \s = ]
+        [ CHAR: \t = ]
+        [ CHAR: \n = ]
+        [ CHAR: \r = ]
+        [ HEX: 0c = ] ! \f
+        [ HEX: 0b = ] ! \v
+    } 1|| ;
+
+: unspace ( str -- str' )
+    [ space? ] trim ;
+
 : unwrap ( str -- str' )
     1 swap [ length 1 - ] keep subseq ;
 
 : uncomment ( str -- str' )
     CHAR: ; over index [ head ] when*
     CHAR: # over index [ head ] when* ;
-
-: unspace ( str -- str' )
-    [ space? ] trim ;
 
 SYMBOL: section
 SYMBOL: option
@@ -115,9 +115,13 @@ PRIVATE>
 
 : write-ini ( assoc -- )
     [
-        [ "[" write write "]" write nl ] dip
-        [ [ write ] dip "=" write write nl ] assoc-each
-        nl
+        dup string?
+        [ [ write ] dip "=" write write nl ]
+        [
+            [ "[" write write "]" write nl ] dip
+            [ [ write ] dip "=" write write nl ] assoc-each
+            nl
+        ] if
     ] assoc-each ;
 
 
