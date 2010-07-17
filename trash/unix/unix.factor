@@ -1,7 +1,12 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: environment trash unix.stat ;
+USING: accessors calendar classes.struct environment formatting
+io io.directories io.encodings.utf8 io.files io.files.info
+io.files.info.unix io.files.types io.pathnames kernel math
+math.parser sequences system trash unix.stat ;
+
+FROM: unix.ffi => getuid ;
 
 IN: trash.unix
 
@@ -85,19 +90,17 @@ PRIVATE>
 
 M: unix send-to-trash ( path -- )
     dup trash-path [
-        "files" append-path make-user-directory
+        "files" append-path [ make-user-directory ] keep
         to-directory safe-file-name
-    ] keep
-
-    "info" append-path make-user-directory
-    to-directory ".trashinfo" append
-    [ over ] utf8 [
-        "[Trash Info]" write nl
-        "Path=" write write nl
-        "DeletionDate=" write
-        now "%Y-%m-%dT%H:%M:%S" strftime write nl
-    ] with-file-writer ;
-
-    move-file ;
+    ] [
+        "info" append-path [ make-user-directory ] keep
+        to-directory ".trashinfo" append
+        [ over ] dip utf8 [
+            "[Trash Info]" write nl
+            "Path=" write write nl
+            "DeletionDate=" write
+            now "%Y-%m-%dT%H:%M:%S" strftime write nl
+        ] with-file-writer
+    ] bi move-file ;
 
 
