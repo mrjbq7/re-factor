@@ -6,6 +6,8 @@ io.encodings.utf8 kernel system trash ;
 
 IN: trash.macosx
 
+<PRIVATE
+
 : check-err ( err -- )
     dup noErr = [ drop ] [
         GetMacOSStatusCommentString utf8 alien>string throw
@@ -16,6 +18,8 @@ IN: trash.macosx
     kFSPathMakeRefDoNotFollowLeafSymlink
     FSRef <struct>
     [ f FSPathMakeRefWithOptions check-err ] keep ;
+
+PRIVATE>
 
 M: macosx send-to-trash ( path -- )
     <fs-ref> f kFSFileOperationDefaultOptions
