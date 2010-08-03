@@ -25,6 +25,8 @@ These include:
 
 * flip-text: turns text upside-down
 
+* hamurabi: port of the HAMURABI.BAS game
+
 * ini-file: parsing INI configuration files
 
 * ipinfodb: IP address geolocation tools using ipinfodb.com
