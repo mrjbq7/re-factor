@@ -3,31 +3,30 @@
 
 USING: arrays assocs combinators combinators.short-circuit
 formatting hashtables io io.streams.string kernel make math
-namespaces quoting sequences strings strings.parser ;
+namespaces quoting sequences splitting strings strings.parser ;
 
 IN: ini-file
 
 <PRIVATE
 
 : escape ( ch -- ch' )
-    {
-        { CHAR: a [ CHAR: \a ] }
-        { CHAR: b [ HEX: 08 ] } ! \b
-        { CHAR: f [ HEX: 0c ] } ! \f
-        { CHAR: n [ CHAR: \n ] }
-        { CHAR: r [ CHAR: \r ] }
-        { CHAR: t [ CHAR: \t ] }
-        { CHAR: v [ HEX: 0b ] } ! \v
-        { CHAR: ' [ CHAR: ' ] }
-        { CHAR: " [ CHAR: " ] }
-        { CHAR: \\ [ CHAR: \\ ] }
-        { CHAR: ? [ CHAR: ? ] }
-        { CHAR: ; [ CHAR: ; ] }
-        { CHAR: [ [ CHAR: [ ] }
-        { CHAR: ] [ CHAR: ] ] }
-        { CHAR: = [ CHAR: = ] }
-        [ bad-escape ]
-    } case ;
+    H{
+        { CHAR: a   CHAR: \a }
+        { CHAR: b   HEX: 08 } ! \b
+        { CHAR: f   HEX: 0c } ! \f
+        { CHAR: n   CHAR: \n }
+        { CHAR: r   CHAR: \r }
+        { CHAR: t   CHAR: \t }
+        { CHAR: v   HEX: 0b } ! \v
+        { CHAR: '   CHAR: ' }
+        { CHAR: "   CHAR: " }
+        { CHAR: \\  CHAR: \\ }
+        { CHAR: ?   CHAR: ? }
+        { CHAR: ;   CHAR: ; }
+        { CHAR: [   CHAR: [ }
+        { CHAR: ]   CHAR: ] }
+        { CHAR: =   CHAR: = }
+    } ?at [ bad-escape ] unless ;
 
 : (unescape-string) ( str -- )
     CHAR: \\ over index [
@@ -59,6 +58,9 @@ IN: ini-file
     CHAR: ; over index [ head ] when*
     CHAR: # over index [ head ] when* ;
 
+: cleanup-string ( str -- str' )
+    unspace unquote unescape-string ;
+
 SYMBOL: section
 SYMBOL: option
 
@@ -79,21 +81,18 @@ SYMBOL: option
     2array section get [ second push ] [ , ] if* ;
 
 : [section] ( line -- )
-    unwrap unspace unquote unescape-string V{ } clone
-    2array section set ;
+    unwrap cleanup-string V{ } clone 2array section set ;
 
 : name=value ( line -- )
     option [
         [ swap [ first2 ] dip ] [
-            CHAR: = over index [
-                [ head unspace unquote unescape-string "" ] [ 1 + tail ] 2bi
-            ] [ "" "" ] if*
+            "=" split1 [ cleanup-string "" ] [ "" or ] bi*
         ] if*
         dup line-continues? [
-            dup length 1 - head unspace unquote unescape-string
+            dup length 1 - head cleanup-string
             dup last space? [ " " append ] unless append 2array
         ] [
-            unspace unquote unescape-string append option, f
+            cleanup-string append option, f
         ] if
     ] change ;
 
@@ -110,7 +109,7 @@ PRIVATE>
     >hashtable ;
 
 : write-ini ( assoc -- )
-    ! FIXME: escape-string!
+    ! FIXME: need to use escape-string!
     [
         dup string?
         [ "%s=%s\n" printf ]
