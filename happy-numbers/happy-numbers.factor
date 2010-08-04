@@ -1,5 +1,5 @@
 
-USING: combinators kernel make math sequences ;
+USING: combinators kernel math sequences ;
 
 IN: happy-numbers
 
