@@ -55,8 +55,7 @@ IN: ini-file
     1 swap [ length 1 - ] keep subseq ;
 
 : uncomment ( str -- str' )
-    CHAR: ; over index [ head ] when*
-    CHAR: # over index [ head ] when* ;
+    CHAR: ; CHAR: # [ over index [ head ] when* ] bi@ ;
 
 : cleanup-string ( str -- str' )
     unspace unquote unescape-string ;
