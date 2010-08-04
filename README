@@ -27,6 +27,8 @@ These include:
 
 * hamurabi: port of the HAMURABI.BAS game
 
+* happy-numbers: tests if a number is "happy"
+
 * ini-file: parsing INI configuration files
 
 * ipinfodb: IP address geolocation tools using ipinfodb.com
