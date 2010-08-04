@@ -12,7 +12,7 @@ IN: text-or-binary
 
 : majority-printable? ( seq -- ? )
     [ t ] [
-        [ [ 31 > ] filter ] keep [ length ] bi@ / 0.85 >
+        [ [ 31 > ] count ] [ length ] bi / 0.85 >
     ] if-empty ;
 
 PRIVATE>
