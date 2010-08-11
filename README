@@ -9,6 +9,8 @@ Factor programming language (http://factorcode.org).
 
 These include:
 
+* accessors.maybe: the "set if unset then get" accessor
+
 * anagrams: compute anagrams of words
 
 * calc: an EBNF-based infix string calculator
