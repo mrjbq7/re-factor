@@ -47,7 +47,7 @@ total-births total-deaths ;
     [ harvest>> ] [ eaten>> ] bi - ;
 
 : #percent-died ( game -- n )
-    [ total-deaths>> ] [ total-births>> ] [ year>> ] tri / / ;
+    [ total-deaths>> 100 * ] [ total-births>> ] [ year>> ] tri / / ;
 
 : #births ( game -- n )
     {
