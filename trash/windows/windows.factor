@@ -1,11 +1,14 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: trash windows.types ;
+USING: accessors alien.c-types alien.data alien.strings
+alien.syntax classes.struct destructors io.encodings.string
+io.encodings.utf16n io.pathnames kernel libc math math.parser
+sequences system trash windows windows.errors windows.types ;
 
 IN: trash.windows
 
-! Shell32.dll
+LIBRARY: shell32
 
 TYPEDEF: WORD FILEOP_FLAGS
 
@@ -19,9 +22,10 @@ STRUCT: SHFILEOPSTRUCTW
     { hNameMappings LPVOID }
     { lpszProgressTitle LPCWSTR } ;
 
-FUNCTION: int SHFileOperation (
+FUNCTION: int SHFileOperationW (
     SHFILEOPSTRUCTW lpFileOp
 ) ;
+
 
 CONSTANT: FO_MOVE HEX: 0001
 CONSTANT: FO_COPY HEX: 0002
@@ -47,19 +51,26 @@ CONSTANT: FOF_NORECURSEREPARSE HEX: 8000
 
 
 M: windows send-to-trash ( path -- )
-    ! TODO: make sure is abspath?
-    SHFILEOPSTRUCTW <struct>
-        0 >>hwnd
-        FO_DELETE >>wFunc
-        swap >>pFrom
-        f >>pTo
-        {
-            FOF_ALLOWUNDO FOF_NOCONFIRMATION
-            FOF_NOERRORUI FOF_SILENT
-        } 0 [ bitor ] >>fFlags
-    SHFileOperationW dup 0 = [ drop ] [
-        number>string
-        "Couldn't perform operation. Error code: " prepend
-        throw
-    ] if ;
+    [
+        absolute-path
+        utf16n string>alien B{ 0 0 } append
+        malloc-byte-array &free
+
+        SHFILEOPSTRUCTW <struct>
+            f >>hwnd
+            FO_DELETE >>wFunc
+            swap >>pFrom
+            f >>pTo
+            FOF_ALLOWUNDO
+            FOF_NOCONFIRMATION bitor
+            FOF_NOERRORUI bitor
+            FOF_SILENT bitor >>fFlags
+
+        SHFileOperationW dup 0 > [
+            number>string "Error: " prepend throw
+        ] [ drop ] if
+
+    ] with-destructors ;
+
+
 
