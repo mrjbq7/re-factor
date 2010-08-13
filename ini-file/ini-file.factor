@@ -74,13 +74,13 @@ SYMBOL: option
     { [ empty? not ] [ last CHAR: \ = ] } 1&& ;
 
 : section, ( -- )
-    section get [ first2 >hashtable 2array , ] when* ;
+    section get [ , ] when* ;
 
 : option, ( name value -- )
-    2array section get [ second push ] [ , ] if* ;
+    section get [ second swapd set-at ] [ 2array , ] if* ;
 
 : [section] ( line -- )
-    unwrap cleanup-string V{ } clone 2array section set ;
+    unwrap cleanup-string H{ } clone 2array section set ;
 
 : name=value ( line -- )
     option [
