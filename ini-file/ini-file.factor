@@ -103,7 +103,7 @@ SYMBOL: option
 PRIVATE>
 
 : read-ini ( -- assoc )
-    f [ section set ] [ option set ] bi
+    section off option off
     [ [ parse-line ] each-line section, ] { } make
     >hashtable ;
 
