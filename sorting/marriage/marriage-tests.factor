@@ -1,8 +1,16 @@
 
 USING: arrays kernel random sequences sorting sorting.marriage
-tools.test ;
+sorting.marriage.private tools.test ;
 
 IN: sorting.marriage
+
+[ f ] [ 0 0 { } find-max ] unit-test
+[ 0 ] [ 0 1 { 1 } find-max ] unit-test
+[ 0 ] [ 0 1 { 1 2 } find-max ] unit-test
+[ 1 ] [ 0 2 { 1 2 } find-max ] unit-test
+[ 0 ] [ 0 3 { 3 2 1 } find-max ] unit-test
+[ 1 ] [ 0 3 { 1 3 2 } find-max ] unit-test
+[ 2 ] [ 0 3 { 1 2 3 } find-max ] unit-test
 
 [ { } ] [ { } [ marriage-sort ] keep ] unit-test
 
