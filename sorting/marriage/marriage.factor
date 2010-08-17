@@ -1,8 +1,8 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel locals math math.functions math.ranges
-sequences sorting.insertion ;
+USING: kernel locals math math.functions sequences
+sorting.insertion ;
 
 IN: sorting.marriage
 
@@ -22,8 +22,9 @@ IN: sorting.marriage
 :: (marriage-sort) ( seq end skip -- seq end' )
     0 skip seq find-max
     skip end [ 2dup < ] [
-        [ 2dup [ seq nth ] bi@ <= ] dip swap
-        [ 1 - [ seq exchange ] 2keep ] [ [ 1 + ] dip ] if
+        2over [ seq nth ] bi@ <=
+        [ 1 - [ seq exchange ] 2keep ]
+        [ [ 1 + ] dip ] if
     ] while nip 1 - [ seq exchange seq ] keep ;
 
 PRIVATE>
@@ -31,7 +32,7 @@ PRIVATE>
 : marriage-sort ( seq -- )
     dup length
     [ dup sqrt 1 - >fixnum dup 0 > ]
-    [ (marriage-sort) ] while
-    2drop [ ] insertion-sort ;
+    [ (marriage-sort) ] while 2drop
+    [ ] insertion-sort ;
 
 
