@@ -19,8 +19,6 @@ These include:
 
 * cgi: support for writing Factor CGI programs
 
-* core-services: some functions from Mac OS X CoreServices
-
 * daytime: simple DAYTIME server
 
 * dice: rolling dice
@@ -51,7 +49,7 @@ These include:
 
 * time: simple TIME server
 
-* trash: send files to the trash bin
+* trash: send files to the trash bin (mac, unix, windows)
 
 * wordcount: implementation of "counting words" meme
 
