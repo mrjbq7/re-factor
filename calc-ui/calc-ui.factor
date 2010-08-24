@@ -97,23 +97,23 @@ SYMBOL: calc
         { 1 1/2 } >>align
         COLOR: gray <solid> >>boundary ;
 
-: <col> ( -- track )
-    vertical <track> 1 >>fill { 5 5 } >>gap ;
+: <col> ( quot -- track )
+    vertical <track> 1 >>fill { 5 5 } >>gap
+    swap output>array [ 1 track-add ] each ; inline
 
 : <row> ( quot -- track )
     horizontal <track> 1 >>fill { 5 5 } >>gap
     swap output>array [ 1 track-add ] each ; inline
 
 : calc-ui ( -- )
-    <col> [
+    [
         <display>
         [     [C]     [±]     [÷]    [×] ] <row>
         [ "7" [#] "8" [#] "9" [#]    [-] ] <row>
         [ "4" [#] "5" [#] "6" [#]    [+] ] <row>
         [ "1" [#] "2" [#] "3" [#]    [=] ] <row>
         [ "0" [#]     [.]     [_]    [_] ] <row>
-    ] output>array [ 1 track-add ] each
-    { 10 10 } <border> "Calculator" open-window ;
+    ] <col> { 10 10 } <border> "Calculator" open-window ;
 
 MAIN: calc-ui
 
