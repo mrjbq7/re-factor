@@ -15,6 +15,8 @@ These include:
 
 * calc: an EBNF-based infix string calculator
 
+* calc-ui: a simple graphical calculator
+
 * cat: implementation of "cat" command-line program
 
 * cgi: support for writing Factor CGI programs
