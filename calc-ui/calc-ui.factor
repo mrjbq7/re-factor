@@ -115,4 +115,5 @@ SYMBOL: calc
     ] output>array [ 1 track-add ] each
     { 10 10 } <border> "Calculator" open-window ;
 
+MAIN: calc-ui
 
