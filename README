@@ -5,57 +5,83 @@
 http://re-factor.blogspot.com
 
 This project contains various small utilities and libraries implemented in the
-Factor programming language (http://factorcode.org).
+Factor programming language (http://factorcode.org).  These include:
 
-These include:
+accessors.maybe:
+    the "set if unset then get" accessor
 
-* accessors.maybe: the "set if unset then get" accessor
+anagrams:
+    compute anagrams of words
 
-* anagrams: compute anagrams of words
+calc:
+    an EBNF-based infix string calculator
 
-* calc: an EBNF-based infix string calculator
+calc-ui:
+    a simple graphical calculator
 
-* calc-ui: a simple graphical calculator
+cat:
+    implementation of "cat" command-line program
 
-* cat: implementation of "cat" command-line program
+cgi:
+    support for writing Factor CGI programs
 
-* cgi: support for writing Factor CGI programs
+daytime:
+    simple DAYTIME server
 
-* daytime: simple DAYTIME server
+dice:
+    rolling dice
 
-* dice: rolling dice
+elapsed:
+    "pretty" elapsed times
 
-* elapsed: "pretty" elapsed times
+fake-data:
+    generate "fake" information
 
-* fake-data: generate "fake" information
+flip-text:
+    turns text upside-down
 
-* flip-text: turns text upside-down
+hamurabi:
+    port of the HAMURABI.BAS game
 
-* hamurabi: port of the HAMURABI.BAS game
+happy-numbers:
+    tests if a number is "happy"
 
-* happy-numbers: tests if a number is "happy"
+ini-file:
+    parsing INI configuration files
 
-* ini-file: parsing INI configuration files
+ipinfodb:
+    IP address geolocation tools using ipinfodb.com
 
-* ipinfodb: IP address geolocation tools using ipinfodb.com
+math.approx:
+    approximating rational numbers.
 
-* memcached: client for memcached server
+memcached:
+    client for memcached server
 
-* n-partition: evenly partition an integer
+n-partition:
+    evenly partition an integer
 
-* ntp: simple NTP client
+ntp:
+    simple NTP client
 
-* ten-ten: calculate the 10:10 code for geographic locations
+ten-ten:
+    calculate the 10:10 code for geographic locations
 
-* text-or-binary: heuristic to detect if a file is text or binary
+text-or-binary:
+    heuristic to detect if a file is text or binary
 
-* time: simple TIME server
+time:
+    simple TIME server
 
-* trash: send files to the trash bin (mac, unix, windows)
+trash:
+    send files to the trash bin (mac, unix, windows)
 
-* wordcount: implementation of "counting words" meme
+wordcount:
+    implementation of "counting words" meme
 
-* wordgen: example of statistical paragraph generation
+wordgen:
+    example of statistical paragraph generation
 
-* wp: implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
+wp:
+    implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
 
