@@ -64,6 +64,9 @@ n-partition:
 ntp:
     simple NTP client
 
+sorting.marriage:
+    in-place marriage sort algorithm
+
 ten-ten:
     calculate the 10:10 code for geographic locations
 
