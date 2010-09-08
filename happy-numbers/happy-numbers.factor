@@ -1,5 +1,5 @@
 
-USING: combinators kernel math sequences ;
+USING: combinators kernel make math sequences ;
 
 IN: happy-numbers
 
@@ -19,4 +19,11 @@ PRIVATE>
 
 : happy? ( n -- ? )
     dup (happy?) ;
+
+: happy-numbers ( n -- seq )
+    [
+        0 [ over 0 > ] [
+            dup happy? [ dup , [ 1 - ] dip ] when 1 +
+        ] while 2drop
+    ] { } make ;
 
