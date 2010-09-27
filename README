@@ -40,6 +40,9 @@ fake-data:
 flip-text:
     turns text upside-down
 
+fortune:
+    prints random quotations
+
 hamurabi:
     port of the HAMURABI.BAS game
 
