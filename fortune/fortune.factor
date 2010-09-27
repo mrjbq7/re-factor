@@ -24,7 +24,7 @@ MEMO: default-fortunes ( -- seq )
     FORTUNES [ exists? ] find nip load-fortunes ;
 
 : fortune ( -- )
-    default-fortunes random >string write nl ;
+    default-fortunes random >string print ;
 
 MAIN: fortune
 
