@@ -6,10 +6,10 @@ H{
     { deploy-console? t }
     { deploy-unicode? f }
     { "stop-after-last-window?" t }
-    { deploy-io 2 }
-    { deploy-reflection 1 }
+    { deploy-io 3 }
+    { deploy-reflection 6 }
     { deploy-word-props? f }
-    { deploy-math? f }
-    { deploy-threads? f }
+    { deploy-math? t }
+    { deploy-threads? t }
     { deploy-word-defs? f }
 }
