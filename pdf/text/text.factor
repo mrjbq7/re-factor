@@ -1,0 +1,65 @@
+! Copyright (C) 2010 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
+
+USING: formatting io pdf pdf.values sequences ;
+
+IN: pdf.text
+
+: comment ( string -- ) "% " write print ;
+
+: foreground-color ( color -- ) pdf-write " rg" print ;
+
+: background-color ( color -- ) pdf-write " RG" print ;
+
+
+! text
+
+: text-start ( -- ) "BT" print ;
+
+: text-end ( -- ) "ET" print ;
+
+: text-location ( x y -- ) "%d %d Td\n" printf ;
+
+: text-leading ( n -- ) "%d TL\n" printf ;
+
+: text-rise ( n -- ) "%d Ts\n" printf ;
+
+: text-size ( n -- ) "/F1 %d Tf\n" printf ; ! FIXME:
+
+: text-write ( string -- ) pdf-write " Tj" print ;
+
+: text-nl ( -- ) "T*" print ;
+
+: text-print ( string -- ) pdf-write " '" print ;
+
+
+
+! graphics
+
+: line-width ( n -- ) "%d w\n" printf ;
+
+: line-dashed ( on off -- ) "[ %d %d ] 0 d\n" printf ;
+
+: line-solid ( -- ) "[] 0 d" print ;
+
+: line-move ( x y -- ) "%d %d m\n" printf ;
+
+: line-line ( x y -- ) "%d %d l\n" printf ;
+
+: gray ( percent -- ) "%.f g\n" printf ;
+
+: rectangle ( x y width height -- ) "%d %d %d %d re\n" printf ;
+
+: stroke ( -- ) "S" print ;
+
+: fill ( -- ) "f" print ;
+
+: B ( -- ) "B" print ;
+
+: b ( -- ) "b" print ;
+
+: c ( -- ) "300 400 400 400 400 300 c" print ;
+
+
+
+
