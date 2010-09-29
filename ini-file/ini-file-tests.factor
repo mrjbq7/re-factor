@@ -114,4 +114,18 @@ IN: ini-file
     """ string>ini
 ] unit-test
 
+[ H{ { "key with \n esc\ape \r codes \""
+       "value with \t esc\ape codes" } } ]
+[
+    """
+    key with \\n esc\\ape \\r codes \\\" = value with \\t esc\\ape codes
+    """ string>ini
+] unit-test
+
+
+[ """key with \\n esc\\ape \\r codes \\\"=value with \\t esc\\ape codes\n""" ]
+[
+    H{ { "key with \n esc\ape \r codes \""
+         "value with \t esc\ape codes" } } ini>string
+] unit-test
 

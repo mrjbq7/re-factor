@@ -38,6 +38,27 @@ IN: ini-file
 : unescape-string ( str -- str' )
     [ (unescape-string) ] "" make ;
 
+USE: xml.entities
+
+: escape-string ( str -- str' )
+    H{
+        { CHAR: \a   "\\a"  }
+        { HEX: 08    "\\b"  }
+        { HEX: 0c    "\\f"  }
+        { CHAR: \n   "\\n"  }
+        { CHAR: \r   "\\r"  }
+        { CHAR: \t   "\\t"  }
+        { HEX: 0b    "\\v"  }
+        { CHAR: '    "\\'"  }
+        { CHAR: "    "\\\"" }
+        { CHAR: \\   "\\\\" }
+        { CHAR: ?    "\\?"  }
+        { CHAR: ;    "\\;"  }
+        { CHAR: [    "\\["  }
+        { CHAR: ]    "\\]"  }
+        { CHAR: =    "\\="  }
+    } escape-string-by ;
+
 : space? ( ch -- ? )
     {
         [ CHAR: \s = ]
@@ -108,17 +129,17 @@ PRIVATE>
     >hashtable ;
 
 : write-ini ( assoc -- )
-    ! FIXME: need to use escape-string!
     [
         dup string?
-        [ "%s=%s\n" printf ]
+        [ [ escape-string ] bi@ "%s=%s\n" printf ]
         [
-            [ "[%s]\n" printf ] dip
-            [ "%s=%s\n" printf ] assoc-each
-            nl
+            [ escape-string "[%s]\n" printf ] dip
+            [ [ escape-string ] bi@ "%s=%s\n" printf ]
+            assoc-each nl
         ] if
     ] assoc-each ;
 
+! FIXME: escaped comments "\;" don't work
 
 : string>ini ( str -- assoc )
     [ read-ini ] with-string-reader ;
