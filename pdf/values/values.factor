@@ -16,7 +16,7 @@ IN: pdf.values
         { CHAR: \n   "\\n"  }
         { CHAR: \r   "\\r"  }
         { CHAR: \t   "\\t"  }
-      ! { CHAR: \\   "\\\\" }
+        { CHAR: \\   "\\\\" }
         { CHAR: (    "\\("  }
         { CHAR: )    "\\)"  }
     } escape-string-by ;

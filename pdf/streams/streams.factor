@@ -69,7 +69,7 @@ TUPLE: pdf-sub-stream < pdf-writer parent ;
         swap >>parent
         swap >>style ;
 
-! FIXME: nested styles
+! FIXME: nested styles?
 
 
 TUPLE: pdf-block-stream < pdf-sub-stream ;
