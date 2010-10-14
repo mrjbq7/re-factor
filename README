@@ -76,6 +76,9 @@ ten-ten:
 text-or-binary:
     heuristic to detect if a file is text or binary
 
+text-to-pdf:
+    "text2pdf" converter
+
 time:
     simple TIME server
 
