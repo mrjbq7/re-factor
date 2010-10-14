@@ -127,7 +127,7 @@ IN: text-to-pdf
     dup length [1,b] zip [ first2 pdf-object ] map ;
 
 : write-pdf ( objects -- )
-    [ "%PDF-1.4" print [ print ] each ] [ pdf-trailer ] bi ;
+    "%PDF-1.4" print [ [ print ] each ] [ pdf-trailer ] bi ;
 
 PRIVATE>
 
