@@ -85,6 +85,9 @@ time:
 trash:
     send files to the trash bin (mac, unix, windows)
 
+utils:
+    miscellaneous utility words
+
 wordcount:
     implementation of "counting words" meme
 
