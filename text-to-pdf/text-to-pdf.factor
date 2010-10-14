@@ -26,7 +26,7 @@ IN: text-to-pdf
 
 : pdf-stream ( str -- str' )
     [ length 1 + "<<\n/Length %d\n>>" sprintf ]
-    [ "\nstream\n" "\nendstream" surround ] bi append ; inline
+    [ "\nstream\n" "\nendstream" surround ] bi append ;
 
 : pdf-info ( -- str )
     [
