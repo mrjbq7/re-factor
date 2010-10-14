@@ -48,6 +48,8 @@ FUNCTION: OSStatus FSPathMakeRefWithOptions (
         GetMacOSStatusCommentString utf8 alien>string throw
     ] if ;
 
+! FIXME: check isDirectory?
+
 : <fs-ref> ( path -- fs-ref )
     utf8 string>alien
     kFSPathMakeRefDoNotFollowLeafSymlink
