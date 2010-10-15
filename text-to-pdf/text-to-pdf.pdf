@@ -1,7 +1,7 @@
 %PDF-1.4
 1 0 obj
 <<
-/CreationDate D:20101015100720
+/CreationDate D:20101015122533
 /Producer (Factor)
 /Author (jbenedik)
 /Creator (created with Factor)
@@ -115,7 +115,7 @@ endobj
 endobj
 8 0 obj
 <<
-/Length 1585
+/Length 1574
 >>
 stream
 BT
@@ -160,7 +160,7 @@ BT
 (    [)'
 (        "xref" ,)'
 (        dup length 1 + "0 %d" sprintf ,)'
-(        "0000000000 65535 f\\r" , ! first)'
+(        "0000000000 65535 f" ,)'
 (        9 over [)'
 (            over >hex "%010s 00000 n" sprintf , length 1 + +)'
 (        ] each drop)'
@@ -192,7 +192,7 @@ endobj
 endobj
 10 0 obj
 <<
-/Length 835
+/Length 839
 >>
 stream
 BT
@@ -213,14 +213,14 @@ BT
 (    ] { } make)'
 (    dup length [1,b] zip [ first2 pdf-object ] map ;)'
 ( )'
-(: write-pdf \( objects -- str \))'
+(: objects>pdf \( objects -- str \))'
 (    [ "\\n" join "\\n" append "%PDF-1.4\\n" ])'
 (    [ pdf-trailer ] bi surround ;)'
 ( )'
 (PRIVATE>)'
 ( )'
 (: text-to-pdf \( str -- str' \))'
-(    string>lines lines>pages pages>objects write-pdf ;)'
+(    string>lines lines>pages pages>objects objects>pdf ;)'
 ( )'
 (: file-to-pdf \( path encoding -- \))'
 (    [ file-contents text-to-pdf ])'
@@ -241,8 +241,8 @@ xref
 00000001be 00000 n
 000000085e 00000 n
 00000008c4 00000 n
-0000000f28 00000 n
-0000000f8f 00000 n
+0000000f1d 00000 n
+0000000f84 00000 n
 trailer
 <<
 /Size 11
@@ -250,5 +250,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-4869
+4862
 %%EOF

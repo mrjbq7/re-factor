@@ -93,7 +93,7 @@ IN: text-to-pdf
     [
         "xref" ,
         dup length 1 + "0 %d" sprintf ,
-        "0000000000 65535 f\r" , ! first
+        "0000000000 65535 f" ,
         9 over [
             over >hex "%010s 00000 n" sprintf , length 1 + +
         ] each drop
@@ -126,14 +126,14 @@ IN: text-to-pdf
     ] { } make
     dup length [1,b] zip [ first2 pdf-object ] map ;
 
-: write-pdf ( objects -- str )
+: objects>pdf ( objects -- str )
     [ "\n" join "\n" append "%PDF-1.4\n" ]
     [ pdf-trailer ] bi surround ;
 
 PRIVATE>
 
 : text-to-pdf ( str -- str' )
-    string>lines lines>pages pages>objects write-pdf ;
+    string>lines lines>pages pages>objects objects>pdf ;
 
 : file-to-pdf ( path encoding -- )
     [ file-contents text-to-pdf ]
