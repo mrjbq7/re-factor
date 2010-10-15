@@ -1,7 +1,6 @@
-%PDF-1.4
-1 0 obj
+%PDF-1.41 0 obj
 <<
-/CreationDate D:20101013210131
+/CreationDate D:20101015095919
 /Producer (Factor)
 /Author (jbenedik)
 /Creator (created with Factor)
@@ -38,7 +37,7 @@ endobj
 endobj
 6 0 obj
 <<
-/Length 1652
+/Length 1645
 >>
 stream
 BT
@@ -115,7 +114,7 @@ endobj
 endobj
 8 0 obj
 <<
-/Length 1587
+/Length 1585
 >>
 stream
 BT
@@ -156,7 +155,7 @@ BT
 (        ">>" ,)'
 (    ] { } make "\\n" join ;)'
 ( )'
-(: pdf-trailer \( objects -- \))'
+(: pdf-trailer \( objects -- str \))'
 (    [)'
 (        "xref" ,)'
 (        dup length 1 + "0 %d" sprintf ,)'
@@ -173,7 +172,7 @@ BT
 (        "startxref" ,)'
 (        [ length 1 + ] map-sum 9 + "%d" sprintf ,)'
 (        "%%EOF" ,)'
-(    ] { } make "\\n" join print ;)'
+(    ] { } make "\\n" join ;)'
 ( )'
 (: string>lines \( str -- lines \))'
 (    "\\t" split "    " join string-lines)'
@@ -192,7 +191,7 @@ endobj
 endobj
 10 0 obj
 <<
-/Length 745
+/Length 828
 >>
 stream
 BT
@@ -202,7 +201,7 @@ BT
 (: lines>pages \( lines -- pages \))'
 (    [ 84 <groups> ] map concat 57 <groups> ;)'
 ( )'
-(: pages>objects \( pages -- objects \))'
+(: pages>objects \( pages -- str \))'
 (    [)'
 (        pdf-info ,)'
 (        pdf-catalog ,)'
@@ -213,16 +212,18 @@ BT
 (    ] { } make)'
 (    dup length [1,b] zip [ first2 pdf-object ] map ;)'
 ( )'
-(: write-pdf \( objects -- \))'
-(    "%PDF-1.4" print [ [ print ] each ] [ pdf-trailer ] bi ;)'
+(: write-pdf \( objects -- str \))'
+(    [ "\\n" join "\\n" append "%PDF-1.4" ])'
+(    [ pdf-trailer ] bi surround ;)'
 ( )'
 (PRIVATE>)'
 ( )'
-(: text-to-pdf \( str -- \))'
+(: text-to-pdf \( str -- str' \))'
 (    string>lines lines>pages pages>objects write-pdf ;)'
 ( )'
 (: file-to-pdf \( path encoding -- \))'
-(    file-contents text-to-pdf ;)'
+(    [ file-contents text-to-pdf ])'
+(    [ [ ".pdf" append ] dip set-file-contents ] 2bi ;)'
 ( )'
 ( )'
 ET
@@ -237,10 +238,10 @@ xref
 00000000f7 00000 n
 0000000158 00000 n
 00000001be 00000 n
-0000000865 00000 n
-00000008cb 00000 n
-0000000f31 00000 n
-0000000f98 00000 n
+000000085e 00000 n
+00000008c4 00000 n
+0000000f28 00000 n
+0000000f8f 00000 n
 trailer
 <<
 /Size 11
@@ -248,5 +249,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-4788
+4862
 %%EOF

@@ -89,7 +89,7 @@ IN: text-to-pdf
         ">>" ,
     ] { } make "\n" join ;
 
-: pdf-trailer ( objects -- )
+: pdf-trailer ( objects -- str )
     [
         "xref" ,
         dup length 1 + "0 %d" sprintf ,
@@ -106,7 +106,7 @@ IN: text-to-pdf
         "startxref" ,
         [ length 1 + ] map-sum 9 + "%d" sprintf ,
         "%%EOF" ,
-    ] { } make "\n" join print ;
+    ] { } make "\n" join ;
 
 : string>lines ( str -- lines )
     "\t" split "    " join string-lines
@@ -115,7 +115,7 @@ IN: text-to-pdf
 : lines>pages ( lines -- pages )
     [ 84 <groups> ] map concat 57 <groups> ;
 
-: pages>objects ( pages -- objects )
+: pages>objects ( pages -- str )
     [
         pdf-info ,
         pdf-catalog ,
@@ -126,14 +126,16 @@ IN: text-to-pdf
     ] { } make
     dup length [1,b] zip [ first2 pdf-object ] map ;
 
-: write-pdf ( objects -- )
-    "%PDF-1.4" print [ [ print ] each ] [ pdf-trailer ] bi ;
+: write-pdf ( objects -- str )
+    [ "\n" join "\n" append "%PDF-1.4\n" ]
+    [ pdf-trailer ] bi surround ;
 
 PRIVATE>
 
-: text-to-pdf ( str -- )
+: text-to-pdf ( str -- str' )
     string>lines lines>pages pages>objects write-pdf ;
 
 : file-to-pdf ( path encoding -- )
-    file-contents text-to-pdf ;
+    [ file-contents text-to-pdf ]
+    [ [ ".pdf" append ] dip set-file-contents ] 2bi ;
 
