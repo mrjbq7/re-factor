@@ -115,7 +115,7 @@ IN: text-to-pdf
 : lines>pages ( lines -- pages )
     [ 84 <groups> ] map concat 57 <groups> ;
 
-: pages>objects ( pages -- str )
+: pages>objects ( pages -- objects )
     [
         pdf-info ,
         pdf-catalog ,
