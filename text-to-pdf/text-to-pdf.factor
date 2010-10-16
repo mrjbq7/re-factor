@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs calendar combinators environment formatting
-grouping io io.files kernel make math math.parser math.ranges
-sequences splitting xml.entities ;
+grouping io io.files kernel make math math.ranges sequences
+splitting xml.entities ;
 
 IN: text-to-pdf
 
@@ -95,7 +95,7 @@ IN: text-to-pdf
         dup length 1 + "0 %d" sprintf ,
         "0000000000 65535 f" ,
         9 over [
-            over >hex "%010s 00000 n" sprintf , length 1 + +
+            over "%010X 00000 n" sprintf , length 1 + +
         ] each drop
         "trailer" ,
         "<<" ,
