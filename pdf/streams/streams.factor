@@ -40,6 +40,7 @@ IN: pdf.streams
     ] assoc-each ;
 
 ! FIXME: string>texts doesn't work for "\nfoo"...
+! FIXME: what about tab characters?
 
 : string>texts ( string style -- seq )
     [ word-split ] dip '[
@@ -69,9 +70,6 @@ TUPLE: pdf-sub-stream < pdf-writer parent ;
         swap >>parent
         swap >>style ;
 
-! FIXME: nested styles?
-
-
 TUPLE: pdf-block-stream < pdf-sub-stream ;
 
 M: pdf-block-stream dispose
@@ -95,7 +93,8 @@ M: pdf-writer stream-write
     dup style>> '[ _ string>texts ] [ data>> ] bi* push-all ;
 
 M: pdf-writer stream-format
-    swap '[ _ string>texts ] [ data>> ] bi* push-all ;
+    swap [ dup style>> ] dip assoc-union
+    '[ _ string>texts ] [ data>> ] bi* push-all ;
 
 M: pdf-writer stream-nl
     <br> swap data>> push ; ! FIXME: <br> needs style

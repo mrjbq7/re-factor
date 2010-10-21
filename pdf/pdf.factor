@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors calendar combinators environment formatting
-hashtables kernel io io.streams.string math.parser pdf.values
-sequences ;
+hashtables kernel io io.streams.string math math.parser
+pdf.values sequences ;
 
 IN: pdf
 
@@ -49,16 +49,11 @@ TUPLE: pdf info pages fonts ;
         V{ } clone >>fonts ;
 
 
+: pdf-object ( str n -- str' )
+    "%d 0 obj\n" sprintf "\nendobj" surround ;
 
-
-: pdf-object ( n quot -- )
-    [ number>string write " 0 obj" print ] dip
-    call "endobj" print ; inline
-
-
-: pdf-stream ( quot -- string )
-    [ call ] with-string-writer
-    [ length "/Length" associate pdf-value ]
-    [ "\nstream\n" "endstream\n" surround ] bi append ; inline
+: pdf-stream ( str -- str' )
+    [ length 1 + "<<\n/Length %d\n>>" sprintf ]
+    [ "\nstream\n" "\nendstream" surround ] bi append ;
 
 

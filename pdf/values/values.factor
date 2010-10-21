@@ -2,8 +2,9 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs calendar colors colors.gray
-combinators.short-circuit fonts formatting hashtables kernel
-make math math.parser sequences strings xml.entities ;
+combinators combinators.short-circuit fonts formatting
+hashtables kernel make math math.parser sequences strings
+xml.entities ;
 
 IN: pdf.values
 
@@ -39,13 +40,26 @@ M: gray pdf-value
     gray>> dup dup "%f %f %f" sprintf ;
 
 M: font pdf-value
-    drop {
-        "<<"
-        "/Type /Font"
-        "/Subtype /Type1"
-        "/BaseFont /Helvetica"
-        ">>"
-    } "\n" join ;
+    [
+        "<<" ,
+        "/Type /Font" ,
+        "/Subtype /Type1" ,
+        {
+            [
+                name>> {
+                    { "sans-serif" [ "/Helvetica" ] }
+                    { "serif"      [ "/Times"     ] }
+                    { "monospace"  [ "/Courier"   ] }
+                    [ " is unsupported" append throw ]
+                } case
+            ]
+            [ [ bold?>> ] [ italic?>> ] bi or [ "-" append ] when ]
+            [ bold?>> [ "Bold" append ] when ]
+            [ italic?>> [ "Italic" append ] when ]
+        } cleave
+        "/BaseFont " prepend ,
+        ">>" ,
+    ] { } make "\n" join ;
 
 M: timestamp pdf-value
     "%Y%m%d%H%M%S" strftime "D:" prepend ;

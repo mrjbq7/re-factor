@@ -1,7 +1,8 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: formatting io pdf pdf.values sequences ;
+USING: accessors combinators formatting io kernel math pdf
+pdf.values sequences ;
 
 IN: pdf.text
 
@@ -24,7 +25,25 @@ IN: pdf.text
 
 : text-rise ( n -- ) "%d Ts\n" printf ;
 
-: text-size ( n -- ) "/F1 %d Tf\n" printf ; ! FIXME:
+: text-size ( font -- )
+    [
+        [
+            name>> {
+                { "sans-serif" [ 1 ] }
+                { "serif"      [ 2 ] }
+                { "monospace"  [ 3 ] }
+                [ " is unsupported" append throw ]
+            } case
+        ]
+        [
+            {
+                { [ dup [ bold?>> ] [ italic?>> ] bi and ] [ 9 ] }
+                { [ dup bold?>> ] [ 3 ] }
+                { [ dup italic?>> ] [ 6 ] }
+                [ 0 ]
+            } cond nip +
+        ] bi
+    ] [ size>> ] bi "/F%d %d Tf\n" printf ;
 
 : text-write ( string -- ) pdf-write " Tj" print ;
 

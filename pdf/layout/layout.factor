@@ -7,11 +7,6 @@ splitting ui.text unicode.categories wrap ;
 
 IN: pdf.layout
 
-: default-font ( -- font )
-    <font>
-        "Helvetica" >>name
-        12 >>size ;
-
 <PRIVATE
 
 : word-index ( string -- n/f )
@@ -62,24 +57,38 @@ TUPLE: canvas x y width height margin font stream foreground ;
         612 >>width
         792 >>height
         54 >>margin
-        default-font >>font
+        sans-serif-font 12 >>size >>font
         SBUF" " >>stream ;
 
 USE: assocs
 USE: io.styles
 USE: colors.constants
 
-! font-name
-! font-size
-! bold
-! bold-italic
-! italic
-! foreground
-! background
+! Done:
+! - font-name
+! - font-size
+! - foreground
+
+! Todo:
+! - bold
+! - bold-italic
+! - italic
+! - background
 
 : set-style ( canvas style -- canvas )
-    [ font-size swap at 12 or [ dup font>> ] dip >>size drop ]
-    [ foreground swap at COLOR: black or [ >>foreground ] when* ] bi ;
+    {
+        [ font-name swap at "sans-serif" or [ dup font>> ] dip >>name drop ]
+        [ font-size swap at 12 or [ dup font>> ] dip >>size drop ]
+        [
+            font-style swap at [ dup font>> ] dip {
+                { bold        [ t f ] }
+                { italic      [ f t ] }
+                { bold-italic [ t t ] }
+                [ drop f f ]
+            } case [ >>bold? ] [ >>italic? ] bi* drop
+        ]
+        [ foreground swap at COLOR: black or [ >>foreground ] when* ]
+    } cleave ;
 
 : width ( canvas -- n )
     [ width>> ] [ margin>> 2 * ] bi - ;
@@ -117,7 +126,7 @@ USE: colors.constants
 : draw-text ( canvas line -- )
     text-start
     over [ x ] [ y ] bi text-location
-    over font>> size>> text-size
+    over font>> text-size
     over foreground>> [ foreground-color ] when*
     over font>> over text-width swapd inc-x
     text-write
@@ -130,7 +139,7 @@ USE: colors.constants
             rest [ drop ] [
                 text-start
                 over 0 >>x [ x ] [ y ] bi text-location
-                over font>> size>> text-size
+                over font>> text-size
                 over font>> size>> text-leading
                 over foreground>> [ foreground-color ] when*
                 2dup length 1 - inc-lines
@@ -198,7 +207,7 @@ M: text pdf-render
             2dup text-fits? [
                 over [ font>> ] [ avail-width ] bi visual-wrap
                 unclip-slice [ " " join over ] dip draw-text
-            ] when ! [ f ] [ over line-break ] if-empty
+            ] when
         ] when [ f ] [
             over
             [ line-break ]
