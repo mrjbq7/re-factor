@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors calendar combinators environment formatting
-hashtables kernel io io.streams.string math math.parser
+hashtables io io.streams.string kernel math math.parser
 pdf.values sequences ;
 
 IN: pdf
@@ -55,5 +55,4 @@ TUPLE: pdf info pages fonts ;
 : pdf-stream ( str -- str' )
     [ length 1 + "<<\n/Length %d\n>>" sprintf ]
     [ "\nstream\n" "\nendstream" surround ] bi append ;
-
 

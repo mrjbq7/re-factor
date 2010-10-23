@@ -24,28 +24,13 @@ IN: pdf.streams
 
 <PRIVATE
 
-: reset-style ( -- )
-    COLOR: black foreground-color
-    COLOR: white background-color
-    12 [ text-size ] [ text-leading ] bi ;
-
-: text-style ( style -- )
-    [
-        swap {
-            { foreground [ foreground-color ] }
-            { background [ background-color ] }
-            { font-size [ [ text-size ] [ text-leading ] bi ] }
-            [ 2drop ]
-        } case
-    ] assoc-each ;
-
 ! FIXME: string>texts doesn't work for "\nfoo"...
-! FIXME: what about tab characters?
+! FIXME: what about "proper" tab support?
 
 : string>texts ( string style -- seq )
-    [ word-split ] dip '[
-        string-lines [ [ <br> ] [ _ <text> ] if-empty ] map
-    ] map concat ;
+    [ string-lines ] dip '[
+        [ <br> ] [ _ <text> ] if-empty
+    ] map ;
 
 
 PRIVATE>
@@ -114,13 +99,6 @@ M: pdf-writer stream-write-table
     nip data>> dup '[
         [ data>> _ push-all ] each <br> _ push
     ] each ;
-!     [
-!         table-style swap [
-!             [ data>> [XML <td valign="top" style=<->><-></td> XML] ] with map
-!             [XML <tr><-></tr> XML]
-!         ] with map
-!         [XML <table style="display: inline-table;"><-></table> XML]
-!     ] emit-pdf ;
 
 M: pdf-writer dispose drop ;
 

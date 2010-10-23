@@ -40,7 +40,6 @@ PRIVATE>
     [ string>elements ] dip dup wrap [ concat ] map ;
 
 
-
 TUPLE: margin left right top bottom ;
 
 : <margin> ( -- margin )
@@ -75,10 +74,21 @@ USE: colors.constants
 ! - italic
 ! - background
 
+
 : set-style ( canvas style -- canvas )
     {
-        [ font-name swap at "sans-serif" or [ dup font>> ] dip >>name drop ]
-        [ font-size swap at 12 or [ dup font>> ] dip >>size drop ]
+        [
+            font-name swap at "sans-serif" or {
+                { "sans-serif" [ "Helvetica" ] }
+                { "serif"      [ "Times"     ] }
+                { "monospace"  [ "Courier"   ] }
+                [ " is unsupported" append throw ]
+            } case [ dup font>> ] dip >>name drop
+        ]
+        [
+            font-size swap at 12 or
+            [ dup font>> ] dip >>size drop
+        ]
         [
             font-style swap at [ dup font>> ] dip {
                 { bold        [ t f ] }
@@ -87,7 +97,9 @@ USE: colors.constants
                 [ drop f f ]
             } case [ >>bold? ] [ >>italic? ] bi* drop
         ]
-        [ foreground swap at COLOR: black or [ >>foreground ] when* ]
+        [
+            foreground swap at >>foreground
+        ]
     } cleave ;
 
 : width ( canvas -- n )
@@ -177,20 +189,20 @@ PRIVATE>
 
 
 
-TUPLE: element style ;
-
-
-TUPLE: p string ;
+TUPLE: p string style ;
 
 C: <p> p
 
 M: p pdf-render
-    string>> over
-    [ line-break ]
-    [ [ font>> ] [ width>> ] bi visual-wrap ]
-    [ avail-lines short cut ] tri
-    [ [ draw-lines ] [ drop line-break ] 2bi ]
-    [ [ f ] [ " " join <p> ] if-empty ] bi* ;
+    [ style>> set-style ] keep
+    [
+        over
+        [ line-break ]
+        [ [ font>> ] [ width>> ] bi visual-wrap ]
+        [ avail-lines short cut ] tri
+        [ dupd draw-lines ] dip " " join
+    ] change-string nip
+    dup string>> empty? [ drop f ] when ;
 
 
 TUPLE: text string style ;
@@ -261,5 +273,101 @@ M: br pdf-render
 
 ! TUPLE: table ;
 
+
+
+
+USE: assocs
+USE: formatting
+USE: fonts
+USE: literals
+USE: locals
+USE: make
+USE: math.ranges
+USE: pdf
+USE: pdf.values
+
+: pdf-catalog ( -- str )
+    {
+        "<<"
+        "/Type /Catalog"
+        "/Pages 15 0 R"
+        ">>"
+    } "\n" join ;
+
+: pdf-pages ( n -- str )
+    [
+        "<<" ,
+        "/Type /Pages" ,
+        "/MediaBox [ 0 0 612 792 ]" ,
+        [ "/Count %d" sprintf , ]
+        [
+            16 swap 2 range boa
+            [ "%d 0 R " sprintf ] map concat
+            "/Kids [ " "]" surround ,
+        ] bi
+        ">>" ,
+    ] { } make "\n" join ;
+
+: pdf-page ( n -- page )
+    [
+        "<<" ,
+        "/Type /Page" ,
+        "/Parent 15 0 R" ,
+        1 + "/Contents %d 0 R" sprintf ,
+        "/Resources << /Font <<" ,
+        "/F1 3 0 R /F2 4 0 R /F3 5 0 R" ,
+        "/F4 6 0 R /F5 7 0 R /F6 8 0 R" ,
+        "/F7 9 0 R /F8 10 0 R /F9 11 0 R" ,
+        "/F10 12 0 R /F11 13 0 R /F12 14 0 R" ,
+        ">> >>" ,
+        ">>" ,
+    ] { } make "\n" join ;
+
+: pdf-trailer ( objects -- str )
+    [
+        "xref" ,
+        dup length 1 + "0 %d" sprintf ,
+        "0000000000 65535 f" ,
+        9 over [
+            over "%010X 00000 n" sprintf , length 1 + +
+        ] each drop
+        "trailer" ,
+        "<<" ,
+        dup length 1 + "/Size %d" sprintf ,
+        "/Info 1 0 R" ,
+        "/Root 2 0 R" ,
+        ">>" ,
+        "startxref" ,
+        [ length 1 + ] map-sum 9 + "%d" sprintf ,
+        "%%EOF" ,
+    ] { } make "\n" join ;
+
+:: pages>objects ( pdf -- objects )
+    [
+        pdf info>> pdf-value ,
+        pdf-catalog ,
+        { $ sans-serif-font $ serif-font $ monospace-font } {
+            [ [ f >>bold? f >>italic? pdf-value , ] each ]
+            [ [ t >>bold? f >>italic? pdf-value , ] each ]
+            [ [ f >>bold? t >>italic? pdf-value , ] each ]
+            [ [ t >>bold? t >>italic? pdf-value , ] each ]
+        } cleave
+        pdf pages>> length pdf-pages ,
+        pdf pages>>
+        dup length 16 swap 2 range boa zip
+        [ pdf-page , , ] assoc-each
+    ] { } make
+    dup length [1,b] zip [ first2 pdf-object ] map ;
+
+: objects>pdf ( objects -- str )
+    [ "\n" join "\n" append "%PDF-1.4\n" ]
+    [ pdf-trailer ] bi surround ;
+
+USE: pdf.layout
+
+: >pdf ( seq -- pdf )
+    <pdf> swap pdf-layout  [
+        stream>> pdf-stream over pages>> push
+    ] each pages>objects objects>pdf ;
 
 

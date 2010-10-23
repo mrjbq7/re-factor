@@ -29,9 +29,9 @@ IN: pdf.text
     [
         [
             name>> {
-                { "sans-serif" [ 1 ] }
-                { "serif"      [ 2 ] }
-                { "monospace"  [ 3 ] }
+                { "Helvetica" [ 1 ] }
+                { "Times"     [ 2 ] }
+                { "Courier"   [ 3 ] }
                 [ " is unsupported" append throw ]
             } case
         ]
