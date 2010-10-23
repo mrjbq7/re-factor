@@ -98,7 +98,7 @@ USE: colors.constants
             } case [ >>bold? ] [ >>italic? ] bi* drop
         ]
         [
-            foreground swap at >>foreground
+            foreground swap at COLOR: black or >>foreground
         ]
     } cleave ;
 
