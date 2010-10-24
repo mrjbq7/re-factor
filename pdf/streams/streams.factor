@@ -53,7 +53,8 @@ TUPLE: pdf-sub-stream < pdf-writer parent ;
 : new-pdf-sub-stream ( style stream class -- stream )
     new-pdf-writer
         swap >>parent
-        swap >>style ;
+        swap >>style
+    dup parent>> style>> '[ _ swap assoc-union ] change-style ;
 
 TUPLE: pdf-block-stream < pdf-sub-stream ;
 
