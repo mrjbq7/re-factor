@@ -40,12 +40,14 @@ PRIVATE>
     [ string>elements ] dip dup wrap [ concat ] map ;
 
 
-TUPLE: margin left right top bottom ;
 
-: <margin> ( -- margin )
-    54 54 54 54 margin boa ;
+! TUPLE: margin left right top bottom ;
 
-TUPLE: line-metrics spacing ;
+! : <margin> ( -- margin )
+!     54 54 54 54 margin boa ;
+
+! TUPLE: line-metrics spacing ;
+
 
 TUPLE: canvas x y width height margin font stream foreground ;
 
@@ -141,7 +143,7 @@ USE: colors.constants
     over font>> text-size
     over foreground>> [ foreground-color ] when*
     over font>> over text-width swapd inc-x
-    text-write
+    text-print
     text-end ;
 
 : draw-lines ( canvas lines -- )
@@ -198,9 +200,9 @@ M: p pdf-render
     [
         over
         [ line-break ]
-        [ [ font>> ] [ width>> ] bi visual-wrap ]
+        [ [ font>> ] [ avail-width ] bi visual-wrap ]
         [ avail-lines short cut ] tri
-        [ dupd draw-lines ] dip " " join
+        [ dupd draw-lines ] dip concat
     ] change-string nip
     dup string>> empty? [ drop f ] when ;
 
@@ -218,14 +220,14 @@ M: text pdf-render
         over x>> 0 > [
             2dup text-fits? [
                 over [ font>> ] [ avail-width ] bi visual-wrap
-                unclip-slice [ " " join over ] dip draw-text
+                unclip-slice [ concat over ] dip draw-text
             ] when
         ] when [ f ] [
             over
             [ line-break ]
-            [ [ font>> ] [ width>> ] bi visual-wrap ]
+            [ [ font>> ] [ avail-width ] bi visual-wrap ]
             [ avail-lines short cut ] tri
-            [ dupd draw-lines ] dip " " join
+            [ dupd draw-lines ] dip concat
         ] if-empty
     ] change-string nip
     dup string>> empty? [ drop f ] when ;
@@ -236,6 +238,7 @@ TUPLE: hr width ;
 C: <hr> hr
 
 M: hr pdf-render
+    [ f set-style ] dip
     [
         {
             [ 2/3 inc-lines ]
@@ -253,6 +256,7 @@ TUPLE: br ;
 C: <br> br
 
 M: br pdf-render
+    [ f set-style ] dip
     over x>> 0 > [ drop 0 >>x drop f ] [
         over avail-lines 0 > [ drop line-break f ] [ nip ] if
     ] if ;
@@ -364,6 +368,8 @@ USE: pdf.values
     [ pdf-trailer ] bi surround ;
 
 USE: pdf.layout
+
+! Rename to pdf>string, have it take a <pdf> object?
 
 : >pdf ( seq -- pdf )
     <pdf> swap pdf-layout  [
