@@ -252,9 +252,13 @@ C: <hr> hr
 
 M: hr pdf-render
     [ f set-style ] dip
-    width>> [
-        over avail-width > [ dup line-break ] when
-    ] keep [ draw-line ] [ inc-x ] 2bi f ;
+    [
+        [ dup 0 > pick avail-lines 0 > and ] [
+            over avail-width over min [ - ] keep [
+                [ over ] dip [ draw-line ] [ inc-x ] 2bi
+            ] unless-zero dup 0 > [ over line-break ] when
+        ] while
+    ] change-width nip dup width>> 0 > [ drop f ] unless ;
 
 
 TUPLE: br ;
