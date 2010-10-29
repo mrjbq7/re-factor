@@ -41,10 +41,9 @@ PRIVATE>
 
 
 
-! TUPLE: margin left right top bottom ;
+TUPLE: margin left right top bottom ;
 
-! : <margin> ( -- margin )
-!     54 54 54 54 margin boa ;
+C: <margin> margin
 
 ! TUPLE: line-metrics spacing ;
 
@@ -58,7 +57,7 @@ line-height metrics ;
         0 >>y
         612 >>width
         792 >>height
-        54 >>margin
+        54 54 54 54 <margin> >>margin
         sans-serif-font 12 >>size >>font
         SBUF" " >>stream
         0 >>line-height
@@ -110,16 +109,16 @@ USE: colors.constants
     [ >>metrics ] [ height>> '[ _ max ] change-line-height ] bi ;
 
 : width ( canvas -- n )
-    [ width>> ] [ margin>> 2 * ] bi - ;
+    [ width>> ] [ margin>> [ left>> ] [ right>> ] bi + ] bi - ;
 
 : height ( canvas -- n )
-    [ height>> ] [ margin>> 2 * ] bi - ;
+    [ height>> ] [ margin>> [ top>> ] [ bottom>> ] bi + ] bi - ;
 
 : x ( canvas -- n )
-    [ margin>> ] [ x>> ] bi + ;
+    [ margin>> left>> ] [ x>> ] bi + ;
 
 : y ( canvas -- n )
-    [ height>> ] [ margin>> ] [ y>> ] tri + - ;
+    [ height>> ] [ margin>> top>> ] [ y>> ] tri + - ;
 
 : inc-x ( canvas n -- )
     '[ _ + ] change-x drop ;
@@ -245,7 +244,6 @@ M: text pdf-render
     ] change-string dup string>> empty? [ drop f ] when ;
 
 
-
 TUPLE: hr width ;
 
 C: <hr> hr
@@ -268,6 +266,7 @@ C: <br> br
 M: br pdf-render
     [ f set-style ] dip
     over avail-lines 0 > [ drop line-break f ] [ nip ] if ;
+
 
 
 ! TUPLE: pre < p
