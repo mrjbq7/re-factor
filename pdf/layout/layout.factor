@@ -49,7 +49,8 @@ PRIVATE>
 ! TUPLE: line-metrics spacing ;
 
 
-TUPLE: canvas x y width height margin font stream foreground ;
+TUPLE: canvas x y width height margin font stream foreground
+line-height metrics ;
 
 : <canvas> ( -- canvas )
     canvas new
@@ -59,7 +60,9 @@ TUPLE: canvas x y width height margin font stream foreground ;
         792 >>height
         54 >>margin
         sans-serif-font 12 >>size >>font
-        SBUF" " >>stream ;
+        SBUF" " >>stream
+        0 >>line-height
+    dup font>> font-metrics >>metrics ;
 
 USE: assocs
 USE: io.styles
@@ -102,7 +105,9 @@ USE: colors.constants
         [
             foreground swap at COLOR: black or >>foreground
         ]
-    } cleave ;
+    } cleave
+    dup font>> font-metrics
+    [ >>metrics ] [ height>> '[ _ max ] change-line-height ] bi ;
 
 : width ( canvas -- n )
     [ width>> ] [ margin>> 2 * ] bi - ;
@@ -122,8 +127,15 @@ USE: colors.constants
 : inc-y ( canvas n -- )
     '[ _ + ] change-y drop ;
 
+: line-break ( canvas -- )
+    [ line-height>> ] keep [ + ] change-y 0 >>x
+    dup metrics>> height>> >>line-height drop ;
+
+: ?line-break ( canvas -- )
+    dup x>> 0 > [ line-break ] [ drop ] if ;
+
 : inc-lines ( canvas n -- )
-    [ 0 >>x ] dip over font>> size>> * inc-y ;
+    [ 0 >>x ] dip [ dup line-break ] times drop ;
 
 : avail-width ( canvas -- n )
     [ width ] [ x>> ] bi - 0 max ;
@@ -132,41 +144,47 @@ USE: colors.constants
     [ height ] [ y>> ] bi - 0 max ;
 
 : avail-lines ( canvas -- n )
-    [ avail-height ] [ font>> size>> ] bi /i ; ! FIXME: 1 +
-
-: line-break ( canvas -- )
-    [ font>> size>> ] keep [ + ] change-y 0 >>x drop ;
-
-: draw-text ( canvas line -- )
-    text-start
-    over [ x ] [ y ] bi text-location
-    over font>> text-size
-    over foreground>> [ foreground-color ] when*
-    over font>> over text-width swapd inc-x
-    text-print
-    text-end ;
-
-: draw-lines ( canvas lines -- )
-    [ drop ] [
-        [ first draw-text ]
-        [
-            rest [ drop ] [
-                text-start
-                over 0 >>x [ x ] [ y ] bi text-location
-                over font>> text-size
-                over font>> size>> text-leading
-                over foreground>> [ foreground-color ] when*
-                2dup length 1 - inc-lines
-                2dup [ font>> ] [ last ] bi* text-width swapd inc-x
-                [ text-print ] each
-                text-end
-            ] if-empty
-        ] 2bi
-    ] if-empty ;
+    [ avail-height ] [ line-height>> ] bi /i ; ! FIXME: 1 +
 
 : text-fits? ( canvas string -- ? )
     [ dup font>> ] [ word-split1 drop ] bi*
     text-width swap avail-width <= ;
+
+: draw-text ( canvas line -- )
+    text-start
+    over font>> text-size
+    over foreground>> [ foreground-color ] when*
+    over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
+    over font>> over text-width swapd inc-x
+    text-write
+    text-end ;
+
+: draw-lines ( canvas lines -- )
+    [ drop ] [
+        text-start
+        over font>> text-size
+        over foreground>> [ foreground-color ] when*
+        unclip-last [
+            [
+                over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
+                over 0 >>x dup metrics>> height>> inc-y
+                text-write
+            ] each
+        ] [
+            [
+                over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
+                over dup font>> pick text-width inc-x
+                text-write
+            ] when*
+        ] bi* drop
+        text-end
+    ] if-empty ;
+
+: draw-line ( canvas width -- )
+    swap [ x ] [ y ] [ line-height>> 2 / - ] tri
+    [ line-move ] [ [ + ] [ line-line ] bi* ] 2bi
+    stroke ;
+
 
 
 
@@ -198,21 +216,16 @@ C: <p> p
 M: p pdf-render
     [ style>> set-style ] keep
     [
-        over
-        [ line-break ]
-        [ [ font>> ] [ avail-width ] bi visual-wrap ]
-        [ avail-lines short cut ] tri
-        [ dupd draw-lines ] dip concat
-    ] change-string nip
-    dup string>> empty? [ drop f ] when ;
+        over line-break
+        over [ font>> ] [ avail-width ] bi visual-wrap
+        over avail-lines short cut
+        [ draw-lines ] [ "" concat-as ] bi*
+    ] change-string dup string>> empty? [ drop f ] when ;
 
 
 TUPLE: text string style ;
 
 C: <text> text
-
-! FIXME: apply the text style only once when drawing multiple lines
-! FIXME: need to offset first by font-size
 
 M: text pdf-render
     [ style>> set-style ] keep
@@ -220,17 +233,17 @@ M: text pdf-render
         over x>> 0 > [
             2dup text-fits? [
                 over [ font>> ] [ avail-width ] bi visual-wrap
-                unclip-slice [ concat over ] dip draw-text
-            ] when
-        ] when [ f ] [
-            over
-            [ line-break ]
-            [ [ font>> ] [ avail-width ] bi visual-wrap ]
-            [ avail-lines short cut ] tri
-            [ dupd draw-lines ] dip concat
-        ] if-empty
-    ] change-string nip
-    dup string>> empty? [ drop f ] when ;
+                unclip [ "" concat-as ] dip
+            ] [ over line-break f ] if
+        ] [ f ] if
+        [
+            [ { } ] [ over [ font>> ] [ width ] bi visual-wrap ]
+            if-empty
+        ] dip [ prefix ] when*
+        over avail-lines short cut
+        [ draw-lines ] [ "" concat-as ] bi*
+    ] change-string dup string>> empty? [ drop f ] when ;
+
 
 
 TUPLE: hr width ;
@@ -239,16 +252,9 @@ C: <hr> hr
 
 M: hr pdf-render
     [ f set-style ] dip
-    [
-        {
-            [ 2/3 inc-lines ]
-            [ x ]
-            [ y ]
-            [ 1/3 inc-lines ]
-        } cleave [ line-move ] 2keep
-    ] [
-        width>> '[ _ + ] dip line-line stroke
-    ] bi* f ;
+    width>> [
+        over avail-width > [ dup line-break ] when
+    ] keep [ draw-line ] [ inc-x ] 2bi f ;
 
 
 TUPLE: br ;
@@ -257,9 +263,7 @@ C: <br> br
 
 M: br pdf-render
     [ f set-style ] dip
-    over x>> 0 > [ drop 0 >>x drop f ] [
-        over avail-lines 0 > [ drop line-break f ] [ nip ] if
-    ] if ;
+    over avail-lines 0 > [ drop line-break f ] [ nip ] if ;
 
 
 ! TUPLE: pre < p

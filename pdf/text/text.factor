@@ -19,7 +19,7 @@ IN: pdf.text
 
 : text-end ( -- ) "ET" print ;
 
-: text-location ( x y -- ) "%d %d Td\n" printf ;
+: text-location ( x y -- ) "1 0 0 1 %f %f Tm\n" printf ;
 
 : text-leading ( n -- ) "%d TL\n" printf ;
 
@@ -61,9 +61,9 @@ IN: pdf.text
 
 : line-solid ( -- ) "[] 0 d" print ;
 
-: line-move ( x y -- ) "%d %d m\n" printf ;
+: line-move ( x y -- ) "%f %f m\n" printf ;
 
-: line-line ( x y -- ) "%d %d l\n" printf ;
+: line-line ( x y -- ) "%f %f l\n" printf ;
 
 : gray ( percent -- ) "%.f g\n" printf ;
 
