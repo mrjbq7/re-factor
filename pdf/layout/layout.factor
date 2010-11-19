@@ -5,6 +5,10 @@ USING: accessors arrays combinators fonts fry io.streams.string
 kernel make math math.order memoize pdf.text sequences
 splitting ui.text unicode.categories wrap ;
 
+USE: assocs
+USE: io.styles
+USE: colors.constants
+
 IN: pdf.layout
 
 <PRIVATE
@@ -45,11 +49,9 @@ TUPLE: margin left right top bottom ;
 
 C: <margin> margin
 
-! TUPLE: line-metrics spacing ;
-
 
 TUPLE: canvas x y width height margin font stream foreground
-line-height metrics ;
+background line-height metrics ;
 
 : <canvas> ( -- canvas )
     canvas new
@@ -63,20 +65,11 @@ line-height metrics ;
         0 >>line-height
     dup font>> font-metrics >>metrics ;
 
-USE: assocs
-USE: io.styles
-USE: colors.constants
-
-! Done:
-! - font-name
-! - font-size
-! - foreground
 
 ! Todo:
-! - bold
-! - bold-italic
-! - italic
 ! - background
+! - inset
+! - image
 
 
 : set-style ( canvas style -- canvas )
@@ -103,6 +96,11 @@ USE: colors.constants
         ]
         [
             foreground swap at COLOR: black or >>foreground
+        ]
+        [
+            ! FIXME: what's the difference?
+            [ page-color swap at ]
+            [ background swap at ] bi or f or >>background
         ]
     } cleave
     dup font>> font-metrics
@@ -149,34 +147,34 @@ USE: colors.constants
     [ dup font>> ] [ word-split1 drop ] bi*
     text-width swap avail-width <= ;
 
-: draw-text ( canvas line -- )
-    text-start
-    over font>> text-size
-    over foreground>> [ foreground-color ] when*
-    over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
-    over font>> over text-width swapd inc-x
-    text-write
-    text-end ;
+USE: io
 
-: draw-lines ( canvas lines -- )
-    [ drop ] [
+: draw-rect ( canvas line -- )
+    over background>> [
+        "0.0 G" print
+        foreground-color
+        [ drop [ x ] [ y ] bi ]
+        [ [ font>> ] [ text-dim first2 neg ] bi* ] 2bi
+        rectangle fill
+    ] [ 2drop ] if* ;
+
+: draw-text1 ( canvas line -- )
+    [ draw-rect ] [
         text-start
         over font>> text-size
         over foreground>> [ foreground-color ] when*
-        unclip-last [
-            [
-                over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
-                over 0 >>x dup metrics>> height>> inc-y
-                text-write
-            ] each
-        ] [
-            [
-                over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
-                over dup font>> pick text-width inc-x
-                text-write
-            ] when*
-        ] bi* drop
+        over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
+        over dup font>> pick text-width inc-x
+        text-write
         text-end
+        drop
+    ] 2bi ;
+
+: draw-text ( canvas lines -- )
+    [ drop ] [
+        unclip-last
+        [ [ dupd draw-text1 dup line-break ] each ]
+        [ [ dupd draw-text1 ] when* ] bi* drop
     ] if-empty ;
 
 : draw-line ( canvas width -- )
@@ -218,7 +216,7 @@ M: p pdf-render
         over line-break
         over [ font>> ] [ avail-width ] bi visual-wrap
         over avail-lines short cut
-        [ draw-lines ] [ "" concat-as ] bi*
+        [ draw-text ] [ "" concat-as ] bi*
     ] change-string dup string>> empty? [ drop f ] when ;
 
 
@@ -240,7 +238,7 @@ M: text pdf-render
             if-empty
         ] dip [ prefix ] when*
         over avail-lines short cut
-        [ draw-lines ] [ "" concat-as ] bi*
+        [ draw-text ] [ "" concat-as ] bi*
     ] change-string dup string>> empty? [ drop f ] when ;
 
 
@@ -268,6 +266,14 @@ M: br pdf-render
     over avail-lines 0 > [ drop line-break f ] [ nip ] if ;
 
 
+TUPLE: pb used? ;
+
+: <pb> ( -- pb ) f pb boa ;
+
+M: pb pdf-render
+    dup used?>> [ f >>used? drop f ] [ t >>used? ] if nip ;
+
+
 
 ! TUPLE: pre < p
 ! C: <pre> pre
@@ -283,7 +289,6 @@ M: br pdf-render
 ! TUPLE: table-row ;
 
 ! TUPLE: table ;
-
 
 
 
@@ -374,7 +379,6 @@ USE: pdf.values
     [ "\n" join "\n" append "%PDF-1.4\n" ]
     [ pdf-trailer ] bi surround ;
 
-USE: pdf.layout
 
 ! Rename to pdf>string, have it take a <pdf> object?
 

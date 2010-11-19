@@ -2,62 +2,56 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 
-USING: accessors assocs colors io io.encodings.utf8 io.files
-io.styles kernel lexer literals math math.parser namespaces
-parser sequences xmode.catalog xmode.marker ;
+USING: accessors assocs colors.hex io io.encodings.utf8 io.files
+io.styles kernel literals math math.parser namespaces sequences
+xmode.catalog xmode.marker ;
 
 IN: xmode.code2pdf
 
-: >color ( n -- rgba )
-    [ HEX: ff0000 bitand -16 shift ]
-    [ HEX: 00ff00 bitand -8 shift ]
-    [ HEX: 0000ff bitand ] tri
-    [ 255 /f ] tri@ 1.0 <rgba> ;
-
 CONSTANT: STYLES H{
     { "NULL"
-        H{ { foreground HEX: 000000 $ >color } } }
+        H{ { foreground HEXCOLOR: 000000 } } }
     { "COMMENT1"
-        H{ { foreground HEX: cc0000 $ >color } } }
+        H{ { foreground HEXCOLOR: cc0000 } } }
     { "COMMENT2"
-        H{ { foreground HEX: ff8400 $ >color } } }
+        H{ { foreground HEXCOLOR: ff8400 } } }
     { "COMMENT3"
-        H{ { foreground HEX: 6600cc $ >color } } }
+        H{ { foreground HEXCOLOR: 6600cc } } }
     { "COMMENT4"
-        H{ { foreground HEX: cc6600 $ >color } } }
+        H{ { foreground HEXCOLOR: cc6600 } } }
     { "DIGIT"
-        H{ { foreground HEX: ff0000 $ >color } } }
+        H{ { foreground HEXCOLOR: ff0000 } } }
     { "FUNCTION"
-        H{ { foreground HEX: 9966ff $ >color } } }
+        H{ { foreground HEXCOLOR: 9966ff } } }
     { "INVALID"
-        H{ { background HEX: ffffcc $ >color }
-           { foreground HEX: ff0066 $ >color } } }
+        H{ { background HEXCOLOR: ffffcc }
+           { foreground HEXCOLOR: ff0066 } } }
     { "KEYWORD1"
-        H{ { foreground HEX: 006699 $ >color }
+        H{ { foreground HEXCOLOR: 006699 }
            { font-style bold } } }
     { "KEYWORD2"
-        H{ { foreground HEX: 009966 $ >color }
+        H{ { foreground HEXCOLOR: 009966 }
            { font-style bold } } }
     { "KEYWORD3"
-        H{ { foreground HEX: 0099ff $ >color }
+        H{ { foreground HEXCOLOR: 0099ff }
            { font-style bold } } }
     { "KEYWORD4"
-        H{ { foreground HEX: 66ccff $ >color }
+        H{ { foreground HEXCOLOR: 66ccff }
            { font-style bold } } }
     { "LABEL"
-        H{ { foreground HEX: 02b902 $ >color } } }
+        H{ { foreground HEXCOLOR: 02b902 } } }
     { "LITERAL1"
-        H{ { foreground HEX: ff00cc $ >color } } }
+        H{ { foreground HEXCOLOR: ff00cc } } }
     { "LITERAL2"
-        H{ { foreground HEX: cc00cc $ >color } } }
+        H{ { foreground HEXCOLOR: cc00cc } } }
     { "LITERAL3"
-        H{ { foreground HEX: 9900cc $ >color } } }
+        H{ { foreground HEXCOLOR: 9900cc } } }
     { "LITERAL4"
-        H{ { foreground HEX: 6600cc $ >color } } }
+        H{ { foreground HEXCOLOR: 6600cc } } }
     { "MARKUP"
-        H{ { foreground HEX: 0000ff $ >color } } }
+        H{ { foreground HEXCOLOR: 0000ff } } }
     { "OPERATOR"
-        H{ { foreground HEX: 000000 $ >color }
+        H{ { foreground HEXCOLOR: 000000 }
            { font-style bold } } }
 }
 
@@ -94,4 +88,26 @@ USE: pdf.layout
         ] with-file-writer
     ] with-file-reader ;
 
+
+
+
+: highlight-tokens ( tokens -- )
+    [
+        [ str>> ] [ id>> ] bi
+        [ name>> STYLES at ] [ f ] if* format
+    ] each nl ;
+
+: highlight-lines ( lines mode -- )
+    [ f ] 2dip load-mode [
+        tokenize-line highlight-tokens
+    ] curry each drop ;
+
+:: highlight. ( path -- )
+    path utf8 file-lines [
+        path over first find-mode highlight-lines
+    ] unless-empty ;
+
+: pdfize-file2 ( path -- )
+    [ [ highlight. ] with-pdf-writer >pdf ]
+    [ ".pdf" append utf8 set-file-contents ] bi
 

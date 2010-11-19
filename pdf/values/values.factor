@@ -20,7 +20,9 @@ IN: pdf.values
         { CHAR: \\   "\\\\" }
         { CHAR: (    "\\("  }
         { CHAR: )    "\\)"  }
-    } escape-string-by ;
+        { CHAR: “    "\""   }
+        { CHAR: ”    "\""   }
+    } escape-string-by [ 256 < ] filter ;
 
 PRIVATE>
 
@@ -65,12 +67,7 @@ M: timestamp pdf-value
     "%Y%m%d%H%M%S" strftime "D:" prepend ;
 
 M: string pdf-value
-    ! FIXME: escape chars (, ), unicode, etc.
-    ! FIXME: lists of refs
-    ! FIXME: gross check for "/"
-    [ escape-string ]
-    [ { [ empty? not ] [ first CHAR: / = ] } 1&& ]
-    bi [ "(" ")" surround ] unless ;
+    escape-string "(" ")" surround ;
 
 M: sequence pdf-value
     [ "[" % [ pdf-value % " " % ] each "]" % ] "" make ;
@@ -81,6 +78,3 @@ M: hashtable pdf-value
         [ swap % " " % pdf-value % "\n" % ] assoc-each
         ">>" %
     ] "" make ;
-
-! M: symbol pdf-value name>> "/" prepend ;
-
