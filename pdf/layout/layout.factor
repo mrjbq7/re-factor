@@ -186,13 +186,7 @@ USE: io
     [ line-move ] [ [ + ] [ line-line ] bi* ] 2bi
     stroke ;
 
-! Insets:
-! before:
-!   y += inset
-!   margin-left, margin-right += inset
-! after:
-!   y += inset
-!   margin-left, margin-right -= inset
+
 
 
 GENERIC: pdf-render ( canvas obj -- remain/f )
@@ -216,9 +210,36 @@ PRIVATE>
 
 
 
+TUPLE: div items style ;
+
+C: <div> div
+
+! Insets:
+! before:
+!   y += inset
+!   margin-left, margin-right += inset
+! after:
+!   y += inset
+!   margin-left, margin-right -= inset
+
+
+<PRIVATE
+
+USE: xml.entities
+
+: convert-string ( str -- str' )
+    {
+        { CHAR: “    "\""   }
+        { CHAR: ”    "\""   }
+    } escape-string-by [ 256 < ] filter ;
+
+PRIVATE>
+
+
 TUPLE: p string style ;
 
-C: <p> p
+: <p> ( string style -- p )
+    [ convert-string ] dip p boa ;
 
 M: p pdf-render
     [ style>> set-style ] keep
@@ -232,7 +253,8 @@ M: p pdf-render
 
 TUPLE: text string style ;
 
-C: <text> text
+: <text> ( string style -- text )
+    [ convert-string ] dip text boa ;
 
 M: text pdf-render
     [ style>> set-style ] keep
@@ -300,6 +322,16 @@ M: pb pdf-render
 
 ! TUPLE: table ;
 
+
+
+
+! Outlines (add to catalog):
+!   /Outlines 3 0 R
+!   /PageMode /UseOutlines
+! Table of Contents
+! Thumbnails
+! Annotations
+! Images
 
 
 USE: assocs
@@ -396,5 +428,8 @@ USE: pdf.values
     <pdf> swap pdf-layout  [
         stream>> pdf-stream over pages>> push
     ] each pages>objects objects>pdf ;
+
+: write-pdf ( seq -- )
+    >pdf write ;
 
 

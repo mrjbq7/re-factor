@@ -56,3 +56,23 @@ TUPLE: pdf info pages fonts ;
     [ length 1 + "<<\n/Length %d\n>>" sprintf ]
     [ "\nstream\n" "\nendstream" surround ] bi append ;
 
+
+
+
+USE: io.styles
+USE: splitting
+USE: pdf.layout
+
+: text-to-pdf ( str -- str' )
+    string-lines [
+        H{ { font-name "monospace" } { font-size 10 } } <p>
+    ] map >pdf ;
+
+USE: io.files
+
+: file-to-pdf ( path encoding -- )
+    [ file-contents text-to-pdf ]
+    [ [ ".pdf" append ] dip set-file-contents ] 2bi ;
+
+
+

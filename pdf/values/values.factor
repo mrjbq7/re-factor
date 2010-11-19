@@ -20,9 +20,7 @@ IN: pdf.values
         { CHAR: \\   "\\\\" }
         { CHAR: (    "\\("  }
         { CHAR: )    "\\)"  }
-        { CHAR: “    "\""   }
-        { CHAR: ”    "\""   }
-    } escape-string-by [ 256 < ] filter ;
+    } escape-string-by ;
 
 PRIVATE>
 
