@@ -51,7 +51,7 @@ C: <margin> margin
 
 
 TUPLE: canvas x y width height margin font stream foreground
-background line-height metrics ;
+background inset line-height metrics ;
 
 : <canvas> ( -- canvas )
     canvas new
@@ -63,13 +63,14 @@ background line-height metrics ;
         sans-serif-font 12 >>size >>font
         SBUF" " >>stream
         0 >>line-height
+        { 0 0 } >>inset
     dup font>> font-metrics >>metrics ;
 
 
-! Todo:
-! - background
-! - inset
-! - image
+! TODO: inset, image
+
+! FIXME: spacing oddities if run multiple times
+! FIXME: make sure can highlight text "in order"
 
 
 : set-style ( canvas style -- canvas )
@@ -101,6 +102,9 @@ background line-height metrics ;
             ! FIXME: what's the difference?
             [ page-color swap at ]
             [ background swap at ] bi or f or >>background
+        ]
+        [
+            inset swap at { 0 0 } or >>inset
         ]
     } cleave
     dup font>> font-metrics
@@ -182,7 +186,13 @@ USE: io
     [ line-move ] [ [ + ] [ line-line ] bi* ] 2bi
     stroke ;
 
-
+! Insets:
+! before:
+!   y += inset
+!   margin-left, margin-right += inset
+! after:
+!   y += inset
+!   margin-left, margin-right -= inset
 
 
 GENERIC: pdf-render ( canvas obj -- remain/f )
