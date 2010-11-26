@@ -6,6 +6,8 @@ pdf.values sequences ;
 
 IN: pdf.text
 
+! FIXME: Rename to pdf.operators, pdf.commands?
+
 : comment ( string -- ) "% " write print ;
 
 : foreground-color ( color -- ) pdf-write " rg" print ;

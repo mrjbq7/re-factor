@@ -75,4 +75,5 @@ USE: io.files
     [ [ ".pdf" append ] dip set-file-contents ] 2bi ;
 
 
+! FIXME: gadget. to take a "screenshot" into a pdf?
 

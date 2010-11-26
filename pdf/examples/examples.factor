@@ -1,14 +1,18 @@
 
+
 USE: accessors
-USE: math
-USE: kernel
+USE: colors.constants
+USE: colors.gray
 USE: hashtables
 USE: help
+USE: help.apropos
 USE: help.pdf
 USE: io
 USE: io.encodings.utf8
 USE: io.files
 USE: io.styles
+USE: kernel
+USE: math
 USE: pdf
 USE: pdf.layout
 USE: pdf.streams
@@ -16,12 +20,9 @@ USE: sequences
 
 IN: pdf.examples
 
-USE: help.apropos
 
 : test3-pdf ( -- )
     [ "http" apropos ] with-pdf-writer >pdf foo-pdf ;
-
-USE: colors.gray
 
 : test4-pdf ( -- )
     [
@@ -30,7 +31,6 @@ USE: colors.gray
             swap 10 / 1 <gray> foreground associate format
         ] each
     ] with-pdf-writer >pdf foo-pdf ;
-
 
 : test5-pdf ( -- )
     [
@@ -47,8 +47,6 @@ USE: colors.gray
 
 : test8-pdf ( -- )
     [ "does “this” work?" print ] with-pdf-writer >pdf foo-pdf ;
-
-USE: colors.constants
 
 : test9-pdf ( -- )
     [

@@ -51,7 +51,7 @@ C: <margin> margin
 
 
 TUPLE: canvas x y width height margin font stream foreground
-background inset line-height metrics ;
+background page-color inset line-height metrics ;
 
 : <canvas> ( -- canvas )
     canvas new
@@ -70,8 +70,8 @@ background inset line-height metrics ;
 ! TODO: inset, image
 
 ! FIXME: spacing oddities if run multiple times
-! FIXME: make sure can highlight text "in order"
-
+! FIXME: make sure highlights text "in order"
+! FIXME: don't modify layout objects in pdf-render
 
 : set-style ( canvas style -- canvas )
     {
@@ -95,17 +95,10 @@ background inset line-height metrics ;
                 [ drop f f ]
             } case [ >>bold? ] [ >>italic? ] bi* drop
         ]
-        [
-            foreground swap at COLOR: black or >>foreground
-        ]
-        [
-            ! FIXME: what's the difference?
-            [ page-color swap at ]
-            [ background swap at ] bi or f or >>background
-        ]
-        [
-            inset swap at { 0 0 } or >>inset
-        ]
+        [ foreground swap at COLOR: black or >>foreground ]
+        [ background swap at f or >>background ]
+        [ page-color swap at f or >>page-color ]
+        [ inset swap at { 0 0 } or >>inset ]
     } cleave
     dup font>> font-metrics
     [ >>metrics ] [ height>> '[ _ max ] change-line-height ] bi ;
@@ -153,7 +146,15 @@ background inset line-height metrics ;
 
 USE: io
 
-: draw-rect ( canvas line -- )
+: draw-page-color ( canvas -- )
+    dup page-color>> [
+        "0.0 G" print
+        foreground-color
+        [ 0 0 ] dip [ width>> ] [ height>> ] bi
+        rectangle fill
+    ] [ drop ] if* ;
+
+: draw-background ( canvas line -- )
     over background>> [
         "0.0 G" print
         foreground-color
@@ -162,8 +163,8 @@ USE: io
         rectangle fill
     ] [ 2drop ] if* ;
 
-: draw-text1 ( canvas line -- )
-    [ draw-rect ] [
+: draw-text1 ( canvas line -- canvas )
+    [ draw-background ] [
         text-start
         over font>> text-size
         over foreground>> [ foreground-color ] when*
@@ -171,14 +172,13 @@ USE: io
         over dup font>> pick text-width inc-x
         text-write
         text-end
-        drop
     ] 2bi ;
 
 : draw-text ( canvas lines -- )
     [ drop ] [
         unclip-last
-        [ [ dupd draw-text1 dup line-break ] each ]
-        [ [ dupd draw-text1 ] when* ] bi* drop
+        [ [ draw-text1 dup line-break ] each ]
+        [ [ draw-text1 ] when* ] bi* drop
     ] if-empty ;
 
 : draw-line ( canvas width -- )
@@ -213,6 +213,11 @@ PRIVATE>
 TUPLE: div items style ;
 
 C: <div> div
+
+M: div pdf-render
+    [ style>> set-style ] keep
+    swap '[ _ pdf-render drop ] each f ;
+
 
 ! Insets:
 ! before:
@@ -321,7 +326,6 @@ M: pb pdf-render
 ! TUPLE: table-row ;
 
 ! TUPLE: table ;
-
 
 
 

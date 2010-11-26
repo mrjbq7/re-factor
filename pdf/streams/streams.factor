@@ -24,15 +24,14 @@ IN: pdf.streams
 
 <PRIVATE
 
-! FIXME: string>texts doesn't work for "\nfoo"...
 ! FIXME: what about "proper" tab support?
 
 : string>texts ( string style -- seq )
     [ string-lines ] dip '[ _ <text> 1array ] map
     <br> 1array join ;
 
-
 PRIVATE>
+
 
 TUPLE: pdf-writer style data ;
 
@@ -82,7 +81,7 @@ M: pdf-writer stream-format
     '[ _ string>texts ] [ data>> ] bi* push-all ;
 
 M: pdf-writer stream-nl
-    <br> swap data>> push ; ! FIXME: <br> needs style
+    <br> swap data>> push ; ! FIXME: <br> needs style?
 
 M: pdf-writer make-span-stream
     pdf-span-stream new-pdf-sub-stream ;
