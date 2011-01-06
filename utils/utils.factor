@@ -25,3 +25,12 @@ SYNTAX: =>
 SYNTAX: INCLUDE:
     scan-object parse-file append ;
 
+: maximum ( seq quot -- elt )
+    [ max ] map-reduce ; inline
+
+: minimum ( seq quot -- elt )
+    [ min ] map-reduce ; inline
+
+: average ( seq -- n )
+    [ sum ] [ length ] bi / ;
+
