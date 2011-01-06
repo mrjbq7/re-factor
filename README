@@ -49,6 +49,9 @@ hamurabi:
 happy-numbers:
     tests if a number is "happy"
 
+hello-ga:
+    genetic "hello, world!"
+
 ini-file:
     parsing INI configuration files
 
