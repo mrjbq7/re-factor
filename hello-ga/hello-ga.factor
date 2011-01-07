@@ -7,7 +7,7 @@ sequences ;
 IN: hello-ga
 
 
-CONSTANT: TARGET "Hello, World!"
+CONSTANT: TARGET "Hello World!"
 
 : fitness ( chromosome -- n )
     TARGET 0 [ - abs - ] 2reduce ;
@@ -32,7 +32,7 @@ CONSTANT: CHILDREN-PROBABILITY 0.9
     [ tail ] [ head ] bi-curry bi* ;
 
 : children ( parent1 parent2 -- child1 child2 )
-    TARGET length [1,b) random
+    TARGET length 1 - [1,b) random
     [ head/tail append ] [ tail/head prepend ] 3bi ;
 
 CONSTANT: MUTATION-PROBABILITY 0.2
