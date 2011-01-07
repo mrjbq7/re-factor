@@ -1,6 +1,6 @@
 
-USING: arrays combinators fry kernel macros math parser
-sequences sequences.generalizations ;
+USING: arrays combinators fry kernel macros math math.order
+parser sequences sequences.generalizations ;
 
 IN: utils
 
@@ -25,11 +25,15 @@ SYNTAX: =>
 SYNTAX: INCLUDE:
     scan-object parse-file append ;
 
-: maximum ( seq quot -- elt )
-    [ max ] map-reduce ; inline
+: maximum ( seq quot: ( ... elt -- ... x ) -- elt )
+    [ dup ] prepose [ 2array ] compose
+    [ [ [ second ] bi@ [ max ] keep eq? not ] most ]
+    map-reduce first ; inline
 
-: minimum ( seq quot -- elt )
-    [ min ] map-reduce ; inline
+: minimum ( seq quot: ( ... elt -- ... x ) -- elt )
+    [ dup ] prepose [ 2array ] compose
+    [ [ [ second ] bi@ [ min ] keep eq? not ] most ]
+    map-reduce first ; inline
 
 : average ( seq -- n )
     [ sum ] [ length ] bi / ;
