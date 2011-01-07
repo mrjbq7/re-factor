@@ -7,6 +7,7 @@ USE: hashtables
 USE: help
 USE: help.apropos
 USE: help.pdf
+USE: help.pdf.private ! foo-pdf
 USE: io
 USE: io.encodings.utf8
 USE: io.files
