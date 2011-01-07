@@ -26,14 +26,14 @@ SYNTAX: INCLUDE:
     scan-object parse-file append ;
 
 : maximum ( seq quot: ( ... elt -- ... x ) -- elt )
-    [ dup ] prepose [ 2array ] compose
-    [ [ [ second ] bi@ [ max ] keep eq? not ] most ]
-    map-reduce first ; inline
+    [ keep 2array ] curry
+    [ [ [ first ] bi@ [ max ] keep eq? not ] most ]
+    map-reduce second ; inline
 
 : minimum ( seq quot: ( ... elt -- ... x ) -- elt )
-    [ dup ] prepose [ 2array ] compose
-    [ [ [ second ] bi@ [ min ] keep eq? not ] most ]
-    map-reduce first ; inline
+    [ keep 2array ] curry
+    [ [ [ first ] bi@ [ min ] keep eq? not ] most ]
+    map-reduce second ; inline
 
 : average ( seq -- n )
     [ sum ] [ length ] bi / ;
