@@ -25,15 +25,19 @@ SYNTAX: =>
 SYNTAX: INCLUDE:
     scan-object parse-file append ;
 
+: max-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
+    [ bi@ [ max ] keep eq? not ] curry most ; inline
+
+: min-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
+    [ bi@ [ min ] keep eq? not ] curry most ; inline
+
 : maximum ( seq quot: ( ... elt -- ... x ) -- elt )
     [ keep 2array ] curry
-    [ [ [ first ] bi@ [ max ] keep eq? not ] most ]
-    map-reduce second ; inline
+    [ [ first ] max-by ] map-reduce second ; inline
 
 : minimum ( seq quot: ( ... elt -- ... x ) -- elt )
     [ keep 2array ] curry
-    [ [ [ first ] bi@ [ min ] keep eq? not ] most ]
-    map-reduce second ; inline
+    [ [ first ] min-by ] map-reduce second ; inline
 
 : average ( seq -- n )
     [ sum ] [ length ] bi / ;
