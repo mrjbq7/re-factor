@@ -70,6 +70,9 @@ n-partition:
 ntp:
     simple NTP client
 
+port-scan:
+    simple port scanner
+
 sorting.marriage:
     in-place marriage sort algorithm
 
