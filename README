@@ -79,6 +79,9 @@ sorting.marriage:
 ten-ten:
     calculate the 10:10 code for geographic locations
 
+ternary-search-trees:
+    implementation of ternary search trees
+
 text-or-binary:
     heuristic to detect if a file is text or binary
 
