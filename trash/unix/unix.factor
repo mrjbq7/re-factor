@@ -19,17 +19,16 @@ IN: trash.unix
         lstat dup 0 = [ drop ] [ number>string throw ] if
     ] keep ;
 
-: mount? ( path -- ? )
+: top-directory? ( path -- ? )
     [ (lstat) ] [ ".." append-path (lstat) ] bi
     [ [ st_dev>> ] bi@ = not ] [ [ st_ino>> ] bi@ = ] 2bi or ;
 
-: mount-point ( path -- path' )
-    [ dup mount? not ] [ ".." append-path ] while ;
+: top-directory ( path -- path' )
+    [ dup top-directory? not ] [ ".." append-path ] while ;
 
 
 : make-user-directory ( path -- )
-    [ make-directories ]
-    [ OCT: 700 set-file-permissions ] bi ;
+    [ make-directories ] [ OCT: 700 set-file-permissions ] bi ;
 
 
 : (directory?) ( path -- )
@@ -64,7 +63,7 @@ IN: trash.unix
 
 
 : trash-path ( path -- path' )
-    mount-point dup trash-home mount-point = [
+    top-directory dup trash-home top-directory = [
         trash-home nip
     ] [
         dup ".Trash" append-path exists?
