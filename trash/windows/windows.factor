@@ -8,6 +8,8 @@ sequences system trash windows windows.errors windows.types ;
 
 IN: trash.windows
 
+<PRIVATE
+
 LIBRARY: shell32
 
 TYPEDEF: WORD FILEOP_FLAGS
@@ -15,17 +17,14 @@ TYPEDEF: WORD FILEOP_FLAGS
 STRUCT: SHFILEOPSTRUCTW
     { hwnd HWND }
     { wFunc UINT }
-    { pFrom LPCWSTR }
-    { pTo LPCWSTR }
+    { pFrom LPCWSTR* }
+    { pTo LPCWSTR* }
     { fFlags FILEOP_FLAGS }
     { fAnyOperationsAborted BOOL }
     { hNameMappings LPVOID }
     { lpszProgressTitle LPCWSTR } ;
 
-FUNCTION: int SHFileOperationW (
-    SHFILEOPSTRUCTW lpFileOp
-) ;
-
+FUNCTION: int SHFileOperationW ( SHFILEOPSTRUCTW* lpFileOp ) ;
 
 CONSTANT: FO_MOVE HEX: 0001
 CONSTANT: FO_COPY HEX: 0002
@@ -49,11 +48,11 @@ CONSTANT: FOF_NO_CONNECTED_ELEMENTS HEX: 2000
 CONSTANT: FOF_WANTNUKEWARNING HEX: 4000
 CONSTANT: FOF_NORECURSEREPARSE HEX: 8000
 
+PRIVATE>
 
 M: windows send-to-trash ( path -- )
     [
-        absolute-path
-        utf16n string>alien B{ 0 0 } append
+        absolute-path utf16n string>alien B{ 0 0 } append
         malloc-byte-array &free
 
         SHFILEOPSTRUCTW <struct>
@@ -69,7 +68,6 @@ M: windows send-to-trash ( path -- )
         SHFileOperationW dup 0 > [
             number>string "Error: " prepend throw
         ] [ drop ] if
-
     ] with-destructors ;
 
 
