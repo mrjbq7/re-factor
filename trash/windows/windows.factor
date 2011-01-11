@@ -2,9 +2,10 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors alien.c-types alien.data alien.strings
-alien.syntax classes.struct destructors io.encodings.string
-io.encodings.utf16n io.pathnames kernel libc math math.parser
-sequences system trash windows windows.errors windows.types ;
+alien.syntax classes.struct classes.struct.packed destructors
+io.encodings.string io.encodings.utf16n io.pathnames kernel libc
+math math.parser sequences system trash windows windows.errors
+windows.types ;
 
 IN: trash.windows
 
@@ -14,7 +15,7 @@ LIBRARY: shell32
 
 TYPEDEF: WORD FILEOP_FLAGS
 
-STRUCT: SHFILEOPSTRUCTW
+PACKED-STRUCT: SHFILEOPSTRUCTW
     { hwnd HWND }
     { wFunc UINT }
     { pFrom LPCWSTR* }
