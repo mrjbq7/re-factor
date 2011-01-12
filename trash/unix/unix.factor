@@ -61,8 +61,7 @@ IN: trash.unix
 
 : safe-file-name ( path -- path' )
     dup 0 [ over exists? ] [
-        1 +
-        [ parent-directory to-directory ] dip
+        [ parent-directory to-directory ] [ 1 + ] bi*
         [ (safe-file-name) ] keep
     ] while drop nip ;
 
