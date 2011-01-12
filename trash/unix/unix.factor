@@ -37,12 +37,10 @@ IN: trash.unix
 
 : trash-1 ( root -- path )
     ".Trash" append-path dup check-trash-path
-    real-user-id number>string append-path
-    [ make-user-directory ] keep ;
+    real-user-id number>string append-path ;
 
 : trash-2 ( root -- path )
-    real-user-id ".Trash-%d" sprintf append-path
-    [ make-user-directory ] keep ;
+    real-user-id ".Trash-%d" sprintf append-path ;
 
 : trash-path ( path -- path' )
     top-directory dup trash-home top-directory = [
@@ -50,6 +48,7 @@ IN: trash.unix
     ] [
         dup ".Trash" append-path exists?
         [ trash-1 ] [ trash-2 ] if
+        [ make-user-directory ] keep
     ] if ;
 
 : (safe-file-name) ( path counter -- path' )
