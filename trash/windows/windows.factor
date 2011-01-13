@@ -66,9 +66,8 @@ M: windows send-to-trash ( path -- )
             FOF_NOERRORUI bitor
             FOF_SILENT bitor >>fFlags
 
-        SHFileOperationW dup 0 > [
-            number>string "Error: " prepend throw
-        ] [ drop ] if
+        SHFileOperationW [ throw ] unless-zero
+
     ] with-destructors ;
 
 
