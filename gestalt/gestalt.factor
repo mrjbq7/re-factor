@@ -39,15 +39,15 @@ PRIVATE>
     "%s.%s.%s" sprintf ;
 
 : system-code-name ( -- str )
-    system-version {
-        { [ dup HEX: 1070 >= ] [ "Lion"         ] }
-        { [ dup HEX: 1060 >= ] [ "Snow Leopard" ] }
-        { [ dup HEX: 1050 >= ] [ "Leopard"      ] }
-        { [ dup HEX: 1040 >= ] [ "Tiger"        ] }
-        { [ dup HEX: 1030 >= ] [ "Panther"      ] }
-        { [ dup HEX: 1020 >= ] [ "Jaguar"       ] }
-        { [ dup HEX: 1010 >= ] [ "Puma"         ] }
-        { [ dup HEX: 1000 >= ] [ "Cheetah"      ] }
-        [ "Unknown" ]
-    } cond nip ;
+    system-version HEX: FFF0 bitand {
+        { HEX: 1070 [ "Lion"         ] }
+        { HEX: 1060 [ "Snow Leopard" ] }
+        { HEX: 1050 [ "Leopard"      ] }
+        { HEX: 1040 [ "Tiger"        ] }
+        { HEX: 1030 [ "Panther"      ] }
+        { HEX: 1020 [ "Jaguar"       ] }
+        { HEX: 1010 [ "Puma"         ] }
+        { HEX: 1000 [ "Cheetah"      ] }
+        [ drop "Unknown" ]
+    } case ;
 
