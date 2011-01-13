@@ -43,6 +43,9 @@ flip-text:
 fortune:
     prints random quotations
 
+gestalt:
+    system version using gestalt on Mac OS X
+
 hamurabi:
     port of the HAMURABI.BAS game
 
