@@ -1,11 +1,11 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors calendar classes.struct
-combinators.short-circuit environment formatting io
-io.directories io.encodings.utf8 io.files io.files.info
-io.files.info.unix io.files.types io.pathnames kernel math
-math.parser sequences system trash unix.stat unix.users ;
+USING: accessors calendar combinators.short-circuit environment
+formatting io io.directories io.encodings.utf8 io.files
+io.files.info io.files.info.unix io.files.types io.pathnames
+kernel math math.parser sequences system trash unix.stat
+unix.users ;
 
 IN: trash.unix
 
