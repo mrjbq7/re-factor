@@ -3,8 +3,7 @@
 
 USING: accessors alien.c-types alien.data alien.strings
 alien.syntax classes.struct classes.struct.packed destructors
-io.encodings.string io.encodings.utf16n io.pathnames kernel libc
-math math.parser sequences system trash windows windows.errors
+kernel io.encodings.utf16n libc math sequences system trash
 windows.types ;
 
 IN: trash.windows
@@ -53,7 +52,7 @@ PRIVATE>
 
 M: windows send-to-trash ( path -- )
     [
-        absolute-path utf16n string>alien B{ 0 0 } append
+        utf16n string>alien B{ 0 0 } append
         malloc-byte-array &free
 
         SHFILEOPSTRUCTW <struct>
