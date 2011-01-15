@@ -1,5 +1,5 @@
 
-USING: sequences tools.test utils ;
+USING: kernel sequences tools.test utils ;
 
 IN: utils
 
@@ -19,4 +19,12 @@ IN: utils
 [ { "foo" } ] [ { { "foo" } { "bar" } } [ first ] maximum ] unit-test
 [ { "bar" } ] [ { { "foo" } { "bar" } } [ first ] minimum ] unit-test
 
+TUPLE: foo a b c ;
+
+[ T{ foo f } ] [ H{ } foo new [ set-slots ] keep  ] unit-test
+[ H{ { "d" 0 } } foo new set-slots ] must-fail
+
+[ T{ foo f 1 2 3 } ]
+[ H{ { "a" 1 } { "b" 2 } { "c" 3 } } foo new [ set-slots ] keep ]
+unit-test
 

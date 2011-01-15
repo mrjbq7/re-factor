@@ -1,6 +1,8 @@
+! Copyright (C) 2011 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays combinators fry kernel macros math math.order
-parser sequences sequences.generalizations ;
+USING: arrays assocs combinators db.types fry kernel macros
+math math.order parser sequences sequences.generalizations ;
 
 IN: utils
 
@@ -42,3 +44,5 @@ SYNTAX: INCLUDE:
 : average ( seq -- n )
     [ sum ] [ length ] bi / ;
 
+: set-slots ( assoc obj -- )
+    '[ swap _ set-slot-named ] assoc-each ;
