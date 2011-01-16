@@ -76,6 +76,9 @@ ntp:
 port-scan:
     simple port scanner
 
+reddit:
+    scraping the Reddit API
+
 sorting.marriage:
     in-place marriage sort algorithm
 
