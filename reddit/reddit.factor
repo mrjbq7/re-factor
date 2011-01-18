@@ -15,16 +15,20 @@ subreddit subreddit_id ups ;
 TUPLE: user comment_karma created created_utc has_mail
 has_mod_mail id is_mod link_karma name ;
 
-TUPLE: post author clicked created created_utc domain downs
+TUPLE: story author clicked created created_utc domain downs
 hidden id is_self levenshtein likes media media_embed name
 num_comments over_18 permalink saved score selftext
 selftext_html subreddit subreddit_id thumbnail title ups url ;
+
+TUPLE: subreddit created created_utc description display_name id
+name over18 subscribers title url ;
 
 : parse-data ( assoc -- obj )
     [ "data" swap at ] [ "kind" swap at ] bi {
         { "t1" [ comment new ] }
         { "t2" [ user new ] }
-        { "t3" [ post new ] }
+        { "t3" [ story new ] }
+        { "t5" [ subreddit new ] }
         [ throw ]
     } case [ set-slots ] keep ;
 
@@ -45,10 +49,16 @@ selftext_html subreddit subreddit_id thumbnail title ups url ;
 : (url) ( url -- data )
     "http://api.reddit.com/api/info?url=%s" sprintf json-data ;
 
+: (search) ( query -- data )
+    "http://api.reddit.com/search?q=%s" sprintf json-data ;
+
+: (subreddits) ( query -- data )
+    "http://api.reddit.com/reddits/search?q=%s" sprintf json-data ;
+
 PRIVATE>
 
-: user-links ( username -- posts )
-    (user) [ post? ] filter [ url>> ] map ;
+: user-links ( username -- stories )
+    (user) [ story? ] filter [ url>> ] map ;
 
 : user-comments ( username -- comments )
     (user) [ comment? ] filter [ body>> ] map ;
