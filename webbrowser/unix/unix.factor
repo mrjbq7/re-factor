@@ -5,8 +5,9 @@ USING: formatting io.launcher webbrowser ;
 
 IN: webbrowser.unix
 
+M: unix open-file ( path -- )
+    "gnome-open \"%s\"" sprintf try-process ;
+
 M: unix open-url ( url -- )
     url-encode open-file ;
 
-M: unix open-file ( path -- )
-    "gnome-open \"%s\"" sprintf try-process ;

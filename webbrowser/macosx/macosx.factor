@@ -6,10 +6,10 @@ urls.encoding webbrowser ;
 
 IN: webbrowser.macosx
 
+M: macosx open-file ( path -- )
+    "open \"%s\"" sprintf try-process ;
+
 M: macosx open-url ( url -- )
     "osascript" ascii [
         url-encode "open location \"%s\"" printf
     ] with-process-writer ;
-
-M: macosx open-file ( path -- )
-    "open \"%s\"" sprintf try-process ;

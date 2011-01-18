@@ -5,9 +5,9 @@ USING: combinators system vocabs.loader ;
 
 IN: webbrowser
 
-HOOK: open-url os ( path -- )
+HOOK: open-file os ( path -- )
 
-HOOK: open-file os ( file -- )
+HOOK: open-url os ( url -- )
 
 {
     { [ os macosx? ] [ "webbrowser.macosx"  ] }
