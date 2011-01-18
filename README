@@ -103,6 +103,9 @@ trash:
 utils:
     miscellaneous utility words
 
+webbrowser:
+    open urls in web browser
+
 wordcount:
     implementation of "counting words" meme
 

@@ -1,0 +1,15 @@
+! Copyright (C) 2011 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
+
+USING: formatting io.encodings.ascii io.launcher system
+urls.encoding webbrowser ;
+
+IN: webbrowser.macosx
+
+M: macosx open-url ( url -- )
+    "osascript" ascii [
+        url-encode "open location \"%s\"" printf
+    ] with-process-writer ;
+
+M: macosx open-file ( path -- )
+    "open \"%s\"" sprintf try-process ;
