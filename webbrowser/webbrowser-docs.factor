@@ -6,7 +6,8 @@ IN: webbrowser
 HELP: open-file
 { $values { "path" string } }
 { $description
-    "Open a specified path using the default application."
+    "Open a specified file or directory using the default "
+    "application, similar to double-clicking the file's icon."
 } ;
 
 HELP: open-url
