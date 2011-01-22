@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays assocs formatting io.pathnames kernel locals
+USING: arrays assocs formatting io io.pathnames kernel locals
 sequences vocabs vocabs.loader vocabs.metadata ;
 
 IN: todos
@@ -22,12 +22,15 @@ IN: todos
         todos todo 1array append vocab set-vocab-todo
     ] unless ;
 
-: child-vocab-todos ( vocab -- assoc )
+: todos. ( vocab -- )
+    vocab-todo [ print ] each ;
+
+: all-todos ( vocab -- assoc )
     child-vocabs [ dup vocab-todo 2array ] map
     [ second empty? not ] filter ;
 
-: child-vocab-todos. ( vocab -- )
-    child-vocab-todos [
+: all-todos. ( vocab -- )
+    all-todos [
         [ "%s:\n" printf ] [ [ "- %s\n" printf ] each ] bi*
     ] assoc-each ;
 

@@ -7,7 +7,7 @@ kernel sequences todos vocabs ;
 IN: todos
 
 : $all-todos ( element -- )
-    drop "" child-vocab-todos [
+    drop "" all-todos [
         [ dup 2array { $vocab-subsection } prepend ]
         [ { $list } prepend ] bi*
         [ print-element ] bi@ nl
