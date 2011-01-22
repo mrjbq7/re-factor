@@ -8,9 +8,7 @@ IN: todos
 
 : $all-todos ( element -- )
     drop "" all-todos [
-        [ dup 2array { $vocab-subsection } prepend ]
-        [ { $list } prepend ] bi*
-        [ print-element ] bi@ nl
+        [ dup 2array $vocab-subsection ] [ $list ] bi*
     ] assoc-each ;
 
 ARTICLE: "vocab-todos" "Vocabulary todos"
