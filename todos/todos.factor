@@ -16,6 +16,7 @@ IN: todos
     dup vocab-todo-path set-vocab-file-contents ;
 
 :: add-vocab-todo ( todo vocab -- )
+    CHAR: \n todo member? [ "invalid" throw ] when
     vocab vocab-todo :> todos
     todo todos member? [
         todos todo 1array append vocab set-vocab-todo
@@ -27,9 +28,7 @@ IN: todos
 
 : child-vocab-todos. ( vocab -- )
     child-vocab-todos [
-        [ "%s:\n" printf ]
-        [ [ "- %s\n" printf ] each ]
-        bi*
+        [ "%s:\n" printf ] [ [ "- %s\n" printf ] each ] bi*
     ] assoc-each ;
 
 USING: lexer namespaces strings strings.parser.private
