@@ -97,6 +97,9 @@ text-to-pdf:
 time:
     simple TIME server
 
+todos:
+    additional vocab metadata for todo lists
+
 trash:
     send files to the trash bin (mac, unix, windows)
 
