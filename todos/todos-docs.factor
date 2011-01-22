@@ -1,6 +1,8 @@
+! Copyright (C) 2011 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors arrays assocs help.markup help.syntax kernel
-sequences todos vocabs ;
+USING: accessors arrays assocs help.markup help.syntax io
+kernel sequences todos vocabs ;
 
 IN: todos
 
@@ -8,7 +10,7 @@ IN: todos
     drop "" child-vocab-todos [
         [ dup 2array { $vocab-subsection } prepend ]
         [ { $list } prepend ] bi*
-        [ print-element ] bi@
+        [ print-element ] bi@ nl
     ] assoc-each ;
 
 ARTICLE: "vocab-todos" "Vocabulary todos"

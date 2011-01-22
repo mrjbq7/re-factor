@@ -1,4 +1,4 @@
-! Copyright (C) 2010 John Benediktsson
+! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays assocs formatting io.pathnames kernel locals
