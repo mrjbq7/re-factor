@@ -25,6 +25,9 @@ cat:
 cgi:
     support for writing Factor CGI programs
 
+cpu-speed:
+    estimate the cpu speed of your computer
+
 daytime:
     simple DAYTIME server
 
