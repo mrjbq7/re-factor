@@ -19,7 +19,7 @@ IN: todos
     CHAR: \n todo member? [ "invalid" throw ] when
     vocab vocab-todo :> todos
     todo todos member? [
-        todos todo 1array append vocab set-vocab-todo
+        todos todo suffix vocab set-vocab-todo
     ] unless ;
 
 : todos. ( vocab -- )
