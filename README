@@ -40,6 +40,9 @@ elapsed:
 fake-data:
     generate "fake" information
 
+fast-now:
+    faster, cached-per-millisecond version of "now"
+
 flip-text:
     turns text upside-down
 
