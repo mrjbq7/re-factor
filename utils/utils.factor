@@ -46,3 +46,6 @@ SYNTAX: INCLUDE:
 
 : set-slots ( assoc obj -- )
     '[ swap _ set-slot-named ] assoc-each ;
+
+: from-slots ( assoc class -- obj )
+    new [ set-slots ] keep ;
