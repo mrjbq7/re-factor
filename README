@@ -52,6 +52,9 @@ fortune:
 gestalt:
     system version using gestalt on Mac OS X
 
+github:
+    implementing Github API v2
+
 hamurabi:
     port of the HAMURABI.BAS game
 
