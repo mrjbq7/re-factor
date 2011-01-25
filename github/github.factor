@@ -73,7 +73,7 @@ PRIVATE>
         } cleave
         "%s - %s followers - %s public repositories\n" printf
     ] [
-        repositories [ watchers>> 1.0 swap / ] sort-with [
+        repositories [ watchers>> ] inv-sort-with [
             {
                 [ name>> ]
                 [ watchers>> "%s watchers" sprintf ]
