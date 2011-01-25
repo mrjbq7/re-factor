@@ -55,6 +55,9 @@ gestalt:
 github:
     implementing Github API v2
 
+gravatar:
+    wrapping the Gravatar API
+
 hamurabi:
     port of the HAMURABI.BAS game
 
