@@ -25,12 +25,12 @@ name over18 subscribers title url ;
 
 : parse-data ( assoc -- obj )
     [ "data" swap at ] [ "kind" swap at ] bi {
-        { "t1" [ comment new ] }
-        { "t2" [ user new ] }
-        { "t3" [ story new ] }
-        { "t5" [ subreddit new ] }
+        { "t1" [ comment ] }
+        { "t2" [ user ] }
+        { "t3" [ story ] }
+        { "t5" [ subreddit ] }
         [ throw ]
-    } case [ set-slots ] keep ;
+    } case from-slots ;
 
 : json-data ( url -- data )
     http-get nip json> { "data" "children" } [ swap at ] each

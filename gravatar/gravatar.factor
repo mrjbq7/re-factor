@@ -10,10 +10,9 @@ TUPLE: info aboutMe accounts currentLocation displayName emails
 hash id ims name phoneNumbers photos preferredUsername
 profileBackground profileUrl requestHash thumbnailUrl urls ;
 
-: gravatar-info ( gravatar-id -- data )
+: gravatar-info ( gravatar-id -- info )
     "http://gravatar.com/%s.json" sprintf http-get nip
-    >string json> "entry" swap at first
-    info new [ set-slots ] keep ;
+    >string json> "entry" swap at first info from-slots ;
 
 : gravatar. ( gravatar-id -- )
     "http://gravatar.com/avatar/%s.jpg" sprintf http-image. ;
