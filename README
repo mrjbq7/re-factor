@@ -121,6 +121,9 @@ utils:
 webbrowser:
     open urls in web browser
 
+wolfram-alpha:
+    query Wolfram|Alpha from Factor
+
 wordcount:
     implementation of "counting words" meme
 
