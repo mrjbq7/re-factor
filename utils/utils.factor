@@ -50,16 +50,14 @@ SYNTAX: INCLUDE:
 : from-slots ( assoc class -- obj )
     new [ set-slots ] keep ;
 
-USE: math.statistics
-
 : group-by ( seq quot: ( elt -- key ) -- assoc )
-    dupd map zip [
-        [ first2 ] [ push-at ] bi*
-    ] sequence>hashtable ; inline
+    dupd map zip H{ } clone [
+        [ push-at ] curry assoc-each
+    ] keep ; inline
 
+USE: math.statistics
 USE: sorting
 
 : trim-histogram ( assoc n -- alist )
     [ >alist sort-values reverse ] [ cut ] bi*
     values sum [ "Other" swap 2array suffix ] unless-zero ;
-    
