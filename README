@@ -55,6 +55,9 @@ gestalt:
 github:
     implementing Github API v2
 
+google.charts:
+    implemeting Google Chart API.
+
 gravatar:
     wrapping the Gravatar API
 
