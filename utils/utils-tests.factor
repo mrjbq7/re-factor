@@ -30,3 +30,8 @@ unit-test
 
 [ H{ { f V{ 2 2 2 } } { t V{ 1 3 1 } } } ]
 [ { 1 2 3 1 2 2 } [ odd? ] group-by ] unit-test
+
+USE: math.statistics
+
+[ { { 1 3 } { "Other" 2 } } ]
+[ { 1 1 1 2 2 } histogram 1 trim-histogram ] unit-test

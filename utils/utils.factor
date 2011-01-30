@@ -56,3 +56,10 @@ USE: math.statistics
     dupd map zip [
         [ first2 ] [ push-at ] bi*
     ] sequence>hashtable ; inline
+
+USE: sorting
+
+: trim-histogram ( assoc n -- alist )
+    [ >alist sort-values reverse ] [ cut ] bi*
+    values sum [ "Other" swap 2array suffix ] unless-zero ;
+    
