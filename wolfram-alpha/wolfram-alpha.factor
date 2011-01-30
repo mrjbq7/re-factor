@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors colors.constants formatting http http.client
-images.gif images.http io io.styles kernel sequences splitting
-ui urls.encoding xml xml.data xml.traversal ;
+images.gif images.http io io.styles kernel namespaces sequences
+splitting ui urls.encoding xml xml.data xml.traversal ;
 
 IN: wolfram-alpha
 
