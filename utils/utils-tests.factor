@@ -1,5 +1,5 @@
 
-USING: kernel sequences tools.test utils ;
+USING: kernel math sequences tools.test utils ;
 
 IN: utils
 
@@ -28,3 +28,5 @@ TUPLE: foo a b c ;
 [ H{ { "a" 1 } { "b" 2 } { "c" 3 } } foo new [ set-slots ] keep ]
 unit-test
 
+[ H{ { f V{ 2 2 2 } } { t V{ 1 3 1 } } } ]
+[ { 1 2 3 1 2 2 } [ odd? ] group-by ] unit-test

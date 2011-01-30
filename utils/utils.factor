@@ -49,3 +49,10 @@ SYNTAX: INCLUDE:
 
 : from-slots ( assoc class -- obj )
     new [ set-slots ] keep ;
+
+USE: math.statistics
+
+: group-by ( seq quot: ( elt -- key ) -- assoc )
+    dupd map zip [
+        [ first2 ] [ push-at ] bi*
+    ] sequence>hashtable ; inline
