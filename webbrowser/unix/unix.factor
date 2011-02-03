@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: formatting io.launcher webbrowser ;
+USING: formatting io.launcher system urls.encoding webbrowser ;
 
 IN: webbrowser.unix
 
