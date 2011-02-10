@@ -28,8 +28,21 @@ TUPLE: foo a b c ;
 [ H{ { "a" 1 } { "b" 2 } { "c" 3 } } foo new [ set-slots ] keep ]
 unit-test
 
+[ H{ } ] [ { } [ ] group-by ] unit-test
+
 [ H{ { f V{ 2 2 2 } } { t V{ 1 3 1 } } } ]
 [ { 1 2 3 1 2 2 } [ odd? ] group-by ] unit-test
+
+USE: math.combinatorics
+
+[
+    H{
+        { 0 V{ "" } }
+        { 1 V{ "a" "b" "c" } }
+        { 2 V{ "ab" "ac" "bc" } }
+        { 3 V{ "abc" } }
+    }
+] [ "abc" all-subsets [ length ] group-by ] unit-test
 
 USE: math.statistics
 
