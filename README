@@ -56,7 +56,10 @@ github:
     implementing Github API v2
 
 google.charts:
-    implemeting Google Chart API.
+    implementing Google Chart API
+
+google.translate:
+    implementing Google Translate API
 
 gravatar:
     wrapping the Gravatar API
