@@ -68,10 +68,14 @@ CONSTANT: languages H{
         target "target" set-query-param
         text "q" set-query-param ;
 
-: translate ( text source target -- seq )
+: translate ( text source target -- text' )
     translate-url http-get nip json>
     { "data" "translations" } [ swap at ] each
-    [ "translatedText" swap at ] map ;
+    [ "translatedText" swap at ] map first ;
 
-: translate. ( text source target -- )
-    translate [ print ] each ;
+:: translation-party ( text source target -- )
+    text dup print [
+        dup source target translate dup print
+        target source translate dup print
+        swap dupd = not
+    ] loop drop ;
