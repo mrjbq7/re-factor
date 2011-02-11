@@ -97,6 +97,9 @@ port-scan:
 reddit:
     scraping the Reddit API
 
+repopular:
+    scraping "popular" Github projects
+
 sorting.marriage:
     in-place marriage sort algorithm
 
