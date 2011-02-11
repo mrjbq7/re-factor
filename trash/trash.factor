@@ -8,8 +8,8 @@ IN: trash
 HOOK: send-to-trash os ( path -- )
 
 {
-    { [ os macosx? ] [ "trash.macosx" ] }
-    { [ os winnt? ] [ "trash.windows" ] }
-    { [ os unix? ] [ "trash.unix" ] }
+    { [ os macosx? ] [ "trash.macosx"  ] }
+    { [ os unix?   ] [ "trash.unix"    ] }
+    { [ os winnt?  ] [ "trash.windows" ] }
 } cond require
 

@@ -25,6 +25,9 @@ cat:
 cgi:
     support for writing Factor CGI programs
 
+cpu-speed:
+    estimate the cpu speed of your computer
+
 daytime:
     simple DAYTIME server
 
@@ -37,17 +40,38 @@ elapsed:
 fake-data:
     generate "fake" information
 
+fast-now:
+    faster, cached-per-millisecond version of "now"
+
 flip-text:
     turns text upside-down
 
 fortune:
     prints random quotations
 
+gestalt:
+    system version using gestalt on Mac OS X
+
+github:
+    implementing Github API v2
+
+google.charts:
+    implementing Google Chart API
+
+google.translate:
+    implementing Google Translate API
+
+gravatar:
+    wrapping the Gravatar API
+
 hamurabi:
     port of the HAMURABI.BAS game
 
 happy-numbers:
     tests if a number is "happy"
+
+hello-ga:
+    genetic "hello, world!"
 
 ini-file:
     parsing INI configuration files
@@ -67,20 +91,50 @@ n-partition:
 ntp:
     simple NTP client
 
+port-scan:
+    simple port scanner
+
+reddit:
+    scraping the Reddit API
+
+repopular:
+    scraping "popular" Github projects
+
+simple-rpg:
+    simple role-playing game example
+
 sorting.marriage:
     in-place marriage sort algorithm
 
 ten-ten:
     calculate the 10:10 code for geographic locations
 
+ternary-search-trees:
+    implementation of ternary search trees
+
 text-or-binary:
     heuristic to detect if a file is text or binary
+
+text-to-pdf:
+    "text2pdf" converter
 
 time:
     simple TIME server
 
+todos:
+    additional vocab metadata for todo lists
+
 trash:
     send files to the trash bin (mac, unix, windows)
+
+utils:
+    miscellaneous utility words
+
+webbrowser:
+    open urls in web browser
+
+wolfram-alpha:
+    query Wolfram|Alpha from Factor
 
 wordcount:
     implementation of "counting words" meme
