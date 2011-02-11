@@ -49,6 +49,10 @@ PRIVATE>
     [ "lxy" <chart> ] dip [ keys ] [ values ] bi
     [ x,y ] bi@ "|" glue >>data ;
 
+: <scatter> ( seq -- chart )
+    [ "s" <chart> ] dip [ keys ] [ values ] bi
+    [ x,y ] bi@ "|" glue >>data ;
+
 : <sparkline> ( seq -- chart )
     [ "ls" <chart> ] dip chd ;
 
