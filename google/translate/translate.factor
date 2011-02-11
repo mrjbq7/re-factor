@@ -73,6 +73,13 @@ CONSTANT: languages H{
     { "data" "translations" } [ swap at ] each
     [ "translatedText" swap at ] map first ;
 
+:: all-translations ( text source -- assoc )
+    languages [
+        dup source = [ drop text ] [
+            [ text source ] dip translate
+        ] if
+    ] assoc-map ;
+
 :: translation-party ( text source target -- )
     text dup print [
         dup source target translate dup print
