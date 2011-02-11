@@ -100,6 +100,9 @@ reddit:
 repopular:
     scraping "popular" Github projects
 
+simple-rpg:
+    simple role-playing game example
+
 sorting.marriage:
     in-place marriage sort algorithm
 
