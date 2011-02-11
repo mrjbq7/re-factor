@@ -7,7 +7,7 @@ images.http kernel math present sequences urls ;
 IN: google.charts
 
 TUPLE: chart type width height title data data-scale labels
-background foreground margin ;
+background foreground margin bar-width ;
 
 : <chart> ( type -- chart )
     chart new
@@ -86,6 +86,7 @@ PRIVATE>
             ] when*
         ]
         [ margin>> [ x,y "chma" set-query-param ] when* ]
+        [ bar-width>> [ "chbh" set-query-param ] when* ]
     } cleave ;
 
 PRIVATE>
