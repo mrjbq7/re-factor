@@ -1,15 +1,15 @@
 ! Copyright (C) 2010 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: accessors alien alien.c-types alien.strings
+USING: accessors alien alien.c-types alien.data alien.strings
 classes.struct combinators db.errors fry generalizations
-io.encodings.utf8 layouts kernel make math math.parser mysql.ffi
-sequences sequences.deep ;
+io.encodings.utf8 kernel layouts make math math.parser mysql.ffi
+sequences ;
 
 IN: mysql.lib
 
 ERROR: mysql-error < db-error n string ;
-! ERROR: mysql-sql-error < sql-error n string ;
+ERROR: mysql-sql-error < sql-error n string ;
 
 : mysql-connect ( host user passwd db port -- mysql )
     [ f mysql_init ] 5 ndip f 0 mysql_real_connect ;
@@ -21,30 +21,74 @@ ERROR: mysql-error < db-error n string ;
 
 : mysql-stmt-check-result ( stmt n -- )
     dup 0 = [ 2drop ] [
-        swap mysql_stmt_error mysql-error
+        swap mysql_stmt_error mysql-error ! FIXME: mysql-sql-error
     ] if ;
 
-: mysql-#rows ( result -- n ) mysql_num_rows ;
+: mysql-#rows ( result -- n )
+    mysql_num_rows ;
 
-: mysql-#columns ( result -- n ) mysql_num_fields ;
+: mysql-#columns ( result -- n )
+    mysql_num_fields ;
 
-: mysql-next ( result -- ? ) mysql_fetch_row ;
+: mysql-next ( result -- ? )
+    mysql_fetch_row ;
 
 : mysql-column ( result n -- value )
     swap [ cell * ] [ current_row>> ] bi* <displaced-alien>
-    *void* utf8 alien>string ;
+    void* deref utf8 alien>string ;
 
 : mysql-row ( result -- seq )
     [ current_row>> ] [ mysql-#columns ] bi [
-        [ *void* utf8 alien>string ]
+        [ void* deref utf8 alien>string ]
         [ cell swap <displaced-alien> ] bi swap
     ] replicate nip ;
 
 : mysql-query ( mysql query -- result )
-    dupd mysql_query dupd mysql-check-result
-    mysql_store_result ;
+    dupd mysql_query dupd mysql-check-result mysql_store_result ;
 
 
+
+: <mysql-time> ( timestamp -- MYSQL_TIME )
+    MYSQL_TIME <struct>
+        over year>> >>year
+        over month>> >>month
+        over day>> >>day
+        over hour>> >>hour
+        over minute>> >>minute
+        swap second>> >>second ;
+
+:: <mysql-bind> ( index key value type -- mysql_BIND )
+    MYSQL_BIND <struct>
+        index >>param_number
+        value type {
+            { INTEGER [ MYSQL_TYPE_LONG ] }
+            { BIG-INTEGER [ MYSQL_TYPE_LONGLONG ] }
+            { SIGNED-BIG-INTEGER [ MYSQL_TYPE_LONGLONG ] }
+            { UNSIGNED-BIG-INTEGER [ MYSQL_TYPE_LONGLONG ] }
+            { BOOLEAN [ MYSQL_TYPE_BIT ] }
+            { TEXT [ MYSQL_TYPE_VARCHAR ] }
+            { VARCHAR [ MYSQL_TYPE_VARCHAR ] }
+            { DOUBLE [ MYSQL_TYPE_DOUBLE ] }
+            { DATE [ timestamp>ymd MYSQL_TYPE_DATE ] }
+            { TIME [ timestamp>hms MYSQL_TYPE_TIME ] }
+            { DATETIME [ timestamp>ymdhms MYSQL_TYPE_DATETIME ] }
+            { TIMESTAMP [ timestamp>ymdhms MYSQL_TYPE_DATETIME ] }
+            { BLOB [ MYSQL_TYPE_BLOB ] }
+            { FACTOR-BLOB [ object>bytes MYSQL_TYPE_BLOB ] }
+            { URL [ present MYSQL_TYPE_VARCHAR ] }
+            { +db-assigned-id+ [ MYSQL_TYPE_LONG ] }
+            { +random-id+ [ MYSQL_TYPE_LONGLONG ] }
+            { NULL [ MYSQL_TYPE_NULL ] }
+            [ no-sql-type ]
+        } case >>buffer_type >>buffer
+        ! FIXME: buffer_length
+        ! FIXME: is_null
+    ;
+
+
+
+
+<PRIVATE
 
 CONSTANT: MIN_CHAR -255
 CONSTANT: MAX_CHAR 256
@@ -58,16 +102,18 @@ CONSTANT: MAX_INT 4294967296
 CONSTANT: MIN_LONG -18446744073709551615
 CONSTANT: MAX_LONG 18446744073709551616
 
+FROM: alien.c-types => short ;
+
 : fixnum>c-ptr ( n -- c-ptr )
-    dup dup 0 < [ abs 1 + ] when {
-        { [ dup MAX_CHAR  <= ] [ drop <char> ] }
-        { [ dup MAX_SHORT <= ] [ drop <short> ] }
-        { [ dup MAX_INT   <= ] [ drop <int> ] }
-        { [ dup MAX_LONG  <= ] [ drop <longlong> ] }
+    dup 0 < [ abs 1 + ] when {
+        { [ dup MAX_CHAR  <= ] [ char <ref> ] }
+        { [ dup MAX_SHORT <= ] [ short <ref> ] }
+        { [ dup MAX_INT   <= ] [ int <ref> ] }
+        { [ dup MAX_LONG  <= ] [ longlong <ref> ] }
         [ "too big" throw ]
     } cond ;
 
-
+PRIVATE>
 
 
 ! : mysql-stmt-query ( stmt -- result )
@@ -98,19 +144,6 @@ CONSTANT: MAX_LONG 18446744073709551616
 
 
 
-: cols ( result n -- cols )
-    [ dup mysql_fetch_field name>> ] replicate nip ;
-
-: row ( result n -- row/f )
-    swap mysql_fetch_row [
-        swap [
-            [ *void* utf8 alien>string ]
-            [ cell swap <displaced-alien> ] bi swap
-        ] replicate nip
-    ] [ drop f ] if* ;
-
-: rows ( result n -- rows )
-    [ '[ _ _ row dup ] [ , ] while drop ] { } make ;
 
 
 
@@ -123,15 +156,32 @@ CONSTANT: MAX_LONG 18446744073709551616
 : select-db ( mysql db -- )
     dupd mysql_select_db mysql-check-result ;
 
+<PRIVATE
+
+: cols ( result n -- cols )
+    [ dup mysql_fetch_field name>> ] replicate nip ;
+
+: row ( result n -- row/f )
+    swap mysql_fetch_row [
+        swap [
+            [ void* deref utf8 alien>string ]
+            [ cell swap <displaced-alien> ] bi swap
+        ] replicate nip
+    ] [ drop f ] if* ;
+
+: rows ( result n -- rows )
+    [ '[ _ _ row dup ] [ , ] while drop ] { } make ;
+
+PRIVATE>
+
 : list-dbs ( mysql -- seq )
-    f mysql_list_dbs dup mysql_num_fields rows flatten ;
+    f mysql_list_dbs dup mysql_num_fields rows concat ;
 
 : list-tables ( mysql -- seq )
-    f mysql_list_tables dup mysql_num_fields rows flatten ;
+    f mysql_list_tables dup mysql_num_fields rows concat ;
 
 : list-processes ( mysql -- seq )
     mysql_list_processes dup mysql_num_fields rows ;
-
 
 : query-db ( mysql sql -- cols rows )
     mysql-query [

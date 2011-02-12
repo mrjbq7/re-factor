@@ -8,9 +8,11 @@ IN: mysql.errors
 EBNF: parse-mysql-sql-error
 
 TableError =
-    "Table " (!(" already exists").)+:table " already exists"
+    "Table '" (!("'").)+:table "' already exists"
         => [[ table >string unquote <sql-table-exists> ]]
-    | "Table " (!(" doesn't exist").)+:table " doesn't exist"
+    | "Table '" (!("'").)+:table "' doesn't exist"
+        => [[ table >string unquote <sql-table-missing> ]]
+    | "Unknown table '" (!("'").)+:table "'"
         => [[ table >string unquote <sql-table-missing> ]]
 
 SyntaxError =

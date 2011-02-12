@@ -15,6 +15,7 @@ TUPLE: mysql-db host username password database port ;
 
 
 
+
 <PRIVATE
 
 TUPLE: mysql-db-connection < db-connection ;
@@ -35,22 +36,17 @@ M: mysql-db db-open ( db -- db-connection )
         [ port>> ]
     } cleave mysql-connect <mysql-db-connection> ;
 
-M: mysql-db-connection db-close ( handle -- ) mysql_close ;
+M: mysql-db-connection db-close ( handle -- )
+    mysql_close ;
 
 
 TUPLE: mysql-statement < statement ;
 
-M: mysql-db-connection <simple-statement> ( str in out -- obj )
+M: mysql-db-connection <simple-statement> ( str in out -- stmt )
     mysql-statement new-statement ;
 
-M: mysql-db-connection <prepared-statement> ( str in out -- obj )
+M: mysql-db-connection <prepared-statement> ( str in out -- stmt )
     <simple-statement> dup prepare-statement ;
-
-
-
-USE: io
-USE: prettyprint
-
 
 
 
@@ -61,7 +57,7 @@ M: mysql-db-connection create-sql-statement ( class -- seq )
         dupd
         "create table " 0% 0%
         "(" 0% [ ", " 0% ] [
-            dup column-name>> 0%
+            "`" 0% dup column-name>> 0% "`" 0%
             " " 0%
             dup type>> lookup-create-type 0%
             modifiers 0%
@@ -70,19 +66,19 @@ M: mysql-db-connection create-sql-statement ( class -- seq )
         ", " 0%
         find-primary-key
         "primary key(" 0%
-        [ "," 0% ] [ column-name>> 0% ] interleave
+        [ "," 0% ] [ "`" 0% column-name>> 0% "`" 0% ] interleave
         "));" 0%
     ] query-make 1array ;
 
 M: mysql-db-connection drop-sql-statement ( class -- seq )
     [ nip "drop table " 0% 0% ";" 0% ] query-make ;
 
-M: mysql-db-connection <insert-db-assigned-statement> ( tuple -- statement )
+M: mysql-db-connection <insert-db-assigned-statement> ( class -- statement )
     [
         "insert into " 0% 0%
         "(" 0%
         remove-db-assigned-id
-        dup [ ", " 0% ] [ column-name>> 0% ] interleave
+        dup [ ", " 0% ] [ "`" 0% column-name>> 0% "`" 0% ] interleave
         ") values(" 0%
         [ ", " 0% ] [
             dup type>> +random-id+ = [
@@ -98,20 +94,31 @@ M: mysql-db-connection <insert-db-assigned-statement> ( tuple -- statement )
         ");" 0%
     ] query-make ;
 
-M: mysql-db-connection <insert-user-assigned-statement> ( tuple -- statement )
+M: mysql-db-connection <insert-user-assigned-statement> ( class -- statement )
     <insert-db-assigned-statement> ;
 
 M: mysql-db-connection insert-tuple-set-key ( tuple statement -- )
-    query-modify-tuple ;
+    "not implemented" throw ; ! query-modify-tuple ;
+
+M: mysql-db-connection <select-by-slots-statement>
+    [
+        "select " 0% [ dupd filter-ignores ] dip over empty?
+        [ all-slots-ignored ] when over
+        [ ", " 0% ] [ "`" 0% dup column-name>> 0% "`" 0% 2, ] interleave
+        " from " 0% 0% where-clause
+    ] query-make ;
 
 
-FROM: db.postgresql => bind-name% ;
+
 
 ! FIXME: the problem with insert-tuple is that it expects
 ! to use statements with in-params>> ?
 ! "insert into TEST1(ID, A, B, C) values(:ID, :A, :B, :C);"
 
 ! db.types
+
+! FIXME: from db.postgresql
+: bind-name% ( -- ) 36 0, sql-counter [ inc ] [ get 0# ] bi ;
 
 M: mysql-db-connection bind% ( spec -- )
     bind-name% 1, ;
@@ -121,7 +128,7 @@ M: mysql-db-connection bind# ( spec object -- )
 
 ERROR: no-compound-found string object ;
 M: mysql-db-connection compound ( string object -- string' )
-    ! FIXME:
+    ! FIXME: verify these
     over {
         { "default" [ first number>string " " glue ] }
         { "varchar" [ first number>string "(" ")" surround append ] }
@@ -159,6 +166,7 @@ M: mysql-db-connection persistent-table ( -- hashtable )
         { BLOB { "blob" "blob" f } }
         { FACTOR-BLOB { "blob" "blob" f } }
         { URL { "varchar" "varchar" f } }
+
         { +autoincrement+ { f f "autoincrement" } }
         { +unique+ { f f "unique" } }
         { +default+ { f f "default" } }
@@ -175,15 +183,13 @@ M: mysql-db-connection persistent-table ( -- hashtable )
 
 
 
-
-
 TUPLE: mysql-result-set < result-set ;
 
 M: mysql-result-set #rows ( result-set -- n )
-    handle>> mysql-#rows ;
+    handle>> [ mysql-#rows ] [ 0 ] if* ;
 
 M: mysql-result-set #columns ( result-set -- n )
-    handle>> mysql-#columns ;
+    handle>> [ mysql-#columns ] [ 0 ] if* ;
 
 M: mysql-result-set row-column ( result-set n -- obj )
     [ handle>> ] dip mysql-column ;
@@ -192,13 +198,13 @@ M: mysql-result-set row-column-typed ( result-set n -- obj )
     [ handle>> ] dip mysql-column-typed ;
 
 M: mysql-result-set advance-row ( result-set -- )
-    handle>> mysql-next drop ;
+    handle>> [ mysql-next drop ] when* ;
 
 M: mysql-result-set more-rows? ( result-set -- ? )
-    handle>> current_row>> ;
+    handle>> [ current_row>> ] [ f ] if* ;
 
 M: mysql-result-set dispose ( result-set -- )
-    [ handle>> mysql_free_result ]
+    [ handle>> [ mysql_free_result ] when* ]
     [
         0 >>n
         0 >>max
@@ -216,7 +222,20 @@ M: mysql-statement bind-statement* ( statement -- )
 M: mysql-statement low-level-bind ( statement -- )
     drop "not implemented" throw ;
 
-FROM: db.postgresql => postgresql-bind-conversion ;
+
+GENERIC: postgresql-bind-conversion
+    ( tuple object -- low-level-binding )
+
+M: generator-bind postgresql-bind-conversion
+    dup generator-singleton>> eval-generator
+    [ swap slot-name>> rot set-slot-named ]
+    [ <low-level-binding> ] bi ;
+
+M: literal-bind postgresql-bind-conversion
+    nip value>> <low-level-binding> ;
+
+M: sql-spec postgresql-bind-conversion
+    slot-name>> swap get-slot-named <low-level-binding> ;
 
 M: mysql-statement bind-tuple ( tuple statement -- )
     [ nip ] [
@@ -225,12 +244,15 @@ M: mysql-statement bind-tuple ( tuple statement -- )
     >>bind-params drop ;
 
 
-! FIXME: move do-mysql-statement to mysql.lib?
-
 USE: io.encodings.string
 USE: io.encodings.utf8
 
-: mysql-prepare ( stmt sql -- handle )
+: mysql-handle ( statement -- handle )
+    dup handle>> [
+        db-connection get handle>> >>handle
+    ] unless handle>> ;
+
+: mysql-prepare ( stmt sql -- stmt )
     utf8 encode dup length
     dupd mysql_stmt_prepare
     dupd mysql-stmt-check-result ;
@@ -246,39 +268,22 @@ USE: io.encodings.utf8
 
 
 : do-mysql-statement ( statement -- res )
-    dup handle>> [ db-connection get handle>> >>handle ] unless
-    [ handle>> ] [ sql>> dup . ] bi mysql-query ;
-
+    [ mysql-handle ] [ sql>> ] bi mysql-query ;
 
 M: mysql-statement query-results ( statement -- result-set )
-    dup do-mysql-statement
-    mysql-result-set new-result-set dup advance-row
-    "query-results" write nl ;
+    dup do-mysql-statement mysql-result-set new-result-set
+    dup advance-row ;
 
 M: mysql-statement prepare-statement ( statement -- )
     drop "not implemented" throw ;
 
 M: mysql-db-connection parse-db-error
-    dup . string>> parse-mysql-sql-error ;
+    ! FIXME: check n 0 > ?
+    string>> parse-mysql-sql-error ;
 
 M: mysql-statement dispose ( statement -- )
     f >>handle drop ;
 
-
-
-
-
-
-
-: trac-db ( -- db )
-    <mysql-db>
-        "localhost" >>host
-        "trac" >>username
-        "trac" >>password
-        "trac" >>database ;
-
-: with-trac-db ( quot -- )
-    trac-db swap with-db ; inline
 
 
 
