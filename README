@@ -37,6 +37,9 @@ dice:
 elapsed:
     "pretty" elapsed times
 
+facebook:
+    implementing Facebook Graph API
+
 fake-data:
     generate "fake" information
 
