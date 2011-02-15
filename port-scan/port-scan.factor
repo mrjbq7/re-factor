@@ -18,3 +18,6 @@ IN: port-scan
     [ "Scanning %s...\n" printf ]
     [ open-ports [ "%d is open\n" printf ] each ]
     bi ;
+
+: knock-ports ( host ports -- )
+    [ dupd open-port? drop ] each drop ;
