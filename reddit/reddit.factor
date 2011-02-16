@@ -55,6 +55,9 @@ name over18 subscribers title url ;
 : (subreddits) ( query -- data )
     "http://api.reddit.com/reddits/search?q=%s" sprintf json-data ;
 
+: (domains) ( query -- data )
+    "http://api.reddit.com/domain/%s" sprintf json-data ;
+
 PRIVATE>
 
 : user-links ( username -- stories )
