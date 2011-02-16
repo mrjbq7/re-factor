@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: calendar continuations formatting kernel math.ranges
+USING: continuations formatting kernel math.ranges
 io.encodings.binary io.sockets make sequences ;
 
 IN: port-scan
