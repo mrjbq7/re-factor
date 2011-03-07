@@ -20,4 +20,4 @@ IN: port-scan
     bi ;
 
 : knock-ports ( host ports -- )
-    [ dupd open-port? drop ] each drop ;
+    [ open-port? drop ] with each ;
