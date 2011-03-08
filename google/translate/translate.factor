@@ -86,3 +86,6 @@ CONSTANT: languages H{
         target source translate dup print
         swap dupd = not
     ] loop drop ;
+
+: translatortron ( text targets -- )
+    dup 1 tail zip [ translate dup print ] assoc-each drop ;
