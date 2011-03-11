@@ -28,7 +28,7 @@ IN: trash.unix
         [ file-info directory? ]
         [ sticky? ]
         [ link-info type>> +symbolic-link+ = not ]
-    } 1&& [ "invalid trash path" throw ] unless ;
+    } 1|| [ "invalid trash path" throw ] unless ;
 
 : trash-home ( -- path )
     "XDG_DATA_HOME" os-env
