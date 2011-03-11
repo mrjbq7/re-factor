@@ -1,9 +1,9 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: tools.test ;
+USING: ini-file tools.test ;
 
-IN: ini-file
+IN: ini-file.tests
 
 [ H{ } ] [ "" string>ini ] unit-test
 
@@ -88,7 +88,7 @@ IN: ini-file
 
 [ H{ { "owner" H{ { "name" "John Doe" }
                   { "organization" "Acme Widgets Inc." } } }
-     { "database" H{ { "server" "192.0.2.62" } 
+     { "database" H{ { "server" "192.0.2.62" }
                      { "port" "143" }
                      { "file" "payroll.dat" } } } } ]
 [
