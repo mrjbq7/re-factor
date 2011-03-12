@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs colors.hex combinators formatting
-images.http kernel math present sequences urls ;
+images.http kernel math math.order present sequences urls ;
 
 IN: google.charts
 
@@ -23,7 +23,8 @@ background foreground margin bar-width ;
 
 : chd ( chart seq -- chart )
     [ x,y >>data ] [
-        [ infimum ] [ supremum ] bi 2array x,y >>data-scale
+        [ infimum 0 min ] [ supremum 0 max ] bi 2array
+        x,y >>data-scale
     ] bi ;
 
 : chl ( chart seq -- chart ) x|y >>labels ;
