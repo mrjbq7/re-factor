@@ -148,3 +148,5 @@ wordgen:
 wp:
     implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
 
+yahoo.finance:
+    wrapper for Yahoo! Finance market data
