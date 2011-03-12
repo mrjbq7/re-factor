@@ -1,3 +1,5 @@
+! Copyright (C) 2010 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
 
 USING: io io.encodings.ascii io.files kernel make memoize
 random sequences splitting strings ;
