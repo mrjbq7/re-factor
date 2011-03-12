@@ -79,6 +79,9 @@ hello-ga:
 ini-file:
     parsing INI configuration files
 
+iphone-backup:
+    extract text messages from iPhone backups
+
 ipinfodb:
     IP address geolocation tools using ipinfodb.com
 
