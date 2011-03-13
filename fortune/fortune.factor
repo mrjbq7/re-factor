@@ -8,6 +8,7 @@ IN: fortune
 
 CONSTANT: FORTUNES {
     "/usr/games/fortune/fortunes"
+    "/usr/share/fortune/fortunes"
     "/usr/share/games/fortune/fortunes"
     "/usr/share/games/fortunes/fortunes"
     "/usr/local/share/games/fortune/fortunes"
