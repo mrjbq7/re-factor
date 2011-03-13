@@ -19,5 +19,6 @@ IN: yahoo.finance
 : quotes ( symbols -- csv )
     "http://finance.yahoo.com/d/quotes.csv" >url
         swap "+" join "s" set-query-param
-        "baclv" "f" set-query-param
-    http-get nip >string string>csv ;
+        "sbaclv" "f" set-query-param
+    http-get nip >string string>csv
+    { "Symbol" "Bid" "Ask" "Close" "Last" "Volume" } prefix ;
