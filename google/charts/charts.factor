@@ -98,6 +98,13 @@ PRIVATE>
 
 : chart. ( chart -- ) chart>url http-image. ;
 
+USING: http.client images.loader images.loader.private
+images.viewer present splitting ;
+
+: post-chart. ( chart -- )
+    chart>url present "?" split1 swap http-post
+    nip "png" (image-class) load-image* image. ;
+
 ! "Hello, world!" <qr-code>
 ! "x = \\frac{-b \\pm \\sqrt {b^2-4ac}}{2a}" <formula>
 
