@@ -100,6 +100,9 @@ ntp:
 port-scan:
     simple port scanner
 
+power-of-2:
+    various methods of implementing "power-of-2?"
+
 reddit:
     scraping the Reddit API
 
