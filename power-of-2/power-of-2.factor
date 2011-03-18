@@ -55,9 +55,22 @@ TYPED: decrement+typed/power-of-2? ( n: fixnum -- ? )
 TYPED: decrement+short+typed/power-of-2? ( n: fixnum -- ? )
     { [ dup 1 - bitand zero? ] [ 0 > ] } 1&& ;
 
+
+USING: alien alien.c-types alien.syntax alien.libraries ;
+
+"libpowerof2" "power-of-2.dylib" cdecl add-library
+
+LIBRARY: libpowerof2
+
+FUNCTION: int isPowerOfTwo ( int x ) ;
+
+: alien/power-of-2? ( n -- ? )
+    isPowerOfTwo 1 = ;
+
 <PRIVATE
 
 CONSTANT: IMPLEMENTATIONS {
+    alien/power-of-2?
     check-all/power-of-2?
     linear-search/power-of-2?
     binary-search/power-of-2?
