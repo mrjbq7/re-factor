@@ -51,8 +51,8 @@ SYNTAX: INCLUDE:
     new [ set-slots ] keep ;
 
 : group-by ( seq quot: ( elt -- key ) -- assoc )
-    dupd map zip H{ } clone [
-        [ push-at ] curry assoc-each
+    H{ } clone [
+        [ push-at ] curry compose [ dup ] prepose each
     ] keep ; inline
 
 USE: math.statistics
@@ -61,3 +61,15 @@ USE: sorting
 : trim-histogram ( assoc n -- alist )
     [ >alist sort-values reverse ] [ cut ] bi*
     values sum [ "Other" swap 2array suffix ] unless-zero ;
+
+USE: locals
+USE: math.ranges
+
+:: each-subseq ( ... seq quot: ( ... x -- ... ) -- ... )
+    seq length [0,b] [
+        :> from
+        from seq length (a,b] [
+            :> to
+            from to seq subseq quot call( x -- )
+        ] each
+    ] each ;
