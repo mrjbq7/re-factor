@@ -9,6 +9,10 @@ USING: tnetstrings tools.test ;
 
 [ "" ] [ "0:\"" tnetstring ] unit-test
 
+[ t ] [ "4:true!" tnetstring ] unit-test
+
+[ f ] [ "5:false!" tnetstring ] unit-test
+
 [ H{ { "hello" { 12345678901 "this" } } } ] [
     "34:5:hello\"22:11:12345678901#4:this\"]}" tnetstring
 ] unit-test

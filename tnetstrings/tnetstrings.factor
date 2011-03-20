@@ -13,6 +13,8 @@ IN: tnetstrings
 
 DEFER: parse-dict
 DEFER: parse-list
+DEFER: parse-bool
+DEFER: parse-null
 
 : parse-tnetstring ( data -- remain value )
     parse-payload {
@@ -20,6 +22,9 @@ DEFER: parse-list
         { CHAR: " [ ] }
         { CHAR: } [ parse-dict ] }
         { CHAR: ] [ parse-list ] }
+        { CHAR: ! [ parse-bool ] }
+        { CHAR: ~ [ parse-null ] }
+        { CHAR: , [ ] }
         [ "Invalid payload type: %c" sprintf throw ]
     } case ;
 
@@ -40,6 +45,16 @@ DEFER: parse-list
         [ dup empty? not ] [ parse-pair swap 2array ] produce
         nip >hashtable
     ] if-empty ;
+
+: parse-bool ( data -- ? )
+    {
+        { "true" [ t ] }
+        { "false" [ f ] }
+        [ "Invalid bool: %s" sprintf throw ]
+    } case ;
+
+: parse-null ( data -- f )
+    [ f ] [ drop "Payload must be 0 length" throw ] if-empty ;
 
 PRIVATE>
 
