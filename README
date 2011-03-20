@@ -130,6 +130,9 @@ text-to-pdf:
 time:
     simple TIME server
 
+tnetstrings:
+    implementation of Zed Shaw's "typed netstrings"
+
 todos:
     additional vocab metadata for todo lists
 
