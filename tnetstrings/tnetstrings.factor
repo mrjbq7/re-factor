@@ -64,19 +64,19 @@ PRIVATE>
 
 DEFER: dump-tnetstring
 
-: dump-number ( data -- string )
-    number>string [ length ] keep "%d:%s#" sprintf ;
+: dump ( string type -- string )
+    [ [ length ] keep ] dip "%d:%s%s" sprintf ;
 
-: dump-string ( data -- string )
-    [ length ] keep "%d:%s\"" sprintf ;
+: dump-number ( data -- string ) number>string "#" dump ;
+
+: dump-string ( data -- string ) "\"" dump ;
 
 : dump-list ( data -- string )
-    [ dump-tnetstring ] map "" concat-as
-    [ length ] keep "%d:%s]" sprintf ;
+    [ dump-tnetstring ] map "" concat-as "]" dump ;
 
 : dump-dict ( data -- string )
     >alist [ first2 [ dump-tnetstring ] bi@ append ] map
-    "" concat-as [ length ] keep "%d:%s}" sprintf ;
+    "" concat-as "}" dump ;
 
 : dump-bool ( ? -- string )
     "4:true!" "5:false!" ? ;
