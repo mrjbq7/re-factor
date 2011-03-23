@@ -55,16 +55,6 @@ SYNTAX: INCLUDE:
         [ push-at ] curry compose [ dup ] prepose each
     ] keep ; inline
 
-USE: grouping
-USE: make
-
-: monotonic-group ( seq quot: ( elt1 elt2 -- ? ) -- array )
-    '[
-        0 over 2 <sliced-clumps> [
-            [ 1 + ] dip _ monotonic? [ cut swap , 0 ] unless
-        ] each drop [ , ] unless-empty
-    ] { } make ; inline
-
 USE: math.statistics
 USE: sorting
 

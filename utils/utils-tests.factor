@@ -33,12 +33,6 @@ unit-test
 [ H{ { f V{ 2 2 2 } } { t V{ 1 3 1 } } } ]
 [ { 1 2 3 1 2 2 } [ odd? ] group-by ] unit-test
 
-[ { } ] [ "" [ = ] monotonic-group ] unit-test
-[ { "11" "222" "3" } ] [ "112223" [ = ] monotonic-group ] unit-test
-[ { { 1 2 3 } { 2 3 } { 1 } } ] [
-    { 1 2 3 2 3 1 } [ < ] monotonic-group
-] unit-test
-
 USE: math.combinatorics
 
 [
