@@ -115,6 +115,9 @@ simple-rpg:
 sorting.marriage:
     in-place marriage sort algorithm
 
+sum:
+    implementation of "old Unix Sys V R4" sum command
+
 ten-ten:
     calculate the 10:10 code for geographic locations
 
