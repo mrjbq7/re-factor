@@ -52,6 +52,9 @@ flip-text:
 fortune:
     prints random quotations
 
+gaddafi:
+    match the many names of Muammar al-Gaddafi
+
 gestalt:
     system version using gestalt on Mac OS X
 
