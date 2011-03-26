@@ -7,9 +7,8 @@ kernel math math.functions namespaces sequences ;
 IN: sum
 
 : sum-stream ( -- checksum blocks )
-    0 0 [ 65536 read-partial dup ] [
-        [ sum nip + ] [ length + nip ] 3bi
-    ] while drop [ 65535 mod ] [ 512 / ceiling ] bi* ;
+    0 0 [ [ sum nip + ] [ length + nip ] 3bi ] each-block
+    [ 65535 mod ] [ 512 / ceiling ] bi* ;
 
 : sum-stream. ( path -- )
     [ sum-stream ] dip "%d %d %s\n" printf ;
