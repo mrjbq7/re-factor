@@ -56,3 +56,5 @@ PRIVATE>
     "https://graph.facebook.com/" "/picture" surround
     http-image. ;
 
+: id-lookup ( id -- data )
+    "http://graph.facebook.com/" prepend http-get nip json> ;
