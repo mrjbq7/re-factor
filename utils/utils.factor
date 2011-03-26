@@ -41,9 +41,6 @@ SYNTAX: INCLUDE:
     [ keep 2array ] curry
     [ [ first ] min-by ] map-reduce second ; inline
 
-: average ( seq -- n )
-    [ sum ] [ length ] bi / ;
-
 : set-slots ( assoc obj -- )
     '[ swap _ set-slot-named ] assoc-each ;
 
