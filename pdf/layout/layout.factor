@@ -1,4 +1,4 @@
-! Copyright (C) 2010 John Benediktsson
+! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays combinators fonts fry io.streams.string
@@ -39,6 +39,8 @@ background page-color inset line-height metrics ;
 ! FIXME: spacing oddities if run multiple times
 ! FIXME: make sure highlights text "in order"
 ! FIXME: don't modify layout objects in pdf-render
+! FIXME: make sure unicode "works"
+! FIXME: only set style differences to reduce size?
 
 : set-style ( canvas style -- canvas )
     {
@@ -87,6 +89,9 @@ background page-color inset line-height metrics ;
 
 : inc-y ( canvas n -- )
     '[ _ + ] change-y drop ;
+
+: line-height ( canvas -- n )
+    [ line-height>> ] [ inset>> first 2 * ] bi + ;
 
 : line-break ( canvas -- )
     [ line-height>> ] keep [ + ] change-y 0 >>x
@@ -188,11 +193,11 @@ M: div pdf-render
 
 ! Insets:
 ! before:
-!   y += inset
-!   margin-left, margin-right += inset
+!   y += inset-height
+!   margin-left, margin-right += inset-width
 ! after:
-!   y += inset
-!   margin-left, margin-right -= inset
+!   y += inset-height
+!   margin-left, margin-right -= inset-width
 
 
 <PRIVATE

@@ -1,4 +1,4 @@
-! Copyright (C) 2010 John Benediktsson
+! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors combinators formatting io kernel math pdf
@@ -79,7 +79,7 @@ IN: pdf.text
 
 : b ( -- ) "b" print ;
 
-: c ( -- ) "300 400 400 400 400 300 c" print ;
+: c ( -- ) "300 400 400 400 400 300 c" print ; ! FIXME:
 
 
 

@@ -1,8 +1,7 @@
-! Copyright (C) 2010 John Benediktsson
+! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii combinators fonts io kernel math math.parser
-memoize sequences ;
+USING: ascii combinators kernel math math.parser sequences ;
 
 IN: pdf.units
 

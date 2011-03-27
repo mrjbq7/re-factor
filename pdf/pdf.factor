@@ -1,4 +1,4 @@
-! Copyright (C) 2010 John Benediktsson
+! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors calendar combinators environment formatting
@@ -76,4 +76,5 @@ USE: io.files
 
 
 ! FIXME: gadget. to take a "screenshot" into a pdf?
+! FIXME: compress each pdf object to reduce file size?
 

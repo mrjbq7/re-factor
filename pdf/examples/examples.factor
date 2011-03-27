@@ -1,13 +1,15 @@
-
+! Copyright (C) 2011 John Benediktsson
+! See http://factorcode.org/license.txt for BSD license
 
 USE: accessors
+USE: assocs
 USE: colors.constants
 USE: colors.gray
+USE: fonts
 USE: hashtables
 USE: help
 USE: help.apropos
 USE: help.pdf
-USE: help.pdf.private ! foo-pdf
 USE: io
 USE: io.encodings.utf8
 USE: io.files
@@ -21,6 +23,18 @@ USE: sequences
 
 IN: pdf.examples
 
+<PRIVATE
+
+: foo-pdf ( pdf -- )
+    "/Users/jbenedik/foo.pdf" utf8 set-file-contents ;
+
+PRIVATE>
+
+: test1-pdf ( -- )
+    [ "Hello, world" print ] with-pdf-writer >pdf foo-pdf ;
+
+: test2-pdf ( -- )
+    [ "does “this” work?" print ] with-pdf-writer >pdf foo-pdf ;
 
 : test3-pdf ( -- )
     [ "http" apropos ] with-pdf-writer >pdf foo-pdf ;
@@ -33,10 +47,18 @@ IN: pdf.examples
         ] each
     ] with-pdf-writer >pdf foo-pdf ;
 
+USE: literals
+
 : test5-pdf ( -- )
     [
-        { plain bold italic bold-italic }
-        [ [ name>> ] keep font-style associate format nl ] each
+        { $ sans-serif-font $ serif-font $ monospace-font } [
+            name>> font-name associate
+            { plain bold italic bold-italic } [
+                [ name>> ] [
+                    font-style associate pick assoc-union
+                ] bi format nl
+            ] each drop nl
+        ] each
     ] with-pdf-writer >pdf foo-pdf ;
 
 : test6-pdf ( -- )
@@ -47,20 +69,27 @@ IN: pdf.examples
     [ "sequences" print-topic ] with-pdf-writer >pdf foo-pdf ;
 
 : test8-pdf ( -- )
-    [ "does “this” work?" print ] with-pdf-writer >pdf foo-pdf ;
-
-: test9-pdf ( -- )
     [
         "does " write
         "this" COLOR: gray background associate format
         " work?" write
     ] with-pdf-writer >pdf foo-pdf ;
 
-: test10-pdf ( -- )
+: test9-pdf ( -- )
     [
+        "Some " write
         H{ { inset { 10 10 } } { page-color COLOR: light-gray } }
-        [ "Some inset text" write ] with-nesting nl
+        [ "inset" write ] with-nesting
+        " text" write
     ] with-pdf-writer >pdf foo-pdf ;
 
+: test10-pdf ( -- )
+    [
+        { 12 18 24 72 }
+        [ "Bigger" swap font-size associate format ] each
+        nl
+        { 12 18 24 72 }
+        [ "Bigger" swap font-size associate format ] each
+    ] with-pdf-writer >pdf foo-pdf ;
 
 
