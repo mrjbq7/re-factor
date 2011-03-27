@@ -17,7 +17,7 @@ HELP: write-ini
 { $values { "assoc" assoc } }
 { $description
     "Writes a configuration to the " { $link output-stream }
-    "in the INI format."
+    " in the INI format."
 } ;
 
 HELP: string>ini

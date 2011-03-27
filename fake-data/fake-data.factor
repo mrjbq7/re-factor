@@ -1,7 +1,8 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii combinators fry kernel make math random sequences ;
+USING: ascii combinators fry kernel literals make math random
+sequences ;
 
 IN: fake-data
 
@@ -879,13 +880,16 @@ PRIVATE>
         { 3 [ LAST-NAME random CITY-SUFFIX random append ] }
     } case ;
 
+: fake-state ( -- str )
+    { $ US-STATES $ US-STATE-ABBR } random random ;
+
 : fake-zip-code ( -- str )
     { "#####" "#####-####" } random (numbers) ;
 
 ! COMPANY
 
 : fake-company-suffix ( -- str )
-    { "Inc" "and Sons" "LLC" "Group" } random ;
+    { "Inc" "and Sons" "LLC" "Group" "and Daughters" } random ;
 
 : fake-company-name ( -- str )
     3 random {

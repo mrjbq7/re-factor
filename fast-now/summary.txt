@@ -1,0 +1,1 @@
+Faster, cached-per-millisecond version of "now"

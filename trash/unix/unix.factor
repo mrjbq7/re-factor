@@ -1,12 +1,11 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors calendar classes.struct environment formatting
-io io.directories io.encodings.utf8 io.files io.files.info
-io.files.info.unix io.files.types io.pathnames kernel math
-math.parser sequences system trash unix.stat ;
-
-FROM: unix.ffi => getuid ;
+USING: accessors calendar combinators.short-circuit environment
+formatting io io.directories io.encodings.utf8 io.files
+io.files.info io.files.info.unix io.files.types io.pathnames
+kernel math math.parser sequences system trash unix.stat
+unix.users ;
 
 IN: trash.unix
 
@@ -14,63 +13,43 @@ IN: trash.unix
 
 <PRIVATE
 
-: (lstat) ( path -- stat )
-    \ stat <struct> [
-        lstat dup 0 = [ drop ] [ number>string throw ] if
-    ] keep ;
-
-: mount? ( path -- ? )
-    [ (lstat) ] [ ".." append-path (lstat) ] bi
+: top-directory? ( path -- ? )
+    dup ".." append-path [ link-status ] bi@
     [ [ st_dev>> ] bi@ = not ] [ [ st_ino>> ] bi@ = ] 2bi or ;
 
-: mount-point ( path -- path' )
-    [ dup mount? not ] [ ".." append-path ] while ;
-
+: top-directory ( path -- path' )
+    [ dup top-directory? not ] [ ".." append-path ] while ;
 
 : make-user-directory ( path -- )
-    [ make-directories ]
-    [ OCT: 700 set-file-permissions ] bi ;
+    [ make-directories ] [ OCT: 700 set-file-permissions ] bi ;
 
-
-: (directory?) ( path -- )
-    file-info directory?
-    [ "topdir should be a directory" throw ] unless ;
-
-: (sticky-bit?) ( path -- )
-    sticky?
-    [ "topdir should have sticky bit" throw ] unless ;
-
-: (not-symlink?) ( path -- )
-    link-info type>> +symbolic-link+ =
-    [ "topdir can't be a symbolic link" throw ] when ;
-
-: trash-path? ( path -- )
-    [ (directory?) ] [ (sticky-bit?) ] [ (not-symlink?) ] tri ;
-
+: check-trash-path ( path -- )
+    {
+        [ file-info directory? ]
+        [ sticky? ]
+        [ link-info type>> +symbolic-link+ = not ]
+    } 1&& [ "invalid trash path" throw ] unless ;
 
 : trash-home ( -- path )
-    "XDG_DATA_HOME" os-env [ ] [
-        home ".local/share" append-path
-    ] if* "Trash" append-path dup trash-path? ;
+    "XDG_DATA_HOME" os-env
+    home ".local/share" append-path or
+    "Trash" append-path dup check-trash-path ;
 
 : trash-1 ( root -- path )
-    ".Trash" append-path dup trash-path?
-    getuid number>string append-path
-    [ make-user-directory ] keep ;
+    ".Trash" append-path dup check-trash-path
+    real-user-id number>string append-path ;
 
 : trash-2 ( root -- path )
-    getuid ".Trash-%d" sprintf append-path
-    [ make-user-directory ] keep ;
-
+    real-user-id ".Trash-%d" sprintf append-path ;
 
 : trash-path ( path -- path' )
-    mount-point dup trash-home mount-point = [
-        trash-home nip
+    top-directory dup trash-home top-directory = [
+        drop trash-home
     ] [
         dup ".Trash" append-path exists?
         [ trash-1 ] [ trash-2 ] if
+        [ make-user-directory ] keep
     ] if ;
-
 
 : (safe-file-name) ( path counter -- path' )
     [
@@ -81,8 +60,7 @@ IN: trash.unix
 
 : safe-file-name ( path -- path' )
     dup 0 [ over exists? ] [
-        1 +
-        [ parent-directory to-directory ] dip
+        [ parent-directory to-directory ] [ 1 + ] bi*
         [ (safe-file-name) ] keep
     ] while drop nip ;
 
@@ -94,8 +72,7 @@ M: unix send-to-trash ( path -- )
         to-directory safe-file-name
     ] [
         "info" append-path [ make-user-directory ] keep
-        to-directory ".trashinfo" append
-        [ over ] dip utf8 [
+        to-directory ".trashinfo" append [ over ] dip utf8 [
             "[Trash Info]" write nl
             "Path=" write write nl
             "DeletionDate=" write

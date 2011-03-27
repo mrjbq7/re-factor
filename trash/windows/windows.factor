@@ -2,30 +2,29 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors alien.c-types alien.data alien.strings
-alien.syntax classes.struct destructors io.encodings.string
-io.encodings.utf16n io.pathnames kernel libc math math.parser
-sequences system trash windows windows.errors windows.types ;
+alien.syntax classes.struct classes.struct.packed destructors
+kernel io.encodings.utf16n libc math sequences system trash
+windows.types ;
 
 IN: trash.windows
+
+<PRIVATE
 
 LIBRARY: shell32
 
 TYPEDEF: WORD FILEOP_FLAGS
 
-STRUCT: SHFILEOPSTRUCTW
+PACKED-STRUCT: SHFILEOPSTRUCTW
     { hwnd HWND }
     { wFunc UINT }
-    { pFrom LPCWSTR }
-    { pTo LPCWSTR }
+    { pFrom LPCWSTR* }
+    { pTo LPCWSTR* }
     { fFlags FILEOP_FLAGS }
     { fAnyOperationsAborted BOOL }
     { hNameMappings LPVOID }
     { lpszProgressTitle LPCWSTR } ;
 
-FUNCTION: int SHFileOperationW (
-    SHFILEOPSTRUCTW lpFileOp
-) ;
-
+FUNCTION: int SHFileOperationW ( SHFILEOPSTRUCTW* lpFileOp ) ;
 
 CONSTANT: FO_MOVE HEX: 0001
 CONSTANT: FO_COPY HEX: 0002
@@ -49,10 +48,10 @@ CONSTANT: FOF_NO_CONNECTED_ELEMENTS HEX: 2000
 CONSTANT: FOF_WANTNUKEWARNING HEX: 4000
 CONSTANT: FOF_NORECURSEREPARSE HEX: 8000
 
+PRIVATE>
 
 M: windows send-to-trash ( path -- )
     [
-        absolute-path
         utf16n string>alien B{ 0 0 } append
         malloc-byte-array &free
 
@@ -66,9 +65,7 @@ M: windows send-to-trash ( path -- )
             FOF_NOERRORUI bitor
             FOF_SILENT bitor >>fFlags
 
-        SHFileOperationW dup 0 > [
-            number>string "Error: " prepend throw
-        ] [ drop ] if
+        SHFileOperationW [ throw ] unless-zero
 
     ] with-destructors ;
 

@@ -25,6 +25,9 @@ cat:
 cgi:
     support for writing Factor CGI programs
 
+cpu-speed:
+    estimate the cpu speed of your computer
+
 daytime:
     simple DAYTIME server
 
@@ -34,14 +37,41 @@ dice:
 elapsed:
     "pretty" elapsed times
 
+facebook:
+    implementing Facebook Graph API
+
 fake-data:
     generate "fake" information
+
+fast-now:
+    faster, cached-per-millisecond version of "now"
 
 flip-text:
     turns text upside-down
 
 fortune:
     prints random quotations
+
+gaddafi:
+    match the many names of Muammar al-Gaddafi
+
+geonames:
+    implementing GeoNames API
+
+gestalt:
+    system version using gestalt on Mac OS X
+
+github:
+    implementing Github API v2
+
+google.charts:
+    implementing Google Chart API
+
+google.translate:
+    implementing Google Translate API
+
+gravatar:
+    wrapping the Gravatar API
 
 hamurabi:
     port of the HAMURABI.BAS game
@@ -54,6 +84,9 @@ hello-ga:
 
 ini-file:
     parsing INI configuration files
+
+iphone-backup:
+    extract text messages from iPhone backups
 
 ipinfodb:
     IP address geolocation tools using ipinfodb.com
@@ -70,11 +103,35 @@ n-partition:
 ntp:
     simple NTP client
 
+port-scan:
+    simple port scanner
+
+power-of-2:
+    various methods of implementing "power-of-2?"
+
+pseudo-crypt:
+    implementation of Kevin Burns "php-unique-hash"
+
+reddit:
+    scraping the Reddit API
+
+repopular:
+    scraping "popular" Github projects
+
+simple-rpg:
+    simple role-playing game example
+
 sorting.marriage:
     in-place marriage sort algorithm
 
+sum:
+    implementation of "old Unix Sys V R4" sum command
+
 ten-ten:
     calculate the 10:10 code for geographic locations
+
+ternary-search-trees:
+    implementation of ternary search trees
 
 text-or-binary:
     heuristic to detect if a file is text or binary
@@ -85,11 +142,23 @@ text-to-pdf:
 time:
     simple TIME server
 
+tnetstrings:
+    implementation of Zed Shaw's "typed netstrings"
+
+todos:
+    additional vocab metadata for todo lists
+
 trash:
     send files to the trash bin (mac, unix, windows)
 
 utils:
     miscellaneous utility words
+
+webbrowser:
+    open urls in web browser
+
+wolfram-alpha:
+    query Wolfram|Alpha from Factor
 
 wordcount:
     implementation of "counting words" meme
@@ -100,3 +169,5 @@ wordgen:
 wp:
     implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
 
+yahoo.finance:
+    wrapper for Yahoo! Finance market data
