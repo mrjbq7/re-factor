@@ -1,34 +1,19 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors arrays assocs calendar colors combinators
-combinators.smart destructors environment fonts formatting
-hashtables io io.streams.string io.styles kernel locals make
-math math.parser math.ranges memoize pdf sequences splitting
-strings ;
+USING: arrays help io.encodings.utf8 io.files io.pathnames
+kernel pdf.layout pdf.streams sequences ;
 
 IN: help.pdf
 
-USE: pdf.values
-USE: pdf.text
-
-
 <PRIVATE
 
-USE: io.encodings.utf8
-USE: io.files
-
-: foo-pdf ( pdf -- )
-    "/Users/jbenedik/foo.pdf" utf8 set-file-contents ;
-
-USE: fry
-USE: help
-USE: pdf.layout
-USE: pdf.streams
-
 : topics>pdf ( seq -- pdf )
-    [ '[ _ print-topic ] with-pdf-writer ] map
+    [ [ print-topic ] curry with-pdf-writer ] map
     <pb> 1array join >pdf ;
+
+: write-pdf ( seq name -- )
+    home prepend-path utf8 set-file-contents ;
 
 PRIVATE>
 
@@ -44,7 +29,7 @@ PRIVATE>
         "cookbook-philosophy"
         "cookbook-pitfalls"
         "cookbook-next"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "cookbook.pdf" write-pdf ;
 
 : first-program-pdf ( -- )
     {
@@ -52,7 +37,7 @@ PRIVATE>
         "first-program-logic"
         "first-program-test"
         "first-program-extend"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "first-program.pdf" write-pdf ;
 
 : index-pdf ( -- )
     {
@@ -61,7 +46,7 @@ PRIVATE>
         "primitive-index"
         "error-index"
         "class-index"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "index.pdf" write-pdf ;
 
 : handbook-pdf ( -- )
     {
@@ -90,7 +75,7 @@ PRIVATE>
         "parsing-words"
         "macros"
         "continuations"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "handbook.pdf" write-pdf ;
 
 : system-pdf ( -- )
     {
@@ -107,7 +92,7 @@ PRIVATE>
         "init"
         "system"
         "layouts"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "system.pdf" write-pdf ;
 
 : tools-pdf ( -- )
     {
@@ -132,5 +117,5 @@ PRIVATE>
         "tools.destructors"
         "tools.diassemble"
         "tools.deploy"
-    } topics>pdf foo-pdf ;
+    } topics>pdf "tools.pdf" write-pdf ;
 
