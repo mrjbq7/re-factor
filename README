@@ -55,6 +55,9 @@ fortune:
 gaddafi:
     match the many names of Muammar al-Gaddafi
 
+geonames:
+    implementing GeoNames API
+
 gestalt:
     system version using gestalt on Mac OS X
 
