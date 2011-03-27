@@ -107,7 +107,7 @@ power-of-2:
     various methods of implementing "power-of-2?"
 
 pseudo-crypt:
-    implementation of Ken Burns Jr's "php-unique-hash"
+    implementation of Kevin Burns "php-unique-hash"
 
 reddit:
     scraping the Reddit API
