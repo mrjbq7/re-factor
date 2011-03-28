@@ -2,7 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs calendar combinators formatting
-http.client json.reader kernel math sequences utils ;
+http.client json json.reader kernel make math sequences urls
+utils ;
 
 IN: reddit
 
@@ -32,51 +33,65 @@ name over18 subscribers title url ;
         [ throw ]
     } case from-slots ;
 
-: json-data ( url -- data )
-    http-get nip json> { "data" "children" } [ swap at ] each
-    [ parse-data ] map ;
+TUPLE: page url data before after ;
+
+: json-page ( url -- page )
+    >url dup http-get nip json> "data" swap at {
+        [ "children" swap at [ parse-data ] map ]
+        [ "before" swap at [ f ] when-json-null ]
+        [ "after" swap at [ f ] when-json-null ]
+    } cleave \ page boa ;
 
 : (user) ( username -- data )
-    "http://api.reddit.com/user/%s" sprintf json-data ;
+    "http://api.reddit.com/user/%s" sprintf json-page ;
 
 : (about) ( username -- data )
     "http://api.reddit.com/user/%s/about" sprintf
     http-get nip json> parse-data ;
 
 : (subreddit) ( subreddit -- data )
-    "http://api.reddit.com/r/%s" sprintf json-data ;
+    "http://api.reddit.com/r/%s" sprintf json-page ;
 
 : (url) ( url -- data )
-    "http://api.reddit.com/api/info?url=%s" sprintf json-data ;
+    "http://api.reddit.com/api/info?url=%s" sprintf json-page ;
 
 : (search) ( query -- data )
-    "http://api.reddit.com/search?q=%s" sprintf json-data ;
+    "http://api.reddit.com/search?q=%s" sprintf json-page ;
 
 : (subreddits) ( query -- data )
-    "http://api.reddit.com/reddits/search?q=%s" sprintf json-data ;
+    "http://api.reddit.com/reddits/search?q=%s" sprintf json-page ;
 
 : (domains) ( query -- data )
-    "http://api.reddit.com/domain/%s" sprintf json-data ;
+    "http://api.reddit.com/domain/%s" sprintf json-page ;
+
+: next-page ( page -- page' )
+    [ url>> ] [ after>> "after" set-query-param ] bi json-page ;
+
+: all-pages ( page -- data )
+    [
+        [ [ data>> , ] [ dup after>> ] bi ]
+        [ next-page ] while drop
+    ] { } make concat ;
 
 PRIVATE>
 
 : user-links ( username -- stories )
-    (user) [ story? ] filter [ url>> ] map ;
+    (user) data>> [ story? ] filter [ url>> ] map ;
 
 : user-comments ( username -- comments )
-    (user) [ comment? ] filter [ body>> ] map ;
+    (user) data>> [ comment? ] filter [ body>> ] map ;
 
 : user-karma ( username -- karma )
     (about) link_karma>> ;
 
 : url-score ( url -- score )
-    (url) [ score>> ] map-sum ;
+    (url) data>> [ score>> ] map-sum ;
 
 : subreddit-links ( subreddit -- links )
-    (subreddit) [ url>> ] map ;
+    (subreddit) data>> [ url>> ] map ;
 
 : subreddit-top ( subreddit -- )
-    (subreddit) [
+    (subreddit) data>> [
         1 + "%2d. " printf {
             [ title>> ]
             [ url>> ]
@@ -91,4 +106,9 @@ PRIVATE>
         "%s\n    %s\n    %d points, %d comments, posted %s by %s\n\n"
         printf
     ] each-index ;
+
+: domain-stats ( domain -- stats )
+    (domains) all-pages [
+        created>> 1000 * millis>timestamp year>>
+    ] group-by [ [ score>> ] map-sum ] assoc-map ;
 
