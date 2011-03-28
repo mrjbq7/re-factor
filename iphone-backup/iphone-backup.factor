@@ -75,6 +75,9 @@ msg-group "msg_group" {
 : all-messages ( -- messages )
     T{ message } select-tuples ;
 
+: sent-messages ( -- messages )
+    T{ message { flags 3 } } select-tuples ;
+
 : unread-messages ( -- messages )
     T{ message { flags 2 } { read? 0 } } select-tuples ;
 
