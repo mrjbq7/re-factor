@@ -112,6 +112,9 @@ power-of-2:
 pseudo-crypt:
     implementation of Kevin Burns "php-unique-hash"
 
+psyng:
+    implementation of Psydex API
+
 reddit:
     scraping the Reddit API
 
