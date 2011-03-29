@@ -14,6 +14,6 @@ CONSTANT: CHARS
 : base62 ( n -- string )
     [ dup 0 > ] [ 62 /mod CHARS nth ] "" produce-as reverse nip ;
 
-:: udihash ( n length -- string )
-    n length PRIMES nth * 62 length ^ mod base62
-    length CHAR: 0 pad-head ;
+:: udihash ( n chars -- string )
+    chars PRIMES nth n * 62 chars ^ mod base62
+    chars CHAR: 0 pad-head ;
