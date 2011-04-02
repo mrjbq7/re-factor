@@ -2,9 +2,10 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs binary-search
-combinators.short-circuit fry kernel literals locals math
-math.bits memoize quotations random sequences sets splitting
-system typed ;
+combinators.short-circuit formatting fry kernel
+io.streams.string literals locals math math.bits memoize
+quotations random sequences sets splitting system typed
+wolfram-alpha ;
 
 IN: power-of-2
 
@@ -24,6 +25,10 @@ CONSTANT: POWERS-OF-2 $[ 64 iota [ 2^ ] map ]
 
 : log-search/power-of-2? ( n -- ? )
     dup 0 <= [ drop f ] [ dup log2 POWERS-OF-2 nth = ] if ;
+
+: wolfram/power-of-2? ( n -- ? )
+    "is log2(%d) an integer?" sprintf
+    [ wolfram-text. ] with-string-writer "True" subseq? ;
 
 : shift-right/power-of-2? ( n -- ? )
     dup 0 <= [ drop f ] [ [ dup even? ] [ 2/ ] while 1 = ] if ;
@@ -72,6 +77,7 @@ CONSTANT: IMPLEMENTATIONS {
     binary-search/power-of-2?
     hash-search/power-of-2?
     log-search/power-of-2?
+    ! wolfram/power-of-2?
     shift-right/power-of-2?
     bits/power-of-2?
     log2/power-of-2?
