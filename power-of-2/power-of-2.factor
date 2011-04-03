@@ -3,9 +3,9 @@
 
 USING: accessors arrays assocs binary-search
 combinators.short-circuit formatting fry kernel
-io.streams.string literals locals math math.bits memoize
-quotations random sequences sets splitting system typed
-wolfram-alpha ;
+io.streams.string literals locals math math.bits math.bitwise
+math.functions memoize quotations random sequences sets
+splitting system typed wolfram-alpha ;
 
 IN: power-of-2
 
@@ -33,8 +33,16 @@ CONSTANT: POWERS-OF-2 $[ 64 iota [ 2^ ] map ]
 : shift-right/power-of-2? ( n -- ? )
     dup 0 <= [ drop f ] [ [ dup even? ] [ 2/ ] while 1 = ] if ;
 
+: bit-count/power-of-2? ( n -- ? )
+    dup 0 <= [ drop f ] [ bit-count 1 = ] if ;
+
 : bits/power-of-2? ( n -- ? )
     dup 0 <= [ drop f ] [ make-bits [ t? ] count 1 = ] if ;
+
+: sqrt/power-of-2? ( n -- ? )
+    dup 0 <= [ drop f ] [
+        { [ dup sqrt floor sq number= ] [ 2 = ] } 1||
+    ] if ;
 
 : log2/power-of-2? ( n -- ? )
     dup 0 <= [ drop f ] [ dup log2 2^ = ] if ;
@@ -79,7 +87,9 @@ CONSTANT: IMPLEMENTATIONS {
     log-search/power-of-2?
     ! wolfram/power-of-2?
     shift-right/power-of-2?
+    bit-count/power-of-2?
     bits/power-of-2?
+    sqrt/power-of-2?
     log2/power-of-2?
     next-power/power-of-2?
     complement/power-of-2?
