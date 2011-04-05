@@ -9,11 +9,8 @@ CONSTANT: valid-chars $[
     CHAR: A CHAR: Z [a,b] CHAR: a CHAR: z [a,b] append
 ]
 
-: random-char ( -- ch )
-    valid-chars random ;
-
 : random-string ( n -- string )
-    [ random-char ] "" replicate-as ;
+    [ valid-chars random ] "" replicate-as ;
 
 : run-random-string ( -- )
     8 random-string print readln drop ;
