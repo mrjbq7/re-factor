@@ -115,6 +115,9 @@ pseudo-crypt:
 psyng:
     implementation of Psydex API
 
+random-string:
+    port of a "Random String" tutorial
+
 reddit:
     scraping the Reddit API
 
