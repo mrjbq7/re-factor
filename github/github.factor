@@ -15,9 +15,9 @@ following_count gravatar_id id location login name permission
 public_gist_count public_repo_count type ;
 
 TUPLE: repository created_at description fork forks
-has_downloads has_issues has_wiki homepage language name
-open_issues organization owner private pushed_at size url
-watchers ;
+has_downloads has_issues has_wiki homepage language
+master_branch name open_issues organization owner private
+pushed_at size url watchers ;
 
 TUPLE: commit added author authored_date committed_date
 committer id message modified parents tree url ;
@@ -79,7 +79,7 @@ PRIVATE>
                 [ watchers>> "%s watchers" sprintf ]
                 [ forks>> "%s forks" sprintf ]
                 [ fork>> "(FORK)" "" ? ]
-            } cleave "%-25s %12s %12s %s\n" printf
+            } cleave "%-25s %13s %12s %s\n" printf
         ] each
     ] bi ;
 
