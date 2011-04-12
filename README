@@ -175,5 +175,8 @@ wordgen:
 wp:
     implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
 
+xkcd:
+    comics from the XKCD.com website
+
 yahoo.finance:
     wrapper for Yahoo! Finance market data
