@@ -37,7 +37,6 @@ CONSTANT: STYLES H{
 
 CONSTANT: BASE H{
     { font-name "monospace" }
-    { font-size 10 }
 }
 
 : highlight-tokens ( tokens -- )
@@ -61,6 +60,6 @@ USE: pdf.layout
 USE: pdf.streams
 
 : code-to-pdf ( path -- )
-    [ [ highlight. ] with-pdf-writer >pdf ]
+    [ [ highlight. ] with-pdf-writer pdf>string ]
     [ ".pdf" append utf8 set-file-contents ] bi ;
 

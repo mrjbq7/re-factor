@@ -25,19 +25,22 @@ IN: pdf.examples
 
 <PRIVATE
 
-: foo-pdf ( pdf -- )
+: write-foo-pdf ( string -- )
     "/Users/jbenedik/foo.pdf" utf8 set-file-contents ;
+
+: foo-pdf ( pdf -- )
+    pdf>string write-foo-pdf ;
 
 PRIVATE>
 
 : test1-pdf ( -- )
-    [ "Hello, world" print ] with-pdf-writer >pdf foo-pdf ;
+    [ "Hello, world" print ] with-pdf-writer foo-pdf ;
 
 : test2-pdf ( -- )
-    [ "does “this” work?" print ] with-pdf-writer >pdf foo-pdf ;
+    [ "does “this” work?" print ] with-pdf-writer foo-pdf ;
 
 : test3-pdf ( -- )
-    [ "http" apropos ] with-pdf-writer >pdf foo-pdf ;
+    [ "http" apropos ] with-pdf-writer foo-pdf ;
 
 : test4-pdf ( -- )
     [
@@ -45,7 +48,7 @@ PRIVATE>
             "Hello world\n"
             swap 10 / 1 <gray> foreground associate format
         ] each
-    ] with-pdf-writer >pdf foo-pdf ;
+    ] with-pdf-writer foo-pdf ;
 
 USE: literals
 
@@ -59,21 +62,21 @@ USE: literals
                 ] bi format nl
             ] each drop nl
         ] each
-    ] with-pdf-writer >pdf foo-pdf ;
+    ] with-pdf-writer foo-pdf ;
 
 : test6-pdf ( -- )
     "/Users/jbenedik/Dev/re-factor/text-to-pdf/text-to-pdf.factor"
     utf8 file-contents text-to-pdf foo-pdf ;
 
 : test7-pdf ( -- )
-    [ "sequences" print-topic ] with-pdf-writer >pdf foo-pdf ;
+    [ "sequences" print-topic ] with-pdf-writer foo-pdf ;
 
 : test8-pdf ( -- )
     [
         "does " write
         "this" COLOR: gray background associate format
         " work?" write
-    ] with-pdf-writer >pdf foo-pdf ;
+    ] with-pdf-writer foo-pdf ;
 
 : test9-pdf ( -- )
     [
@@ -81,7 +84,7 @@ USE: literals
         H{ { inset { 10 10 } } { page-color COLOR: light-gray } }
         [ "inset" write ] with-nesting
         " text" write
-    ] with-pdf-writer >pdf foo-pdf ;
+    ] with-pdf-writer foo-pdf ;
 
 : test10-pdf ( -- )
     [
@@ -90,6 +93,6 @@ USE: literals
         nl
         { 12 18 24 72 }
         [ "Bigger" swap font-size associate format ] each
-    ] with-pdf-writer >pdf foo-pdf ;
+    ] with-pdf-writer foo-pdf ;
 
 

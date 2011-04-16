@@ -400,12 +400,12 @@ USE: pdf.values
 
 ! Rename to pdf>string, have it take a <pdf> object?
 
-: >pdf ( seq -- pdf )
+: pdf>string ( seq -- pdf )
     <pdf> swap pdf-layout  [
         stream>> pdf-stream over pages>> push
     ] each pages>objects objects>pdf ;
 
 : write-pdf ( seq -- )
-    >pdf write ;
+    pdf>string write ;
 
 

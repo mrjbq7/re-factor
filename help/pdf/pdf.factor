@@ -10,7 +10,7 @@ IN: help.pdf
 
 : topics>pdf ( seq -- pdf )
     [ [ print-topic ] curry with-pdf-writer ] map
-    <pb> 1array join >pdf ;
+    <pb> 1array join pdf>string ;
 
 : write-pdf ( seq name -- )
     home prepend-path utf8 set-file-contents ;
