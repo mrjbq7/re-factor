@@ -27,3 +27,10 @@ PRIVATE>
         ] while 2drop
     ] { } make ;
 
+: happy2? ( n -- ? )
+   {
+       { [ dup 1 = ] [ drop t ] }
+       { [ dup 4 = ] [ drop f ] }
+       [ squares happy2? ]
+   } cond ;
+
