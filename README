@@ -91,8 +91,11 @@ iphone-backup:
 ipinfodb:
     IP address geolocation tools using ipinfodb.com
 
+mail-ui
+    simple UI for composing emails
+
 math.approx:
-    approximating rational numbers.
+    approximating rational numbers
 
 memcached:
     client for memcached server
