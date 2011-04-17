@@ -105,7 +105,7 @@ SYMBOL: calc
     horizontal <track> 1 >>fill { 5 5 } >>gap
     swap output>array [ 1 track-add ] each ; inline
 
-: calc-ui ( -- )
+: open-calc-window ( -- )
     [
         <display>
         [     [C]     [±]     [÷]    [×] ] <row>
@@ -113,7 +113,8 @@ SYMBOL: calc
         [ "4" [#] "5" [#] "6" [#]    [+] ] <row>
         [ "1" [#] "2" [#] "3" [#]    [=] ] <row>
         [ "0" [#]     [.]     [_]    [_] ] <row>
-    ] <col> { 10 10 } <border> "Calculator" open-window ;
+    ] <col> { 10 10 } <border> { 1 1 } >>fill
+    "Calculator" open-window ;
 
-MAIN: calc-ui
+MAIN: open-calc-window
 
