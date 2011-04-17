@@ -49,9 +49,13 @@ M: mail-gadget focusable-child* to>> ;
 : <body> ( mail -- gadget )
     body>> <scroller> COLOR: gray <solid> >>boundary ;
 
+<PRIVATE
+
 : maybe-close-window ( gadget -- )
     dup parents 3 head [ world? ] find nip
     [ close-window ] [ drop ] if ;
+
+PRIVATE>
 
 : com-send ( mail -- )
     <email>
