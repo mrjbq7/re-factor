@@ -4,8 +4,8 @@
 USING: accessors arrays colors.constants kernel sequences smtp
 splitting ui ui.commands ui.gadgets ui.gadgets.borders
 ui.gadgets.buttons ui.gadgets.editors ui.gadgets.labels
-ui.gadgets.scrollers ui.gadgets.tracks ui.gestures ui.pens.solid
-ui.tools.listener ;
+ui.gadgets.scrollers ui.gadgets.tracks ui.gadgets.worlds
+ui.gestures ui.pens.solid ;
 
 IN: mail-ui
 
@@ -49,18 +49,19 @@ M: mail-gadget focusable-child* to>> ;
 : <body> ( mail -- gadget )
     body>> <scroller> COLOR: gray <solid> >>boundary ;
 
-: close-if-not-listener ( gadget -- )
-    dup find-listener [ drop ] [ close-window ] if ;
+: maybe-close-window ( gadget -- )
+    dup parents 3 head [ world? ] find nip
+    [ close-window ] [ drop ] if ;
 
 : com-send ( mail -- )
     <email>
         over to>> editor-string " " split harvest >>to
         over subject>> editor-string >>subject
         over body>> editor-string >>body
-    send-email close-if-not-listener ;
+    send-email maybe-close-window ;
 
 : com-cancel ( mail -- )
-    close-if-not-listener ;
+    maybe-close-window ;
 
 mail-gadget "toolbar" f {
     { f com-send }
