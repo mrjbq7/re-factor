@@ -67,6 +67,9 @@ github:
 google.charts:
     implementing Google Chart API
 
+google.search:
+    implementing Google Search API
+
 google.translate:
     implementing Google Translate API
 
