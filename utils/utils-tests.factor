@@ -48,3 +48,13 @@ USE: math.statistics
 
 [ { { 1 3 } { "Other" 2 } } ]
 [ { 1 1 1 2 2 } histogram 1 trim-histogram ] unit-test
+
+[ { "negative" "zero" "positive" } ] [
+    { -1 0 1 } [
+        {
+           { [ 0 > ] [ "positive" ] }
+           { [ 0 < ] [ "negative" ] }
+           [ "zero" ]
+        } cond-case
+    ] map
+] unit-test

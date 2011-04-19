@@ -70,3 +70,13 @@ USE: math.ranges
             from to seq subseq quot call( x -- )
         ] each
     ] each ;
+
+USE: quotations
+
+MACRO: cond-case ( assoc -- )
+    [
+        dup callable? not [
+            [ first [ dup ] prepose ]
+            [ second [ drop ] prepose ] bi 2array
+        ] [ [ drop ] prepose ] if
+    ] map [ cond ] curry ;
