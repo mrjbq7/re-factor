@@ -36,3 +36,29 @@ IN: txon.tests
     H{ { "name1" H{ { "name2" "nested value" } } } } >txon
 ] unit-test
 
+[
+    H{
+        { "name1" H{ { "name2" "value2" } { "name3" "value3" } } }
+    }
+] [
+    "
+    name1:`
+        name2:`value2`
+        name3:`value3`
+    `
+    " txon>
+] unit-test
+
+[
+    H{
+        { "name1" H{ { "name2" H{ { "name3" "value3" } } } } }
+    }
+] [
+    "
+    name1:`
+        name2:`
+            name3:`value3`
+        `
+    `
+    " txon>
+] unit-test
