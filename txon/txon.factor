@@ -1,25 +1,11 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USE: hashtables
-USE: kernel
-USE: peg.ebnf
-USE: sequences
-USE: strings
-USE: make
-USE: math
-USE: io
-USE: unicode.categories
-USE: splitting
-USE: regexp
-USE: assocs
-USE: combinators
-USE: formatting
-
+USING: assocs combinators combinators.short-circuit formatting
+hashtables io kernel make math regexp sequences splitting
+strings unicode.categories ;
 
 IN: txon
-
-! http://www.hxa.name/txon/
 
 <PRIVATE
 
@@ -36,12 +22,12 @@ IN: txon
         ] [ f f ] if*
     ] loop ;
 
-DEFER: name=value
+DEFER: name/values
 
 : parse-value ( string -- value remain )
     find-` [
         dup 1 - pick ?nth CHAR: : =
-        [ drop name=value ] [ cut [ decode-value ] dip ] if
+        [ drop name/values ] [ cut [ decode-value ] dip ] if
         1 tail [ blank? ] trim-head
     ] [ f ] if* ;
 
@@ -49,6 +35,10 @@ DEFER: name=value
     [ blank? ] trim ":`" over subseq? [
         parse-name parse-value [ swap associate ] dip
     ] [ f ] if ;
+
+: name/values ( string -- terms remain )
+    [ dup { [ empty? not ] [ first CHAR: ` = not ] } 1&& ]
+    [ name=value swap ] produce assoc-combine swap ;
 
 PRIVATE>
 
