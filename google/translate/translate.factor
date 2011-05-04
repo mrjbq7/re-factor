@@ -88,4 +88,4 @@ CONSTANT: languages H{
     ] loop drop ;
 
 : translatortron ( text targets -- )
-    dup 1 tail zip [ translate dup print ] assoc-each drop ;
+    dup rest zip [ translate dup print ] assoc-each drop ;

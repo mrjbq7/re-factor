@@ -12,7 +12,7 @@ IN: wordgen
 
 : word-pairs ( seq -- seq )
     dup 1 head-slice append
-    dup 1 tail-slice zip ;
+    dup rest-slice zip ;
 
 : word-map ( seq -- assoc )
     word-pairs H{ } clone

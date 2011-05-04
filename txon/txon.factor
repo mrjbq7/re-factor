@@ -28,7 +28,7 @@ DEFER: name/values
     find-` [
         dup 1 - pick ?nth CHAR: : =
         [ drop name/values ] [ cut [ decode-value ] dip ] if
-        1 tail [ blank? ] trim-head
+        rest [ blank? ] trim-head
     ] [ f ] if* ;
 
 : name=value ( string -- term remain )

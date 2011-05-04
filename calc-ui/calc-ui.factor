@@ -42,7 +42,7 @@ TUPLE: calculator < model x y op valid ;
 : negate ( model -- )
     dup valid>> [
         dup value>> "-" head?
-        [ [ 1 tail ] change-model ]
+        [ [ rest ] change-model ]
         [ [ "-" prepend ] change-model ] if
     ] [ drop ] if ;
 
