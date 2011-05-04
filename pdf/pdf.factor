@@ -66,7 +66,7 @@ USE: pdf.layout
 : text-to-pdf ( str -- str' )
     string-lines [
         H{ { font-name "monospace" } { font-size 10 } } <p>
-    ] map >pdf ;
+    ] map pdf>string ;
 
 USE: io.files
 
