@@ -20,9 +20,9 @@ DEFER: parse-tnetstring
 
 : parse-pair ( data -- extra value key )
     parse-tnetstring [
-        dup [ "Unbalanced dictionary store" throw ] unless
+        [ "Unbalanced dictionary store" throw ] when-empty
         parse-tnetstring
-        dup [ "Invalid value, null not allowed" throw ] unless
+        [ "Invalid value, null not allowed" throw ] unless*
     ] dip ;
 
 : parse-dict ( data -- value )
