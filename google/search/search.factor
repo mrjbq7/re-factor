@@ -9,8 +9,12 @@ IN: google.search
 
 <PRIVATE
 
-CONSTANT: search-url
+: search-url ( query -- url )
     URL" http://ajax.googleapis.com/ajax/services/search/web"
+        "1.0" "v" set-query-param
+        swap "q" set-query-param
+        "8" "rsz" set-query-param
+        "0" "start" set-query-param ;
 
 TUPLE: search-result cacheUrl GsearchResultClass visibleUrl
 title content unescapedUrl url titleNoFormatting ;
@@ -18,42 +22,31 @@ title content unescapedUrl url titleNoFormatting ;
 PRIVATE>
 
 : http-search ( query -- results )
-    search-url
-        "1.0" "v" set-query-param
-        swap "q" set-query-param
-        "8" "rsz" set-query-param
-        "0" "start" set-query-param
-    http-get nip json>
+    search-url http-get nip json>
     { "responseData" "results" } [ swap at ] each
     [ \ search-result from-slots ] map ;
 
 <PRIVATE
 
-CONSTANT: heading-style H{
-    { font-size 14 }
-    { background COLOR: light-gray }
-}
-
-CONSTANT: title-style H{
-    { foreground COLOR: blue }
-}
-
-CONSTANT: url-style H{
-    { font-name "monospace" }
-    { foreground COLOR: dark-green }
-}
-
 : write-heading ( str -- )
-    heading-style format nl ;
+    H{
+        { font-size 14 }
+        { background COLOR: light-gray }
+    } format nl ;
 
 : write-title ( str -- )
-    title-style format nl ;
+    H{
+        { foreground COLOR: blue }
+    } format nl ;
 
 : write-content ( str -- )
     60 wrap-string print ;
 
 : write-url ( str -- )
-    dup >url url-style [ write-object ] with-style nl ;
+    dup >url H{
+        { font-name "monospace" }
+        { foreground COLOR: dark-green }
+    } [ write-object ] with-style nl ;
 
 PRIVATE>
 
