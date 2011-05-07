@@ -7,10 +7,6 @@ pdf.values sequences ;
 
 IN: pdf
 
-: pdf-write ( obj -- )
-    pdf-value write ;
-
-
 TUPLE: pdf-info title timestamp producer author creator ;
 
 : <pdf-info> ( -- pdf-info )

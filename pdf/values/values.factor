@@ -3,7 +3,7 @@
 
 USING: accessors arrays assocs calendar colors colors.gray
 combinators combinators.short-circuit fonts formatting
-hashtables kernel make math math.parser sequences strings
+hashtables io kernel make math math.parser sequences strings
 xml.entities ;
 
 IN: pdf.values
@@ -76,3 +76,6 @@ M: hashtable pdf-value
         [ swap % " " % pdf-value % "\n" % ] assoc-each
         ">>" %
     ] "" make ;
+
+: pdf-write ( obj -- )
+    pdf-value write ;

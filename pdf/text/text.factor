@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators formatting io kernel math pdf
+USING: accessors combinators formatting io kernel math
 pdf.values sequences ;
 
 IN: pdf.text
