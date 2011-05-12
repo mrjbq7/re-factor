@@ -43,6 +43,9 @@ facebook:
 fake-data:
     generate "fake" information
 
+fast-fib:
+    faster version of "fib"
+
 fast-now:
     faster, cached-per-millisecond version of "now"
 
