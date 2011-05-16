@@ -1,9 +1,19 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel locals math math.parser sequences ;
+USING: kernel locals math math.parser memoize sequences ;
 
 IN: fast-fib
+
+MEMO: slow-fib ( m -- n )
+    dup 0 >= [ throw ] unless
+    dup 2 >= [
+        [ 2 - slow-fib ] [ 1 - slow-fib ] bi +
+    ] when ;
+
+: okay-fib ( m -- n )
+    dup 0 >= [ throw ] unless
+    [ 0 1 ] dip [ [ + ] [ drop ] 2bi ] times drop ;
 
 ! http://bosker.wordpress.com/2011/04/29/the-worst-algorithm-in-the-world/
 ! http://gmplib.org/manual/Fibonacci-Numbers-Algorithm.html
