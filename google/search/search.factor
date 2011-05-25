@@ -23,7 +23,7 @@ PRIVATE>
 
 : http-search ( query -- results )
     search-url http-get nip json>
-    { "responseData" "results" } [ swap at ] each
+    { "responseData" "results" } deep-at
     [ \ search-result from-slots ] map ;
 
 <PRIVATE

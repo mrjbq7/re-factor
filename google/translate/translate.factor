@@ -70,7 +70,7 @@ CONSTANT: languages H{
 
 : translate ( text source target -- text' )
     translate-url http-get nip json>
-    { "data" "translations" } [ swap at ] each
+    { "data" "translations" } deep-at
     first "translatedText" swap at ;
 
 :: all-translations ( text source -- assoc )
