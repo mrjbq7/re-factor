@@ -33,6 +33,11 @@ unit-test
 [ H{ { f V{ 2 2 2 } } { t V{ 1 3 1 } } } ]
 [ { 1 2 3 1 2 2 } [ odd? ] group-by ] unit-test
 
+[ f ] [ f { } deep-at ] unit-test
+[ f ] [ f { "foo" } deep-at ] unit-test
+[ f ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "c" } deep-at ] unit-test
+[ 1 ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "b" } deep-at ] unit-test
+
 USE: math.combinatorics
 
 [

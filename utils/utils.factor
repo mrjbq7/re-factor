@@ -52,6 +52,9 @@ SYNTAX: INCLUDE:
         [ push-at ] curry compose [ dup ] prepose each
     ] keep ; inline
 
+: deep-at ( assoc seq -- value/f )
+    [ swap at ] each ;
+
 USE: math.statistics
 USE: sorting
 
