@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs formatting http.client images.http images.jpeg
-json.reader kernel sequences strings utils ;
+USING: accessors assocs formatting http.client images.http
+images.jpeg json.reader kernel sequences strings utils ;
 
 IN: gravatar
 
@@ -15,6 +15,6 @@ profileBackground profileUrl requestHash thumbnailUrl urls ;
     >string json> "entry" swap at first info from-slots ;
 
 : gravatar. ( gravatar-id -- )
-    "http://gravatar.com/avatar/%s.jpg" sprintf http-image. ;
+    gravatar-info thumbnailUrl>> http-image. ;
 
 
