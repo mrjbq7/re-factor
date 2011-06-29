@@ -154,6 +154,9 @@ text-or-binary:
 text-to-pdf:
     "text2pdf" converter
 
+tf-idf:
+    simple tf-idf search engine
+
 time:
     simple TIME server
 
