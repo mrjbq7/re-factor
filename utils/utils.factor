@@ -83,3 +83,11 @@ MACRO: cond-case ( assoc -- )
             [ second [ drop ] prepose ] bi 2array
         ] [ [ drop ] prepose ] if
     ] map [ cond ] curry ;
+
+USE: assocs.private
+
+: (assoc-merge) ( assoc1 assoc2 -- assoc1 )
+    over [ push-at ] with-assoc assoc-each ;
+
+: assoc-merge ( seq -- merge )
+    H{ } clone [ (assoc-merge) ] reduce ;

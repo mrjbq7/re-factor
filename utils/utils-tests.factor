@@ -63,3 +63,11 @@ USE: math.statistics
         } cond-case
     ] map
 ] unit-test
+
+[ H{ } ] [ { } assoc-merge ] unit-test
+
+[ H{ { "a" V{ 2 5 } } { "b" V{ 3 } } { "c" V{ 10 } } } ]
+[
+    { H{ { "a" 2 } { "b" 3 } } H{ { "a" 5 } { "c" 10 } } }
+    assoc-merge
+] unit-test
