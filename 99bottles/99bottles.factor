@@ -24,6 +24,6 @@ IN: 99bottles
     "99 bottles of beer on the wall." print ;
 
 : 99bottles ( -- )
-    100 2 [a,b] [ verse ] each verse-1 verse-0 ;
+    99 2 [a,b] [ verse ] each verse-1 verse-0 ;
 
 MAIN: 99bottles

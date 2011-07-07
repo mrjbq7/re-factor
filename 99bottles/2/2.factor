@@ -1,34 +1,29 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: combinators formatting io kernel math ;
+USING: combinators formatting io kernel math math.ranges
+sequences ;
 
 IN: 99bottles.2
 
-: bottles ( n -- str )
+: #bottles ( n -- str )
     {
         { 1 [ "1 bottle" ] }
         { 0 [ "no more bottles" ] }
         [ "%d bottles" sprintf ]
     } case " of beer" append ;
 
-: on-the-wall ( n -- )
-    bottles dup "%s on the wall, %s.\n" printf ;
-
-: take-one-down ( n -- )
+: verse ( n -- )
+    dup #bottles dup "%s on the wall, %s.\n" printf
     "Take one down and pass it around, " write
-    bottles "%s on the wall.\n" printf ;
+    1 - #bottles "%s on the wall.\n" printf ;
 
-: take-bottles ( n -- )
-    [ dup zero? ] [
-        [ on-the-wall ] [ 1 - dup take-one-down ] bi
-    ] until on-the-wall ;
-
-: go-to-store ( n -- )
+: verse-0 ( -- )
+    "No more bottles of beer on the wall, " write
+    "no more bottles of beer." print
     "Go to the store and buy some more, " write
-    bottles "%s on the wall.\n" printf ;
+    "no more bottles of beer on the wall!" print ;
 
-: 99bottles ( -- )
-    99 [ take-bottles ] [ go-to-store ] bi ;
+: bottles ( n -- )
+    1 [a,b] [ verse ] each verse-0 ;
 
-MAIN: 99bottles
