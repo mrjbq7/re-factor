@@ -71,3 +71,11 @@ USE: math.statistics
     { H{ { "a" 2 } { "b" 3 } } H{ { "a" 5 } { "c" 10 } } }
     assoc-merge
 ] unit-test
+
+[ { "a" "b" "c" "d" "ab" "bc" "cd" "abc" "bcd" "abcd" } ] [
+    "abcd" all-subseqs
+] unit-test
+
+[ "" ] [ "abc" "def" longest-subseq ] unit-test
+[ "abcd" ] [ "abcd" "abcde" longest-subseq ] unit-test
+

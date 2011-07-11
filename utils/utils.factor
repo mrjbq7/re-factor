@@ -91,3 +91,26 @@ USE: assocs.private
 
 : assoc-merge ( seq -- merge )
     H{ } clone [ (assoc-merge) ] reduce ;
+
+USE: grouping
+
+: all-subseqs ( seq -- seqs )
+    dup length [1,b] [ <clumps> ] with map concat ;
+
+:: longest-subseq ( seq1 seq2 -- subseq )
+    seq1 length :> len1
+    seq2 length :> len2
+    0 :> n!
+    0 :> end!
+    len1 1 + [ len2 1 + 0 <array> ] replicate :> table
+    len1 [1,b] [| x |
+        len2 [1,b] [| y |
+            x 1 - seq1 nth
+            y 1 - seq2 nth = [
+                y 1 - x 1 - table nth nth 1 + :> len
+                len y x table nth set-nth
+                len n > [ len n! x end! ] when
+            ] [ 0 y x table nth set-nth ] if
+        ] each
+    ] each end n - end seq1 subseq ;
+
