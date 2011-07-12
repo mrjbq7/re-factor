@@ -136,6 +136,9 @@ reddit:
 repopular:
     scraping "popular" Github projects
 
+robohash:
+    wrapper for Robohash.org
+
 simple-rpg:
     simple role-playing game example
 
