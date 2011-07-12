@@ -80,3 +80,6 @@ USE: math.statistics
 [ "abcd" ] [ "abcd" "abcde" longest-subseq ] unit-test
 [ "foo" ] [ "foo" "foobar" longest-subseq ] unit-test
 [ "foo" ] [ "foobar" "foo" longest-subseq ] unit-test
+
+[ "1" "123" ] [ "1" "123" [ length ] [ > ] swap-when ] unit-test
+[ "123" "1" ] [ "1" "123" [ length ] [ < ] swap-when ] unit-test

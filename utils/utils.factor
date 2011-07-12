@@ -114,3 +114,5 @@ USE: grouping
         ] each
     ] each end n - end seq1 subseq ;
 
+: swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
+    '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
