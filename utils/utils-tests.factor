@@ -78,4 +78,5 @@ USE: math.statistics
 
 [ "" ] [ "abc" "def" longest-subseq ] unit-test
 [ "abcd" ] [ "abcd" "abcde" longest-subseq ] unit-test
-
+[ "foo" ] [ "foo" "foobar" longest-subseq ] unit-test
+[ "foo" ] [ "foobar" "foo" longest-subseq ] unit-test
