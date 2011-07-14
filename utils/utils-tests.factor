@@ -83,3 +83,7 @@ USE: math.statistics
 
 [ "1" "123" ] [ "1" "123" [ length ] [ > ] swap-when ] unit-test
 [ "123" "1" ] [ "1" "123" [ length ] [ < ] swap-when ] unit-test
+
+[ { 0 1 0 1 } ] [
+    { 0 0 0 0 } { 1 3 } over [ 1 + ] change-nths
+] unit-test
