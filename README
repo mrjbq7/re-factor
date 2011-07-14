@@ -115,6 +115,9 @@ n-partition:
 ntp:
     simple NTP client
 
+plagiarism:
+    a simple plagiarism detector
+
 port-scan:
     simple port scanner
 
