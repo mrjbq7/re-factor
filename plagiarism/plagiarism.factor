@@ -36,11 +36,3 @@ IN: plagiarism
     ] if ;
 
 MAIN: run-plagiarism
-
-
-
-: regexp-plagiarism ( suspect sources n -- suspect' )
-    [ n-grams ] curry map concat [
-        dupd n-gram>regexp upper-matches
-    ] each ;
-
