@@ -3,23 +3,28 @@
 
 USING: command-line grouping io io.encodings.utf8 io.files
 kernel math math.parser math.ranges namespaces regexp sequences
-splitting unicode.case unicode.categories unicode.data utils ;
+sets splitting unicode.case unicode.categories unicode.data
+utils ;
 
 IN: plagiarism
 
 : n-grams ( str n -- seq )
     [ [ blank? ] split-when ] [ <clumps> ] bi* ;
 
+: common-n-grams ( suspect sources n -- n-grams )
+    [ n-grams ] curry dup [ map concat ] curry bi* intersect ;
+
 : n-gram>regexp ( seq -- regexp )
     [ [ Letter? not ] split-when "[\\W\\S]" join ] map
     "\\s+" join "(\\s|^)" "(\\s|$)" surround
     "i" <optioned-regexp> ;
 
-: detect-plagiarism ( suspect source n -- suspect' )
-    [ n-grams ] curry map concat [
-        dupd n-gram>regexp [
-            [ [a,b) ] dip [ ch>upper ] change-nths
-        ] each-match
+: upper-matches ( str regexp -- )
+    [ [ [a,b) ] dip [ ch>upper ] change-nths ] each-match ;
+
+: detect-plagiarism ( suspect sources n -- suspect' )
+    [ dupd ] dip common-n-grams [
+        dupd n-gram>regexp upper-matches
     ] each ;
 
 : run-plagiarism ( -- )
@@ -31,3 +36,11 @@ IN: plagiarism
     ] if ;
 
 MAIN: run-plagiarism
+
+
+
+: regexp-plagiarism ( suspect sources n -- suspect' )
+    [ n-grams ] curry map concat [
+        dupd n-gram>regexp upper-matches
+    ] each ;
+
