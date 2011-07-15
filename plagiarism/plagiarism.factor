@@ -9,7 +9,7 @@ utils ;
 IN: plagiarism
 
 : n-grams ( str n -- seq )
-    [ [ blank? ] split-when ] [ <clumps> ] bi* ;
+    [ [ blank? ] split-when harvest ] [ <clumps> ] bi* ;
 
 : common-n-grams ( suspect sources n -- n-grams )
     [ n-grams ] curry dup [ map concat ] curry bi* intersect ;
