@@ -16,6 +16,9 @@ accessors.maybe:
 anagrams:
     compute anagrams of words
 
+bitly:
+    wrapper for Bitly V3 API
+
 calc:
     an EBNF-based infix string calculator
 
