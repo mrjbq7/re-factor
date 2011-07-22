@@ -52,6 +52,8 @@ SYNTAX: INCLUDE:
         [ push-at ] curry compose [ dup ] prepose each
     ] keep ; inline
 
+: of ( assoc key -- value ) swap at ;
+
 : deep-at ( assoc seq -- value/f )
     [ swap at ] each ;
 
@@ -119,3 +121,11 @@ USE: grouping
 
 : change-nths ( indices seq quot: ( elt -- elt' ) -- )
     [ change-nth ] 2curry each ; inline
+
+: majority ( seq -- elt/f )
+    [ f 0 ] dip [
+        over zero? [ 2nip 1 ] [
+            pick = [ 1 + ] [ 1 - ] if
+            dup zero? [ [ drop f ] dip ] when
+        ] if
+    ] each drop ;

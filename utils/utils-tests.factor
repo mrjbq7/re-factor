@@ -87,3 +87,11 @@ USE: math.statistics
 [ { 0 1 0 1 } ] [
     { 0 0 0 0 } { 1 3 } over [ 1 + ] change-nths
 ] unit-test
+
+[ f ] [ { } majority ] unit-test
+[ 1 ] [ { 1 } majority ] unit-test
+[ f ] [ { 1 2 } majority ] unit-test
+[ 1 ] [ { 1 1 2 } majority ] unit-test
+[ f ] [ { 1 1 2 2 } majority ] unit-test
+[ 2 ] [ { 1 1 2 2 2 } majority ] unit-test
+[ 3 ] [ { 1 2 3 1 2 3 1 2 3 3 } majority ] unit-test
