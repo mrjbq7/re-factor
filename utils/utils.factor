@@ -126,6 +126,5 @@ USE: grouping
     [ f 0 ] dip [
         over zero? [ 2nip 1 ] [
             pick = [ 1 + ] [ 1 - ] if
-            dup zero? [ [ drop f ] dip ] when
         ] if
-    ] each drop ;
+    ] each zero? [ drop f ] when ;
