@@ -178,6 +178,9 @@ text-to-pdf:
 tf-idf:
     simple tf-idf search engine
 
+thesaurus:
+    thesaurus using custom data file format
+
 time:
     simple TIME server
 
