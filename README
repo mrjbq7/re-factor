@@ -40,6 +40,9 @@ daytime:
 dice:
     rolling dice
 
+domainr:
+    wrapper for domai.nr API
+
 elapsed:
     "pretty" elapsed times
 
