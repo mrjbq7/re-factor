@@ -130,6 +130,9 @@ port-scan:
 power-of-2:
     various methods of implementing "power-of-2?"
 
+printf-example:
+    simplified version of printf
+
 pseudo-crypt:
     implementation of Kevin Burns "php-unique-hash"
 
