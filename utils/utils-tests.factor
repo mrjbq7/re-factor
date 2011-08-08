@@ -59,7 +59,7 @@ USE: math.statistics
         {
            { [ 0 > ] [ "positive" ] }
            { [ 0 < ] [ "negative" ] }
-           [ "zero" ]
+           [ drop "zero" ]
         } cond-case
     ] map
 ] unit-test

@@ -83,7 +83,7 @@ MACRO: cond-case ( assoc -- )
         dup callable? not [
             [ first [ dup ] prepose ]
             [ second [ drop ] prepose ] bi 2array
-        ] [ [ drop ] prepose ] if
+        ] when
     ] map [ cond ] curry ;
 
 USE: assocs.private
