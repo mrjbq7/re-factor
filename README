@@ -58,6 +58,9 @@ fast-fib:
 fast-now:
     faster, cached-per-millisecond version of "now"
 
+fizzbuzz:
+    implementations of FizzBuzz problem
+
 flip-text:
     turns text upside-down
 
