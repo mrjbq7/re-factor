@@ -163,6 +163,9 @@ sorting.marriage:
 square:
     determine if four points represent a square
 
+successor:
+    implementation of "successor" from slang.js
+
 sum:
     implementation of "old Unix Sys V R4" sum command
 
