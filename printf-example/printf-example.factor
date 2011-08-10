@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: io io.streams.string kernel macros math math.parser
+USING: io io.streams.string kernel macros make math math.parser
 peg.ebnf present quotations sequences strings ;
 
 IN: printf-example
@@ -21,16 +21,17 @@ numbers    = fmt-d|fmt-f|fmt-x
 
 formats    = "%"~ (strings|numbers|fmt-%|unknown)
 
-plain-text = (!("%").)+ => [[ >string ]]
+plain-text = (!("%").)+
+                   => [[ >string 1quotation ]]
 
 text       = (formats|plain-text)*
+                   => [[ [ \ , suffix ] map ]]
 
 ;EBNF
 
-MACRO: printf ( format-string -- )
-    parse-printf reverse [
-        [ dup callable? [ call ] when ] map
-        reverse [ write ] each
+ MACRO: printf ( format-string -- )
+    parse-printf reverse [ ] concat-as [
+        { } make reverse [ write ] each
     ] curry ;
 
 : sprintf ( format-string -- result )
