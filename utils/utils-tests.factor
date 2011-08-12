@@ -95,3 +95,12 @@ USE: math.statistics
 [ f ] [ { 1 1 2 2 } majority ] unit-test
 [ 2 ] [ { 1 1 2 2 2 } majority ] unit-test
 [ 3 ] [ { 1 2 3 1 2 3 1 2 3 3 } majority ] unit-test
+
+[ "1st" ] [ 1 humanize ] unit-test
+[ "2nd" ] [ 2 humanize ] unit-test
+[ "3rd" ] [ 3 humanize ] unit-test
+[ "4th" ] [ 4 humanize ] unit-test
+[ "11th" ] [ 11 humanize ] unit-test
+[ "12th" ] [ 12 humanize ] unit-test
+[ "13th" ] [ 13 humanize ] unit-test
+[ "21st" ] [ 21 humanize ] unit-test

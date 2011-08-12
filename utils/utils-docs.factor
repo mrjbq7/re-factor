@@ -1,4 +1,4 @@
-USING: combinators help.markup help.syntax trash ;
+USING: combinators help.markup help.syntax ;
 
 IN: utils
 

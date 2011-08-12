@@ -128,3 +128,18 @@ USE: grouping
             pick = [ 1 + ] [ 1 - ] if
         ] if
     ] each zero? [ drop f ] when ;
+
+: compose-all ( seq -- quot )
+    [ ] [ compose ] reduce ;
+
+USE: math.parser
+
+: humanize ( n -- str )
+    dup 100 mod 11 13 between? [ "th" ] [
+        dup 10 mod {
+            { 1 [ "st" ] }
+            { 2 [ "nd" ] }
+            { 3 [ "rd" ] }
+            [ drop "th" ]
+        } case
+    ] if [ number>string ] [ append ] bi* ;
