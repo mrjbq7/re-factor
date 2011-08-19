@@ -3,11 +3,15 @@
 
 USING: accessors arrays combinators fonts fry io.streams.string
 kernel make math math.order memoize pdf.text pdf.wrap sequences
-ui.text ;
+ui.text unicode.categories ;
 
 USE: assocs
 USE: io.styles
 USE: colors.constants
+USE: splitting
+USE: sorting
+USE: locals
+
 
 IN: pdf.layout
 
@@ -17,8 +21,8 @@ TUPLE: margin left right top bottom ;
 C: <margin> margin
 
 
-TUPLE: canvas x y width height margin font stream foreground
-background page-color inset line-height metrics ;
+TUPLE: canvas x y width height margin col-width font stream
+foreground background page-color inset line-height metrics ;
 
 : <canvas> ( -- canvas )
     canvas new
@@ -27,6 +31,7 @@ background page-color inset line-height metrics ;
         612 >>width
         792 >>height
         54 54 54 54 <margin> >>margin
+        612 >>col-width
         sans-serif-font 12 >>size >>font
         SBUF" " >>stream
         0 >>line-height
@@ -72,8 +77,19 @@ background page-color inset line-height metrics ;
     dup font>> font-metrics
     [ >>metrics ] [ height>> '[ _ max ] change-line-height ] bi ;
 
-: width ( canvas -- n )
+! introduce positioning of elements versus canvas?
+
+: margin-x ( canvas -- n )
+    margin>> [ left>> ] [ right>> ] bi + ;
+
+: margin-y ( canvas -- n )
+    margin>> [ top>> ] [ bottom>> ] bi + ;
+
+: (width) ( canvas -- n )
     [ width>> ] [ margin>> [ left>> ] [ right>> ] bi + ] bi - ;
+
+: width ( canvas -- n )
+    [ (width) ] [ col-width>> ] bi min ;
 
 : height ( canvas -- n )
     [ height>> ] [ margin>> [ top>> ] [ bottom>> ] bi + ] bi - ;
@@ -118,7 +134,7 @@ background page-color inset line-height metrics ;
 
 USE: io
 
-: draw-page-color ( canvas -- )
+: draw-page-color ( canvas -- ) ! FIXME:
     dup page-color>> [
         "0.0 G" print
         foreground-color
@@ -163,6 +179,10 @@ USE: io
 
 GENERIC: pdf-render ( canvas obj -- remain/f )
 
+M: f pdf-render 2drop f ;
+
+GENERIC: pdf-width ( canvas obj -- n )
+
 <PRIVATE
 
 : (pdf-layout) ( page obj -- page )
@@ -189,6 +209,10 @@ C: <div> div
 M: div pdf-render
     [ style>> set-style ] keep
     swap '[ _ pdf-render drop ] each f ;
+
+M: div pdf-width
+    [ style>> set-style ] keep
+    items>> [ dupd pdf-width ] map nip supremum ;
 
 
 ! Insets:
@@ -227,6 +251,11 @@ M: p pdf-render
         [ draw-text ] [ "" concat-as ] bi*
     ] change-string dup string>> empty? [ drop f ] when ;
 
+M: p pdf-width
+    [ style>> set-style ] keep
+    [ font>> ] [ string>> ] bi* [ blank? ] split-when
+    [ dupd text-width ] map nip supremum ;
+
 
 TUPLE: text string style ;
 
@@ -250,6 +279,11 @@ M: text pdf-render
         [ draw-text ] [ "" concat-as ] bi*
     ] change-string dup string>> empty? [ drop f ] when ;
 
+M: text pdf-width
+    [ style>> set-style ] keep
+    [ font>> ] [ string>> ] bi* [ blank? ] split-when
+    [ dupd text-width ] map nip supremum ;
+
 
 TUPLE: hr width ;
 
@@ -265,6 +299,9 @@ M: hr pdf-render
         ] while
     ] change-width nip dup width>> 0 > [ drop f ] unless ;
 
+M: hr pdf-width
+    nip width>> ;
+
 
 TUPLE: br ;
 
@@ -274,6 +311,9 @@ M: br pdf-render
     [ f set-style ] dip
     over avail-lines 0 > [ drop line-break f ] [ nip ] if ;
 
+M: br pdf-width
+    2drop 0 ;
+
 
 TUPLE: pb used? ;
 
@@ -281,6 +321,81 @@ TUPLE: pb used? ;
 
 M: pb pdf-render
     dup used?>> [ f >>used? drop f ] [ t >>used? ] if nip ;
+
+M: pb pdf-width
+    2drop 0 ;
+
+
+
+CONSTANT: table-cell-padding 5
+
+TUPLE: table-cell contents width ;
+
+: <table-cell> ( contents -- table-cell )
+    f table-cell boa ;
+
+M: table-cell pdf-render
+    {
+        [ width>> >>col-width 0 >>x drop ]
+        [
+            [ [ dupd pdf-render ] map nip ] change-contents
+            dup contents>> [ ] any? [ drop f ] unless
+        ]
+        [
+            width>> table-cell-padding +
+            swap margin>> [ + ] change-left drop
+        ]
+    } 2cleave ;
+
+TUPLE: table-row cells ;
+
+C: <table-row> table-row
+
+M: table-row pdf-render
+    {
+        [ drop ?line-break ]
+        [
+            [ [ dupd pdf-render ] map nip ] change-cells
+            dup cells>> [ ] any? [ drop f ] unless
+        ]
+        [ drop margin>> 54 >>left drop ]
+        [
+            drop dup width>> >>col-width
+            [ ?line-break ] [ table-cell-padding inc-y ] bi
+        ]
+    } 2cleave ;
+
+: col-widths ( canvas cells -- widths )
+    [ contents>> [ dupd pdf-width ] map supremum ] map nip ;
+
+:: max-col-widths ( canvas rows -- widths )
+    H{ } clone :> widths
+    rows [
+        cells>> canvas swap col-widths
+        [ widths [ 0 or max ] change-at ] each-index
+    ] each widths >alist sort-keys values ;
+
+: set-col-widths ( canvas rows -- )
+    [ max-col-widths ] keep [
+        dupd cells>> [ swap >>width drop ] 2each
+    ] each drop ;
+
+TUPLE: table rows ;
+
+C: <table> table
+
+M: table pdf-render
+    {
+        [ rows>> set-col-widths ]
+        [
+            [
+                dup rows>> empty? [ t ] [
+                    [ rows>> first dupd pdf-render ] keep swap
+                ] if
+            ] [ [ rest ] change-rows ] until nip
+            dup rows>> [ drop f ] [ drop ] if-empty
+        ]
+    } 2cleave ;
 
 
 

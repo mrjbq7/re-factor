@@ -94,12 +94,11 @@ M: pdf-writer make-block-stream
 M: pdf-writer make-cell-stream
     pdf-sub-stream new-pdf-sub-stream ;
 
-! FIXME: poor man's table cells -- just set min-width to max
-! width of cells in column with cell-padding
-M: pdf-writer stream-write-table
-    nip data>> dup '[
-        [ data>> _ push-all ] each <br> _ push
-    ] each ;
+! FIXME: real table cells
+M: pdf-writer stream-write-table ! FIXME: needs style?
+    nip swap [
+        [ data>> <table-cell> ] map <table-row>
+    ] map <table> swap data>> push ;
 
 M: pdf-writer dispose drop ;
 
