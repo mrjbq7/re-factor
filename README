@@ -43,6 +43,9 @@ dice:
 domainr:
     wrapper for domai.nr API
 
+echo-server:
+    simple echo server
+
 elapsed:
     "pretty" elapsed times
 
