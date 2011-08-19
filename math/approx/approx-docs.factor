@@ -6,7 +6,7 @@ USING: help.markup help.syntax math math.approx ;
 IN: math.approx
 
 HELP: approximate
-{ $values { "x" number } { "epsilon" number } { "y" number } }
+{ $values { "x" ratio } { "epsilon" ratio } { "y" ratio } }
 { $description
 "Applied to two fractional numbers \"x\" and \"epsilon\", returns the "
 "simplest rational number within \"epsilon\" of \"x\"."
