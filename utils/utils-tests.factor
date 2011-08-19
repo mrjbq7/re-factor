@@ -38,6 +38,12 @@ unit-test
 [ f ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "c" } deep-at ] unit-test
 [ 1 ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "b" } deep-at ] unit-test
 
+USE: ascii
+
+[ "" f ] [ "" [ ] split1-when ] unit-test
+[ "hello" "world ." ] [ "hello world ." [ blank? ] split1-when ] unit-test
+[ "goodbye" f ] [ "goodbye" [ blank? ] split1-when ] unit-test
+
 USE: math.combinatorics
 
 [
@@ -54,12 +60,12 @@ USE: math.statistics
 [ { { 1 3 } { "Other" 2 } } ]
 [ { 1 1 1 2 2 } histogram 1 trim-histogram ] unit-test
 
-[ { "negative" "zero" "positive" } ] [
+[ { "negative" 0 "positive" } ] [
     { -1 0 1 } [
         {
            { [ 0 > ] [ "positive" ] }
            { [ 0 < ] [ "negative" ] }
-           [ drop "zero" ]
+           [ ]
         } cond-case
     ] map
 ] unit-test

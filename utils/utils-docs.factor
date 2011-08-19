@@ -2,6 +2,10 @@ USING: combinators help.markup help.syntax ;
 
 IN: utils
 
+HELP: split1-when
+{ $values { "seq" "a sequence" } { "quot" { $quotation "( elt -- ? )" } } { "before" "a new sequence" } { "after" "a new sequence" } }
+{ $description "Splits " { $snippet "seq" } " at the first occurrence of an element for which " { $snippet "quot" } " gives a true output and outputs the pieces before and after the split." } ;
+
 HELP: cond-case
 { $values { "assoc" "a sequence of quotation pairs and an optional quotation" } }
 { $description

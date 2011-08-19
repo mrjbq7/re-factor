@@ -18,9 +18,6 @@ MACRO: cleave-array ( quots -- )
 : ?last ( seq -- last/f )
     [ f ] [ last ] if-empty ; inline
 
-: split1-when ( ... seq quot: ( ... elt -- ... ? ) -- ... before after )
-    dupd find drop [ 1 + cut ] [ f ] if* ; inline
-
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
@@ -46,6 +43,9 @@ SYNTAX: INCLUDE:
 
 : from-slots ( assoc class -- obj )
     new [ set-slots ] keep ;
+
+: split1-when ( ... seq quot: ( ... elt -- ... ? ) -- ... before after )
+    dupd find drop [ swap [ dup 1 + ] dip snip ] [ f ] if* ; inline
 
 : group-by ( seq quot: ( elt -- key ) -- assoc )
     H{ } clone [
