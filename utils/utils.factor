@@ -61,8 +61,8 @@ USE: math.statistics
 USE: sorting
 
 : trim-histogram ( assoc n -- alist )
-    [ >alist sort-values reverse ] [ cut ] bi*
-    values sum [ "Other" swap 2array suffix ] unless-zero ;
+    [ sort-values reverse ] [ cut ] bi* values sum
+    [ "Other" swap 2array suffix ] unless-zero ;
 
 USE: locals
 USE: math.ranges
