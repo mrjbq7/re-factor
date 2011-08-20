@@ -3,7 +3,7 @@ USING: arrays assocs combinators formatting hashtables io
 io.streams.string kernel make math sequences strings
 strings.parser ;
 
-IN: ini-file.simple
+IN: ini-file-example
 
 : unspace ( str -- str' )
     [ " \t\n\r" member? ] trim ;

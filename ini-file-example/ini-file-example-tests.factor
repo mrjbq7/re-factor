@@ -1,9 +1,9 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ini-file.simple tools.test ;
+USING: ini-file-example tools.test ;
 
-IN: ini-file.simple.tests
+IN: ini-file-example.tests
 
 [ H{ } ] [ "" string>ini ] unit-test
 
