@@ -26,11 +26,13 @@ SYNTAX: =>
 
 USE: accessors
 USE: io.pathnames
-USE: vocabs.parser
+USE: namespaces
+USE: source-files
 USE: vocabs.loader
+USE: vocabs.parser
 
 : (include) ( parsed name -- parsed )
-    [ current-vocab dup name>> vocab-append-path ] dip
+    [ file get path>> parent-directory ] dip
     ".factor" append append-path parse-file append ;
 
 PRIVATE>
