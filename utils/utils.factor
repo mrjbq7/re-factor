@@ -1,8 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays assocs combinators db.types fry kernel macros
-math math.order parser sequences sequences.generalizations ;
+USING: arrays assocs combinators db.types fry kernel lexer
+macros math math.order parser sequences
+sequences.generalizations ;
 
 IN: utils
 
@@ -21,8 +22,22 @@ MACRO: cleave-array ( quots -- )
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
-SYNTAX: INCLUDE:
-    scan-object parse-file append ;
+<PRIVATE
+
+USE: accessors
+USE: io.pathnames
+USE: vocabs.parser
+USE: vocabs.loader
+
+: (include) ( parsed name -- parsed )
+    [ current-vocab dup name>> vocab-append-path ] dip
+    ".factor" append append-path parse-file append ;
+
+PRIVATE>
+
+SYNTAX: INCLUDE: scan-token (include) ;
+
+SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
 
 : max-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
     [ bi@ [ max ] keep eq? not ] curry most ; inline
