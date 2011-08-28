@@ -1,0 +1,75 @@
+Use apropos to search for words, vocabularies and help articles.
+%
+To look at the most recent error, run :error. To look at the most recent
+error's callstack, run :c.
+%
+Learn to use Dataflow combinators.
+%
+Learn to use Editor integration to be able to jump to the source code for word
+definitions from the listener.
+%
+Check out http://concatenative.org/wiki/view/Factor/FAQ to get answers to
+frequently-asked questions.
+%
+Drop by the #concatenative IRC channel on irc.freenode.net some time.
+%
+You can write documentation for your own code using the Help system.
+%
+You can write graphical applications using the UI framework.
+%
+Power tools: see, edit, help, about, apropos, time, infer.
+%
+Tips of the day implement the Definition protocol and new tips of the day can
+be defined using the TIP: parsing word.
+%
+Try some simple demo applications, then look at the source code in extra/:
+"demos" run
+%
+To save time on reloading big libraries such as the furnace web framework, save
+the image after loading them using the save word.
+%
+Use the leaks combinator to track down resource leaks.
+%
+Editor gadgets support undo and redo; press ⌘Z and ⌘Y.
+%
+Learn the keyboard shortcuts used in Editor gadgets.
+%
+You can read documentation by pressing F1.
+%
+The listener tool remembers previous lines of input. Press ⌃P and ⌃N to cycle
+through them.
+%
+When you mouse over certain objects, a black border will appear. Left-clicking
+on such an object will perform the default operation. Right-clicking will show
+a menu with all operations.
+%
+The status bar displays stack effects of recognized words as they are being
+typed in.
+%
+Press TAB to complete word, vocabulary and Unicode character names. The latter
+two features become available if the cursor is after a USE:, USING: or CHAR:.
+%
+If a word's vocabulary is loaded, but not in the search path, you can use
+restarts to add the vocabulary to the search path. Auto-use mode (⌘U) invokes
+restarts automatically if there is only one restart.
+%
+Scroll the listener from the keyboard by pressing ⌘PAGE_UP and ⌘PAGE_DOWN.
+%
+Press F2 or run refresh-all to reload changed source files from disk.
+%
+Press ⌃O to run the code in the input field with profiling enabled (UI profiler
+tool).
+%
+Generate stand-alone applications from vocabularies with the Application
+deployment UI tool.
+%
+Press ⌃I to print the stack effect of the code in the input field without
+executing it (Stack effect checking).
+%
+Press ⌃W to single-step through the code in the input field (UI walker).
+%
+Press ⌃T to time execution of the code in the input field (Timing code and
+collecting statistics).
+%
+All UI developer tools support a common set of UI tool keyboard shortcuts. Each
+individual tool has its own shortcuts as well; the F1 key is context-sensitive.
