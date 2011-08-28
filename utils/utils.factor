@@ -160,3 +160,10 @@ USE: math.parser
             [ drop "th" ]
         } case
     ] if [ number>string ] [ append ] bi* ;
+
+USE: alien.c-types
+USE: classes.struct
+USE: io
+
+: read-struct ( class -- struct )
+    [ heap-size read ] [ memory>struct ] bi ;
