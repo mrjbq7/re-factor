@@ -39,7 +39,7 @@ IN: thesaurus
         } case
     ] while candidate word = [ high ] [ f ] if ;
 
-:: find-related ( word -- seq )
+:: find-related ( word -- words )
     word find-word [
         word-position word length + 1 + :> ptr
         ptr read-int :> #related
@@ -49,5 +49,5 @@ IN: thesaurus
 
 PRIVATE>
 
-: related-words ( word -- seq )
+: related-words ( word -- words )
     [ find-related ] with-thesaurus ;
