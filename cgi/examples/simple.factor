@@ -33,8 +33,8 @@ USE: environment
 USE: sequences
 USE: sorting
 
-os-envs >alist sort-keys [ 
-    [ "<b>" write first write "</b>" write ] 
+os-envs sort-keys [
+    [ "<b>" write first write "</b>" write ]
     [ " = " write second write nl ] bi
 ] each
 
