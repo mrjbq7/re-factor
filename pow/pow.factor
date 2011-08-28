@@ -28,25 +28,20 @@ CONSTANT: FRAC3 $[ 2 PRECISION1 iota [ PRECISION3 / ^ ] with map ]
 ! b = int(a)   // integer part
 ! c = frac(a)  // fractional part
 
-: compute-parts ( n -- 2^int frac )
+: 2^int ( n -- 2^int frac )
     [ float>parts ] keep 0 >= [ 1 swap shift ] [
         over 0 < [ [ 1 + ] [ 1 - ] bi* ] when
         [ 1.0 1 ] dip neg shift /
     ] if swap ; inline
 
-: cache-index ( frac -- index )
-    PRECISION3 * >fixnum ; inline
-
-: cache-lookup ( 2^int index -- 2^n )
+: 2^frac ( frac -- 2^frac )
+    PRECISION3 * >fixnum
     [ BITS2 neg shift FRAC1 nth-unsafe ]
     [ BITS1 neg shift MASK bitand FRAC2 nth-unsafe ]
-    [ MASK bitand FRAC3 nth-unsafe ] tri * * * ; inline
+    [ MASK bitand FRAC3 nth-unsafe ] tri * * ; inline
 
 TYPED: pow2 ( n: float -- 2^n: float )
-    compute-parts cache-index cache-lookup ;
+    2^int 2^frac * ;
 
 ! "orig" print [ 1000000 [ 2 16.3 ^ drop ] times ] time
 ! "pow2" print [ 1000000 [ 16.3 pow2 drop ] times ] time
-
-
-
