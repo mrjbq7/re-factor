@@ -14,8 +14,8 @@ sequences sorting ;
 <pre class=debug style='overflow-x: scroll'>
 """ print
 
-os-envs >alist sort-keys [ 
-    [ "<b>" write first write "</b>" write ] 
+os-envs sort-keys [
+    [ "<b>" write first write "</b>" write ]
     [ " = " write second write nl ] bi
 ] each
 
