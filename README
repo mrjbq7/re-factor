@@ -43,6 +43,9 @@ echo-server:
 elapsed:
     "pretty" elapsed times
 
+enigma:
+    implements an Enigma machine
+
 facebook:
     implementing Facebook Graph API
 
