@@ -22,10 +22,13 @@ IN: successor
         [ t swap ]
     } cond ;
 
-: (successor) ( str -- str' )
-    dup length t [ over 0 > dupd and ] [
-        drop 1 - dup pick [ next-char ] change-nth
-    ] while nip [ dup first prefix ] when ;
+: map-until ( seq quot: ( elt -- ? elt' ) -- seq' ? )
+    [ t 0 pick length '[ 2dup _ < and ] ] dip '[
+        nip [ over _ change-nth ] keep 1 +
+    ] while drop ; inline
 
 : successor ( str -- str' )
-    dup empty? [ (successor) ] unless ;
+    dup empty? [
+        reverse [ next-char ] map-until
+        [ dup last suffix ] when reverse
+    ] unless ;

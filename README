@@ -13,9 +13,6 @@ Factor programming language (http://factorcode.org).  These include:
 accessors.maybe:
     the "set if unset then get" accessor
 
-anagrams:
-    compute anagrams of words
-
 bitly:
     wrapper for Bitly V3 API
 
@@ -24,9 +21,6 @@ calc:
 
 calc-ui:
     a simple graphical calculator
-
-cat:
-    implementation of "cat" command-line program
 
 cgi:
     support for writing Factor CGI programs
@@ -43,8 +37,14 @@ dice:
 domainr:
     wrapper for domai.nr API
 
+echo-server:
+    simple echo server
+
 elapsed:
     "pretty" elapsed times
+
+enigma:
+    implements an Enigma machine
 
 facebook:
     implementing Facebook Graph API
@@ -73,14 +73,8 @@ gaddafi:
 geonames:
     implementing GeoNames API
 
-gestalt:
-    system version using gestalt on Mac OS X
-
 github:
     implementing Github API v2
-
-google.charts:
-    implementing Google Chart API
 
 google.search:
     implementing Google Search API
@@ -91,17 +85,11 @@ google.translate:
 gravatar:
     wrapping the Gravatar API
 
-hamurabi:
-    port of the HAMURABI.BAS game
-
 happy-numbers:
     tests if a number is "happy"
 
 hello-ga:
     genetic "hello, world!"
-
-ini-file:
-    parsing INI configuration files
 
 iphone-backup:
     extract text messages from iPhone backups
@@ -111,12 +99,6 @@ ipinfodb:
 
 mail-ui
     simple UI for composing emails
-
-math.approx:
-    approximating rational numbers
-
-memcached:
-    client for memcached server
 
 n-partition:
     evenly partition an integer
@@ -129,6 +111,9 @@ plagiarism:
 
 port-scan:
     simple port scanner
+
+pow:
+    faster version of 2^n
 
 power-of-2:
     various methods of implementing "power-of-2?"
@@ -190,26 +175,20 @@ thesaurus:
 time:
     simple TIME server
 
-tnetstrings:
-    implementation of Zed Shaw's "typed netstrings"
-
 todos:
     additional vocab metadata for todo lists
 
-trash:
-    send files to the trash bin (mac, unix, windows)
-
 txon:
     reader and writer for TXON format
+
+unix-tools:
+    implementations of common Unix programs
 
 utils:
     miscellaneous utility words
 
 webbrowser:
     open urls in web browser
-
-wolfram-alpha:
-    query Wolfram|Alpha from Factor
 
 wordcount:
     implementation of "counting words" meme

@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs google http.client io json.reader kernel locals
-namespaces sequences urls urls.secure ;
+namespaces sequences urls urls.secure utils ;
 
 IN: google.translate
 

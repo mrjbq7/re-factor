@@ -1,8 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays assocs combinators db.types fry kernel macros
-math math.order parser sequences sequences.generalizations ;
+USING: arrays assocs combinators db.types fry kernel lexer
+macros math math.order parser sequences
+sequences.generalizations ;
 
 IN: utils
 
@@ -18,14 +19,27 @@ MACRO: cleave-array ( quots -- )
 : ?last ( seq -- last/f )
     [ f ] [ last ] if-empty ; inline
 
-: split1-when ( ... seq quot: ( ... elt -- ... ? ) -- ... before after )
-    dupd find drop [ 1 + cut ] [ f ] if* ; inline
-
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
-SYNTAX: INCLUDE:
-    scan-object parse-file append ;
+<PRIVATE
+
+USE: accessors
+USE: io.pathnames
+USE: namespaces
+USE: source-files
+USE: vocabs.loader
+USE: vocabs.parser
+
+: (include) ( parsed name -- parsed )
+    [ file get path>> parent-directory ] dip
+    ".factor" append append-path parse-file append ;
+
+PRIVATE>
+
+SYNTAX: INCLUDE: scan-token (include) ;
+
+SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
 
 : max-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
     [ bi@ [ max ] keep eq? not ] curry most ; inline
@@ -47,6 +61,9 @@ SYNTAX: INCLUDE:
 : from-slots ( assoc class -- obj )
     new [ set-slots ] keep ;
 
+: split1-when ( ... seq quot: ( ... elt -- ... ? ) -- ... before after )
+    dupd find drop [ swap [ dup 1 + ] dip snip ] [ f ] if* ; inline
+
 : group-by ( seq quot: ( elt -- key ) -- assoc )
     H{ } clone [
         [ push-at ] curry compose [ dup ] prepose each
@@ -61,8 +78,8 @@ USE: math.statistics
 USE: sorting
 
 : trim-histogram ( assoc n -- alist )
-    [ >alist sort-values reverse ] [ cut ] bi*
-    values sum [ "Other" swap 2array suffix ] unless-zero ;
+    [ sort-values reverse ] [ cut ] bi* values sum
+    [ "Other" swap 2array suffix ] unless-zero ;
 
 USE: locals
 USE: math.ranges
@@ -143,3 +160,10 @@ USE: math.parser
             [ drop "th" ]
         } case
     ] if [ number>string ] [ append ] bi* ;
+
+USE: alien.c-types
+USE: classes.struct
+USE: io
+
+: read-struct ( class -- struct )
+    [ heap-size read ] [ memory>struct ] bi ;
