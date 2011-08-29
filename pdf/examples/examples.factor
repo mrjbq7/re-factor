@@ -9,6 +9,7 @@ USE: fonts
 USE: hashtables
 USE: help
 USE: help.apropos
+USE: help.markup
 USE: help.pdf
 USE: io
 USE: io.encodings.utf8
@@ -95,4 +96,17 @@ USE: literals
         [ "Bigger" swap font-size associate format ] each
     ] with-pdf-writer foo-pdf ;
 
+: test11-pdf ( -- )
+    [
+        { $table { "some" "longer" "c" } { "text" "e" "f" } }
+        print-element
+    ] with-pdf-writer foo-pdf ;
 
+: test12-pdf ( -- )
+    [
+        { $table
+            { "some" "longer" }
+            { "text" { } }
+        }
+        print-element
+    ] with-pdf-writer foo-pdf ;
