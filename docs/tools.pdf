@@ -1,0 +1,9209 @@
+%PDF-1.4
+1 0 obj
+<<
+/CreationDate D:20110828160114
+/Producer (Factor)
+/Author (jbenedik)
+/Creator (created with Factor)
+>>
+
+endobj
+2 0 obj
+<<
+/Type /Catalog
+/Pages 15 0 R
+>>
+endobj
+3 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Bold
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier-Bold
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Italic
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Italic
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier-Italic
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-BoldItalic
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-BoldItalic
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Courier-BoldItalic
+>>
+endobj
+15 0 obj
+<<
+/Type /Pages
+/MediaBox [ 0 0 612 792 ]
+/Count 28
+/Kids [ 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R 26 0 R 28 0 R 30 0 R 32 0 R 34 0 R 36 0 R 38 0 R 40 0 R 42 0 R 44 0 R 46 0 R 48 0 R 50 0 R 52 0 R 54 0 R 56 0 R 58 0 R 60 0 R 62 0 R 64 0 R 66 0 R 68 0 R 70 0 R ]
+>>
+endobj
+16 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 17 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+17 0 obj
+<<
+/Length 5326
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(The implementation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(UI developer tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The below tools are text-based. ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 225.000000 636.759766 Tm
+(UI developer tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 330.000000 636.759766 Tm
+( are documented separately.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 609.679688 Tm
+(Workflow) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 595.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 595.219727 Tm
+(The listener) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 581.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 581.219727 Tm
+(Editor integration) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 567.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 567.219727 Tm
+(Runtime code reloading) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 553.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 553.219727 Tm
+(Unit testing) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 539.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 539.219727 Tm
+(Help system) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 511.679688 Tm
+(Debugging) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 497.219727 Tm
+(The prettyprinter) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 483.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 483.219727 Tm
+(The inspector) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 469.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 469.219727 Tm
+(Stack effect tools) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 455.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 455.219727 Tm
+(Word annotations) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 441.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 441.219727 Tm
+(Deprecation tracking) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 413.679688 Tm
+(Browsing) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 399.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 399.219727 Tm
+(Printing definitions) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 385.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 385.219727 Tm
+(Definition cross referencing) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 371.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 371.219727 Tm
+(Vocabulary hierarchy tools) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 343.679688 Tm
+(Performance) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 329.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 329.219727 Tm
+(Timing code and collecting statistics) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 315.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 315.219727 Tm
+(Profiling code) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 301.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 301.219727 Tm
+(Object memory tools) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 287.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 287.219727 Tm
+(Listing threads) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 273.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 273.219727 Tm
+(Destructor tools) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 259.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 259.219727 Tm
+(Disassembling words) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 231.679688 Tm
+(Deployment) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 217.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 59.000000 217.219727 Tm
+(Application deployment) Tj
+ET
+
+endstream
+endobj
+18 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 19 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+19 0 obj
+<<
+/Length 6549
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(The listener) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Editor integration) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 648.759766 Tm
+(The listener evaluates Factor expressions read from the input stream. Typically, you write ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Factor code in a text editor, load it from the listener by calling ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 381.000000 636.759766 Tm
+(require) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 422.000000 636.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 429.000000 636.759766 Tm
+(reload) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 466.000000 636.759766 Tm
+( or ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 484.000000 636.759766 Tm
+(run-file) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 525.000000 636.759766 Tm
+(, and ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(then test it from interactively.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 600.759766 Tm
+(The classical first program can be run in the listener:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 588.953125 Tm
+("Hello, world" print) Tj
+ET
+BT
+/F6 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 576.953125 Tm
+(Hello, world) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(New words can also be defined in the listener:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 540.953125 Tm
+(USE: math.functions) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 528.953125 Tm
+(: twice \( word -- \) [ execute ] [ execute ] bi ; inline) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 516.953125 Tm
+(81 \\ sqrt twice .) Tj
+ET
+BT
+/F6 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 504.953125 Tm
+(3.0) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 480.759766 Tm
+(Multi-line expressions are supported:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 468.953125 Tm
+({ 1 2 3 } [) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 456.953125 Tm
+(    .) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 444.953125 Tm
+(] each) Tj
+ET
+BT
+/F6 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 432.953125 Tm
+(1) Tj
+ET
+BT
+/F6 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 420.953125 Tm
+(2) Tj
+ET
+BT
+/F6 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 408.953125 Tm
+(3) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 384.759766 Tm
+(The listener will display the current contents of the datastack after every line of input.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 360.759766 Tm
+(The listener can watch dynamic variables:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 347.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 347.219727 Tm
+(Watching variables in the listener) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 322.759766 Tm
+(Nested listeners can be useful for testing code in other dynamic scopes. For example, ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 310.759766 Tm
+(when doing database maintenance using the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 296.000000 310.759766 Tm
+(db.tuples) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 350.000000 310.759766 Tm
+( vocabulary, it can be useful to start a ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 298.759766 Tm
+(listener with a database connection:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 286.953125 Tm
+(USING: db db.sqlite listener ;) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 274.953125 Tm
+("data.db" <sqlite-db> [ listener ] with-db) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 250.759766 Tm
+(Starting a nested listener:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 237.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 237.219727 Tm
+(listener) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 108.000000 237.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 112.000000 237.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 200.759766 Tm
+(To exit a listener, invoke the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 205.000000 200.759766 Tm
+(return) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 240.000000 200.759766 Tm
+( word.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 176.759766 Tm
+(The listener's mechanism for reading multi-line expressions from the input stream can be ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 164.759766 Tm
+(called from user code:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 151.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 151.219727 Tm
+(read-quot) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 123.000000 151.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 127.000000 151.219727 Tm
+(\( -- quot/f \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 87.679688 Tm
+(Watching variables in the listener) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 74.759766 Tm
+(The listener prints values of dynamic variables which are added to a watch list:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 61.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 61.219727 Tm
+(visible-vars) Tj
+ET
+
+endstream
+endobj
+20 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 21 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+21 0 obj
+<<
+/Length 2152
+>>
+stream
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 704.759766 Tm
+(To add or remove a single variable:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 691.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 691.219727 Tm
+(show-var) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 120.000000 691.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 124.000000 691.219727 Tm
+(\( var -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 665.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 665.219727 Tm
+(hide-var) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 113.000000 665.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 117.000000 665.219727 Tm
+(\( var -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 628.759766 Tm
+(To add and remove multiple variables:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 615.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 615.219727 Tm
+(show-vars) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 128.000000 615.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 132.000000 615.219727 Tm
+(\( seq -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 589.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 589.219727 Tm
+(hide-vars) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 121.000000 589.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 125.000000 589.219727 Tm
+(\( seq -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(Clearing the watch list:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 539.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 539.219727 Tm
+(hide-all-vars) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 539.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 145.000000 539.219727 Tm
+(\( -- \)) Tj
+ET
+
+endstream
+endobj
+22 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 23 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+23 0 obj
+<<
+/Length 3790
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Editor integration) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(The listener) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Runtime code reloading) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Factor development is best done with one of the supported editors; this allows you to quickly ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(jump to definitions from the Factor environment.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 611.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 611.219727 Tm
+(edit) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 83.000000 611.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 87.000000 611.219727 Tm
+(\( defspec -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 574.759766 Tm
+(Depending on the editor you are using, you must load one of the child vocabularies of the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 562.759766 Tm
+(editors) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 95.000000 562.759766 Tm
+( vocabulary, for example ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 229.000000 562.759766 Tm
+(editors.emacs) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 310.000000 562.759766 Tm
+(:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 550.953125 Tm
+(USE: editors.emacs) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 526.759766 Tm
+(If you intend to always use the same editor, it helps to have it load during stage 2 ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 514.759766 Tm
+(bootstrap. Place the code to load and possibly configure it in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 398.000000 514.759766 Tm
+(Bootstrap initialization file) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 549.000000 514.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 490.759766 Tm
+(Editor integration vocabularies store a quotation in a global variable when loaded:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 477.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 477.219727 Tm
+(edit-hook) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 440.759766 Tm
+(If a syntax error was thrown while loading a source file, you can jump to the location of the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 428.759766 Tm
+(error in your editor:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 415.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 415.219727 Tm
+(:edit) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 88.000000 415.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 92.000000 415.219727 Tm
+(\( -- \)) Tj
+ET
+
+endstream
+endobj
+24 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 25 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+25 0 obj
+<<
+/Length 3763
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Runtime code reloading) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Editor integration) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Unit testing) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 96.000000 636.759766 Tm
+(vocabs.refresh) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 182.000000 636.759766 Tm
+( vocabulary implements automatic reloading of changed source files.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(With the help of the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 161.000000 612.759766 Tm
+(io.monitors) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 227.000000 612.759766 Tm
+( vocabulary, loaded source files across all vocabulary roots ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 600.759766 Tm
+(are monitored for changes on disk.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 576.759766 Tm
+(If a change to a source file is detected, the next invocation of ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 380.000000 576.759766 Tm
+(refresh-all) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 439.000000 576.759766 Tm
+( will compare the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 564.759766 Tm
+(file's checksum against its previous value, reloading the file if necessary. This takes ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(advantage of the fact that the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 213.000000 552.759766 Tm
+(source-files) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 281.000000 552.759766 Tm
+( vocabulary records CRC32 checksums of source ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 540.759766 Tm
+(files that have been parsed by ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 218.000000 540.759766 Tm
+(The parser) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 280.000000 540.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 516.759766 Tm
+(Words for reloading source files:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 503.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 503.219727 Tm
+(refresh) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 106.000000 503.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 110.000000 503.219727 Tm
+(\( prefix -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 477.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 477.219727 Tm
+(refresh-all) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 126.000000 477.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 130.000000 477.219727 Tm
+(\( -- \)) Tj
+ET
+
+endstream
+endobj
+26 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 27 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+27 0 obj
+<<
+/Length 6999
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Unit testing) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Runtime code reloading) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Help system) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(A unit test is a piece of code which starts with known input values, then compares the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(output of a word with an expected output, where the expected output is defined by the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(word's contract.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 588.759766 Tm
+(For example, if you were developing a word for computing symbolic derivatives, your unit ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 576.759766 Tm
+(tests would apply the word to certain input functions, comparing the results against the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 564.759766 Tm
+(correct values. While the passing of these tests would not guarantee the algorithm is correct, ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(it would at least ensure that what used to work keeps working, in that as soon as something ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 540.759766 Tm
+(breaks due to a change in another part of your program, failing tests will let you know.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 516.759766 Tm
+(Unit tests for a vocabulary are placed in test files in the same directory as the vocabulary ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 504.759766 Tm
+(source file \(see ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 139.000000 504.759766 Tm
+(Vocabulary loader) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 243.000000 504.759766 Tm
+(\). Two possibilities are supported:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 492.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 59.000000 492.759766 Tm
+(Tests can be placed in a file named ) Tj
+ET
+BT
+/F9 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 250.000000 492.953125 Tm
+(vocab) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 287.000000 492.953125 Tm
+(-tests.factor) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 381.000000 492.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 480.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 59.000000 480.759766 Tm
+(Tests can be placed in files in the ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 239.000000 480.953125 Tm
+(tests) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 276.000000 480.759766 Tm
+( subdirectory.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 456.759766 Tm
+(The latter is used for vocabularies with more extensive test suites.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 432.759766 Tm
+(If the test harness needs to define words, they should be placed in a vocabulary named ) Tj
+ET
+BT
+/F9 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 521.000000 432.953125 Tm
+(vocab) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 420.953125 Tm
+(.tests) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 98.000000 420.759766 Tm
+( where ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 138.000000 420.759766 Tm
+(vocab) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 171.000000 420.759766 Tm
+( is the vocab being tested.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 407.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 407.219727 Tm
+(Writing unit tests) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 393.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 393.219727 Tm
+(Running unit tests) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 341.679688 Tm
+(Writing unit tests) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 328.759766 Tm
+(Assert that a quotation outputs a specific set of values:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 315.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 315.219727 Tm
+(unit-test) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 278.759766 Tm
+(Assert that a quotation throws an error:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 265.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 265.219727 Tm
+(must-fail) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 239.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 239.219727 Tm
+(must-fail-with) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 202.759766 Tm
+(Assert that a quotation or word has a specific static stack effect \(see ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 419.000000 202.759766 Tm
+(Stack effect checking) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 542.000000 202.759766 Tm
+(\):) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 189.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 189.219727 Tm
+(must-infer) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 163.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 163.219727 Tm
+(must-infer-as) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 126.759766 Tm
+(All of the above are used like ordinary words but are actually parsing words. This ensures ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 114.759766 Tm
+(that parse-time state, namely the line number, can be associated with the test in question, ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 102.759766 Tm
+(and reported in test failures.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 63.679688 Tm
+(Running unit tests) Tj
+ET
+
+endstream
+endobj
+28 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 29 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+29 0 obj
+<<
+/Length 2606
+>>
+stream
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 728.759766 Tm
+(The following words run test harness files; any test failures are collected and printed at ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 716.759766 Tm
+(the end:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 703.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 703.219727 Tm
+(test) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 83.000000 703.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 87.000000 703.219727 Tm
+(\( prefix -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 677.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 677.219727 Tm
+(test-all) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 104.000000 677.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 108.000000 677.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 640.759766 Tm
+(The following word prints failures:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 627.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 627.219727 Tm
+(:test-failures) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 143.000000 627.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 147.000000 627.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 590.759766 Tm
+(Test failures are reported using the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 243.000000 590.759766 Tm
+(Batch error reporting) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 364.000000 590.759766 Tm
+( mechanism and are shown in ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 578.759766 Tm
+(the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 75.000000 578.759766 Tm
+(UI error list tool) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 165.000000 578.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 554.759766 Tm
+(Unit test failures are instances of a class, and are stored in a global variable:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 541.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 541.219727 Tm
+(test-failure) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 515.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 515.219727 Tm
+(test-failures) Tj
+ET
+
+endstream
+endobj
+30 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 31 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+31 0 obj
+<<
+/Length 6239
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Help system) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Unit testing) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(The prettyprinter) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The help system maintains documentation written in a simple markup language, along ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(with cross-referencing and search. Documentation can either exist as free-standing ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 499.000000 624.759766 Tm
+(articles) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 538.000000 624.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(or be associated with words.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 599.219727 Tm
+(Browsing documentation) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 585.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 585.219727 Tm
+(Writing documentation) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 571.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 571.219727 Tm
+(Help lint tool) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 557.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 557.219727 Tm
+(Tips of the day) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 543.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 543.219727 Tm
+(Help system implementation) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 491.679688 Tm
+(Browsing documentation) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 478.759766 Tm
+(Help topics are instances of a mixin:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 465.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 465.219727 Tm
+(topic) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 428.759766 Tm
+(Most commonly, topics are article name strings, or words. You can display a specific help ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 416.759766 Tm
+(topic:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 403.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 403.219727 Tm
+(help) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 87.000000 403.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 91.000000 403.219727 Tm
+(\( topic -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 366.759766 Tm
+(You can also display the help for a vocabulary:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 353.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 353.219727 Tm
+(about) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 97.000000 353.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 101.000000 353.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 316.759766 Tm
+(To list a vocabulary's words only:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 303.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 303.219727 Tm
+(words.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 104.000000 303.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 108.000000 303.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 263.679688 Tm
+(Examples) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 250.953125 Tm
+("evaluator" help) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 226.953125 Tm
+(\\ + help) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 202.953125 Tm
+("io.files" about) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 151.679688 Tm
+(Writing documentation) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 138.759766 Tm
+(By convention, documentation is written in files whose names end with ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 432.000000 138.953125 Tm
+(-docs.factor) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 519.000000 138.759766 Tm
+(. ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 126.759766 Tm
+(Vocabulary documentation should be placed in the same directory as the vocabulary ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 114.759766 Tm
+(source code; see ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 149.000000 114.759766 Tm
+(Vocabulary loader) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 253.000000 114.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 90.759766 Tm
+(A pair of parsing words are used to define free-standing articles and to associate ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 78.759766 Tm
+(documentation with words:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 65.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 65.219727 Tm
+(ARTICLE:) Tj
+ET
+
+endstream
+endobj
+32 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 33 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+33 0 obj
+<<
+/Length 8214
+>>
+stream
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 715.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 715.219727 Tm
+(HELP:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 678.759766 Tm
+(A parsing word defines the main help article for a vocabulary:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 665.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 665.219727 Tm
+(ABOUT:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 628.759766 Tm
+(The ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 96.000000 628.759766 Tm
+(content) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 136.000000 628.759766 Tm
+( in both cases is a ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 236.000000 628.759766 Tm
+(markup element) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 323.000000 628.759766 Tm
+(, a recursive structure taking one of the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 616.759766 Tm
+(following forms:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 604.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 604.759766 Tm
+(a string,) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 592.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 592.759766 Tm
+(an array of markup elements,) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 580.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 580.759766 Tm
+(or an array of the form ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 183.000000 580.953125 Tm
+({ $directive content... }) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 364.000000 580.759766 Tm
+(, where ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 407.000000 580.953125 Tm
+($directive) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 480.000000 580.759766 Tm
+( is a markup ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 568.759766 Tm
+(word whose name starts with ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 213.000000 568.953125 Tm
+($) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 221.000000 568.759766 Tm
+(, and ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 252.000000 568.953125 Tm
+(content...) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 325.000000 568.759766 Tm
+( is a series of markup elements) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 544.759766 Tm
+(Here is a more formal schema for the help markup language:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 532.953125 Tm
+(<element> ::== <string> | <simple-element> | <fancy-element>) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 520.953125 Tm
+(<simple-element> ::== { <element>* }) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 508.953125 Tm
+(<fancy-element> ::== { <type> <element> }) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 483.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 483.219727 Tm
+(Element types) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 469.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 469.219727 Tm
+(Printing markup elements) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 444.759766 Tm
+(Related words can be cross-referenced:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 431.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 431.219727 Tm
+(related-words) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 150.000000 431.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 154.000000 431.219727 Tm
+(\( seq -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 391.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 378.759766 Tm
+(Help lint tool) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 339.679688 Tm
+(Help lint tool) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 326.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 96.000000 326.759766 Tm
+(help.lint) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 142.000000 326.759766 Tm
+( vocabulary implements a tool to check documentation in an automated ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 314.759766 Tm
+(fashion. You should use this tool to check any documentation that you write.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 290.759766 Tm
+(To run help lint, use one of the following two words:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 277.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 277.219727 Tm
+(help-lint) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 113.000000 277.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 117.000000 277.219727 Tm
+(\( prefix -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 251.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 251.219727 Tm
+(help-lint-all) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 133.000000 251.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 137.000000 251.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 214.759766 Tm
+(Once a help lint run completes, failures can be listed:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 201.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 201.219727 Tm
+(:lint-failures) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 139.000000 201.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 143.000000 201.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 164.759766 Tm
+(Help lint failures are also shown in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 260.000000 164.759766 Tm
+(UI error list tool) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 350.000000 164.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 140.759766 Tm
+(Help lint performs the following checks:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 128.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 128.759766 Tm
+(ensures examples run and produce stated output) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 116.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 116.759766 Tm
+(ensures ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 107.000000 116.759766 Tm
+($see-also) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 162.000000 116.759766 Tm
+( elements don't contain duplicate entries) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 104.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 104.759766 Tm
+(ensures ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 107.000000 104.759766 Tm
+($vocab-link) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 174.000000 104.759766 Tm
+( elements point to modules which actually exist) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 92.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 92.759766 Tm
+(ensures that ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 130.000000 92.759766 Tm
+($values) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 175.000000 92.759766 Tm
+( match the stack effect declaration) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 80.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 80.759766 Tm
+(ensures that help topics actually render \(this catches broken links, improper nesting, etc\)) Tj
+ET
+
+endstream
+endobj
+34 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 35 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+35 0 obj
+<<
+/Length 6889
+>>
+stream
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 713.679688 Tm
+(Tips of the day) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 700.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 96.000000 700.759766 Tm
+(help.tips) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 146.000000 700.759766 Tm
+( vocabulary provides a facility for displaying tips of the day in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 491.000000 700.759766 Tm
+(UI listener) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 550.000000 700.759766 Tm
+(. ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 688.759766 Tm
+(Tips are defined with a parsing word:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 675.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 675.219727 Tm
+(TIP:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 638.759766 Tm
+(All tips defined so far:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 625.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 625.219727 Tm
+(All tips of the day) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 561.679688 Tm
+(Help system implementation) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 548.759766 Tm
+(Help topic protocol:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 535.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 535.219727 Tm
+(article-name) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 535.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 145.000000 535.219727 Tm
+(\( topic -- string \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 509.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 509.219727 Tm
+(article-title) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 129.000000 509.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 133.000000 509.219727 Tm
+(\( topic -- string \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 483.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 483.219727 Tm
+(article-content) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 155.000000 483.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 159.000000 483.219727 Tm
+(\( topic -- content \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 457.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 457.219727 Tm
+(article-parent) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 147.000000 457.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 151.000000 457.219727 Tm
+(\( topic -- parent \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 431.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 431.219727 Tm
+(set-article-parent) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 172.000000 431.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 176.000000 431.219727 Tm
+(\( parent topic -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 394.759766 Tm
+(Boilerplate word help can be automatically generated \(for example, slot accessor help\):) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 381.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 381.219727 Tm
+(word-help) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 125.000000 381.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 129.000000 381.219727 Tm
+(\( word -- content \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 355.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 355.219727 Tm
+(word-help*) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 131.000000 355.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 135.000000 355.219727 Tm
+(\( word -- content \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 318.759766 Tm
+(Help article implementation:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 305.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 305.219727 Tm
+(article) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 100.000000 305.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 104.000000 305.219727 Tm
+(\( name -- article \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 279.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 279.219727 Tm
+(articles) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 242.759766 Tm
+(Links:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 229.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 229.219727 Tm
+(link) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 203.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 203.219727 Tm
+(>link) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 91.000000 203.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 95.000000 203.219727 Tm
+(\( obj -- obj \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 166.759766 Tm
+(Utilities for traversing markup element trees:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 153.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 153.219727 Tm
+(elements) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 119.000000 153.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 123.000000 153.219727 Tm
+(\( elt-type element -- seq \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 127.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 127.219727 Tm
+(collect-elements) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 168.000000 127.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 172.000000 127.219727 Tm
+(\( element seq -- elements \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 90.759766 Tm
+(Links and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 109.000000 90.759766 Tm
+(article) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 145.000000 90.759766 Tm
+( instances implement the definition protocol; refer to ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 424.000000 90.759766 Tm
+(Definitions) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 486.000000 90.759766 Tm
+(.) Tj
+ET
+
+endstream
+endobj
+36 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 37 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+37 0 obj
+<<
+/Length 8003
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(The prettyprinter) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Help system) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(The inspector) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(One of Factor's key features is the ability to print almost any object as a valid source literal ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(expression. This greatly aids debugging and provides the building blocks for light-weight ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(object serialization facilities.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 588.759766 Tm
+(Prettyprinter words are found in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 245.000000 588.759766 Tm
+(prettyprint) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 305.000000 588.759766 Tm
+( vocabulary.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 564.759766 Tm
+(The key words to print an object to ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 241.000000 564.759766 Tm
+(output-stream) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 322.000000 564.759766 Tm
+(; the first two emit a trailing newline, the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(second two do not:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 539.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 539.219727 Tm
+(.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 539.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 66.000000 539.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 513.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 513.219727 Tm
+(short.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 97.000000 513.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 101.000000 513.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 487.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 487.219727 Tm
+(pprint) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 98.000000 487.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 102.000000 487.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 461.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 461.219727 Tm
+(pprint-short) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 138.000000 461.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 142.000000 461.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 435.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 435.219727 Tm
+(pprint-use) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 127.000000 435.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 131.000000 435.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 398.759766 Tm
+(The string representation of an object can be requested:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 385.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 385.219727 Tm
+(unparse) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 113.000000 385.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 117.000000 385.219727 Tm
+(\( obj -- str \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 359.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 359.219727 Tm
+(unparse-use) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 142.000000 359.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 146.000000 359.219727 Tm
+(\( obj -- str \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 322.759766 Tm
+(Utility for tabular output:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 309.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 309.219727 Tm
+(pprint-cell) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 126.000000 309.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 130.000000 309.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 272.759766 Tm
+(More prettyprinter usage:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 259.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 259.219727 Tm
+(Prettyprinting numbers) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 245.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 245.219727 Tm
+(Prettyprinting stacks) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 220.759766 Tm
+(Prettyprinter customization:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 207.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 207.219727 Tm
+(Prettyprint control variables) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 193.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 193.219727 Tm
+(Extending the prettyprinter) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 179.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 179.219727 Tm
+(Prettyprinter limitations) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 151.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 138.759766 Tm
+(Converting between numbers and strings) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 291.000000 138.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 298.000000 138.759766 Tm
+(Printing definitions) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 111.679688 Tm
+(Prettyprinting numbers) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 98.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 96.000000 98.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 100.000000 98.759766 Tm
+( word prints numbers in decimal. A set of words in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 387.000000 98.759766 Tm
+(prettyprint) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 447.000000 98.759766 Tm
+( vocabulary is ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 86.759766 Tm
+(provided to print integers using another base.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 73.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 73.219727 Tm
+(.b) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 71.000000 73.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 75.000000 73.219727 Tm
+(\( n -- \)) Tj
+ET
+
+endstream
+endobj
+38 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 39 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+39 0 obj
+<<
+/Length 6310
+>>
+stream
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 727.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 727.219727 Tm
+(.o) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 71.000000 727.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 75.000000 727.219727 Tm
+(\( n -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 701.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 701.219727 Tm
+(.h) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 71.000000 701.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 75.000000 701.219727 Tm
+(\( n -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 625.679688 Tm
+(Prettyprinting stacks) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(Prettyprinting the current data, retain, call stacks:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 599.219727 Tm
+(.s) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 70.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 74.000000 599.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 573.219727 Tm
+(.r) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 68.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 72.000000 573.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 547.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 547.219727 Tm
+(.c) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 70.000000 547.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 74.000000 547.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 510.759766 Tm
+(Prettyprinting any stack:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 497.219727 Tm
+(stack.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 98.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 102.000000 497.219727 Tm
+(\( seq -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 460.759766 Tm
+(Prettyprinting any call stack:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 447.219727 Tm
+(callstack.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 122.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 126.000000 447.219727 Tm
+(\( callstack -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 410.759766 Tm
+(Note that calls to ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 147.000000 410.759766 Tm
+(.s) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 158.000000 410.759766 Tm
+( can also be included inside words as a debugging aid, however a more ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 398.759766 Tm
+(convenient way to achieve this is to use the annotation facility. See ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 412.000000 398.759766 Tm
+(Word annotations) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 514.000000 398.759766 Tm
+(.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 359.679688 Tm
+(Prettyprint control variables) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 346.759766 Tm
+(The following variables affect the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 232.000000 346.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 236.000000 346.759766 Tm
+( and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 263.000000 346.759766 Tm
+(pprint) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 297.000000 346.759766 Tm
+( words if set in the current dynamic scope:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 333.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 333.219727 Tm
+(tab-size) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 307.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 307.219727 Tm
+(margin) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 281.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 281.219727 Tm
+(nesting-limit) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 255.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 255.219727 Tm
+(length-limit) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 229.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 229.219727 Tm
+(line-limit) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 203.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 203.219727 Tm
+(number-base) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 177.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 177.219727 Tm
+(string-limit?) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 151.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 151.219727 Tm
+(boa-tuples?) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 125.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 125.219727 Tm
+(c-object-pointers?) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 88.759766 Tm
+(The default limits are meant to strike a balance between readability, and not producing ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 76.759766 Tm
+(too much output when large structures are given. There are two combinators that override ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 64.759766 Tm
+(the defaults:) Tj
+ET
+
+endstream
+endobj
+40 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 41 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+41 0 obj
+<<
+/Length 7214
+>>
+stream
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 727.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 727.219727 Tm
+(with-short-limits) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 167.000000 727.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 171.000000 727.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 701.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 701.219727 Tm
+(without-limits) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 149.000000 701.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 153.000000 701.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 664.759766 Tm
+(That the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 102.000000 664.759766 Tm
+(short.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 136.000000 664.759766 Tm
+( and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 163.000000 664.759766 Tm
+(pprint-short) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 231.000000 664.759766 Tm
+( words wrap calls to ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 340.000000 664.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 344.000000 664.759766 Tm
+( and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 371.000000 664.759766 Tm
+(pprint) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 405.000000 664.759766 Tm
+( in ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 422.000000 664.759766 Tm
+(with-short-limits) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 516.000000 664.759766 Tm
+(. Code ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 652.759766 Tm
+(that uses the prettyprinter for serialization should use ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 339.000000 652.759766 Tm
+(without-limits) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 417.000000 652.759766 Tm
+( to avoid producing ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 640.759766 Tm
+(unreadable output.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 601.679688 Tm
+(Extending the prettyprinter) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 588.759766 Tm
+(One can define literal syntax for a new class using the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 345.000000 588.759766 Tm
+(The parser) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 407.000000 588.759766 Tm
+( together with ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 576.759766 Tm
+(corresponding prettyprinting methods which print instances of the class using this syntax.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 563.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 563.219727 Tm
+(Literal prettyprinting protocol) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 549.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 549.219727 Tm
+(Prettyprinting more complex literals) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 524.759766 Tm
+(The prettyprinter actually exposes a general source code output engine and is not limited ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 512.759766 Tm
+(to printing object structure.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 499.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 58.000000 499.219727 Tm
+(Prettyprinter sections) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 435.679688 Tm
+(Prettyprinter limitations) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 422.759766 Tm
+(When using the prettyprinter as a serialization mechanism, keep the following points in ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 410.759766 Tm
+(mind:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 398.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 398.759766 Tm
+(When printing words, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 177.000000 398.759766 Tm
+(USING:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 219.000000 398.759766 Tm
+( declarations are only output if the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 403.000000 398.759766 Tm
+(pprint-use) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 462.000000 398.759766 Tm
+( or ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 480.000000 398.759766 Tm
+(unparse-use) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 386.759766 Tm
+(  words are used.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 374.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 374.759766 Tm
+(Long output will be truncated if certain ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 374.759766 Tm
+(Prettyprint control variables) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 427.000000 374.759766 Tm
+( are set.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 362.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 362.759766 Tm
+(Shared structure is not reflected in the printed output; if the output is parsed back in, fresh ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 350.759766 Tm
+(objects are created for all literal denotations.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 338.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 338.759766 Tm
+(Circular structure is not printed in a readable way. For example, try this:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 326.953125 Tm
+({ f } dup dup set-first .) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 302.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.000000 302.759766 Tm
+(Floating point numbers might not equal themselves after being printed and read, since a ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 290.759766 Tm
+(decimal representation of a float is inexact.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 266.759766 Tm
+(On a final note, the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 159.000000 266.759766 Tm
+(short.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 193.000000 266.759766 Tm
+( and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 220.000000 266.759766 Tm
+(pprint-short) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 288.000000 266.759766 Tm
+( words restrict the length and nesting of ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 254.759766 Tm
+(printed sequences, their output will very likely not be valid syntax. They are only intended for ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 242.759766 Tm
+(interactive use.) Tj
+ET
+
+endstream
+endobj
+42 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 43 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+43 0 obj
+<<
+/Length 5481
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(The inspector) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(The prettyprinter) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Stack effect tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The inspector displays a tabular view of an object and adds navigation and editing ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(features. Inspector words are found in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 279.000000 624.759766 Tm
+(inspector) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 334.000000 624.759766 Tm
+( vocabulary.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 600.759766 Tm
+(Starting the inspector:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 587.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 587.219727 Tm
+(inspect) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 107.000000 587.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 110.000000 587.219727 Tm
+(\( obj -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 550.759766 Tm
+(The inspector supports a number of commands which operate on the most recently ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 538.759766 Tm
+(inspected object:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 525.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 525.219727 Tm
+(&push) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 101.000000 525.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 104.000000 525.219727 Tm
+(\( -- obj \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 499.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 499.219727 Tm
+(&back) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 100.000000 499.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 103.000000 499.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 473.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 473.219727 Tm
+(&at) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 80.000000 473.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 83.000000 473.219727 Tm
+(\( n -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 447.219727 Tm
+(&put) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 89.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 92.000000 447.219727 Tm
+(\( value n -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 421.219727 Tm
+(&add) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 92.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 95.000000 421.219727 Tm
+(\( value key -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 395.219727 Tm
+(&rename) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 117.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 120.000000 395.219727 Tm
+(\( key n -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 369.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 369.219727 Tm
+(&delete) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 108.000000 369.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 111.000000 369.219727 Tm
+(\( n -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 332.759766 Tm
+(A variable holding the current object:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 319.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 319.219727 Tm
+(me) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 282.759766 Tm
+(A description of an object can be printed without starting the inspector:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 269.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 269.219727 Tm
+(describe) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 115.000000 269.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 118.000000 269.219727 Tm
+(\( obj -- \)) Tj
+ET
+
+endstream
+endobj
+44 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 45 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+45 0 obj
+<<
+/Length 5428
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Stack effect tools) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(The inspector) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Word annotations) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Stack effect checking) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 177.000000 636.759766 Tm
+( can be used interactively to print stack effects of quotations without ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(running them. It can also be used from ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 263.000000 624.759766 Tm
+(Smart combinators) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 373.000000 624.759766 Tm
+(.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 611.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 611.219727 Tm
+(infer) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 88.000000 611.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 91.000000 611.219727 Tm
+(\( quot -- effect \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 585.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 585.219727 Tm
+(infer.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 91.000000 585.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 94.000000 585.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 548.759766 Tm
+(There are also some words for working with ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 290.000000 548.759766 Tm
+(effect) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 323.000000 548.759766 Tm
+( instances. Getting a word's declared ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 536.759766 Tm
+(stack effect:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 523.219727 Tm
+(stack-effect) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 135.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 138.000000 523.219727 Tm
+(\( word -- effect/f \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 486.759766 Tm
+(Converting a stack effect to a string form:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 473.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 473.219727 Tm
+(effect>string) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 142.000000 473.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 145.000000 473.219727 Tm
+(\( obj -- str \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 436.759766 Tm
+(Comparing effects:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 423.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 423.219727 Tm
+(effect-height) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 423.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 144.000000 423.219727 Tm
+(\( effect -- n \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 397.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 397.219727 Tm
+(effect<=) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 111.000000 397.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 114.000000 397.219727 Tm
+(\( effect1 effect2 -- ? \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 371.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 371.219727 Tm
+(effect=) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 103.000000 371.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 106.000000 371.219727 Tm
+(\( effect1 effect2 -- ? \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 334.759766 Tm
+(The class of stack effects:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 321.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 321.219727 Tm
+(effect) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 295.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 295.219727 Tm
+(effect?) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 103.000000 295.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 106.000000 295.219727 Tm
+(\( object -- ? \)) Tj
+ET
+
+endstream
+endobj
+46 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 47 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+47 0 obj
+<<
+/Length 5211
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Word annotations) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Stack effect tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Deprecation tracking) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The word annotation feature modifies word definitions to add debugging code. You can ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(restore the old definition by calling ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 239.000000 624.759766 Tm
+(reset) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 268.000000 624.759766 Tm
+( on the word in question.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 600.759766 Tm
+(Printing messages when a word is called or returns:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 587.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 587.219727 Tm
+(watch) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 97.000000 587.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 100.000000 587.219727 Tm
+(\( word -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 561.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 561.219727 Tm
+(watch-vars) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 131.000000 561.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 134.000000 561.219727 Tm
+(\( word vars -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 524.759766 Tm
+(Timing words:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 511.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 511.219727 Tm
+(reset-word-timing) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 176.000000 511.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 179.000000 511.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 485.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 485.219727 Tm
+(add-timing) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 129.000000 485.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 132.000000 485.219727 Tm
+(\( word -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 459.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 459.219727 Tm
+(word-timing.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 459.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 144.000000 459.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 422.759766 Tm
+(All of the above words are implemented using a single combinator which applies a ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 410.759766 Tm
+(quotation to a word definition to yield a new definition:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 397.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 397.219727 Tm
+(annotate) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 116.000000 397.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 119.000000 397.219727 Tm
+(\( word quot -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 357.679688 Tm
+(Warning) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 344.759766 Tm
+(Certain internal words, such as words in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 291.000000 344.759766 Tm
+(math) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 320.000000 344.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 327.000000 344.759766 Tm
+(sequences) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 390.000000 344.759766 Tm
+( and UI vocabularies, cannot ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 332.759766 Tm
+(be annotated, since the annotated code may end up recursively invoking the word in ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 320.759766 Tm
+(question. This may crash or hang Factor. It is safest to only define annotations on your own ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 308.759766 Tm
+(words.) Tj
+ET
+
+endstream
+endobj
+48 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 49 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+49 0 obj
+<<
+/Length 2328
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Deprecation tracking) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Word annotations) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Printing definitions) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Factor's core syntax defines a ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 217.000000 636.759766 Tm
+(deprecated) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 282.000000 636.759766 Tm
+( word that can be applied to words to mark ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(them as deprecated. Notes are collected and reported by the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 381.000000 624.759766 Tm
+(Batch error reporting) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 502.000000 624.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(mechanism when deprecated words are used to define other words.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 599.219727 Tm
+(deprecated) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 573.219727 Tm
+(:deprecations) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 149.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 152.000000 573.219727 Tm
+(\( -- \)) Tj
+ET
+
+endstream
+endobj
+50 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 51 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+51 0 obj
+<<
+/Length 3964
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Printing definitions) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Deprecation tracking) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Definition cross referencing) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 79.000000 636.759766 Tm
+(see) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 100.000000 636.759766 Tm
+( vocabulary implements support for printing out ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 353.000000 636.759766 Tm
+(Definitions) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 415.000000 636.759766 Tm
+( in the image.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(Printing a definition:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 599.219727 Tm
+(see) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 81.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 84.000000 599.219727 Tm
+(\( defspec -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 562.759766 Tm
+(Printing the methods defined on a generic word or class \(see ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 381.000000 562.759766 Tm
+(Objects) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 426.000000 562.759766 Tm
+(\):) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 549.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 549.219727 Tm
+(see-methods) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 144.000000 549.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 147.000000 549.219727 Tm
+(\( word -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 512.759766 Tm
+(Definition specifiers implementing the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 257.000000 512.759766 Tm
+(Definition protocol) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 364.000000 512.759766 Tm
+( should also implement the ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 511.000000 512.759766 Tm
+(see ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 500.759766 Tm
+(protocol) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 102.000000 500.759766 Tm
+(:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 487.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 487.219727 Tm
+(see*) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 86.000000 487.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 89.000000 487.219727 Tm
+(\( defspec -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 461.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 461.219727 Tm
+(synopsis*) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 124.000000 461.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 127.000000 461.219727 Tm
+(\( defspec -- \)) Tj
+ET
+
+endstream
+endobj
+52 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 53 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+53 0 obj
+<<
+/Length 4582
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Definition cross referencing) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Printing definitions) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Vocabulary hierarchy tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Definitions can answer a sequence of definitions they directly depend on:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 623.219727 Tm
+(uses) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 89.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 92.000000 623.219727 Tm
+(\( defspec -- seq \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 586.759766 Tm
+(An inverted index of the above:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 573.219727 Tm
+(get-crossref) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 138.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 141.000000 573.219727 Tm
+(\( -- crossref \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 536.759766 Tm
+(Words to access it:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 523.219727 Tm
+(usage) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 98.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 101.000000 523.219727 Tm
+(\( defspec -- seq \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 497.219727 Tm
+(smart-usage) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 144.000000 497.219727 Tm
+(\( defspec -- seq \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 460.759766 Tm
+(Tools for interactive use:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 447.219727 Tm
+(usage.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 102.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 105.000000 447.219727 Tm
+(\( word -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 421.219727 Tm
+(vocab-uses.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 138.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 141.000000 421.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 395.219727 Tm
+(vocab-usage.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 147.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 150.000000 395.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 355.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 342.759766 Tm
+(Definitions) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 116.000000 342.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 123.000000 342.759766 Tm
+(Words) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 161.000000 342.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 168.000000 342.759766 Tm
+(Printing definitions) Tj
+ET
+
+endstream
+endobj
+54 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 55 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+55 0 obj
+<<
+/Length 5831
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Vocabulary hierarchy tools) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Definition cross referencing) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Timing code and collecting statistics) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(These tools operate on all vocabularies found in the current set of ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 406.000000 636.759766 Tm
+(vocab-roots) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 475.000000 636.759766 Tm
+(, loaded or not.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(Loading vocabulary hierarchies:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 599.219727 Tm
+(load) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 86.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 89.000000 599.219727 Tm
+(\( prefix -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 573.219727 Tm
+(load-all) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 107.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 110.000000 573.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 536.759766 Tm
+(Getting all vocabularies from disk:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 523.219727 Tm
+(all-vocabs) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 126.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 129.000000 523.219727 Tm
+(\( -- assoc \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 497.219727 Tm
+(all-vocabs-recursive) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 193.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 196.000000 497.219727 Tm
+(\( -- assoc \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 460.759766 Tm
+(Getting all vocabularies from disk whose names which match a string prefix:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 447.219727 Tm
+(child-vocabs) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 143.000000 447.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 146.000000 447.219727 Tm
+(\( prefix -- assoc \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 421.219727 Tm
+(child-vocabs-recursive) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 210.000000 421.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 213.000000 421.219727 Tm
+(\( prefix -- assoc \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 384.759766 Tm
+(Words for modifying output:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 371.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 371.219727 Tm
+(no-roots) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 114.000000 371.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 117.000000 371.219727 Tm
+(\( assoc -- seq \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 345.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 345.219727 Tm
+(no-prefixes) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 133.000000 345.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 136.000000 345.219727 Tm
+(\( seq -- seq' \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 308.759766 Tm
+(Getting ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 97.000000 308.759766 Tm
+(Vocabulary metadata) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 217.000000 308.759766 Tm
+( for all vocabularies from disk:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 295.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 295.219727 Tm
+(all-tags) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 107.000000 295.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 110.000000 295.219727 Tm
+(\( -- seq \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 269.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 269.219727 Tm
+(all-authors) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 129.000000 269.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 132.000000 269.219727 Tm
+(\( -- seq \)) Tj
+ET
+
+endstream
+endobj
+56 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 57 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+57 0 obj
+<<
+/Length 4484
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Timing code and collecting statistics) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Vocabulary hierarchy tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Profiling code) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(You can time the execution of a quotation in the listener:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 623.219727 Tm
+(time) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 86.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 89.000000 623.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 586.759766 Tm
+(This word also collects statistics about method dispatch and garbage collection:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 573.219727 Tm
+(dispatch-stats.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 156.000000 573.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 159.000000 573.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 547.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 547.219727 Tm
+(gc-events.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 127.000000 547.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 130.000000 547.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 521.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 521.219727 Tm
+(gc-stats.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 115.000000 521.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 118.000000 521.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 495.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 495.219727 Tm
+(gc-summary.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 144.000000 495.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 147.000000 495.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 458.759766 Tm
+(A lower-level word puts timings on the stack, instead of printing:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 445.219727 Tm
+(benchmark) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 132.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 135.000000 445.219727 Tm
+(\( quot -- runtime \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 408.759766 Tm
+(You can also read the system clock directly; see ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 313.000000 408.759766 Tm
+(System interface) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 410.000000 408.759766 Tm
+(.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 381.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 368.759766 Tm
+(Profiling code) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 135.000000 368.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 142.000000 368.759766 Tm
+(Word annotations) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 244.000000 368.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 251.000000 368.759766 Tm
+(Calendar) Tj
+ET
+
+endstream
+endobj
+58 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 59 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+59 0 obj
+<<
+/Length 6333
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Profiling code) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Timing code and collecting statistics) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Object memory tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 79.000000 636.759766 Tm
+(tools.profiler) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 153.000000 636.759766 Tm
+( vocabulary implements a simple call counting profiler.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(Quotations can be passed to a combinator which calls them with the profiler enabled:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 599.219727 Tm
+(profile) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 100.000000 599.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 103.000000 599.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 562.759766 Tm
+(After a quotation has been profiled, call counts can be presented in various ways:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 549.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 549.219727 Tm
+(profile.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 104.000000 549.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 107.000000 549.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 523.219727 Tm
+(vocab-profile.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 149.000000 523.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 152.000000 523.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 497.219727 Tm
+(usage-profile.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 149.000000 497.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 152.000000 497.219727 Tm
+(\( word -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 471.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 471.219727 Tm
+(vocabs-profile.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 157.000000 471.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 160.000000 471.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 445.219727 Tm
+(method-profile.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 159.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 162.000000 445.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 419.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 419.219727 Tm
+(Profiler limitations) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 391.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 378.759766 Tm
+(UI profiler tool) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 136.000000 378.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 143.000000 378.759766 Tm
+(Word annotations) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 245.000000 378.759766 Tm
+(, ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 252.000000 378.759766 Tm
+(Timing code and collecting statistics) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 351.679688 Tm
+(Profiler limitations) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 338.759766 Tm
+(Certain optimizations performed by the compiler can inhibit accurate call counting:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 326.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 326.759766 Tm
+(Calls to open-coded intrinsics are not counted. Certain words are open-coded as inline ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 314.759766 Tm
+(machine code, and in some cases optimized out altogether; this includes stack shuffling ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 302.759766 Tm
+(operations, conditionals, and many object allocation operations.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 290.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 290.759766 Tm
+(Calls to ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 106.000000 290.759766 Tm
+(inline) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 138.000000 290.759766 Tm
+( words are not counted.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 278.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 278.759766 Tm
+(Calls to methods which were inlined as a result of type inference are not counted.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 266.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 266.759766 Tm
+(Tail-recursive loops will only count the initial invocation of the word, not every tail call.) Tj
+ET
+
+endstream
+endobj
+60 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 61 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+61 0 obj
+<<
+/Length 4655
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Object memory tools) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Profiling code) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Listing threads) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(You can print object heap status information:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 623.219727 Tm
+(room.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 96.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 99.000000 623.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 597.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 597.219727 Tm
+(heap-stats.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 131.000000 597.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 134.000000 597.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 571.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 571.219727 Tm
+(heap-stats) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 128.000000 571.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 131.000000 571.219727 Tm
+(\( -- counts sizes \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 534.759766 Tm
+(You can query memory status:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 521.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 521.219727 Tm
+(data-room) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 126.000000 521.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 129.000000 521.219727 Tm
+(\( -- data-room \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 495.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 495.219727 Tm
+(code-room) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 130.000000 495.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 133.000000 495.219727 Tm
+(\( -- code-room \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 458.759766 Tm
+(A combinator to get objects from the heap:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 445.219727 Tm
+(instances) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 122.000000 445.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 125.000000 445.219727 Tm
+(\( quot -- seq \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 408.759766 Tm
+(You can check an object's the heap memory usage:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 395.219727 Tm
+(size) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 84.000000 395.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 87.000000 395.219727 Tm
+(\( obj -- n \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 358.759766 Tm
+(The garbage collector can be invoked manually:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 345.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 345.219727 Tm
+(gc) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 74.000000 345.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 77.000000 345.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 305.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 292.759766 Tm
+(Images) Tj
+ET
+
+endstream
+endobj
+62 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 63 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+63 0 obj
+<<
+/Length 1436
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Listing threads) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Object memory tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Destructor tools) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(Printing a list of running threads:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 623.219727 Tm
+(threads.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 112.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 115.000000 623.219727 Tm
+(\( -- \)) Tj
+ET
+
+endstream
+endobj
+64 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 65 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+65 0 obj
+<<
+/Length 2399
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Destructor tools) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Listing threads) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Disassembling words) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 79.000000 636.759766 Tm
+(tools.destructors) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 178.000000 636.759766 Tm
+( vocabulary provides words for tracking down resource leaks.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 623.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 623.219727 Tm
+(debug-leaks?) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 597.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 597.219727 Tm
+(disposables.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 142.000000 597.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 145.000000 597.219727 Tm
+(\( -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 571.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 571.219727 Tm
+(leaks) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 93.000000 571.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 96.000000 571.219727 Tm
+(\( quot -- \)) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 531.679688 Tm
+(See also) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 518.759766 Tm
+(Deterministic resource disposal) Tj
+ET
+
+endstream
+endobj
+66 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 67 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+67 0 obj
+<<
+/Length 2657
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Disassembling words) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Destructor tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 686.299805 Tm
+(Next:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 686.299805 Tm
+(Application deployment) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 79.000000 636.759766 Tm
+(tools.disassembler) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 188.000000 636.759766 Tm
+( vocabulary provides support for disassembling compiled word ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(definitions. It uses the ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 174.000000 624.953125 Tm
+(libudis86) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 239.000000 624.759766 Tm
+( library on x86-32 and x86-64, and ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 426.000000 624.953125 Tm
+(gdb) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 448.000000 624.759766 Tm
+( on PowerPC.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 600.759766 Tm
+(See also ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 105.000000 600.759766 Tm
+(compiler.tree.debugger) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 238.000000 600.759766 Tm
+( and ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 265.000000 600.759766 Tm
+(compiler.cfg.debugger) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 394.000000 600.759766 Tm
+(.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 575.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 575.219727 Tm
+(disassemble) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 142.000000 575.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 145.000000 575.219727 Tm
+(\( obj -- \)) Tj
+ET
+
+endstream
+endobj
+68 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 69 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+69 0 obj
+<<
+/Length 8505
+>>
+stream
+BT
+/F4 20 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 722.599609 Tm
+(Application deployment) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 710.299805 Tm
+(Factor documentation) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 160.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 172.000000 710.299805 Tm
+(Factor handbook) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 254.000000 710.299805 Tm
+( > ) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 266.000000 710.299805 Tm
+(Developer tools) Tj
+ET
+BT
+/F4 10 Tf
+0.200000 0.200000 0.200000 rg
+1 0 0 1 54.000000 698.299805 Tm
+(Prev:) Tj
+ET
+BT
+/F4 10 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 80.000000 698.299805 Tm
+(Disassembling words) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 648.759766 Tm
+(The stand-alone application deployment tool, implemented in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 401.000000 648.759766 Tm
+(tools.deploy) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 472.000000 648.759766 Tm
+( vocabulary, ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 636.759766 Tm
+(compiles a vocabulary down to a native executable which runs the vocabulary's ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 479.000000 636.759766 Tm
+(MAIN:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 514.000000 636.759766 Tm
+( hook. ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 624.759766 Tm
+(Deployed executables do not depend on Factor being installed, and do not expose any ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
+(source code, and thus are suitable for delivering commercial end-user applications.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 588.759766 Tm
+(Most of the time, the words in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 235.000000 588.759766 Tm
+(tools.deploy) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 306.000000 588.759766 Tm
+( vocabulary should not be used directly; ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 576.759766 Tm
+(instead, use ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 123.000000 576.759766 Tm
+(Application deployment UI tool) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 300.000000 576.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 552.759766 Tm
+(You must explicitly specify major subsystems which are required, as well as the level of ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 540.759766 Tm
+(reflection support needed. This is done by modifying the deployment configuration prior to ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 528.759766 Tm
+(deployment.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 515.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 515.219727 Tm
+(Preparing to deploy an application) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 501.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 501.219727 Tm
+(Deploy tool usage) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 487.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 487.219727 Tm
+(Deploy tool implementation) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 473.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 473.219727 Tm
+(Deploy tool caveats) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 421.679688 Tm
+(Preparing to deploy an application) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 408.759766 Tm
+(In order to deploy an application as a stand-alone image, the application's vocabulary must ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 396.759766 Tm
+(first be given a ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 136.000000 396.759766 Tm
+(MAIN:) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 171.000000 396.759766 Tm
+( hook. Then, a ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 251.000000 396.759766 Tm
+(deployment configuration) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 386.000000 396.759766 Tm
+( must be created.) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 383.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 383.219727 Tm
+(Deployment configuration) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 369.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 369.219727 Tm
+(Deployment flags) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 355.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 355.219727 Tm
+(Deployed resource files) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 291.679688 Tm
+(Deploy tool usage) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 278.759766 Tm
+(Once the necessary deployment flags have been set, the application can be deployed:) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 265.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 265.219727 Tm
+(deploy) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 103.000000 265.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 106.000000 265.219727 Tm
+(\( vocab -- \)) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 239.219727 Tm
+( ) Tj
+ET
+BT
+/F4 14 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 57.000000 239.219727 Tm
+(deploy-image-only) Tj
+ET
+BT
+/F4 14 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 181.000000 239.219727 Tm
+( ) Tj
+ET
+BT
+/F1 14 Tf
+0.000000 0.200000 0.000000 rg
+1 0 0 1 184.000000 239.219727 Tm
+(\( vocab image -- \)) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 202.759766 Tm
+(For example, you can deploy the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 232.000000 202.759766 Tm
+(hello-ui) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 275.000000 202.759766 Tm
+( demo which comes with Factor. Note that this ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 190.759766 Tm
+(demo already has a deployment configuration, so nothing needs to be configured:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 178.953125 Tm
+("hello-ui" deploy) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 154.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 154.759766 Tm
+(On Mac OS X, this yields a program named ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 297.000000 154.953125 Tm
+(Hello world.app) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 406.000000 154.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 142.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 142.759766 Tm
+(On Windows, it yields a directory named ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 280.000000 142.953125 Tm
+(Hello world) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 360.000000 142.759766 Tm
+( containing a program named ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 130.953125 Tm
+(hello-ui.exe) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 141.000000 130.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 118.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 62.000000 118.759766 Tm
+(On Unix-like systems \(Linux, BSD, Solaris, etc\), it yields a directory named ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 462.000000 118.953125 Tm
+(Hello world) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 542.000000 118.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 106.759766 Tm
+(containing a program named ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 211.000000 106.953125 Tm
+(hello-ui) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 269.000000 106.759766 Tm
+(.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 82.759766 Tm
+(On all platforms, running the program will display a window with a message.) Tj
+ET
+
+endstream
+endobj
+70 0 obj
+<<
+/Type /Page
+/Parent 15 0 R
+/Contents 71 0 R
+/Resources << /Font <<
+/F1 3 0 R /F2 4 0 R /F3 5 0 R
+/F4 6 0 R /F5 7 0 R /F6 8 0 R
+/F7 9 0 R /F8 10 0 R /F9 11 0 R
+/F10 12 0 R /F11 13 0 R /F12 14 0 R
+>> >>
+>>
+endobj
+71 0 obj
+<<
+/Length 5326
+>>
+stream
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 725.679688 Tm
+(Deploy tool implementation) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 712.759766 Tm
+(The deployment tool works by bootstrapping a fresh image, loading the vocabulary into this ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 700.759766 Tm
+(image, then applying various heuristics to strip the image down to minimal size.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 676.759766 Tm
+(The deploy tool generates ) Tj
+ET
+BT
+/F7 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 197.000000 676.759766 Tm
+(staging images) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 278.000000 676.759766 Tm
+( containing major subsystems, and uses the ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 664.759766 Tm
+(staging images to derive the final application image. The first time an application is deployed ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 652.759766 Tm
+(using a major subsystem, such as the UI, a new staging image is made, which can take ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 640.759766 Tm
+(a few minutes. Subsequent deployments of applications using this subsystem will be much ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 628.759766 Tm
+(faster.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 589.679688 Tm
+(Deploy tool caveats) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 561.679688 Tm
+(Behavior of ) Tj
+ET
+BT
+/F4 16 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 147.000000 561.679688 Tm
+(boa) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 548.759766 Tm
+(In deployed applications, the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 210.000000 548.759766 Tm
+(boa) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 232.000000 548.759766 Tm
+( word does not verify that the parameters on the stack ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 536.759766 Tm
+(satisfy the tuple's slot declarations, if any. This reduces deploy image size but can make ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 524.759766 Tm
+(bugs harder to track down. Make sure your program is fully debugged before deployment.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 497.679688 Tm
+(Behavior of ) Tj
+ET
+BT
+/F4 16 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 147.000000 497.679688 Tm
+(execute\() Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 484.759766 Tm
+(Similarly, the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 126.000000 484.759766 Tm
+(execute\() Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 175.000000 484.759766 Tm
+( word does not check word stack effects in deployed applications, ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 472.759766 Tm
+(since stack effects are stripped out, and so it behaves exactly like ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 405.000000 472.759766 Tm
+(execute-effect-unsafe) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 529.000000 472.759766 Tm
+(.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 445.679688 Tm
+(Behavior of ) Tj
+ET
+BT
+/F4 16 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 147.000000 445.679688 Tm
+(call-next-method) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 432.759766 Tm
+(The ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 79.000000 432.759766 Tm
+(call-next-method) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 176.000000 432.759766 Tm
+( word does not check if the input is of the right type in deployed ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 420.759766 Tm
+(applications.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 393.679688 Tm
+(Error reporting) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 380.759766 Tm
+(If the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 85.000000 380.759766 Tm
+(deploy-reflection) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 182.000000 380.759766 Tm
+( level in the configuration is low enough, the debugger is stripped ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 368.759766 Tm
+(out, and error messages can be rather cryptic. Increase the reflection level to get readable ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 356.759766 Tm
+(error messages.) Tj
+ET
+BT
+/F4 16 Tf
+0.215686 0.243137 0.282353 rg
+1 0 0 1 54.000000 329.679688 Tm
+(Choosing the right deploy flags) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 316.759766 Tm
+(Finding the correct deploy flags is a trial and error process; you must find a tradeoff ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 304.759766 Tm
+(between deployed image size and correctness. If your program uses dynamic language ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 292.759766 Tm
+(features, you may need to elect to strip out fewer subsystems in order to have full ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 280.759766 Tm
+(functionality.) Tj
+ET
+
+endstream
+endobj
+xref
+0 72
+0000000000 65535 f
+0000000009 00000 n
+0000000083 00000 n
+00000000B5 00000 n
+00000000FB 00000 n
+000000013D 00000 n
+0000000181 00000 n
+00000001CC 00000 n
+0000000213 00000 n
+000000025C 00000 n
+00000002A9 00000 n
+00000002F3 00000 n
+000000033F 00000 n
+0000000391 00000 n
+00000003DF 00000 n
+000000042F 00000 n
+0000000544 00000 n
+0000000623 00000 n
+0000001B25 00000 n
+0000001C04 00000 n
+00000035CD 00000 n
+00000036AC 00000 n
+0000003F48 00000 n
+0000004027 00000 n
+0000004F29 00000 n
+0000005008 00000 n
+0000005EEF 00000 n
+0000005FCE 00000 n
+0000007B59 00000 n
+0000007C38 00000 n
+000000869A 00000 n
+0000008779 00000 n
+000000A00C 00000 n
+000000A0EB 00000 n
+000000C135 00000 n
+000000C214 00000 n
+000000DD31 00000 n
+000000DE10 00000 n
+000000FD87 00000 n
+000000FE66 00000 n
+0000011740 00000 n
+000001181F 00000 n
+0000013481 00000 n
+0000013560 00000 n
+0000014AFD 00000 n
+0000014BDC 00000 n
+0000016144 00000 n
+0000016223 00000 n
+00000176B2 00000 n
+0000017791 00000 n
+00000180DD 00000 n
+00000181BC 00000 n
+000001916C 00000 n
+000001924B 00000 n
+000001A465 00000 n
+000001A544 00000 n
+000001BC3F 00000 n
+000001BD1E 00000 n
+000001CED6 00000 n
+000001CFB5 00000 n
+000001E8A6 00000 n
+000001E985 00000 n
+000001FBE8 00000 n
+000001FCC7 00000 n
+0000020297 00000 n
+0000020376 00000 n
+0000020D09 00000 n
+0000020DE8 00000 n
+000002187D 00000 n
+000002195C 00000 n
+0000023AC9 00000 n
+0000023BA8 00000 n
+trailer
+<<
+/Size 72
+/Info 1 0 R
+/Root 2 0 R
+>>
+startxref
+151722
+%%EOF
