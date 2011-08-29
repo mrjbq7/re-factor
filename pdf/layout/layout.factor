@@ -116,6 +116,11 @@ foreground background page-color inset line-height metrics ;
 : ?line-break ( canvas -- )
     dup x>> 0 > [ line-break ] [ drop ] if ;
 
+: ?break ( canvas -- )
+    dup x>> 0 > [ ?line-break ] [
+        [ 7 + ] change-y 0 >>x drop
+    ] if ;
+
 : inc-lines ( canvas n -- )
     [ 0 >>x ] dip [ dup line-break ] times drop ;
 
@@ -173,8 +178,6 @@ USE: io
     swap [ x ] [ y ] [ line-height>> 2 / - ] tri
     [ line-move ] [ [ + ] [ line-line ] bi* ] 2bi
     stroke ;
-
-
 
 
 GENERIC: pdf-render ( canvas obj -- remain/f )
@@ -245,7 +248,7 @@ TUPLE: p string style ;
 M: p pdf-render
     [ style>> set-style ] keep
     [
-        over line-break
+        over ?line-break
         over [ font>> ] [ avail-width ] bi visual-wrap
         over avail-lines short cut
         [ draw-text ] [ "" concat-as ] bi*
@@ -253,7 +256,7 @@ M: p pdf-render
 
 M: p pdf-width
     [ style>> set-style ] keep
-    [ font>> ] [ string>> ] bi* [ blank? ] split-when
+    [ font>> ] [ string>> ] bi* string-lines
     [ dupd text-width ] map nip supremum ;
 
 
@@ -281,7 +284,7 @@ M: text pdf-render
 
 M: text pdf-width
     [ style>> set-style ] keep
-    [ font>> ] [ string>> ] bi* [ blank? ] split-when
+    [ font>> ] [ string>> ] bi* string-lines
     [ dupd text-width ] map nip supremum ;
 
 
@@ -309,7 +312,7 @@ C: <br> br
 
 M: br pdf-render
     [ f set-style ] dip
-    over avail-lines 0 > [ drop line-break f ] [ nip ] if ;
+    over avail-lines 0 > [ drop ?break f ] [ nip ] if ;
 
 M: br pdf-width
     2drop 0 ;
@@ -351,12 +354,26 @@ TUPLE: table-row cells ;
 
 C: <table-row> table-row
 
+! save y before rendering each cell
+! set y to max y after all renders
+
 M: table-row pdf-render
     {
         [ drop ?line-break ]
         [
-            [ [ dupd pdf-render ] map nip ] change-cells
-            dup cells>> [ ] any? [ drop f ] unless
+            [let
+                over y>> :> start-y
+                over y>> :> max-y!
+                [
+                    [
+                        [ start-y >>y ] dip
+                        dupd pdf-render
+                        over y>> max-y max max-y!
+                    ] map swap max-y >>y drop
+                ] change-cells
+
+                dup cells>> [ ] any? [ drop f ] unless
+            ]
         ]
         [ drop margin>> 54 >>left drop ]
         [
@@ -366,27 +383,49 @@ M: table-row pdf-render
     } 2cleave ;
 
 : col-widths ( canvas cells -- widths )
-    [ contents>> [ dupd pdf-width ] map supremum ] map nip ;
+    [
+        [
+            contents>> [ 0 ] [
+                [ [ dupd pdf-width ] [ 0 ] if* ] map supremum
+            ] if-empty
+        ] [ 0 ] if*
+    ] map nip ;
+
+: change-last ( seq quot -- )
+    [ drop length 1 - ] [ change-nth ] 2bi ; inline
 
 :: max-col-widths ( canvas rows -- widths )
     H{ } clone :> widths
     rows [
         cells>> canvas swap col-widths
         [ widths [ 0 or max ] change-at ] each-index
-    ] each widths >alist sort-keys values ;
+    ] each widths >alist sort-keys values
+
+    ! make last cell larger
+    dup sum 400 swap - 0 max [ + ] curry dupd change-last
+
+    ! size down each column
+    dup sum dup 400 > [ 400 swap / [ * ] curry map ] [ drop ] if ;
 
 : set-col-widths ( canvas rows -- )
     [ max-col-widths ] keep [
-        dupd cells>> [ swap >>width drop ] 2each
+        dupd cells>> [
+            [ swap >>width drop ] [ drop ] if*
+        ] 2each
     ] each drop ;
 
-TUPLE: table rows ;
+TUPLE: table rows widths? ;
 
-C: <table> table
+: <table> ( rows -- table )
+    f table boa ;
 
 M: table pdf-render
     {
-        [ rows>> set-col-widths ]
+        [
+            dup widths?>> [ 2drop ] [
+                t >>widths? rows>> set-col-widths
+            ] if
+        ]
         [
             [
                 dup rows>> empty? [ t ] [
@@ -397,6 +436,8 @@ M: table pdf-render
         ]
     } 2cleave ;
 
+M: table pdf-width
+    2drop 400 ; ! FIXME: hardcoded max-width
 
 
 ! TUPLE: pre < p
@@ -408,13 +449,6 @@ M: table pdf-render
 ! TUPLE: image < span ;
 ! C: <image> image
 
-! TUPLE: table-cell ;
-
-! TUPLE: table-row ;
-
-! TUPLE: table ;
-
-
 
 ! Outlines (add to catalog):
 !   /Outlines 3 0 R
@@ -425,12 +459,8 @@ M: table pdf-render
 ! Images
 
 
-USE: assocs
 USE: formatting
-USE: fonts
 USE: literals
-USE: locals
-USE: make
 USE: math.ranges
 USE: pdf
 USE: pdf.values
