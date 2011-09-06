@@ -29,6 +29,8 @@ IN: successor
 
 : successor ( str -- str' )
     dup empty? [
-        reverse [ next-char ] map-until
-        [ dup last suffix ] when reverse
+        dup [ [ digit? ] [ Letter? ] bi or ] any? [
+            reverse [ next-char ] map-until
+            [ dup last suffix ] when reverse
+        ] [ dup length 1 - over [ 1 + ] change-nth ] if
     ] unless ;

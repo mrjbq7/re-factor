@@ -11,3 +11,4 @@ IN: successor
 [ "<<koalb>>" ] [ "<<koala>>" successor ] unit-test
 [ "2000aaa" ] [ "1999zzz" successor ] unit-test
 [ "AAAA0000" ] [ "ZZZ9999" successor ] unit-test
+[ "**+" ] [ "***" successor ] unit-test
