@@ -1,7 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: ascii combinators fry kernel math sequences ;
+USING: ascii combinators combinators.short-circuit fry kernel
+math sequences ;
 
 IN: successor
 
@@ -27,9 +28,12 @@ IN: successor
         nip [ over _ change-nth ] keep 1 +
     ] while drop ; inline
 
+: alphanum? ( ch -- ? )
+    { [ Letter? ] [ digit? ] } 1|| ;
+
 : successor ( str -- str' )
     dup empty? [
-        dup [ [ digit? ] [ Letter? ] bi or ] any? [
+        dup [ alphanum? ] any? [
             reverse [ next-char ] map-until
             [ dup last suffix ] when reverse
         ] [ dup length 1 - over [ 1 + ] change-nth ] if
