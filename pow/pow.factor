@@ -9,19 +9,28 @@ IN: pow
 TYPED: float>parts ( x: float -- float: float int: fixnum )
     dup >fixnum [ - ] keep ; inline
 
+<<
 CONSTANT: BITS1 10
+>>
+
+<<
 CONSTANT: BITS2 $[ BITS1 2 * ]
 CONSTANT: BITS3 $[ BITS1 3 * ]
+>>
 
+<<
 CONSTANT: PRECISION1 $[ 1 BITS1 shift ]
 CONSTANT: PRECISION2 $[ 1 BITS2 shift ]
 CONSTANT: PRECISION3 $[ 1 BITS3 shift ]
+>>
 
+<<
 CONSTANT: MASK $[ PRECISION1 1 - ]
 
 CONSTANT: FRAC1 $[ 2 PRECISION1 iota [ PRECISION1 / ^ ] with map ]
 CONSTANT: FRAC2 $[ 2 PRECISION1 iota [ PRECISION2 / ^ ] with map ]
 CONSTANT: FRAC3 $[ 2 PRECISION1 iota [ PRECISION3 / ^ ] with map ]
+>>
 
 ! a ^ ( b + c ) == a ^ b * a ^ c
 ! a = 2
@@ -45,3 +54,10 @@ TYPED: pow2 ( n: float -- 2^n: float )
 
 ! "orig" print [ 1000000 [ 2 16.3 ^ drop ] times ] time
 ! "pow2" print [ 1000000 [ 16.3 pow2 drop ] times ] time
+
+! : pow2-seq ( n -- seq )
+!     [ -20 20 uniform-random-float ] replicate ;
+
+! : pow2-test ( seq -- new old )
+!     [ [ pow2 ] [ map drop ] benchmark ]
+!     [ 2 swap [ ^ ] with [ map drop ] benchmark ] bi ;
