@@ -1,17 +1,17 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: command-line io kernel namespaces sequences utils ;
+USING: command-line io kernel namespaces sequences ;
 
 IN: unix-tools.echo
 
-: separator ( args -- args str )
-    dup ?first "-n" = [ rest " \n" ] [ " " ] if ;
+: newline? ( args -- ? args' )
+    [ first "-n" = ] keep over [ rest ] when ;
 
 : echo-args ( args -- )
-    separator join write nl ;
+    newline? " " join write [ nl ] when ;
 
 : run-echo ( -- )
-    command-line get echo-args ;
+    command-line get [ nl ] [ echo-args ] if-empty ;
 
 MAIN: run-echo
