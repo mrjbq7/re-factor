@@ -32,13 +32,14 @@ MEMO: stopwords ( -- words )
 
 TUPLE: db docs index ;
 
-: <db> ( paths -- db )
-    tokenize-files dup index-all db boa ;
+: <db> ( docs -- db )
+    dup index-all db boa ;
 
 ! TF-IDF
 
 : idf ( term db -- idf )
-    [ nip docs>> ] [ index>> at ] 2bi [ assoc-size ] bi@ / log ;
+    [ nip docs>> ] [ index>> at ] 2bi
+    [ assoc-size 1 + ] bi@ / log ;
 
 : tf-idf ( term db -- scores )
     [ index>> at ] [ idf ] 2bi '[ _ * ] assoc-map ;
@@ -46,7 +47,7 @@ TUPLE: db docs index ;
 ! SEARCH
 
 : scores ( query db -- scores )
-    [ split-words ] dip '[ _ tf-idf ] map assoc-merge ;
+    [ >lower split-words ] dip '[ _ tf-idf ] map assoc-merge ;
 
 : (normalize) ( path db -- value )
     [ docs>> at ] keep '[ _ idf 2 ^ ] map-sum sqrt ;
@@ -63,4 +64,5 @@ USE: io.directories
 USE: io.pathnames
 
 : load-db ( directory -- db )
-    [ directory-files ] keep '[ _ prepend-path ] map <db> ;
+    [ directory-files ] keep '[ _ prepend-path ] map
+    tokenize-files <db> ;
