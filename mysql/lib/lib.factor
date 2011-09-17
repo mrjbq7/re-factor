@@ -57,6 +57,8 @@ ERROR: mysql-sql-error < sql-error n string ;
         over minute>> >>minute
         swap second>> >>second ;
 
+USE: locals
+
 :: <mysql-bind> ( index key value type -- mysql_BIND )
     MYSQL_BIND <struct>
         index >>param_number
