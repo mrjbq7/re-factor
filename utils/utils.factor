@@ -4,6 +4,7 @@
 USING: arrays assocs combinators db.types fry kernel lexer
 macros math math.order parser sequences
 sequences.generalizations ;
+FROM: sequences => change-nth ;
 
 IN: utils
 
