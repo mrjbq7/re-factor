@@ -31,3 +31,14 @@ IN: fizzbuzz
 : fizzbuzz3 ( n -- )
     dup [ fizz ] [ buzz ] bi "" append-as
     [ present ] [ nip ] if-empty print ;
+
+
+: fizzbuzz? ( n -- test  )
+    [ 3 divisor? ] [ 5 divisor? ] bi 2array ;
+
+: fizzbuzz4 ( n -- )
+    dup fizzbuzz? H{
+        { t t } => "FizzBuzz"
+        { t f } => "Fizz"
+        { f t } => "Buzz"
+    } at [ nip ] [ present ] if* print ;
