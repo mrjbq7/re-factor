@@ -14,52 +14,32 @@ tree-node define-maybe-accessors
 : <tree-node> ( -- node )
     tree-node new ;
 
-USE: io
-USE: prettyprint
-
-
-! : (search) ( ch node/f -- node/f )
-!     [
-!         {
-!             { [ 2dup < ] [ drop [ lt>> ] dip (search) ] }
-!             { [ 2dup > ] [ drop [ gt>> ] dip (search) ] }
-!             [ 2drop ]
-!         } cond
-!     ] [ drop ] if*
-! 
-!     ;
-
 : (search) ( node ch -- node/f )
     over ch>> [
-        dupd >=< swapd {
-            { +eq+ [ nip ] }
+        dupd <=> swapd {
             { +lt+ [ lt>> dup [ swap (search) ] [ nip ] if ] }
             { +gt+ [ gt>> dup [ swap (search) ] [ nip ] if ] }
+            [ drop nip ]
         } case [ eq>> ] [ f ] if*
-    ] [ 2drop f ] if* ;
+    ] [ 2drop f ] if* ; inline recursive
 
-: search ( key node -- node/f )
-    [ 2dup [ empty? not ] [ and ] bi* ] [
-        [ unclip-slice ] dip swap (search)
-    ] while nip ;
+: search ( node key -- node/f )
+    [ over [ (search) ] [ drop ] if dup not ] find 2drop ;
 
-
-! Try cond instead of <=> case
-! Fewer nodes ?
-! String's hashcode is stored (e.g., "3 slot")
 ! FIXME: don't have leaf nodes, store value in eq?
 
 : (insert) ( node ch -- node' )
     over ch>> [
-        dupd >=< swapd {
-            { +eq+ [ nip ] }
+        dupd <=> swapd {
             { +lt+ [ [ <tree-node> ] maybe-lt swap (insert) ] }
             { +gt+ [ [ <tree-node> ] maybe-gt swap (insert) ] }
+            [ drop nip ]
         } case
-    ] [ >>ch ] if* [ <tree-node> ] maybe-eq ;
+    ] [ >>ch ] if* [ <tree-node> ] maybe-eq ; inline recursive
 
-: insert ( value key node -- )
-    swap [ (insert) ] each swap >>value t >>exists drop ;
+: insert ( value key node -- ? )
+    swap [ (insert) ] each swap >>value
+    [ exists>> ] [ t >>exists drop ] bi ;
 
 PRIVATE>
 
@@ -74,27 +54,28 @@ ternary-search-tree define-maybe-accessors
 : >ternary-search-tree ( assoc -- tree )
     <ternary-search-tree> assoc-clone-like ;
 
-M: ternary-search-tree at* ( key tree -- value ? )
-    root>> search [ [ value>> ] [ exists>> ] bi ] [ f f ] if* ;
+M: ternary-search-tree at*
+    root>> swap search
+    [ [ value>> ] [ exists>> ] bi ] [ f f ] if* ;
 
-M: ternary-search-tree new-assoc ( capacity exemplar -- newassoc )
+M: ternary-search-tree new-assoc
     2drop <ternary-search-tree> ;
 
-M: ternary-search-tree clear-assoc ( tree -- )
+M: ternary-search-tree clear-assoc
     f >>root 0 >>count drop ;
 
-M: ternary-search-tree delete-at ( key tree -- )
-    [ root>> search dup [ exists>> ] [ f ] if* ] keep
+M: ternary-search-tree delete-at
+    [ root>> swap search dup [ exists>> ] [ f ] if* ] keep
     swap [
         [ 1 - ] change-count drop
         f >>value f >>exists drop
     ] [ 2drop ] if ;
 
-M: ternary-search-tree assoc-size ( tree -- n )
-    count>> ;
+M: ternary-search-tree assoc-size count>> ;
 
-M: ternary-search-tree set-at ( value key tree -- )
-    [ 1 + ] change-count [ <tree-node> ] maybe-root insert ;
+M: ternary-search-tree set-at
+    [ [ <tree-node> ] maybe-root insert ] keep
+    swap [ [ 1 + ] change-count ] unless drop ;
 
 : (>alist) ( key node/f -- )
     [
