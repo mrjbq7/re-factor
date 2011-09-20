@@ -110,3 +110,10 @@ USE: math.statistics
 [ "12th" ] [ 12 humanize ] unit-test
 [ "13th" ] [ 13 humanize ] unit-test
 [ "21st" ] [ 21 humanize ] unit-test
+
+[ "" ] [ "abcd" dup length [ remove-random nip ] times ] unit-test
+
+[ "abc" ] [ "abc" 0 rotate ] unit-test
+[ "bca" ] [ "abc" 1 rotate ] unit-test
+[ "cab" ] [ "abc" 2 rotate ] unit-test
+[ "abc" ] [ "abc" 3 rotate ] unit-test

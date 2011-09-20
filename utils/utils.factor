@@ -168,3 +168,11 @@ USE: io
 
 : read-struct ( class -- struct )
     [ heap-size read ] [ memory>struct ] bi ;
+
+USE: random
+
+: remove-random ( seq -- elt seq' )
+    [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
+
+: rotate ( seq n -- seq' )
+    cut prepend ;
