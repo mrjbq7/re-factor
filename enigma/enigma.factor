@@ -1,28 +1,23 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors ascii kernel locals math random sequences utils
-;
+USING: accessors arrays ascii kernel locals math random
+sequences utils ;
 
 IN: enigma
 
 : <alphabet> ( -- seq )
-    26 iota { } like ;
-
-: rotate ( seq n -- seq' )
-    cut swap append ;
+    26 iota >array ;
 
 : <cog> ( -- cog )
     <alphabet> randomize ;
 
-: remove-random ( seq -- seq' elt )
-    [ length random ] keep [ nth ] [ remove-nth ] 2bi swap ;
+: remove-random ( seq -- elt seq' )
+    [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
 
 : <reflector> ( -- reflector )
     <alphabet> dup length iota [ dup empty? ] [
-        over [
-            remove-random [ remove-random ] dip
-        ] dip exchange
+        remove-random remove-random [ pick exchange ] dip
     ] until drop ;
 
 TUPLE: enigma cogs prev-cogs reflector print-special? ;
@@ -48,6 +43,6 @@ TUPLE: enigma cogs prev-cogs reflector print-special? ;
             cogs [ nth ] each reflector nth
             cogs reverse [ index ] each CHAR: a +
             cogs length iota [ 6 * 1 + ln mod zero? ] filter
-            cogs [ 1 rotate ] change-nths
+            cogs [ unclip prefix ] change-nths
         ] if
     ] map ;
