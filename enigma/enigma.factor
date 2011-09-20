@@ -20,10 +20,10 @@ IN: enigma
         remove-random remove-random [ pick exchange ] dip
     ] until drop ;
 
-TUPLE: enigma cogs prev-cogs reflector print-special? ;
+TUPLE: enigma cogs prev-cogs reflector ;
 
 : <enigma> ( num-cogs -- enigma )
-    [ <cog> ] replicate dup { } clone-like <reflector> t enigma boa ;
+    [ <cog> ] replicate dup { } clone-like <reflector> enigma boa ;
 
 : reset-cogs ( enigma -- enigma )
     dup prev-cogs>> >>cogs ;
@@ -37,12 +37,10 @@ TUPLE: enigma cogs prev-cogs reflector print-special? ;
     enigma reflector>> :> reflector
     text >lower [
         CHAR: a mod dup special? [
-            enigma print-special?>> [ drop f ] unless
-        ] [
             ln 1 + ln!
             cogs [ nth ] each reflector nth
             cogs reverse [ index ] each CHAR: a +
             cogs length iota [ 6 * 1 + ln mod zero? ] filter
             cogs [ unclip prefix ] change-nths
-        ] if
+        ] unless
     ] map ;
