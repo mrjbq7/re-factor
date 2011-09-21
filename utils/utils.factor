@@ -137,7 +137,7 @@ USE: grouping
 : swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
     '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
 
-: change-nths ( indices seq quot: ( elt -- elt' ) -- )
+: change-nths ( ... indices seq quot: ( ... elt -- ... elt' ) -- ... )
     [ change-nth ] 2curry each ; inline
 
 : majority ( seq -- elt/f )
