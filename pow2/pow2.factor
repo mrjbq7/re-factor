@@ -4,7 +4,7 @@
 USING: kernel literals math math.functions math.ranges memoize
 sequences sequences.private typed ;
 
-IN: pow
+IN: pow2
 
 : float>parts ( x -- float int )
     dup >fixnum [ - ] keep ; inline

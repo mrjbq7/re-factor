@@ -1,7 +1,7 @@
 
-USING: pow tools.test ;
+USING: pow2 tools.test ;
 
-IN: pow.tests
+IN: pow2.tests
 
 [ 0.5 ] [ -1 pow2 ] unit-test
 [ 1.0 ] [ 0 pow2 ] unit-test
