@@ -12,9 +12,6 @@ IN: enigma
 : <cog> ( -- cog )
     <alphabet> randomize ;
 
-: remove-random ( seq -- elt seq' )
-    [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
-
 : <reflector> ( -- reflector )
     <alphabet> dup length iota [ dup empty? ] [
         remove-random remove-random [ pick exchange ] dip
@@ -23,7 +20,7 @@ IN: enigma
 TUPLE: enigma cogs prev-cogs reflector ;
 
 : <enigma> ( num-cogs -- enigma )
-    [ <cog> ] replicate dup { } clone-like <reflector> enigma boa ;
+    [ <cog> ] replicate dup clone <reflector> enigma boa ;
 
 : reset-cogs ( enigma -- enigma )
     dup prev-cogs>> >>cogs ;
