@@ -6,7 +6,7 @@ sequences sequences.private typed ;
 
 IN: pow
 
-TYPED: float>parts ( x: float -- float: float int: fixnum )
+: float>parts ( x -- float int )
     dup >fixnum [ - ] keep ; inline
 
 <<
@@ -40,7 +40,7 @@ CONSTANT: FRAC3 $[ 2 PRECISION1 iota [ PRECISION3 / ^ ] with map ]
 : 2^int ( n -- 2^int frac )
     [ float>parts ] keep 0 >= [ 1 swap shift ] [
         over 0 < [ [ 1 + ] [ 1 - ] bi* ] when
-        [ 1.0 1 ] dip neg shift /
+        1 swap neg shift 1.0 swap /
     ] if swap ; inline
 
 : 2^frac ( frac -- 2^frac )
@@ -49,15 +49,18 @@ CONSTANT: FRAC3 $[ 2 PRECISION1 iota [ PRECISION3 / ^ ] with map ]
     [ BITS1 neg shift MASK bitand FRAC2 nth-unsafe ]
     [ MASK bitand FRAC3 nth-unsafe ] tri * * ; inline
 
-TYPED: pow2 ( n: float -- 2^n: float )
-    2^int 2^frac * ;
+: pow2 ( n -- 2^n )
+    >float 2^int 2^frac * >float ;
 
 ! "orig" print [ 1000000 [ 2 16.3 ^ drop ] times ] time
 ! "pow2" print [ 1000000 [ 16.3 pow2 drop ] times ] time
 
-! : pow2-seq ( n -- seq )
-!     [ -20 20 uniform-random-float ] replicate ;
+USE: random
+USE: tools.time
 
-! : pow2-test ( seq -- new old )
-!     [ [ pow2 ] [ map drop ] benchmark ]
-!     [ 2 swap [ ^ ] with [ map drop ] benchmark ] bi ;
+: pow2-seq ( n -- seq )
+    [ -20 20 uniform-random-float ] replicate ;
+
+: pow2-test ( seq -- new old )
+    [ [ pow2 drop ] [ each ] benchmark ]
+    [ 2 swap [ ^ drop ] with [ each ] benchmark ] bi ;
