@@ -64,3 +64,13 @@ USE: tools.time
 : pow2-test ( seq -- new old )
     [ [ pow2 drop ] [ each ] benchmark ]
     [ 2 swap [ ^ drop ] with [ each ] benchmark ] bi ;
+
+: fast-pow ( a b -- a^b )
+    [ double>bits -32 shift 1072632447 - ]
+    [ * 1072632447 + >integer 32 shift bits>double ] bi* ;
+
+: fast-exp ( x -- e^x )
+    1512775 * 1072693248 60801 - + 32 shift bits>double ;
+
+: fast-ln ( x -- y )
+    double>bits -32 shift 1072632447 - 1512775 / ;
