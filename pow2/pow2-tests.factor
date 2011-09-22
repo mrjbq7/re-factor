@@ -1,5 +1,5 @@
 
-USING: pow2 tools.test ;
+USING: kernel math math.functions pow2 sequences tools.test ;
 
 IN: pow2.tests
 
@@ -11,3 +11,12 @@ IN: pow2.tests
 [ 0.0009765625 ] [ -10 pow2 ] unit-test
 [ 0.81225239593676 ] [ -0.3 pow2 ] unit-test
 [ 3.24900958374704 ] [ 1.7 pow2 ] unit-test
+
+: relative-error ( approx value -- relative-error )
+    [ - abs ] keep / ;
+
+[ t ] [
+    10000 pow2-seq
+    [ [ pow2 ] [ 2 swap ^ ] bi relative-error ] map
+    supremum 1e-9 <
+] unit-test

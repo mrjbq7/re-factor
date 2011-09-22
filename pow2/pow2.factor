@@ -1,13 +1,13 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel literals math math.functions math.ranges memoize
-sequences sequences.private typed ;
+USING: kernel literals math math.functions sequences
+sequences.private ;
 
 IN: pow2
 
 : float>parts ( x -- float int )
-    dup >fixnum [ - ] keep ; inline
+    dup >integer [ - ] keep ; inline
 
 <<
 CONSTANT: BITS1 10
