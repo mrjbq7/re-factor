@@ -106,6 +106,9 @@ n-partition:
 ntp:
     simple NTP client
 
+picomath:
+    implementation of picomath.org
+
 plagiarism:
     a simple plagiarism detector
 
