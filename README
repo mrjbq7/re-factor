@@ -61,6 +61,9 @@ fast-fib:
 fast-now:
     faster, cached-per-millisecond version of "now"
 
+fast-pow:
+    faster version of pow2, pow, log, exp for doubles
+
 fizzbuzz:
     implementations of FizzBuzz problem
 
@@ -117,9 +120,6 @@ plagiarism:
 
 port-scan:
     simple port scanner
-
-pow:
-    faster version of 2^n
 
 power-of-2:
     various methods of implementing "power-of-2?"
