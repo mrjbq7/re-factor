@@ -13,6 +13,9 @@ Factor programming language (http://factorcode.org).  These include:
 accessors.maybe:
     the "set if unset then get" accessor
 
+ant:
+    implements the "ant puzzle"
+
 bitly:
     wrapper for Bitly V3 API
 
