@@ -33,9 +33,11 @@ USE: math.vectors
 
 USE: locals
 
+: next-term ( approx i -- approx' )
+    [ 2 * 1 + ] [ odd? [ neg ] when ] bi 4.0 swap / + ; inline
+
 :: find-pi-to ( accuracy -- n approx )
     1 4.0 [
-        over [ 2 * 1 + ] [ odd? [ neg ] when ] bi
-        4.0 swap / dupd + [ - ] keep
+        dup pick next-term [ - ] keep
         swap abs accuracy >= [ 1 + ] 2dip
     ] loop ;
