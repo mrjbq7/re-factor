@@ -19,3 +19,23 @@ IN: euler
 : approximate-e ( n -- approx )
     [ numbers-added ] replicate average ;
 
+! Given that Pi can be estimated using the function 4 * (1 - 1/3 +
+! 1/5 - 1/7 + ...) with more terms giving greater accuracy, write
+! a function that calculates Pi to an accuracy of 5 decimal
+! places.
+
+USE: math.ranges
+USE: math.vectors
+
+: approximate-pi ( n -- approx )
+    [1,b] 2 v*n 1 v-n 1 swap n/v
+    [ odd? [ neg ] when ] map-index sum 4 * ;
+
+USE: locals
+
+:: find-pi-to ( accuracy -- n approx )
+    1 4.0 [
+        over [ 2 * 1 + ] [ odd? [ neg ] when ] bi
+        4.0 swap / dupd + [ - ] keep
+        swap abs accuracy >= [ 1 + ] 2dip
+    ] loop ;
