@@ -117,3 +117,6 @@ USE: math.statistics
 [ "bca" ] [ "abc" 1 rotate ] unit-test
 [ "cab" ] [ "abc" 2 rotate ] unit-test
 [ "abc" ] [ "abc" 3 rotate ] unit-test
+
+[ f ] [ 1 HS{ 1 } ?adjoin ] unit-test
+[ 1 ] [ 1 HS{ } clone ?adjoin ] unit-test

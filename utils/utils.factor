@@ -176,3 +176,8 @@ USE: random
 
 : rotate ( seq n -- seq' )
     cut prepend ;
+
+USE: sets
+
+: ?adjoin ( elt set -- elt/f )
+    2dup in? [ 2drop f ] [ dupd adjoin ] if ;
