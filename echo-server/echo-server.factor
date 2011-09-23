@@ -1,10 +1,9 @@
 ! Copyright (C) 2008 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: kernel io io.encodings.ascii io.servers.connection
-accessors ;
+USING: accessors kernel io io.encodings.ascii io.servers ;
 
-IN: echo
+IN: echo-server
 
 : echo-loop ( -- )
     readln [ write "\r\n" write flush echo-loop ] when* ;
@@ -15,10 +14,10 @@ IN: echo
         "echo.server" >>name
         [ echo-loop ] >>handler ;
 
-: echod ( port -- )
+: echod ( port -- server )
     <echo-server> start-server ;
 
-: echod-main ( -- ) 1234 echod ;
+: echod-main ( -- ) 1234 echod drop ;
 
 MAIN: echod-main
 
