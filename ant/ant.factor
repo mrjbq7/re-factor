@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators hash-sets hashtables kernel locals
-math math.parser sequences sets vectors ;
+USING: accessors combinators fry hash-sets hashtables kernel
+locals math math.parser sequences sets utils vectors ;
 
 IN: ant
 
@@ -44,3 +44,21 @@ STRUCT: point { x uint } { y uint } ;
             ] when
         ] unless
     ] until total ;
+
+: walk ( stack point -- stack' )
+    {
+        [ clone [ 1 + ] change-x over push ]
+        [ clone [ 1 - ] change-x over push ]
+        [ clone [ 1 + ] change-y over push ]
+        [ clone [ 1 - ] change-y over push ]
+    } cleave ;
+
+: ?walk ( total stack point -- total stack )
+    dup walkable? [ walk [ 1 + ] dip ] [ drop ] if ;
+
+: (ant) ( total stack seen -- total' )
+    '[ dup pop _ ?adjoin [ ?walk ] when* ] until-empty ;
+
+: ant-no-locals ( -- total )
+    0 1000 1000 <point> 1vector HS{ } clone (ant) ;
+
