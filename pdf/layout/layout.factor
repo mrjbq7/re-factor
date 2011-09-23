@@ -5,6 +5,9 @@ USING: accessors arrays combinators fonts fry io.streams.string
 kernel make math math.order memoize pdf.text pdf.wrap sequences
 ui.text unicode.categories ;
 
+FROM: assocs => change-at ;
+FROM: sequences => change-nth ;
+
 USE: assocs
 USE: io.styles
 USE: colors.constants
