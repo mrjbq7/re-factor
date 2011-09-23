@@ -10,9 +10,9 @@ HOOK: open-file os ( path -- )
 HOOK: open-url os ( url -- )
 
 {
-    { [ os macosx? ] [ "webbrowser.macosx"  ] }
-    { [ os unix?   ] [ "webbrowser.unix"    ] }
-    { [ os winnt?  ] [ "webbrowser.windows" ] }
+    { [ os macosx?  ] [ "webbrowser.macosx"  ] }
+    { [ os unix?    ] [ "webbrowser.unix"    ] }
+    { [ os windows? ] [ "webbrowser.windows" ] }
 } cond require
 
 [ url? ] \ open-url H{ } define-operation

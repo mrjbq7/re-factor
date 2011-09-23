@@ -7,9 +7,9 @@ combinators system alien.libraries ;
 IN: mysql.ffi
 
 << "mysql" {
-    { [ os winnt? ]  [ "libmysql.dll" ] }
-    { [ os macosx? ] [ "libmysqlclient.dylib" ] }
-    { [ os unix?  ]  [ "libmysqlclient.so" ] }
+    { [ os windows? ] [ "libmysql.dll" ] }
+    { [ os macosx?  ] [ "libmysqlclient.dylib" ] }
+    { [ os unix?    ] [ "libmysqlclient.so" ] }
 } cond cdecl add-library >>
 
 LIBRARY: mysql
