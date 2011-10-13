@@ -4,7 +4,7 @@
 USING: accessors combinators command-line continuations
 formatting io io.directories io.files.types io.pathnames kernel
 math math.order namespaces sequences sorting utils ;
-
+FROM: namespaces => change-global ;
 IN: unix-tools.tree
 
 SYMBOL: #files
