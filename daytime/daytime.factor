@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license.
 
 USING: accessors calendar formatting kernel io
-io.encodings.ascii io.servers.connection ;
+io.encodings.ascii io.servers ;
 
 IN: daytime
 
