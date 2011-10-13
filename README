@@ -19,6 +19,9 @@ ant:
 bitly:
     wrapper for Bitly V3 API
 
+bowling:
+    bowling score calculator
+
 calc:
     an EBNF-based infix string calculator
 
