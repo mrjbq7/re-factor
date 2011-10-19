@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: command-line io io.encodings.utf8 io.files kernel
-namespaces sets sequences utils ;
+namespaces sets sequences ;
 
 IN: unix-tools.uniq
 

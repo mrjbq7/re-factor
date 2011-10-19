@@ -20,5 +20,5 @@ rolls  = total | error
 
 MACRO: roll ( string -- ) parse-roll ;
 
-SYNTAX: ROLL: scan parse-roll append ;
+SYNTAX: ROLL: scan-token parse-roll append ;
 

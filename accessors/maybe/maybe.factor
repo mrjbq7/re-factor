@@ -14,7 +14,7 @@ IN: accessors.maybe
             [ keep ] curry , \ compose ,
             swap reader-word [ dup ] swap 1quotation compose
             [ [ nip ] ] compose , \ dip , \ if* ,
-        ] [ ] make (( object quot: ( -- x ) -- value )) define-inline
+        ] [ ] make ( object quot: ( -- x ) -- value ) define-inline
     ] [ 2drop ] if ;
 
 : define-maybe-accessors ( class -- )

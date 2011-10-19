@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: combinators io kernel math.functions present sequences
-utils ;
+USING: arrays combinators io kernel math.functions present
+sequences utils ;
 
 IN: fizzbuzz
 
