@@ -27,19 +27,15 @@ ERROR: invalid-throw ;
         over throw#>> = [ invalid-throw ] unless
     ] [ drop ] if ;
 
-: check-strike? ( game -- game )
-    dup pins>> 10 = [ invalid-throw ] unless ;
-
 : check-pins ( game n -- game n )
     over pins>> dupd <= [ invalid-throw ] unless ;
 
 : bonus ( game n -- game n' )
     over bonus>> [
-        2 > [
-            [ [ 2 - ] change-bonus ] dip 3 *
-        ] [
-            [ [ 1 - ] change-bonus ] dip 2 *
-        ] if
+        2 >
+        [ [ [ 2 - ] change-bonus ] dip 3 * ]
+        [ [ [ 1 - ] change-bonus ] dip 2 * ]
+        if
     ] unless-zero ;
 
 : take-pins ( game n -- game )
@@ -53,17 +49,13 @@ ERROR: invalid-throw ;
         [ + ] curry change-bonus
     ] [ drop ] if ;
 
-PRIVATE>
-
 : strike ( game -- game )
-    0 check-throw# check-strike?
-    10 take-pins 2 add-bonus
-    next-frame ;
+    0 check-throw# 10 take-pins
+    2 add-bonus next-frame ;
 
 : spare ( game -- game )
-    1 check-throw#
-    dup pins>> take-pins 1 add-bonus
-    next-frame ;
+    1 check-throw# dup pins>> take-pins
+    1 add-bonus next-frame ;
 
 : hit ( game n -- game )
     take-pins next-throw ;
@@ -75,6 +67,8 @@ PRIVATE>
         { CHAR: / [ spare ] }
         [ CHAR: 0 - hit ]
     } case ;
+
+PRIVATE>
 
 : score-frame ( str -- score )
     [ <game> ] dip [ throw-ball ] each
