@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: combinators system ui.operations urls vocabs.loader ;
+USING: combinators system ui.operations urls vocabs ;
 
 IN: webbrowser
 
