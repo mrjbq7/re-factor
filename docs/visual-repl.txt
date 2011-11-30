@@ -1,0 +1,373 @@
+===================
+   "Visual REPL"
+===================
+
+Lightning talk for Factor at Github's CodeConf 2011.
+
+Basics of Factor
+================
+
+Words
+
+    : add2 ( x -- y ) 2 + ;
+
+    ( scratchpad ) 7 add2 .
+    9
+
+Objects
+
+    TUPLE: circle radius ;
+    C: <circle> circle
+
+    TUPLE: rectangle length width ;
+    C: <rectangle rectangle
+
+    GENERIC: area ( shape -- area )
+    M: circle area radius>> dup * pi * ;
+    M: rectangle area [ length>> ] [ width>> ] bi * ;
+
+    ( scrachpad ) 13 <circle> area .
+
+Some people say it's hard to read, but like anything, you can write bad code
+in any language.  Contrast n-partition (mine vs. Slava).
+
+    def n_partition(x, n):
+        delta = float(x) / n
+        last, total = 0, 0.0
+        l = []
+        for _ in range(n):
+            total += delta
+            value = int(round(total))
+            l.append(value - last)
+            last = value
+        return l
+
+    : n-partition ( x n -- seq )
+        [ / ] keep 0 <array> [ 0 0 ] dip [
+            + [ [ dup ] dip + ] dip
+            [ dup round ] dip 2dup -
+            [ drop ] dip
+        ] map nip nip nip ;
+
+    : percentages ( n -- seq ) [ [1,b] ] keep v/n ;
+    : steps ( x n -- seq ) percentages n*v ;
+    : rounded ( seq -- seq' ) [ round ] map ;
+    : differences ( seq -- seq' ) dup 0 prefix v- ;
+
+    : n-partition ( x n -- seq ) steps rounded differences ;
+
+
+Listener
+========
+
+    { 12 18 24 72 }
+    [ "Bigger" swap font-size associate format nl ] each
+
+
+    10 iota [
+        "Hello world\n"
+        swap 10 / 1 over - over 1 <rgba>
+        background associate format
+    ] each
+
+    "http://factorcode.org/logo.png" http-image.
+
+
+
+Fortune
+=======
+
+    "/opt/local/share/games/fortune/fortunes" ascii file-lines
+    { "%" } split random [ print ] each
+
+
+Brainfuck
+=========
+
+Hello, world
+
+    : hello-world ( -- )
+        "
+        ++++++++++[>+++++++>++++++++++>+++>+<<<<-]
+        >++.>+.+++++++..+++.>++.<<+++++++++++++++
+        .>.+++.------.--------.>+.>.
+        " run-brainfuck ;
+
+    [ hello-world ] expand-macros .
+
+
+Calculator
+==========
+
+    USE: calc-ui
+    "calc-ui" run
+    \ calc-ui see
+
+
+Help System
+===========
+
+- apropos
+- browser
+- word definitions (clickable)
+
+    "http" apropos
+
+    \ http-get see
+
+    \ http-get edit
+
+
+Unicode
+=======
+
+    "Hello, world!" "en" "ja" translate print
+
+
+Google Chart
+============
+
+Pie
+
+    : usage-histogram ( words -- assoc )
+        [ [ name>> ] [ usage length ] bi ] { } map>assoc ;
+
+    { read readln write print nl flush }
+    usage-histogram <pie> chart.
+
+    { read readln write print nl flush }
+    usage-histogram <pie>
+        COLOR: blue >>foreground
+        COLOR: light-gray >>background
+        "Usage of I/O words" >>title
+    chart.
+
+Bar
+
+    "/usr/share/dict/words" utf8 file-lines
+    [ >lower first 1string ] map histogram
+    >alist sort-keys <bar>
+        COLOR: green >>foreground
+        COLOR: white >>background
+        400 >>width
+        10 >>bar-width
+        { 0 0 } >>margin
+    chart.
+
+QR Codes
+
+    "Hello, world!" <qr-code> chart.
+
+Scatter
+
+    100 [ 100 random ] replicate
+    100 [ 100 random ] replicate
+    zip <scatter> chart.
+
+
+
+Wolfram Alpha
+=============
+
+- wolfram-text.
+- wolfram-image.
+- wolfram.
+
+    "san francisco" wolfram.
+
+
+Styled Streams
+==============
+
+Tutorials
+
+    : first-program ( -- )
+         {
+            "first-program-start"
+            "first-program-logic"
+            "first-program-test"
+            "first-program-extend"
+        }  [ print-topic nl ] each ;
+
+    : write-and-open ( contents path -- )
+        [ utf8 set-file-contents ] [ open-file ] bi ;
+
+    [ first-program ] with-string-writer
+    "/tmp/foo.txt" write-and-open
+
+    [ first-program ] with-html-writer xml>string
+    "/tmp/foo.html" write-and-open
+
+    [ first-program ] with-pdf-writer pdf>string
+    "/tmp/foo.pdf" write-and-open
+
+Syntax Highlighting
+
+    "webbrowser" vocab-source-path highlight.
+
+Code-to-PDF
+
+    "webbrowser" vocab-source-path code-to-pdf
+
+
+Slides
+======
+
+    {
+        { $slide "Factor!"
+            { $url "http://factorcode.org" }
+            "Development started in 2003"
+            "Open source (BSD license)"
+            "Influenced by Forth, Lisp, and Smalltalk"
+            "Blurs the line between language and library"
+            "Interactive development"
+        }
+    } slides-window
+
+    {
+        { $slide "Code!"
+            "Try clicking on these:"
+            { $code "2 2 +" }
+            { $vocab-link "sequences" }
+            { $link nth }
+            { $url "http://factorcode.org" }
+        }
+    } slides-window
+
+
+OpenGL
+======
+
+    "gpu.demos.bunny" run
+    "gpu.demos.raytrace" run
+
+
+gadget.
+=======
+
+    "Press Me" [ drop "tetris" run ] <border-button> gadget.
+
+
+Github Vanity (w/ GUI)
+======================
+
+    "mojombo" gravatar.
+    "mojombo" vain
+
+
+Inline Assembly (CPU speed?)
+============================
+
+    #if defined(__i386__)
+
+    static __inline__ unsigned long long rdtsc(void)
+    {
+        unsigned long long int x;
+        __asm__ __volatile__ (".byte 0x0f, 0x31" : "=A" (x));
+        return x;
+    }
+
+    #elif defined(__x86_64__)
+
+    static __inline__ unsigned long long rdtsc(void)
+    {
+        unsigned long long hi, lo;
+        __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
+        return ( (unsigned long long)lo)|( ((unsigned long long)hi)<<32 );
+    }
+
+    #endif
+
+vs.
+
+    USING: alien alien.c-types cpu.x86.assembler
+    cpu.x86.assembler.operands system ;
+
+    HOOK: rdtsc cpu ( -- n )
+
+    M: x86.32 rdtsc
+        longlong { } cdecl [
+            RDTSC
+        ] alien-assembly ;
+
+    M: x86.64 rdtsc
+        longlong { } cdecl [
+            RAX 0 MOV
+            RDTSC
+            RDX 32 SHL
+            RAX RDX OR
+        ] alien-assembly ;
+
+and
+
+: add ( a b -- c )
+    double { double double } cdecl
+    [ XMM0 XMM1 ADDPD ]
+    alien-assembly ;
+
+1.5 2.0 add .
+3.5
+
+
+Disassemble
+===========
+
+    [ "hello, world" print ] disassemble
+
+
+FFI
+===
+
+1. Build a simple C funciton in power-of-2.c:
+
+    #include <stdint.h>
+
+    int64_t isPowerOfTwo (int64_t x)
+    {
+        return ((x > 0) && ((x & (x - 1)) == 0));
+    }
+
+2. Build a C library we can use:
+
+    $ cc -fno-common -c power-of-2.c
+    $ cc -dynamiclib -install_name power-of-2.dylib \
+         -o power-of-2.dylib power-of-2.o
+    $ sudo mv power-of-2.dylib /usr/local/lib
+
+3. Wrap the C library form Factor:
+
+    USING: alien alien.c-types alien.syntax alien.libraries ;
+
+    "libpowerof2" "power-of-2.dylib" cdecl add-library
+
+    LIBRARY: libpowerof2
+
+    FUNCTION: int isPowerOfTwo ( int x ) ;
+
+4. And, finally, build a Factor word that uses it:
+
+    : power-of-2? ( n -- ? ) isPowerOfTwo 1 = ;
+
+    ( scratchpad ) 15 isPowerOfTwo 1 =
+    ( scratchpad ) 16 isPowerOfTwo 1 =
+
+
+Other
+=====
+
+    Fluent interfaces are all the rage.
+
+    Compiler passes, optimizations...
+
+    Infix expressions
+
+    Locals
+
+
+Learn More
+==========
+
+- Slava's Google Tech Talk
+- concatenative.org
+- #concatenative
+
