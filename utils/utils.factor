@@ -14,12 +14,6 @@ MACRO: cleave-array ( quots -- )
 : until-empty ( seq quot -- )
     [ dup empty? ] swap until drop ; inline
 
-: ?first ( seq -- first/f )
-    [ f ] [ first ] if-empty ; inline
-
-: ?last ( seq -- last/f )
-    [ f ] [ last ] if-empty ; inline
-
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
@@ -181,3 +175,25 @@ USE: sets
 
 : ?adjoin ( elt set -- elt/f )
     2dup in? [ 2drop f ] [ dupd adjoin ] if ;
+
+: pad-longest ( seq1 seq2 elt -- seq1 seq2 )
+    [ 2dup max-length ] dip [ pad-tail ] 2curry bi@ ;
+
+USE: parser
+USE: generic
+USE: tools.annotations
+
+<<
+: wrap-method ( word before-quot after-quot -- )
+    pick reset [ surround ] 2curry annotate ;
+>>
+
+<<
+SYNTAX: BEFORE:
+    scan-word scan-word lookup-method
+    parse-definition [ ] wrap-method ;
+
+SYNTAX: AFTER:
+    scan-word scan-word lookup-method
+    [ ] parse-definition wrap-method ;
+>>

@@ -120,3 +120,9 @@ USE: math.statistics
 
 [ f ] [ 1 HS{ 1 } ?adjoin ] unit-test
 [ 1 ] [ 1 HS{ } clone ?adjoin ] unit-test
+
+[ "" "" ] [ "" "" CHAR: ? pad-longest ] unit-test
+[ "abc" "def" ] [ "abc" "def" CHAR: ? pad-longest ] unit-test
+[ "   " "abc" ] [ "" "abc" CHAR: \s pad-longest ] unit-test
+[ "abc" "   " ] [ "abc" "" CHAR: \s pad-longest ] unit-test
+[ "abc..." "foobar" ] [ "abc" "foobar" CHAR: . pad-longest ] unit-test
