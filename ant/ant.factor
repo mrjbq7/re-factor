@@ -25,7 +25,7 @@ STRUCT: point { x uint } { y uint } ;
 :: ant ( -- total )
     ! HS{ } clone :> seen
     ! V{ } clone :> stack
-    200000 <hashtable> hash-set boa :> seen
+    200000 <hash-set> :> seen
     100000 <vector> :> stack
     0 :> total!
 
@@ -60,5 +60,8 @@ STRUCT: point { x uint } { y uint } ;
     '[ dup pop _ ?adjoin [ ?walk ] when* ] until-empty ;
 
 : ant-no-locals ( -- total )
-    0 1000 1000 <point> 1vector HS{ } clone (ant) ;
-
+    0
+    100000 <vector>
+    200000 <hash-set>
+    1000 1000 <point> pick push
+    (ant) ;
