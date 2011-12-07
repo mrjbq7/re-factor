@@ -34,21 +34,21 @@ IN: unix-tools.wc
         0 swap [
             [ CHAR: \n = ] count +
         ] each-stream-block-slice
-    ] with-destructors ;
+    ] with-disposal ;
 
 : wc-faster ( path -- n ) ! 0.223 seconds
     binary <file-reader> [
         0 swap [
             [ CHAR: \n = ] count + >fixnum
         ] each-stream-block-slice
-    ] with-destructors ;
+    ] with-disposal ;
 
 USE: fry
 
 : wc-fast-read-until ( path -- n ) ! 2.8 seconds
     binary <file-reader> [
         0 swap '[ "\n" _ stream-read-until [ drop 1 + ] dip ] loop
-    ] with-destructors ;
+    ] with-disposal ;
 
 USE: io.encodings.utf8
 USE: io.launcher
