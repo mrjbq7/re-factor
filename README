@@ -115,6 +115,9 @@ n-partition:
 ntp:
     simple NTP client
 
+periodic-words:
+    calculates if a word is "periodic", like "GeNiUS".
+
 picomath:
     implementation of picomath.org
 
