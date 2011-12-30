@@ -157,6 +157,9 @@ second-color:
 simple-rpg:
     simple role-playing game example
 
+slot-machine:
+    simple text-based slot machine
+
 sorting.marriage:
     in-place marriage sort algorithm
 
