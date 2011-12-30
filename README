@@ -151,6 +151,9 @@ repopular:
 robohash:
     wrapper for Robohash.org
 
+second-color:
+    implements a "colored" seconds hash
+
 simple-rpg:
     simple role-playing game example
 
