@@ -21,7 +21,7 @@ CONSTANT: SYMBOLS "☀☁☂☃"
     } cleave ;
 
 : print-spin ( a b c -- a b c )
-    "\e[0;0H\e[2J" write
+    "\e[0;0H" write
     "Welcome to the Factor slot machine!" print nl
     "  +--------+" print
     "  | CASINO |" print
@@ -35,6 +35,7 @@ CONSTANT: SYMBOLS "☀☁☂☃"
     3array all-equal? nl "You WIN!" "You LOSE!" ? print nl ;
 
 : play-slots ( -- )
+    "\e[0;0H\e[2J" write
     f f f 20 iota [ spin-slots print-spin ] each winner? ;
 
 : continue? ( -- ? )
