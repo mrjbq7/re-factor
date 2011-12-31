@@ -26,11 +26,12 @@ IN: dupe
 : arg? ( name args -- args' ? )
     2dup member? [ remove t ] [ nip f ] if ;
 
-: run-dupe ( verbose? root -- )
-    duplicate-files swap [ dup [ print-md5 ] assoc-each ] when
+: parse-args ( -- verbose? root )
+    "--verbose" command-line get arg? swap first ;
+
+: run-dupe ( -- )
+    parse-args duplicate-files swap
+    [ dup [ print-md5 ] assoc-each ] when
     assoc-size "Total duped files found: %d\n" printf ;
 
-: main-dupe ( -- )
-    "--verbose" command-line get arg? swap first run-dupe ;
-
-MAIN: main-dupe
+MAIN: run-dupe
