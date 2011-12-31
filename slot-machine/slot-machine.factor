@@ -7,7 +7,7 @@ IN: slot-machine
 CONSTANT: SYMBOLS "☀☁☂☃"
 
 : spin ( value -- value' )
-    drop SYMBOLS random ;
+    SYMBOLS remove random ;
 
 : spin-delay ( n -- )
     15 * 25 + milliseconds sleep ;
