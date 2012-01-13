@@ -79,6 +79,9 @@ flip-text:
 fortune:
     prints random quotations
 
+friday-13th:
+    date calculations for "Friday the 13th"
+
 gaddafi:
     match the many names of Muammar al-Gaddafi
 
