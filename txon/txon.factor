@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs combinators combinators.short-circuit formatting
-hashtables io kernel make math regexp sequences splitting
-strings unicode.categories ;
+hashtables io kernel make math math.parser regexp sequences
+splitting strings unicode.categories ;
 
 IN: txon
 
@@ -66,3 +66,6 @@ M: assoc >txon
 
 M: string >txon
     encode-value ;
+
+M: number >txon
+    number>string >txon ;
