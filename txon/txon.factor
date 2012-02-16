@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs combinators combinators.short-circuit formatting
-hashtables io kernel make math math.parser regexp sequences
-splitting strings unicode.categories ;
+grouping hashtables io kernel make math math.parser regexp
+sequences splitting strings unicode.categories ;
 
 IN: txon
 
@@ -15,17 +15,18 @@ IN: txon
 : parse-name ( string -- name remain )
     ":`" split1 [ decode-value ] dip ;
 
-: find-` ( string -- string n/f )
-    0 [
-        CHAR: ` swap pick index-from [
-            dup 1 - pick ?nth CHAR: \ = [ 1 + dup ] [ f ] if
-        ] [ f f ] if*
-    ] loop ;
+: (find-`) ( string -- n/f )
+    2 clump [
+        first2 [ CHAR: \ = not ] [ CHAR: ` = ] bi* and
+    ] find drop [ 1 + ] [ f ] if* ;
+
+: find-` ( string -- n/f )
+    dup ?first CHAR: ` = [ drop 0 ] [ (find-`) ] if ;
 
 DEFER: name/values
 
 : parse-value ( string -- value remain )
-    find-` [
+    dup find-` [
         dup 1 - pick ?nth CHAR: : =
         [ drop name/values ] [ cut [ decode-value ] dip ] if
         rest [ blank? ] trim-head
@@ -62,7 +63,9 @@ M: sequence >txon
     [ >txon ] map "\n" join ;
 
 M: assoc >txon
-    >alist [ first2 >txon "%s:`%s`" sprintf ] map "\n" join ;
+    >alist [
+        first2 [ encode-value ] [ >txon ] bi* "%s:`%s`" sprintf
+    ] map "\n" join ;
 
 M: string >txon
     encode-value ;

@@ -3,6 +3,16 @@ USING: tools.test txon ;
 
 IN: txon.tests
 
+[ "ABC" ] [ "ABC" >txon ] unit-test
+
+[ "A\\`C" ] [ "A`C" >txon ] unit-test
+
+[ "123" ] [ 123 >txon ] unit-test
+
+[ "1\n2\n3" ] [ { 1 2 3 } >txon ] unit-test
+
+[ "a:`123`\nb:`456`" ] [ H{ { "a" 123 } { "b" 456 } } >txon ] unit-test
+
 [ "foo" ] [ "foo" txon> ] unit-test
 
 [ "foo" ] [ "   foo   " txon> ] unit-test
