@@ -72,3 +72,5 @@ IN: txon.tests
     `
     " txon>
 ] unit-test
+
+[ H{ { "a" { "1" "2" "3" } } } ] [ "a:`1\n2\n3`" txon> ] unit-test

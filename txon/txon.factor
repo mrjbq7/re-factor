@@ -12,43 +12,48 @@ IN: txon
 : decode-value ( string -- string' )
     R" \\`" "`" re-replace ;
 
-: parse-name ( string -- name remain )
-    ":`" split1 [ decode-value ] dip ;
+: `? ( ch1 ch2 -- ? )
+    [ CHAR: \ = not ] [ CHAR: ` = ] bi* and ;
 
 : (find-`) ( string -- n/f )
-    2 clump [
-        first2 [ CHAR: \ = not ] [ CHAR: ` = ] bi* and
-    ] find drop [ 1 + ] [ f ] if* ;
+    2 clump [ first2 `? ] find drop [ 1 + ] [ f ] if* ;
 
 : find-` ( string -- n/f )
     dup ?first CHAR: ` = [ drop 0 ] [ (find-`) ] if ;
 
+: parse-name ( string -- remain name )
+    ":`" split1 swap decode-value ;
+
 DEFER: name/values
 
-: parse-value ( string -- value remain )
+: (parse-value) ( string -- values )
+    decode-value string-lines dup length 1 = [ first ] when ;
+
+: parse-value ( string -- remain value )
     dup find-` [
         dup 1 - pick ?nth CHAR: : =
-        [ drop name/values ] [ cut [ decode-value ] dip ] if
-        rest [ blank? ] trim-head
-    ] [ f ] if* ;
+        [ drop name/values ] [ cut swap (parse-value) ] if
+        [ rest [ blank? ] trim-head ] dip
+    ] [ f swap ] if* ;
 
-: name=value ( string -- term remain )
-    [ blank? ] trim ":`" over subseq? [
-        parse-name parse-value [ swap associate ] dip
-    ] [ f ] if ;
+: (name=value) ( string -- remain term )
+    parse-name [ parse-value ] dip associate ;
 
-: name/values ( string -- terms remain )
+: name=value ( string -- remain term )
+    [ blank? ] trim
+    ":`" over subseq? [ (name=value) ] [ f swap ] if ;
+
+: name/values ( string -- remain terms )
     [ dup { [ empty? not ] [ first CHAR: ` = not ] } 1&& ]
-    [ name=value swap ] produce assoc-combine swap ;
+    [ name=value ] produce assoc-combine ;
+
+: parse-txon ( string -- objects )
+    [ dup empty? not ] [ name=value ] produce nip ;
 
 PRIVATE>
 
 : txon> ( string -- object )
-    [
-        [ dup empty? not ]
-        [ name=value [ , ] dip ]
-        while drop
-    ] { } make dup length 1 = [ first ] when ;
+    parse-txon dup length 1 = [ first ] when ;
 
 <PRIVATE
 
