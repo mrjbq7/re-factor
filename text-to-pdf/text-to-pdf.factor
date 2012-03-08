@@ -11,8 +11,8 @@ IN: text-to-pdf
 
 : pdf-string ( str -- str' )
     H{
-        { HEX: 08    "\\b"  }
-        { HEX: 0c    "\\f"  }
+        { 0x08    "\\b"  }
+        { 0x0c    "\\f"  }
         { CHAR: \n   "\\n"  }
         { CHAR: \r   "\\r"  }
         { CHAR: \t   "\\t"  }

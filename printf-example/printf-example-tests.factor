@@ -7,7 +7,7 @@ IN: printf-example
 [ "asdf" ] [ "asdf" sprintf ] unit-test
 [ "10" ] [ 10 "%d" sprintf ] unit-test
 [ "-10" ] [ -10 "%d" sprintf ] unit-test
-[ "ff" ] [ HEX: ff "%x" sprintf ] unit-test
+[ "ff" ] [ 0xff "%x" sprintf ] unit-test
 [ "Hello, World!" ] [ "Hello, World!" "%s" sprintf ] unit-test
 [ "printf test" ] [ "printf test" sprintf ] unit-test
 [ "char a = 'a'" ] [ CHAR: a "char %c = 'a'" sprintf ] unit-test
