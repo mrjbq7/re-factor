@@ -8,83 +8,83 @@ IN: flip-text
 <PRIVATE
 
 CONSTANT: CHARS H{
-    { CHAR: A   HEX: 2200 }
-    { CHAR: B   HEX: 10412 }
-    { CHAR: C   HEX: 03FD }
-    { CHAR: D   HEX: 15E1 }
-    { CHAR: E   HEX: 018E }
-    { CHAR: F   HEX: 2132 }
-    { CHAR: G   HEX: 2141 }
+    { CHAR: A   0x2200 }
+    { CHAR: B   0x10412 }
+    { CHAR: C   0x03FD }
+    { CHAR: D   0x15E1 }
+    { CHAR: E   0x018E }
+    { CHAR: F   0x2132 }
+    { CHAR: G   0x2141 }
     ! { CHAR: H   CHAR: H }
     ! { CHAR: I   CHAR: I }
-    { CHAR: J   HEX: 148B }
-    { CHAR: K   HEX: 004B }
-    { CHAR: L   HEX: 2142 }
+    { CHAR: J   0x148B }
+    { CHAR: K   0x004B }
+    { CHAR: L   0x2142 }
     { CHAR: M   CHAR: W   }
     ! { CHAR: N   CHAR: N }
     ! { CHAR: O   CHAR: O }
-    { CHAR: P   HEX: 0500 }
-    { CHAR: Q   HEX: 038C }
-    { CHAR: R   HEX: 1D1A }
+    { CHAR: P   0x0500 }
+    { CHAR: Q   0x038C }
+    { CHAR: R   0x1D1A }
     ! { CHAR: S   CHAR: S }
-    { CHAR: T   HEX: 22A5 }
-    { CHAR: U   HEX: 0548 }
-    { CHAR: V   HEX: 039B }
+    { CHAR: T   0x22A5 }
+    { CHAR: U   0x0548 }
+    { CHAR: V   0x039B }
     { CHAR: W   CHAR: M   }
     ! { CHAR: X   CHAR: X }
-    { CHAR: Y   HEX: 2144 }
+    { CHAR: Y   0x2144 }
     ! { CHAR: Z   CHAR: Z }
-    { CHAR: a   HEX: 0250 }
+    { CHAR: a   0x0250 }
     { CHAR: b   CHAR: q   }
-    { CHAR: c   HEX: 0254 }
+    { CHAR: c   0x0254 }
     { CHAR: d   CHAR: p   }
-    { CHAR: e   HEX: 01DD }
-    { CHAR: f   HEX: 025F }
-    { CHAR: g   HEX: 1D77 } ! or 0183
-    { CHAR: h   HEX: 0265 }
-    { CHAR: i   HEX: 1D09 } ! or 0131
-    { CHAR: j   HEX: 027E } ! or 1E37
-    { CHAR: k   HEX: 029E }
-    { CHAR: l   HEX: 0283 } ! or 237
-    { CHAR: m   HEX: 026F }
+    { CHAR: e   0x01DD }
+    { CHAR: f   0x025F }
+    { CHAR: g   0x1D77 } ! or 0183
+    { CHAR: h   0x0265 }
+    { CHAR: i   0x1D09 } ! or 0131
+    { CHAR: j   0x027E } ! or 1E37
+    { CHAR: k   0x029E }
+    { CHAR: l   0x0283 } ! or 237
+    { CHAR: m   0x026F }
     { CHAR: n   CHAR: u   }
     ! { CHAR: o   CHAR: o }
     { CHAR: p   CHAR: d   }
     { CHAR: q   CHAR: b   }
-    { CHAR: r   HEX: 0279 }
+    { CHAR: r   0x0279 }
     ! { CHAR: s   CHAR: s }
-    { CHAR: t   HEX: 0287 }
+    { CHAR: t   0x0287 }
     { CHAR: u   CHAR: n   }
-    { CHAR: v   HEX: 028C }
-    { CHAR: w   HEX: 028D }
-    { CHAR: y   HEX: 028E }
+    { CHAR: v   0x028C }
+    { CHAR: w   0x028D }
+    { CHAR: y   0x028E }
     ! { CHAR: z   CHAR: z }
     ! { CHAR: 0   CHAR: 0 }
-    { CHAR: 1   HEX: 21C2 }
-    { CHAR: 2   HEX: 1105 }
-    { CHAR: 3   HEX: 0190 } ! or 1110
-    { CHAR: 4   HEX: 152D }
+    { CHAR: 1   0x21C2 }
+    { CHAR: 2   0x1105 }
+    { CHAR: 3   0x0190 } ! or 1110
+    { CHAR: 4   0x152D }
     ! { CHAR: 5   CHAR: 5 }
     { CHAR: 6   CHAR: 9   }
-    { CHAR: 7   HEX: 2C62 }
+    { CHAR: 7   0x2C62 }
     ! { CHAR: 8   CHAR: 8 }
     { CHAR: 9   CHAR: 6   }
-    { CHAR: &   HEX: 214B }
-    { CHAR: !   HEX: 00A1 }
-    { CHAR: "   HEX: 201E }
-    { CHAR: .   HEX: 02D9 }
-    { CHAR: ;   HEX: 061B }
+    { CHAR: &   0x214B }
+    { CHAR: !   0x00A1 }
+    { CHAR: "   0x201E }
+    { CHAR: .   0x02D9 }
+    { CHAR: ;   0x061B }
     { CHAR: [   CHAR: ]   }
     { CHAR: (   CHAR: )   }
     { CHAR: {   CHAR: }   }
-    { CHAR: ?   HEX: 00BF }
-    { CHAR: !   HEX: 00A1 }
+    { CHAR: ?   0x00BF }
+    { CHAR: !   0x00A1 }
     { CHAR: '   CHAR: ,   }
     { CHAR: <   CHAR: >   }
-    { CHAR: _   HEX: 203E }
-    { HEX: 203F HEX: 2040 }
-    { HEX: 2045 HEX: 2046 }
-    { HEX: 2234 HEX: 2235 }
+    { CHAR: _   0x203E }
+    { 0x203F 0x2040 }
+    { 0x2045 0x2046 }
+    { 0x2234 0x2235 }
     { CHAR: \r CHAR: \n   }
 }
 
