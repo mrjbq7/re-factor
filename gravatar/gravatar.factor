@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs formatting http.client images.http
-images.jpeg json.reader kernel sequences strings utils ;
+json.reader kernel sequences strings utils ;
 
 IN: gravatar
 
