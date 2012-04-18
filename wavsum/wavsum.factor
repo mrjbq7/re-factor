@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: alien.c-types classes.struct kernel io
+USING: alien.c-types alien.data classes.struct kernel io
 io.encodings.binary io.files math specialized-arrays ;
 
 FROM: sequences => map-sum ;
