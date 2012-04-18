@@ -2,9 +2,9 @@
 ! See http://factorcode.org/license.txt for BSD license.
 
 USING: accessors alien alien.c-types alien.data alien.strings
-classes.struct combinators db.errors fry generalizations
-io.encodings.utf8 kernel layouts make math math.parser mysql.ffi
-sequences ;
+calendar.format classes.struct combinators db.errors db.types
+fry generalizations io.encodings.utf8 kernel layouts make math
+math.parser mysql.ffi present sequences ;
 
 IN: mysql.lib
 
@@ -76,7 +76,7 @@ USE: locals
             { DATETIME [ timestamp>ymdhms MYSQL_TYPE_DATETIME ] }
             { TIMESTAMP [ timestamp>ymdhms MYSQL_TYPE_DATETIME ] }
             { BLOB [ MYSQL_TYPE_BLOB ] }
-            { FACTOR-BLOB [ object>bytes MYSQL_TYPE_BLOB ] }
+            ! FIXME: { FACTOR-BLOB [ object>bytes MYSQL_TYPE_BLOB ] }
             { URL [ present MYSQL_TYPE_VARCHAR ] }
             { +db-assigned-id+ [ MYSQL_TYPE_LONG ] }
             { +random-id+ [ MYSQL_TYPE_LONGLONG ] }
