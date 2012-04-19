@@ -160,6 +160,9 @@ robohash:
 second-color:
     implements a "colored" seconds hash
 
+shortuuid
+    implements "shortuuid" concept
+
 simple-rpg:
     simple role-playing game example
 
