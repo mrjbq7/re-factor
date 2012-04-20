@@ -16,6 +16,9 @@ accessors.maybe:
 ant:
     implements the "ant puzzle"
 
+birthday:
+    sing birthday wishes from the command line
+
 bitly:
     wrapper for Bitly V3 API
 
