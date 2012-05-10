@@ -33,14 +33,17 @@ MEMO: country-names ( -- seq )
     at swap [ [ nip = ] curry assoc-filter ] when*
     random [ first , ] [ second ] bi ;
 
-PRIVATE>
-
-: generate-name ( seq -- name )
-    transition-table [
+: (generate-name) ( table -- name )
+    [
         f 0 [
             [ pick next-char, ] [ 1 + ] bi over
         ] loop 3drop
     ] "" make ;
 
+PRIVATE>
+
+: generate-name ( seq -- name )
+    transition-table (generate-name) ;
+
 : generate-names ( n seq -- names )
-    [ generate-name ] curry replicate ;
+    transition-table '[ _ (generate-name) ] replicate ;
