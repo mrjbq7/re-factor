@@ -148,6 +148,9 @@ pseudo-crypt:
 psyng:
     implementation of Psydex API
 
+random-names:
+    generating random names
+
 random-string:
     port of a "Random String" tutorial
 
