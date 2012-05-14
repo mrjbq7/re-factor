@@ -3,7 +3,7 @@
 
 USING: accessors db db.sqlite db.tuples db.types io.directories
 io.files.info io.files.unique io.pathnames iphone-backup kernel
-sequences sorting utils ;
+math.statistics sequences sorting utils ;
 
 IN: iphone-backup.messages
 
@@ -80,7 +80,7 @@ msg-group "msg_group" {
     T{ group-member } select-tuples ;
 
 : all-conversations ( -- conversations )
-    all-messages [ group-id>> ] group-by ;
+    all-messages [ group-id>> ] collect-by ;
 
 USE: io
 USE: io.styles

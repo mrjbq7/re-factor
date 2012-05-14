@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs calendar combinators formatting
-http.client json json.reader kernel make math sequences urls
-utils ;
+http.client json json.reader kernel make math math.statistics
+sequences urls utils ;
 
 IN: reddit
 
@@ -110,5 +110,5 @@ PRIVATE>
 : domain-stats ( domain -- stats )
     (domains) all-pages [
         created>> 1000 * millis>timestamp year>>
-    ] group-by [ [ score>> ] map-sum ] assoc-map ;
+    ] collect-by [ [ score>> ] map-sum ] assoc-map ;
 

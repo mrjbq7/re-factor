@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays ascii kernel locals math random
-sequences utils ;
+sequences sequences.extras utils ;
 
 IN: enigma
 
