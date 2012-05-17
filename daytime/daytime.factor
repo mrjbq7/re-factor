@@ -12,10 +12,10 @@ IN: daytime
         "daytime.server" >>name
         [ now "%c" strftime print flush ] >>handler ;
 
-: daytimed ( port -- )
+: daytimed ( port -- server )
     <daytime-server> start-server ;
 
-: daytimed-main ( -- ) 13 daytimed ;
+: daytimed-main ( -- ) 13 daytimed drop ;
 
 MAIN: daytimed-main
 
