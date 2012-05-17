@@ -54,10 +54,48 @@ TUPLE: pdf info pages fonts ;
 
 
 
-
+USE: assocs
 USE: io.styles
-USE: splitting
+USE: locals
+USE: fonts
+USE: literals
+USE: make
+USE: math.ranges
 USE: pdf.layout
+USE: splitting
+
+:: pages>objects ( pdf -- objects )
+    [
+        pdf info>> pdf-value ,
+        pdf-catalog ,
+        { $ sans-serif-font $ serif-font $ monospace-font } {
+            [ [ f >>bold? f >>italic? pdf-value , ] each ]
+            [ [ t >>bold? f >>italic? pdf-value , ] each ]
+            [ [ f >>bold? t >>italic? pdf-value , ] each ]
+            [ [ t >>bold? t >>italic? pdf-value , ] each ]
+        } cleave
+        pdf pages>> length pdf-pages ,
+        pdf pages>>
+        dup length 16 swap 2 range boa zip
+        [ pdf-page , , ] assoc-each
+    ] { } make
+    dup length [1,b] zip [ first2 pdf-object ] map ;
+
+: objects>pdf ( objects -- str )
+    [ "\n" join "\n" append "%PDF-1.4\n" ]
+    [ pdf-trailer ] bi surround ;
+
+! Rename to pdf>string, have it take a <pdf> object?
+
+: pdf>string ( seq -- pdf )
+    <pdf> swap pdf-layout  [
+        stream>> pdf-stream over pages>> push
+    ] each pages>objects objects>pdf ;
+
+: write-pdf ( seq -- )
+    pdf>string write ;
+
+
 
 : text-to-pdf ( str -- str' )
     string-lines [

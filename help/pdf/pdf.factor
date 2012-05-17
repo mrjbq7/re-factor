@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs help help.markup help.topics
-io.encodings.utf8 io.files io.pathnames kernel pdf.layout
+io.encodings.utf8 io.files io.pathnames kernel pdf pdf.layout
 pdf.streams sequences sets strings ;
 
 IN: help.pdf
