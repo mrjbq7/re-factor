@@ -18,11 +18,6 @@ TUPLE: foo a b c ;
 [ H{ { "a" 1 } { "b" 2 } { "c" 3 } } foo new [ set-slots ] keep ]
 unit-test
 
-[ f ] [ f { } deep-at ] unit-test
-[ f ] [ f { "foo" } deep-at ] unit-test
-[ f ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "c" } deep-at ] unit-test
-[ 1 ] [ H{ { "a" H{ { "b" 1 } } } } { "a" "b" } deep-at ] unit-test
-
 USE: math.statistics
 
 [ { { 1 3 } { "Other" 2 } } ]

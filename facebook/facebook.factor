@@ -1,9 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors assocs combinators http.client images.http
-json.reader kernel sequences urls urls.encoding urls.secure
-utils ;
+USING: accessors assocs assocs.extras combinators http.client
+images.http json.reader kernel sequences urls urls.encoding
+urls.secure utils ;
 
 IN: facebook
 

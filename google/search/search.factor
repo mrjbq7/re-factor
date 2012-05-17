@@ -1,9 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors arrays assocs colors.constants combinators
-formatting http.client io io.styles json.reader kernel sequences
-urls utils wrap.strings ;
+USING: accessors arrays assocs assocs.extras colors.constants
+combinators formatting http.client io io.styles json.reader
+kernel sequences urls utils wrap.strings ;
 
 IN: google.search
 
