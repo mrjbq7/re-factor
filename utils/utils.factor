@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays assocs combinators db.types fry kernel lexer
-macros math math.order parser sequences
+locals macros math math.order math.ranges parser sequences
 sequences.generalizations ;
 FROM: sequences => change-nth ;
 
@@ -36,33 +36,11 @@ SYNTAX: INCLUDE: scan-token (include) ;
 
 SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
 
-: max-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
-    [ bi@ [ max ] keep eq? not ] curry most ; inline
-
-: min-by ( obj1 obj2 quot: ( obj -- n ) -- obj1/obj2 )
-    [ bi@ [ min ] keep eq? not ] curry most ; inline
-
-: maximum ( seq quot: ( ... elt -- ... x ) -- elt )
-    [ keep 2array ] curry
-    [ [ first ] max-by ] map-reduce second ; inline
-
-: minimum ( seq quot: ( ... elt -- ... x ) -- elt )
-    [ keep 2array ] curry
-    [ [ first ] min-by ] map-reduce second ; inline
-
 : set-slots ( assoc obj -- )
     '[ swap _ set-slot-named ] assoc-each ;
 
 : from-slots ( assoc class -- obj )
     new [ set-slots ] keep ;
-
-: split1-when ( ... seq quot: ( ... elt -- ... ? ) -- ... before after )
-    dupd find drop [ swap [ dup 1 + ] dip snip ] [ f ] if* ; inline
-
-: group-by ( seq quot: ( elt -- key ) -- assoc )
-    H{ } clone [
-        [ push-at ] curry compose [ dup ] prepose each
-    ] keep ; inline
 
 : of ( assoc key -- value ) swap at ;
 
@@ -75,18 +53,6 @@ USE: sorting
 : trim-histogram ( assoc n -- alist )
     [ sort-values reverse ] [ cut ] bi* values sum
     [ "Other" swap 2array suffix ] unless-zero ;
-
-USE: locals
-USE: math.ranges
-
-:: each-subseq ( ... seq quot: ( ... x -- ... ) -- ... )
-    seq length [0,b] [
-        :> from
-        from seq length (a,b] [
-            :> to
-            from to seq subseq quot call( x -- )
-        ] each
-    ] each ;
 
 USE: quotations
 
@@ -108,9 +74,6 @@ USE: assocs.private
 
 USE: grouping
 
-: all-subseqs ( seq -- seqs )
-    dup length [1,b] [ <clumps> ] with map concat ;
-
 :: longest-subseq ( seq1 seq2 -- subseq )
     seq1 length :> len1
     seq2 length :> len2
@@ -130,9 +93,6 @@ USE: grouping
 
 : swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
     '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
-
-: change-nths ( ... indices seq quot: ( ... elt -- ... elt' ) -- ... )
-    [ change-nth ] 2curry each ; inline
 
 : majority ( seq -- elt/f )
     [ f 0 ] dip [
@@ -159,26 +119,12 @@ USE: math.parser
 USE: alien.c-types
 USE: classes.struct
 USE: io
-
-: read-struct ( class -- struct )
-    [ heap-size read ] [ memory>struct ] bi ;
-
 USE: random
 
 : remove-random ( seq -- elt seq' )
     [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
 
-: rotate ( seq n -- seq' )
-    cut prepend ;
-
 USE: sets
-
-: ?adjoin ( elt set -- elt/f )
-    2dup in? [ 2drop f ] [ dupd adjoin ] if ;
-
-: pad-longest ( seq1 seq2 elt -- seq1 seq2 )
-    [ 2dup max-length ] dip [ pad-tail ] 2curry bi@ ;
-
 USE: parser
 USE: generic
 USE: tools.annotations
