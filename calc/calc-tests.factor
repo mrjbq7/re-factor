@@ -31,7 +31,7 @@ IN: calc.tests
 3 cosh 1quotation [ "cosh(3)" calc ] unit-test
 3 cot 1quotation [ "cot(3)" calc ] unit-test
 3 coth 1quotation [ "coth(3)" calc ] unit-test
-3 exp 1quotation [ "exp(3)" calc ] unit-test
+3 e^ 1quotation [ "exp(3)" calc ] unit-test
 3 >float 1quotation [ "float(3)" calc ] unit-test
 3 floor 1quotation [ "floor(3)" calc ] unit-test
 3 >fixnum 1quotation [ "int(3)" calc ] unit-test

@@ -24,11 +24,11 @@ PRIVATE>
     x abs :> x!
     p x * 1 + 1 swap / :> t
     a5 t * a4 + t * a3 + t * a2 + t * a1 + t *
-    x x neg * exp * 1 swap - :> y
+    x x neg * e^ * 1 swap - :> y
     sign y * ;
 
 :: expm1 ( x -- value )
-    x abs 1e-5 < [ x sq 0.5 * x + ] [ x exp 1.0 - ] if ;
+    x abs 1e-5 < [ x sq 0.5 * x + ] [ x e^ 1.0 - ] if ;
 
 ! Standalone implementation of phi(x)
 :: phi ( x -- value )
@@ -36,7 +36,7 @@ PRIVATE>
     x abs 2 sqrt / :> x!
     p x * 1 + 1 swap / :> t
     a5 t * a4 + t * a3 + t * a2 + t * a1 + t *
-    x x neg * exp * 1 swap - :> y
+    x x neg * e^ * 1 swap - :> y
     sign y * 1 + 2 / ;
 
 <PRIVATE
@@ -427,5 +427,5 @@ PRIVATE>
         { [ dup   0.001 < ] [ GAMMA * 1.0 + x * 1.0 swap / ] }
         { [ dup    12.0 < ] [ (gamma) ] }
         { [ dup 171.624 > ] [ drop 1/0. ] }
-        [ log-gamma exp ]
+        [ log-gamma e^ ]
     } cond ;
