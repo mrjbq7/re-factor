@@ -19,4 +19,4 @@ PRIVATE>
 
 : wake-on-lan ( mac-address broadcast-ip -- )
     [ wake-on-lan-packet ] [ 9 <inet4> ] bi*
-    f 0 <inet4> <datagram> [ send ] with-disposal ;
+    f 0 <inet4> <broadcast> [ send ] with-disposal ;
