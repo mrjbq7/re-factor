@@ -220,6 +220,9 @@ unix-tools:
 utils:
     miscellaneous utility words
 
+wake-on-lan:
+    support for Wake-on-LAN protocol
+
 webbrowser:
     open urls in web browser
 
