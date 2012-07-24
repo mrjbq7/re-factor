@@ -4,7 +4,7 @@
 USING: command-line formatting io io.encodings.binary io.files
 kernel math math.functions namespaces sequences ;
 
-IN: sum
+IN: unix-tools.sum
 
 : sum-stream ( -- checksum blocks )
     0 0 [ [ sum nip + ] [ length + nip ] 3bi ] each-block
