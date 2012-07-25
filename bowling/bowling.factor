@@ -40,13 +40,13 @@ ERROR: invalid-throw ;
 
 : take-pins ( game n -- game )
     check-pins
-    [ [ - ] curry change-pins ]
-    [ bonus [ + ] curry change-score ]
+    [ '[ _ - ] change-pins ]
+    [ bonus '[ _ + ] change-score ]
     bi ;
 
 : add-bonus ( game n -- game )
     over frame#>> 9 < [
-        [ + ] curry change-bonus
+        '[ _ + ] change-bonus
     ] [ drop ] if ;
 
 : strike ( game -- game )
