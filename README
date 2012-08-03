@@ -46,9 +46,6 @@ domainr:
 dupe:
     duplicate file checker
 
-echo-server:
-    simple echo server
-
 elapsed:
     "pretty" elapsed times
 
