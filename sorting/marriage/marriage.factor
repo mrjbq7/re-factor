@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: kernel locals math math.functions sequences
-sorting.insertion ;
+sequences.private sorting.insertion ;
 
 IN: sorting.marriage
 
@@ -15,17 +15,17 @@ IN: sorting.marriage
 :: find-max ( from to seq -- i )
     from to >= [ f ] [
         from from 1 + [ dup to < ] [
-            2dup [ seq nth ] bi@ < [ nip dup ] when 1 +
+            2dup [ seq nth-unsafe ] bi@ < [ nip dup ] when 1 +
         ] while drop
     ] if ;
 
 :: (marriage-sort) ( seq end skip -- seq end' )
     0 skip seq find-max
     skip end [ 2dup < ] [
-        2over [ seq nth ] bi@ <=
-        [ 1 - [ seq exchange ] 2keep ]
+        2over [ seq nth-unsafe ] bi@ <=
+        [ 1 - [ seq exchange-unsafe ] 2keep ]
         [ [ 1 + ] dip ] if
-    ] while nip 1 - [ seq exchange seq ] keep ;
+    ] while nip 1 - [ seq exchange-unsafe seq ] keep ;
 
 PRIVATE>
 
