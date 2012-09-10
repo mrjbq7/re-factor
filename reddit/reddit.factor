@@ -9,17 +9,20 @@ IN: reddit
 
 <PRIVATE
 
-TUPLE: comment author body body_html created created_utc downs
-id levenshtein likes link_id link_title name parent_id replies
-subreddit subreddit_id ups ;
+TUPLE: comment approved_by author author_flair_css_class
+author_flair_text banned_by body body_html created created_utc
+downs id levenshtein likes link_id link_title name num_reports
+parent_id replies edited subreddit subreddit_id ups ;
 
 TUPLE: user comment_karma created created_utc has_mail
-has_mod_mail id is_mod link_karma name ;
+has_mod_mail id is_gold is_mod link_karma name ;
 
-TUPLE: story author clicked created created_utc domain downs
-hidden id is_self levenshtein likes media media_embed name
-num_comments over_18 permalink saved score selftext
-selftext_html subreddit subreddit_id thumbnail title ups url ;
+TUPLE: story author author_flair_css_class author_flair_text
+approved_by banned_by clicked created created_utc domain downs
+hidden id is_self levenshtein likes link_flair_css_class
+link_flair_text media media_embed name edited num_comments
+num_reports over_18 permalink saved score selftext selftext_html
+subreddit subreddit_id thumbnail title ups url ;
 
 TUPLE: subreddit created created_utc description display_name id
 name over18 subscribers title url ;
