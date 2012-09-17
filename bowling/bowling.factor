@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators kernel math sequences ;
+USING: accessors combinators kernel math sequences fry ;
 
 IN: bowling
 
