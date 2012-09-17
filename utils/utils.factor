@@ -3,7 +3,7 @@
 
 USING: arrays assocs combinators db.types fry kernel lexer
 locals macros math math.order math.ranges parser sequences
-sequences.generalizations ;
+sequences.generalizations classes.tuple ;
 FROM: sequences => change-nth ;
 
 IN: utils
@@ -105,7 +105,6 @@ USE: random
     [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
 
 USE: sets
-USE: parser
 USE: generic
 USE: tools.annotations
 

@@ -10,7 +10,7 @@ IN: help.pdf
 <PRIVATE
 
 : next-articles ( str -- seq )
-    article content>> [ array? ] filter
+    lookup-article content>> [ array? ] filter
     [ first \ $subsections eq? ] filter
     [ rest [ string? ] filter ] map concat members ;
 
