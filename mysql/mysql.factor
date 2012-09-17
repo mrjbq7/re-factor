@@ -4,7 +4,7 @@
 USING: accessors arrays combinators db db.private db.queries
 db.tuples db.tuples.private db.types destructors kernel
 math.parser mysql.errors mysql.ffi mysql.lib namespaces nmake
-random sequences ;
+random sequences classes.tuple ;
 
 IN: mysql
 
