@@ -36,12 +36,6 @@ SYNTAX: INCLUDE: scan-token (include) ;
 
 SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
 
-: set-slots ( assoc obj -- )
-    '[ swap _ set-slot-named ] assoc-each ;
-
-: from-slots ( assoc class -- obj )
-    new [ set-slots ] keep ;
-
 : of ( assoc key -- value ) swap at ;
 
 USE: math.statistics

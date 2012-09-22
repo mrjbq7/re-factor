@@ -9,15 +9,6 @@ IN: utils
 [ { { 1 2 } { 3 4 } } ] [ { 1 => 2 3 => 4 } ] unit-test
 [ H{ { 1 2 } { 3 4 } } ] [ H{ 1 => 2 3 => 4 } ] unit-test
 
-TUPLE: foo a b c ;
-
-[ T{ foo f } ] [ H{ } foo new [ set-slots ] keep  ] unit-test
-[ H{ { "d" 0 } } foo new set-slots ] must-fail
-
-[ T{ foo f 1 2 3 } ]
-[ H{ { "a" 1 } { "b" 2 } { "c" 3 } } foo new [ set-slots ] keep ]
-unit-test
-
 USE: math.statistics
 
 [ { { 1 3 } { "Other" 2 } } ]
