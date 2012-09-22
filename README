@@ -133,9 +133,6 @@ random-names:
 random-string:
     port of a "Random String" tutorial
 
-reddit:
-    scraping the Reddit API
-
 repopular:
     scraping "popular" Github projects
 
