@@ -1,7 +1,7 @@
 %PDF-1.4
 1 0 obj
 <<
-/CreationDate D:20110828190549
+/CreationDate D:20120922122824
 /Producer (Factor)
 /Author (jbenedik)
 /Creator (created with Factor)
@@ -253,7 +253,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 549.219727 Tm
+1 0 0 1 58.000000 549.219727 Tm
 (Scripting cookbook) Tj
 ET
 BT
@@ -265,7 +265,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 535.219727 Tm
+1 0 0 1 58.000000 535.219727 Tm
 (Factor philosophy) Tj
 ET
 BT
@@ -277,7 +277,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 521.219727 Tm
+1 0 0 1 58.000000 521.219727 Tm
 (Pitfalls to avoid) Tj
 ET
 BT
@@ -289,7 +289,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 507.219727 Tm
+1 0 0 1 58.000000 507.219727 Tm
 (Next steps) Tj
 ET
 
@@ -832,7 +832,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 124.759766 Tm
+1 0 0 1 65.000000 124.759766 Tm
 (Syntax) Tj
 ET
 BT
@@ -844,7 +844,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 107.759766 Tm
+1 0 0 1 65.000000 107.759766 Tm
 (The parser) Tj
 ET
 BT
@@ -856,7 +856,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 90.759766 Tm
+1 0 0 1 65.000000 90.759766 Tm
 (The prettyprinter) Tj
 ET
 
@@ -1112,24 +1112,24 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 135.000000 433.759766 Tm
-( shuffle word is used to interchange the top two stack elements. Note the ) Tj
+( shuffle word is used to interchange the top two stack elements. Note ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 421.759766 Tm
-(difference that ) Tj
+(the difference that ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 134.000000 421.759766 Tm
+1 0 0 1 154.000000 421.759766 Tm
 (swap) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 165.000000 421.759766 Tm
+1 0 0 1 185.000000 421.759766 Tm
 ( makes in the following two snippets:) Tj
 ET
 BT
@@ -1256,37 +1256,37 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 260.759766 Tm
-(A whole slew of shuffle words can be used to rearrange the stack. There are forms of word ) Tj
+(A whole slew of shuffle words can be used to rearrange the stack. There are forms of ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 248.759766 Tm
-(definition other than colon definition, words can be defined entirely at runtime, and word ) Tj
+(word definition other than colon definition, words can be defined entirely at runtime, and ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 236.759766 Tm
-(definitions can be ) Tj
+(word definitions can be ) Tj
 ET
 BT
 /F7 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 151.000000 236.759766 Tm
+1 0 0 1 181.000000 236.759766 Tm
 (annotated) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 205.000000 236.759766 Tm
-( with tracing calls and breakpoints without modifying the source ) Tj
+1 0 0 1 235.000000 236.759766 Tm
+( with tracing calls and breakpoints without modifying the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 224.759766 Tm
-(code.) Tj
+(source code.) Tj
 ET
 BT
 /F1 12 Tf
@@ -1297,7 +1297,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 212.759766 Tm
+1 0 0 1 63.000000 212.759766 Tm
 (Shuffle words) Tj
 ET
 BT
@@ -1309,7 +1309,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 195.759766 Tm
+1 0 0 1 63.000000 195.759766 Tm
 (Words) Tj
 ET
 BT
@@ -1321,7 +1321,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 178.759766 Tm
+1 0 0 1 63.000000 178.759766 Tm
 (Generic words and methods) Tj
 ET
 BT
@@ -1333,7 +1333,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 64.000000 161.759766 Tm
+1 0 0 1 63.000000 161.759766 Tm
 (Developer tools) Tj
 ET
 
@@ -1541,42 +1541,42 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 87.000000 478.759766 Tm
-( word takes a boolean, a true quotation, and a false quotation, and executes one ) Tj
+( word takes a boolean, a true quotation, and a false quotation, and executes ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 466.759766 Tm
-(of the two quotations depending on the value of the boolean. In Factor, any object not equal ) Tj
+(one of the two quotations depending on the value of the boolean. In Factor, any object ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 454.759766 Tm
-(to the special value ) Tj
+(not equal to the special value ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 161.000000 454.759766 Tm
+1 0 0 1 213.000000 454.759766 Tm
 (f) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 165.000000 454.759766 Tm
+1 0 0 1 217.000000 454.759766 Tm
 ( is considered true, while ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 301.000000 454.759766 Tm
+1 0 0 1 353.000000 454.759766 Tm
 (f) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 305.000000 454.759766 Tm
+1 0 0 1 357.000000 454.759766 Tm
 ( is false.) Tj
 ET
 BT
@@ -1691,13 +1691,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 166.759766 Tm
-(Since quotations are objects, they can be constructed and taken apart at will. You can ) Tj
+(Since quotations are objects, they can be constructed and taken apart at will. You can write ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 154.759766 Tm
-(write code that writes code. Arrays are just one of the various types of sequences, and the ) Tj
+(code that writes code. Arrays are just one of the various types of sequences, and the ) Tj
 ET
 BT
 /F1 12 Tf
@@ -2038,7 +2038,7 @@ endobj
 endobj
 27 0 obj
 <<
-/Length 5787
+/Length 5703
 >>
 stream
 BT
@@ -2105,37 +2105,37 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 643.759766 Tm
-(Rather than being in one flat list, words belong to vocabularies; every word is ) Tj
+(Rather than being in one flat list, words belong to vocabularies; every word is contained in ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 631.759766 Tm
-(contained in exactly one. When parsing a word name, the parser searches through ) Tj
+(exactly one. When parsing a word name, the parser searches through vocabularies. When ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 619.759766 Tm
-(vocabularies. When working at the listener, a useful set of vocabularies is already ) Tj
+(working at the listener, a useful set of vocabularies is already available. In a source file, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 607.759766 Tm
-(available. In a source file, all used vocabularies must be imported.) Tj
+(all used vocabularies must be imported.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 588.759766 Tm
-(For example, a source file containing the following code will print a parse error if ) Tj
+(For example, a source file containing the following code will print a parse error if you ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 576.759766 Tm
-(you try loading it:) Tj
+(try loading it:) Tj
 ET
 BT
 /F3 12 Tf
@@ -2195,13 +2195,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 490.759766 Tm
-(Typically a source file will refer to words in multiple vocabularies, and they can all be ) Tj
+(Typically a source file will refer to words in multiple vocabularies, and they can all be added ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 478.759766 Tm
-(added to the search path in one go:) Tj
+(to the search path in one go:) Tj
 ET
 BT
 /F3 12 Tf
@@ -2255,96 +2255,90 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 404.759766 Tm
-(Note that words must be defined before being referenced. The following is generally ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 392.759766 Tm
-(invalid:) Tj
+(Note that words must be defined before being referenced. The following is generally invalid:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 380.953125 Tm
+1 0 0 1 54.000000 392.953125 Tm
 (: frob \( what -- \) accelerate particles ;) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 368.953125 Tm
+1 0 0 1 54.000000 380.953125 Tm
 (: accelerate \( -- \) accelerator on ;) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 356.953125 Tm
+1 0 0 1 54.000000 368.953125 Tm
 (: particles \( what -- \) [ \(particles\) ] each ;) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 337.759766 Tm
-(You would have to place the first definition after the two others for the parser to accept the ) Tj
+1 0 0 1 54.000000 349.759766 Tm
+(You would have to place the first definition after the two others for the parser to accept ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 325.759766 Tm
-(file. If you have a set of mutually recursive words, you can use ) Tj
+1 0 0 1 54.000000 337.759766 Tm
+(the file. If you have a set of mutually recursive words, you can use ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 388.000000 325.759766 Tm
+1 0 0 1 408.000000 337.759766 Tm
 (DEFER:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 433.000000 325.759766 Tm
+1 0 0 1 453.000000 337.759766 Tm
 (.) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 303.679688 Tm
+1 0 0 1 54.000000 315.679688 Tm
 (References) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 290.759766 Tm
+1 0 0 1 54.000000 302.759766 Tm
 ( ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 63.000000 290.759766 Tm
+1 0 0 1 63.000000 302.759766 Tm
 (Parse-time word lookup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 273.759766 Tm
+1 0 0 1 54.000000 285.759766 Tm
 ( ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 63.000000 273.759766 Tm
+1 0 0 1 63.000000 285.759766 Tm
 (Words) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 256.759766 Tm
+1 0 0 1 54.000000 268.759766 Tm
 ( ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 63.000000 256.759766 Tm
+1 0 0 1 63.000000 268.759766 Tm
 (The parser) Tj
 ET
 
@@ -2486,13 +2480,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 220.000000 569.759766 Tm
-( word loads a vocabulary if necessary, and calls its ) Tj
+( word loads a vocabulary if necessary, and calls its main ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 557.759766 Tm
-(main entry point; try the following, it's fun:) Tj
+(entry point; try the following, it's fun:) Tj
 ET
 BT
 /F3 12 Tf
@@ -2504,13 +2498,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 526.759766 Tm
-(Factor can deploy stand-alone executables; they do not have any external dependencies ) Tj
+(Factor can deploy stand-alone executables; they do not have any external dependencies and ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 514.759766 Tm
-(and consist entirely of compiled native machine code:) Tj
+(consist entirely of compiled native machine code:) Tj
 ET
 BT
 /F3 12 Tf
@@ -3226,7 +3220,7 @@ endobj
 endobj
 35 0 obj
 <<
-/Length 9557
+/Length 9406
 >>
 stream
 BT
@@ -3311,13 +3305,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 600.759766 Tm
-(The most common difficulty encountered by beginners is trouble reading and writing ) Tj
+(The most common difficulty encountered by beginners is trouble reading and writing code ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 588.759766 Tm
-(code as a result of trying to place too many values on the stack at a time.) Tj
+(as a result of trying to place too many values on the stack at a time.) Tj
 ET
 BT
 /F1 12 Tf
@@ -3334,19 +3328,19 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 557.759766 Tm
+1 0 0 1 59.822199 557.759766 Tm
 (Simplify, simplify, simplify. Break your program up into small words which ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 545.759766 Tm
+1 0 0 1 59.822199 545.759766 Tm
 (operate on a few values at a time. Most word definitions should fit on ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 533.759766 Tm
+1 0 0 1 59.822199 533.759766 Tm
 (a single line; very rarely should they exceed two or three lines.) Tj
 ET
 BT
@@ -3358,31 +3352,31 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 516.759766 Tm
+1 0 0 1 59.822199 516.759766 Tm
 (In addition to keeping your words short, keep them meaningful. Give ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 504.759766 Tm
+1 0 0 1 59.822199 504.759766 Tm
 (them good names, and make sure each word only does one thing. Try ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 492.759766 Tm
+1 0 0 1 59.822199 492.759766 Tm
 (documenting your words; if the documentation for a word is unclear ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 480.759766 Tm
+1 0 0 1 59.822199 480.759766 Tm
 (or complex, chances are the word definition is too. Don't be afraid to ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 468.759766 Tm
+1 0 0 1 59.822199 468.759766 Tm
 (refactor your code.) Tj
 ET
 BT
@@ -3394,7 +3388,7 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 451.759766 Tm
+1 0 0 1 59.822199 451.759766 Tm
 (If your code looks repetitive, factor it some more.) Tj
 ET
 BT
@@ -3406,7 +3400,7 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 434.759766 Tm
+1 0 0 1 59.822199 434.759766 Tm
 (If after factoring, your code still looks repetitive, introduce combinators.) Tj
 ET
 BT
@@ -3418,13 +3412,13 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 417.759766 Tm
+1 0 0 1 59.822199 417.759766 Tm
 (If after introducing combinators, your code still looks repetitive, look into ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 405.759766 Tm
+1 0 0 1 59.822199 405.759766 Tm
 (using meta-programming techniques.) Tj
 ET
 BT
@@ -3436,284 +3430,278 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 388.759766 Tm
-(Try to place items on the stack in the order in which they are needed. If ) Tj
+1 0 0 1 59.822199 388.759766 Tm
+(Try to place items on the stack in the order in which they are ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 376.759766 Tm
-(everything is in the correct order, no shuffling needs to be performed.) Tj
+1 0 0 1 59.822199 376.759766 Tm
+(needed. If everything is in the correct order, no shuffling needs to be ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 359.759766 Tm
+1 0 0 1 59.822199 364.759766 Tm
+(performed.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 347.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 359.759766 Tm
+1 0 0 1 59.822199 347.759766 Tm
 (If you find yourself writing a stack comment in the middle of a word, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 347.759766 Tm
+1 0 0 1 59.822199 335.759766 Tm
 (break the word up.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 330.759766 Tm
+1 0 0 1 54.000000 318.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 330.759766 Tm
+1 0 0 1 59.822199 318.759766 Tm
 (Use ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 85.641026 330.759766 Tm
+1 0 0 1 84.822199 318.759766 Tm
 (Cleave combinators) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 200.641026 330.759766 Tm
+1 0 0 1 199.822199 318.759766 Tm
 ( and ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 227.641026 330.759766 Tm
+1 0 0 1 226.822199 318.759766 Tm
 (Spread combinators) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 344.641026 330.759766 Tm
+1 0 0 1 343.822199 318.759766 Tm
 ( instead of ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 403.641026 330.759766 Tm
+1 0 0 1 402.822199 318.759766 Tm
 (Shuffle ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 60.641026 318.759766 Tm
+1 0 0 1 59.822199 306.759766 Tm
 (words) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 96.641026 318.759766 Tm
+1 0 0 1 95.822199 306.759766 Tm
 ( to give your code more structure.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 301.759766 Tm
+1 0 0 1 54.000000 289.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 301.759766 Tm
+1 0 0 1 59.822199 289.759766 Tm
 (Not everything has to go on the stack. The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 289.641026 301.759766 Tm
+1 0 0 1 288.822199 289.759766 Tm
 (namespaces) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 362.641026 301.759766 Tm
+1 0 0 1 361.822199 289.759766 Tm
 ( vocabulary ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 289.759766 Tm
+1 0 0 1 59.822199 277.759766 Tm
 (provides dynamically-scoped variables, and the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 316.641026 289.759766 Tm
+1 0 0 1 315.822199 277.759766 Tm
 (locals) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 351.641026 289.759766 Tm
+1 0 0 1 350.822199 277.759766 Tm
 ( vocabulary ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 277.759766 Tm
+1 0 0 1 59.822199 265.759766 Tm
 (provides lexically-scoped variables. Learn both and use them where ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 265.759766 Tm
-(they make sense, but keep in mind that overuse of variables ) Tj
+1 0 0 1 59.822199 253.759766 Tm
+(they make sense, but keep in mind that overuse of variables makes code ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 253.759766 Tm
-(makes code harder to factor.) Tj
+1 0 0 1 59.822199 241.759766 Tm
+(harder to factor.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 236.759766 Tm
+1 0 0 1 54.000000 224.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 236.759766 Tm
+1 0 0 1 59.822199 224.759766 Tm
 (Every time you define a word which simply manipulates sequences, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 224.759766 Tm
+1 0 0 1 59.822199 212.759766 Tm
 (hashtables or objects in an abstract way which is not related to your ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 212.759766 Tm
+1 0 0 1 59.822199 200.759766 Tm
 (program domain, check the library to see if you can reuse an existing ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 200.759766 Tm
+1 0 0 1 59.822199 188.759766 Tm
 (definition.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 183.759766 Tm
+1 0 0 1 54.000000 171.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 183.759766 Tm
+1 0 0 1 59.822199 171.759766 Tm
 (Write unit tests. Factor provides good support for unit testing; see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 410.641026 183.759766 Tm
+1 0 0 1 409.822199 171.759766 Tm
 (Unit ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 60.641026 171.759766 Tm
+1 0 0 1 59.822199 159.759766 Tm
 (testing) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 100.641026 171.759766 Tm
+1 0 0 1 99.822199 159.759766 Tm
 (. Once your program has a good test suite you can refactor ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 159.759766 Tm
+1 0 0 1 59.822199 147.759766 Tm
 (with confidence and catch regressions early.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 142.759766 Tm
+1 0 0 1 54.000000 130.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 142.759766 Tm
+1 0 0 1 59.822199 130.759766 Tm
 (Don't write Factor as if it were C. Imperative programming and ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 130.759766 Tm
+1 0 0 1 59.822199 118.759766 Tm
 (indexed loops are almost always not the most idiomatic solution.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 113.759766 Tm
+1 0 0 1 54.000000 101.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 113.759766 Tm
+1 0 0 1 59.822199 101.759766 Tm
 (Use sequences, assocs and objects to group related data. Object ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 101.759766 Tm
+1 0 0 1 59.822199 89.759766 Tm
 (allocation is very cheap. Don't be afraid to create tuples, pairs and ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 89.759766 Tm
+1 0 0 1 59.822199 77.759766 Tm
 (triples. Don't be afraid of operations which allocate new objects either, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 77.759766 Tm
+1 0 0 1 59.822199 65.759766 Tm
 (such as ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 105.641026 77.759766 Tm
+1 0 0 1 104.822199 65.759766 Tm
 (append) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 148.641026 77.759766 Tm
+1 0 0 1 147.822199 65.759766 Tm
 (.) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 60.759766 Tm
-( ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 60.759766 Tm
-(If you find yourself writing a loop with a sequence and an index, ) Tj
 ET
 
 endstream
@@ -3733,32 +3721,38 @@ endobj
 endobj
 37 0 obj
 <<
-/Length 5262
+/Length 5413
 >>
 stream
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 728.759766 Tm
-(there's almost always a better way. Learn the ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 297.000000 728.759766 Tm
-(Sequence combinators) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 430.000000 728.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 716.759766 Tm
-(by heart.) Tj
+1 0 0 1 59.822199 728.759766 Tm
+(If you find yourself writing a loop with a sequence and an index, there's ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 59.822199 716.759766 Tm
+(almost always a better way. Learn the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 263.822199 716.759766 Tm
+(Sequence combinators) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 396.822199 716.759766 Tm
+( by heart.) Tj
 ET
 BT
 /F1 12 Tf
@@ -3769,49 +3763,49 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 699.759766 Tm
+1 0 0 1 59.822199 699.759766 Tm
 (If you find yourself writing a heavily nested loop which performs several ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 687.759766 Tm
-(steps on each iteration, there is almost always a better way. Break the ) Tj
+1 0 0 1 59.822199 687.759766 Tm
+(steps on each iteration, there is almost always a better way. Break ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 675.759766 Tm
-(problem down into a series of passes over the data instead, gradually ) Tj
+1 0 0 1 59.822199 675.759766 Tm
+(the problem down into a series of passes over the data instead, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 663.759766 Tm
-(transforming it into the desired result with a series of simple loops. ) Tj
+1 0 0 1 59.822199 663.759766 Tm
+(gradually transforming it into the desired result with a series of simple ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 651.759766 Tm
-(Factor the loops out and reuse them. If you're working on anything ) Tj
+1 0 0 1 59.822199 651.759766 Tm
+(loops. Factor the loops out and reuse them. If you're working on ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 639.759766 Tm
-(math-related, learn ) Tj
+1 0 0 1 59.822199 639.759766 Tm
+(anything math-related, learn ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 165.641026 639.759766 Tm
+1 0 0 1 212.822199 639.759766 Tm
 (Vector operations) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 267.641026 639.759766 Tm
+1 0 0 1 314.822199 639.759766 Tm
 ( by heart.) Tj
 ET
 BT
@@ -3823,37 +3817,37 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 622.759766 Tm
+1 0 0 1 59.822199 622.759766 Tm
 (If you find yourself wishing you could iterate over the datastack, or ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 610.759766 Tm
+1 0 0 1 59.822199 610.759766 Tm
 (capture the contents of the datastack into a sequence, or push each ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 598.759766 Tm
+1 0 0 1 59.822199 598.759766 Tm
 (element of a sequence onto the datastack, there is almost always a ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 586.759766 Tm
+1 0 0 1 59.822199 586.759766 Tm
 (better way. Use ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 146.641026 586.759766 Tm
+1 0 0 1 145.822199 586.759766 Tm
 (Sequence operations) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 268.641026 586.759766 Tm
+1 0 0 1 267.822199 586.759766 Tm
 ( instead.) Tj
 ET
 BT
@@ -3865,7 +3859,7 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 569.759766 Tm
+1 0 0 1 59.822199 569.759766 Tm
 (Don't use meta-programming if there's a simpler way.) Tj
 ET
 BT
@@ -3877,25 +3871,25 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 552.759766 Tm
+1 0 0 1 59.822199 552.759766 Tm
 (Don't worry about efficiency unless your program is too slow. Don't ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 540.759766 Tm
+1 0 0 1 59.822199 540.759766 Tm
 (prefer complex code to simple code just because you feel it will be more ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 528.759766 Tm
+1 0 0 1 59.822199 528.759766 Tm
 (efficient. The Factor compiler is designed to make idiomatic code run ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 516.759766 Tm
+1 0 0 1 59.822199 516.759766 Tm
 (fast.) Tj
 ET
 BT
@@ -3907,25 +3901,25 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 499.759766 Tm
+1 0 0 1 59.822199 499.759766 Tm
 (None of the above are hard-and-fast rules: there are exceptions to all of ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.641026 487.759766 Tm
+1 0 0 1 59.822199 487.759766 Tm
 (them. But one rule unconditionally holds: ) Tj
 ET
 BT
 /F7 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 280.641026 487.759766 Tm
+1 0 0 1 279.822199 487.759766 Tm
 (there is always a simpler way) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 437.641026 487.759766 Tm
+1 0 0 1 436.822199 487.759766 Tm
 (.) Tj
 ET
 BT
@@ -4000,7 +3994,7 @@ endobj
 endobj
 39 0 obj
 <<
-/Length 7964
+/Length 7384
 >>
 stream
 BT
@@ -4090,13 +4084,13 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 607.759766 Tm
+1 0 0 1 59.441176 607.759766 Tm
 (Factor only makes use of one native thread, and Factor threads are ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 595.759766 Tm
+1 0 0 1 59.441176 595.759766 Tm
 (scheduled co-operatively. C library calls block the entire VM.) Tj
 ET
 BT
@@ -4108,19 +4102,19 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 578.759766 Tm
+1 0 0 1 59.441176 578.759766 Tm
 (Factor does not hide anything from the programmer, all internals are ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 566.759766 Tm
+1 0 0 1 59.441176 566.759766 Tm
 (exposed. It is your responsibility to avoid writing fragile code which ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 554.759766 Tm
+1 0 0 1 59.441176 554.759766 Tm
 (depends too much on implementation detail.) Tj
 ET
 BT
@@ -4132,43 +4126,43 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 537.759766 Tm
+1 0 0 1 59.441176 537.759766 Tm
 (If a literal object appears in a word definition, the object itself is ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 525.759766 Tm
-(pushed on the stack when the word executes, not a copy. If you intend ) Tj
+1 0 0 1 59.441176 525.759766 Tm
+(pushed on the stack when the word executes, not a copy. If you ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 513.759766 Tm
-(to mutate this object, you must ) Tj
+1 0 0 1 59.441176 513.759766 Tm
+(intend to mutate this object, you must ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 227.174312 513.759766 Tm
+1 0 0 1 262.441176 513.759766 Tm
 (clone) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 259.174312 513.759766 Tm
+1 0 0 1 294.441176 513.759766 Tm
 ( it first. See ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 323.174312 513.759766 Tm
+1 0 0 1 358.441176 513.759766 Tm
 (Literals) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 366.174312 513.759766 Tm
+1 0 0 1 401.441176 513.759766 Tm
 (.) Tj
 ET
 BT
@@ -4180,43 +4174,43 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 496.759766 Tm
+1 0 0 1 59.441176 496.759766 Tm
 (Also, ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 91.174312 496.759766 Tm
+1 0 0 1 90.441176 496.759766 Tm
 (dup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 113.174312 496.759766 Tm
-( and related shuffle words don't copy entire objects or ) Tj
+1 0 0 1 112.441176 496.759766 Tm
+( and related shuffle words don't copy entire objects or arrays; ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 484.759766 Tm
-(arrays; they only duplicate the reference to them. If you want to guard ) Tj
+1 0 0 1 59.441176 484.759766 Tm
+(they only duplicate the reference to them. If you want to guard an ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 472.759766 Tm
-(an object against mutation, use ) Tj
+1 0 0 1 59.441176 472.759766 Tm
+(object against mutation, use ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 230.174312 472.759766 Tm
+1 0 0 1 212.441176 472.759766 Tm
 (clone) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 262.174312 472.759766 Tm
+1 0 0 1 244.441176 472.759766 Tm
 (.) Tj
 ET
 BT
@@ -4228,31 +4222,31 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 455.759766 Tm
+1 0 0 1 59.441176 455.759766 Tm
 (For a discussion of potential issues surrounding the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 337.174312 455.759766 Tm
+1 0 0 1 336.441176 455.759766 Tm
 (f) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 341.174312 455.759766 Tm
+1 0 0 1 340.441176 455.759766 Tm
 ( object, see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 60.174312 443.759766 Tm
+1 0 0 1 59.441176 443.759766 Tm
 (Booleans) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 115.174312 443.759766 Tm
+1 0 0 1 114.441176 443.759766 Tm
 (.) Tj
 ET
 BT
@@ -4264,61 +4258,61 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 426.759766 Tm
+1 0 0 1 59.441176 426.759766 Tm
 (Factor's object system is quite flexible. Careless usage of union, mixin ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 414.759766 Tm
+1 0 0 1 59.441176 414.759766 Tm
 (and predicate classes can lead to similar problems to those caused by ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 402.759766 Tm
+1 0 0 1 59.441176 402.759766 Tm
 ("multiple inheritance" in other languages. In particular, it is possible to ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 390.759766 Tm
+1 0 0 1 59.441176 390.759766 Tm
 (have two classes such that they have a non-empty intersection and yet ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 378.759766 Tm
+1 0 0 1 59.441176 378.759766 Tm
 (neither is a subclass of the other. If a generic word defines methods ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 366.759766 Tm
+1 0 0 1 59.441176 366.759766 Tm
 (on two such classes, various disambiguation rules are applied to ensure ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 354.759766 Tm
+1 0 0 1 59.441176 354.759766 Tm
 (method dispatch remains deterministic, however they may not be what ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 342.759766 Tm
+1 0 0 1 59.441176 342.759766 Tm
 (you expect. See ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 150.174312 342.759766 Tm
+1 0 0 1 149.441176 342.759766 Tm
 (Method precedence) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 263.174312 342.759766 Tm
+1 0 0 1 262.441176 342.759766 Tm
 ( for details.) Tj
 ET
 BT
@@ -4330,86 +4324,56 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 325.759766 Tm
-(Be careful when calling words which access variables from a ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 386.174312 325.759766 Tm
-(make-assoc) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 313.759766 Tm
-( which constructs an assoc with arbitrary keys, since those keys might ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 301.759766 Tm
-(shadow variables.) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 284.759766 Tm
-( ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 284.759766 Tm
+1 0 0 1 59.441176 325.759766 Tm
 (If ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 71.174312 284.759766 Tm
+1 0 0 1 70.441176 325.759766 Tm
 (run-file) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 112.174312 284.759766 Tm
+1 0 0 1 111.441176 325.759766 Tm
 ( throws a stack depth assertion, it means that the top-level ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 272.759766 Tm
+1 0 0 1 59.441176 313.759766 Tm
 (form in the file left behind values on the stack. The stack depth is ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 260.759766 Tm
+1 0 0 1 59.441176 301.759766 Tm
 (compared before and after loading a source file, since this type of ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 248.759766 Tm
+1 0 0 1 59.441176 289.759766 Tm
 (situation is almost always an error. If you have a legitimate need to ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 236.759766 Tm
+1 0 0 1 59.441176 277.759766 Tm
 (load a source file which returns data in some manner, define a word in ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 224.759766 Tm
-(the source file which produces this data on the stack and call the word ) Tj
+1 0 0 1 59.441176 265.759766 Tm
+(the source file which produces this data on the stack and call the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.174312 212.759766 Tm
-(after loading the file.) Tj
+1 0 0 1 59.441176 253.759766 Tm
+(word after loading the file.) Tj
 ET
 
 endstream
@@ -4531,7 +4495,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 622.759766 Tm
+1 0 0 1 62.000000 622.759766 Tm
 (base64) Tj
 ET
 BT
@@ -4543,7 +4507,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 605.759766 Tm
+1 0 0 1 62.000000 605.759766 Tm
 (roman) Tj
 ET
 BT
@@ -4555,7 +4519,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 588.759766 Tm
+1 0 0 1 62.000000 588.759766 Tm
 (rot13) Tj
 ET
 BT
@@ -4567,7 +4531,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 571.759766 Tm
+1 0 0 1 62.000000 571.759766 Tm
 (smtp) Tj
 ET
 BT
@@ -4579,7 +4543,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 554.759766 Tm
+1 0 0 1 62.000000 554.759766 Tm
 (time-server) Tj
 ET
 BT
@@ -4591,7 +4555,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 537.759766 Tm
+1 0 0 1 62.000000 537.759766 Tm
 (tools.hexdump) Tj
 ET
 BT
@@ -4603,7 +4567,7 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 67.000000 520.759766 Tm
+1 0 0 1 62.000000 520.759766 Tm
 (webapps.counter) Tj
 ET
 BT
@@ -4669,20 +4633,20 @@ xref
 0000007887 00000 n
 0000008922 00000 n
 0000008A01 00000 n
-000000A0D0 00000 n
-000000A1AF 00000 n
-000000AF88 00000 n
-000000B067 00000 n
-000000CB81 00000 n
-000000CC60 00000 n
-000000DB4B 00000 n
-000000DC2A 00000 n
-00000101B3 00000 n
-0000010292 00000 n
-0000011754 00000 n
-0000011833 00000 n
-0000013783 00000 n
-0000013862 00000 n
+000000A07C 00000 n
+000000A15B 00000 n
+000000AF34 00000 n
+000000B013 00000 n
+000000CB2D 00000 n
+000000CC0C 00000 n
+000000DAF7 00000 n
+000000DBD6 00000 n
+00000100C8 00000 n
+00000101A7 00000 n
+0000011700 00000 n
+00000117DF 00000 n
+00000134EB 00000 n
+00000135CA 00000 n
 trailer
 <<
 /Size 42
@@ -4690,5 +4654,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-83375
+82711
 %%EOF

@@ -1,7 +1,7 @@
 %PDF-1.4
 1 0 obj
 <<
-/CreationDate D:20110828190600
+/CreationDate D:20120922122828
 /Producer (Factor)
 /Author (jbenedik)
 /Creator (created with Factor)
@@ -187,7 +187,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 626.219727 Tm
+1 0 0 1 58.000000 626.219727 Tm
 (The parser) Tj
 ET
 BT
@@ -199,7 +199,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 612.219727 Tm
+1 0 0 1 58.000000 612.219727 Tm
 (Definitions) Tj
 ET
 BT
@@ -211,7 +211,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 57.000000 598.219727 Tm
+1 0 0 1 58.000000 598.219727 Tm
 (Vocabularies) Tj
 ET
 BT
@@ -223,7 +223,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 584.219727 Tm
+1 0 0 1 58.000000 584.219727 Tm
 (Source files) Tj
 ET
 BT
@@ -235,7 +235,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 570.219727 Tm
+1 0 0 1 57.000000 570.219727 Tm
 (Optimizing compiler) Tj
 ET
 BT
@@ -247,7 +247,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 556.219727 Tm
+1 0 0 1 57.000000 556.219727 Tm
 (Batch error reporting) Tj
 ET
 BT
@@ -265,7 +265,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 519.219727 Tm
+1 0 0 1 57.000000 519.219727 Tm
 (Images) Tj
 ET
 BT
@@ -277,7 +277,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 505.219727 Tm
+1 0 0 1 57.000000 505.219727 Tm
 (Command line arguments) Tj
 ET
 BT
@@ -289,7 +289,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 491.219727 Tm
+1 0 0 1 57.000000 491.219727 Tm
 (Running code on startup) Tj
 ET
 BT
@@ -301,7 +301,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 477.219727 Tm
+1 0 0 1 57.000000 477.219727 Tm
 (Initialization and startup) Tj
 ET
 BT
@@ -313,7 +313,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 463.219727 Tm
+1 0 0 1 57.000000 463.219727 Tm
 (System interface) Tj
 ET
 BT
@@ -325,7 +325,7 @@ ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.000000 449.219727 Tm
+1 0 0 1 57.000000 449.219727 Tm
 (VM memory layouts) Tj
 ET
 
@@ -724,13 +724,13 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 96.000000 372.759766 Tm
+1 0 0 1 83.000000 372.759766 Tm
 (eval) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.000000 372.759766 Tm
+1 0 0 1 107.000000 372.759766 Tm
 ( vocabulary implements support for evaluating strings of code dynamically.) Tj
 ET
 BT
@@ -1027,7 +1027,7 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 569.759766 Tm
+1 0 0 1 62.168317 569.759766 Tm
 (There is a word to list all definitions of a given type) Tj
 ET
 BT
@@ -1039,7 +1039,7 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 552.759766 Tm
+1 0 0 1 62.168317 552.759766 Tm
 (There is a parsing word for creating new definitions) Tj
 ET
 BT
@@ -1051,13 +1051,13 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 535.759766 Tm
+1 0 0 1 62.168317 535.759766 Tm
 (There is an ordinary word which is the runtime equivalent of the parsing ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 523.759766 Tm
+1 0 0 1 62.168317 523.759766 Tm
 (word, for introspection) Tj
 ET
 BT
@@ -1069,13 +1069,13 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 506.759766 Tm
+1 0 0 1 62.168317 506.759766 Tm
 (Instances of the definition may be introspected and modified with the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.952569 494.759766 Tm
+1 0 0 1 62.168317 494.759766 Tm
 (definition protocol) Tj
 ET
 BT
@@ -1606,13 +1606,13 @@ ET
 BT
 /F7 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 465.000000 473.759766 Tm
+1 0 0 1 464.000000 473.759766 Tm
 (after) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 490.000000 473.759766 Tm
+1 0 0 1 489.000000 473.759766 Tm
 ( its usage ) Tj
 ET
 BT
@@ -1673,13 +1673,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 418.759766 Tm
-(word is already present in the dictionary from an earlier run. The developer would then ) Tj
+(word is already present in the dictionary from an earlier run. The developer would then not ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 406.759766 Tm
-(not discover this mistake until attempting to load the source file into a fresh image.) Tj
+(discover this mistake until attempting to load the source file into a fresh image.) Tj
 ET
 BT
 /F1 12 Tf
@@ -1709,25 +1709,25 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 356.759766 Tm
-(The parser also catches duplicate definitions. If an artifact is defined twice in the same ) Tj
+(The parser also catches duplicate definitions. If an artifact is defined twice in the same source ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 344.759766 Tm
-(source file, the earlier definition will never be accessible, and this is almost always a ) Tj
+(file, the earlier definition will never be accessible, and this is almost always a mistake, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 332.759766 Tm
-(mistake, perhaps due to a bad choice of word names, or a copy and paste error. The ) Tj
+(perhaps due to a bad choice of word names, or a copy and paste error. The parser raises ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 320.759766 Tm
-(parser raises an error in this case.) Tj
+(an error in this case.) Tj
 ET
 BT
 /F4 14 Tf
@@ -1888,37 +1888,37 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.571429 90.759766 Tm
+1 0 0 1 61.862254 90.759766 Tm
 (The simplest way is to split off the parsing words and macros into ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.571429 78.759766 Tm
+1 0 0 1 61.862254 78.759766 Tm
 (sub-vocabularies; perhaps suffixed by ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 267.571429 78.953125 Tm
+1 0 0 1 266.862254 78.953125 Tm
 (.syntax) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 318.571429 78.759766 Tm
+1 0 0 1 317.862254 78.759766 Tm
 ( and ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 345.571429 78.953125 Tm
+1 0 0 1 344.862254 78.953125 Tm
 (.macros) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 396.571429 78.759766 Tm
+1 0 0 1 395.862254 78.759766 Tm
 (.) Tj
 ET
 BT
@@ -1930,19 +1930,19 @@ ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 62.571429 61.759766 Tm
+1 0 0 1 61.862254 61.759766 Tm
 (Alternatively, nested compilation units can be created using ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 380.571429 61.759766 Tm
+1 0 0 1 379.862254 61.759766 Tm
 (Parse time ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 445.571429 61.759766 Tm
+1 0 0 1 444.862254 61.759766 Tm
 (.) Tj
 ET
 
@@ -2092,7 +2092,7 @@ endobj
 endobj
 27 0 obj
 <<
-/Length 9860
+/Length 9478
 >>
 stream
 BT
@@ -2242,18 +2242,6 @@ ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 99.000000 559.219727 Tm
-( ) Tj
-ET
-BT
-/F1 14 Tf
-0.000000 0.200000 0.000000 rg
-1 0 0 1 103.000000 559.219727 Tm
-(\( vocab-spec -- vocab \)) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 538.219727 Tm
 ( ) Tj
 ET
@@ -2378,18 +2366,6 @@ BT
 (vocab) Tj
 ET
 BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 99.000000 425.219727 Tm
-( ) Tj
-ET
-BT
-/F1 14 Tf
-0.000000 0.200000 0.000000 rg
-1 0 0 1 103.000000 425.219727 Tm
-(\( vocab-spec -- vocab \)) Tj
-ET
-BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 398.759766 Tm
@@ -2483,18 +2459,18 @@ BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
 1 0 0 1 58.000000 303.219727 Tm
-(vocab) Tj
+(lookup-vocab) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 99.000000 303.219727 Tm
+1 0 0 1 150.000000 303.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 103.000000 303.219727 Tm
+1 0 0 1 154.000000 303.219727 Tm
 (\( vocab-spec -- vocab \)) Tj
 ET
 BT
@@ -3001,31 +2977,31 @@ ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 96.000000 391.759766 Tm
+1 0 0 1 79.000000 391.759766 Tm
 (pathname) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 391.759766 Tm
-( class implements the definition protocol by working with the ) Tj
+1 0 0 1 136.000000 391.759766 Tm
+( class implements the definition protocol by working with the corresponding ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 379.759766 Tm
-(corresponding source file; see ) Tj
+(source file; see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 218.000000 379.759766 Tm
+1 0 0 1 139.000000 379.759766 Tm
 (Definitions) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 280.000000 379.759766 Tm
+1 0 0 1 201.000000 379.759766 Tm
 (.) Tj
 ET
 
@@ -3046,7 +3022,7 @@ endobj
 endobj
 31 0 obj
 <<
-/Length 8907
+/Length 8992
 >>
 stream
 BT
@@ -3119,403 +3095,403 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 631.759766 Tm
-(and the compilers do not have to be invoked explicitly. For the most part, compilation ) Tj
+(and the compilers do not have to be invoked explicitly. For the most part, compilation is fully ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 619.759766 Tm
-(is fully transparent. However, there are a few things worth knowing about the compilation ) Tj
+(transparent. However, there are a few things worth knowing about the compilation process.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 607.759766 Tm
-(process.) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 588.759766 Tm
+1 0 0 1 54.000000 600.759766 Tm
 (The two compilers differ in the level of analysis they perform:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 576.759766 Tm
+1 0 0 1 54.000000 588.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 576.759766 Tm
+1 0 0 1 60.311475 588.759766 Tm
 (The ) Tj
 ET
 BT
 /F7 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 102.311475 576.759766 Tm
+1 0 0 1 85.311475 588.759766 Tm
 (non-optimizing quotation compiler) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 282.311475 576.759766 Tm
-( compiles quotations to ) Tj
+1 0 0 1 265.311475 588.759766 Tm
+( compiles quotations to naive ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 60.311475 576.759766 Tm
+(machine code very quickly. The non-optimizing quotation compiler is ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 60.311475 564.759766 Tm
-(naive machine code very quickly. The non-optimizing quotation ) Tj
+(part of the VM.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 552.759766 Tm
-(compiler is part of the VM.) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 535.759766 Tm
+1 0 0 1 54.000000 547.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 535.759766 Tm
+1 0 0 1 60.311475 547.759766 Tm
 (The ) Tj
 ET
 BT
 /F7 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 102.311475 535.759766 Tm
+1 0 0 1 85.311475 547.759766 Tm
 (optimizing word compiler) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 235.311475 535.759766 Tm
+1 0 0 1 218.311475 547.759766 Tm
 ( compiles whole words at a time while ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 523.759766 Tm
+1 0 0 1 60.311475 535.759766 Tm
 (performing extensive data and control flow analysis. This provides ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 511.759766 Tm
+1 0 0 1 60.311475 523.759766 Tm
 (greater performance for generated code, but incurs a much longer ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 60.311475 499.759766 Tm
+1 0 0 1 60.311475 511.759766 Tm
 (compile time. The optimizing compiler is written in Factor.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 475.759766 Tm
+1 0 0 1 54.000000 487.759766 Tm
 (The optimizing compiler also trades off compile time for performance of generated ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 463.759766 Tm
+1 0 0 1 54.000000 475.759766 Tm
 (code, so loading certain vocabularies might take a while. Saving the image after loading ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 451.759766 Tm
+1 0 0 1 54.000000 463.759766 Tm
 (vocabularies can save you a lot of time that you would spend waiting for the same code to ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 439.759766 Tm
+1 0 0 1 54.000000 451.759766 Tm
 (load in every coding session; see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 235.000000 439.759766 Tm
+1 0 0 1 235.000000 451.759766 Tm
 (Images) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 277.000000 439.759766 Tm
+1 0 0 1 277.000000 451.759766 Tm
 ( for information.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 420.759766 Tm
+1 0 0 1 54.000000 432.759766 Tm
 (Most code you write will run with the optimizing compiler. Sometimes, the non-optimizing ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 408.759766 Tm
+1 0 0 1 54.000000 420.759766 Tm
 (compiler is used, for example for listener interactions, or for running the quotation passed to ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 54.000000 396.759766 Tm
+1 0 0 1 54.000000 408.759766 Tm
 (call\() Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 79.000000 396.759766 Tm
+1 0 0 1 79.000000 408.759766 Tm
 (.) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 383.219727 Tm
+1 0 0 1 54.000000 395.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 383.219727 Tm
+1 0 0 1 58.000000 395.219727 Tm
 (Compiler errors) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 369.219727 Tm
+1 0 0 1 54.000000 381.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 369.219727 Tm
+1 0 0 1 58.000000 381.219727 Tm
 (Compiler specialization hints) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 355.219727 Tm
+1 0 0 1 54.000000 367.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 355.219727 Tm
+1 0 0 1 58.000000 367.219727 Tm
 (Calling the optimizing compiler) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 341.219727 Tm
+1 0 0 1 54.000000 353.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 341.219727 Tm
+1 0 0 1 58.000000 353.219727 Tm
 (Compiler implementation) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 304.679688 Tm
+1 0 0 1 54.000000 316.679688 Tm
 (Compiler errors) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 291.759766 Tm
+1 0 0 1 54.000000 303.759766 Tm
 (After loading a vocabulary, you might see a message like:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 279.953125 Tm
+1 0 0 1 54.000000 291.953125 Tm
 (:errors - print 2 compiler errors) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 260.759766 Tm
+1 0 0 1 54.000000 272.759766 Tm
 (This indicates that some words did not pass the stack checker. Stack checker error ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 248.759766 Tm
+1 0 0 1 54.000000 260.759766 Tm
 (conditions are documented in ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 215.000000 248.759766 Tm
+1 0 0 1 215.000000 260.759766 Tm
 (Stack checker errors) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 334.000000 248.759766 Tm
+1 0 0 1 334.000000 260.759766 Tm
 (, and the stack checker itself in ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 502.000000 248.759766 Tm
+1 0 0 1 502.000000 260.759766 Tm
 (Stack ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 54.000000 236.759766 Tm
+1 0 0 1 54.000000 248.759766 Tm
 (effect checking) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 142.000000 236.759766 Tm
+1 0 0 1 142.000000 248.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 217.759766 Tm
+1 0 0 1 54.000000 229.759766 Tm
 (Words to view errors:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 204.219727 Tm
+1 0 0 1 54.000000 216.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 204.219727 Tm
+1 0 0 1 58.000000 216.219727 Tm
 (:errors) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 104.000000 204.219727 Tm
+1 0 0 1 104.000000 216.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 108.000000 204.219727 Tm
+1 0 0 1 108.000000 216.219727 Tm
 (\( -- \)) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 183.219727 Tm
+1 0 0 1 54.000000 195.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 183.219727 Tm
+1 0 0 1 58.000000 195.219727 Tm
 (:linkage) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 111.000000 183.219727 Tm
+1 0 0 1 111.000000 195.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 115.000000 183.219727 Tm
+1 0 0 1 115.000000 195.219727 Tm
 (\( -- \)) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 156.759766 Tm
+1 0 0 1 54.000000 168.759766 Tm
 (Compiler errors are reported using the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 261.000000 156.759766 Tm
+1 0 0 1 261.000000 168.759766 Tm
 (Batch error reporting) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 382.000000 156.759766 Tm
+1 0 0 1 382.000000 168.759766 Tm
 ( mechanism, and as a result, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 144.759766 Tm
+1 0 0 1 54.000000 156.759766 Tm
 (they are also are shown in the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 218.000000 144.759766 Tm
+1 0 0 1 218.000000 156.759766 Tm
 (UI error list tool) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 308.000000 144.759766 Tm
+1 0 0 1 308.000000 156.759766 Tm
 (.) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 115.679688 Tm
+1 0 0 1 54.000000 127.679688 Tm
 (Compiler specialization hints) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 102.759766 Tm
+1 0 0 1 54.000000 114.759766 Tm
 (Specialization hints help the compiler generate efficient code.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 83.759766 Tm
+1 0 0 1 54.000000 95.759766 Tm
 (Specialization hints can help words which call a lot of generic words on the same object - ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 71.759766 Tm
+1 0 0 1 54.000000 83.759766 Tm
 (perhaps in a loop - and in most cases, it is anticipated that this object is of a certain class, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 59.759766 Tm
+1 0 0 1 54.000000 71.759766 Tm
 (or even ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 98.000000 59.759766 Tm
+1 0 0 1 98.000000 71.759766 Tm
 (eq?) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.000000 59.759766 Tm
+1 0 0 1 120.000000 71.759766 Tm
 ( to some literal. Using specialization hints, the compiler can be instructed to ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 59.759766 Tm
+(compile a branch at the beginning of the word; if the branch is taken, the input object ) Tj
 ET
 
 endstream
@@ -3535,560 +3511,596 @@ endobj
 endobj
 33 0 obj
 <<
-/Length 10389
+/Length 10978
 >>
 stream
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 728.759766 Tm
-(compile a branch at the beginning of the word; if the branch is taken, the input object ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 716.759766 Tm
 (has the assumed class or value, and inlining of generic methods can take place.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 697.759766 Tm
+1 0 0 1 54.000000 709.759766 Tm
 (Specialization hints are not declarations; if the inputs do not match what is specified, the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 685.759766 Tm
+1 0 0 1 54.000000 697.759766 Tm
 (word will still run, possibly slower if the compiled code cannot inline methods because of ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 673.759766 Tm
+1 0 0 1 54.000000 685.759766 Tm
 (insufficient static type information.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 654.759766 Tm
+1 0 0 1 54.000000 666.759766 Tm
 (In some cases, specialization will not help at all, and can make generated code slower ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 654.759766 Tm
+(from the increase in code size. The compiler is capable of inferring enough static type ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 642.759766 Tm
-(from the increase in code size. The compiler is capable of inferring enough static ) Tj
+(information to generate efficient code in many cases without explicit help from the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 630.759766 Tm
-(type information to generate efficient code in many cases without explicit help from the ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 618.759766 Tm
 (programmer. Specializers should be used as a last resort, after profiling shows that a critical ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 606.759766 Tm
+1 0 0 1 54.000000 618.759766 Tm
 (loop makes a lot of repeated calls to generic words which dispatch on the same class.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 587.759766 Tm
+1 0 0 1 54.000000 599.759766 Tm
 (Type hints are declared with a parsing word:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 574.219727 Tm
+1 0 0 1 54.000000 586.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 574.219727 Tm
+1 0 0 1 58.000000 586.219727 Tm
 (HINTS:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 547.759766 Tm
-(The specialized version of a word which will be compiled by the compiler can be ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 535.759766 Tm
-(inspected:) Tj
+1 0 0 1 54.000000 559.759766 Tm
+(The specialized version of a word which will be compiled by the compiler can be inspected:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 522.219727 Tm
+1 0 0 1 54.000000 546.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 522.219727 Tm
+1 0 0 1 58.000000 546.219727 Tm
 (specialized-def) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 159.000000 522.219727 Tm
+1 0 0 1 159.000000 546.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 163.000000 522.219727 Tm
+1 0 0 1 163.000000 546.219727 Tm
 (\( word -- quot \)) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 471.679688 Tm
+1 0 0 1 54.000000 495.679688 Tm
 (Calling the optimizing compiler) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 458.759766 Tm
+1 0 0 1 54.000000 482.759766 Tm
 (Normally, new word definitions are recompiled automatically. This can be changed:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 445.219727 Tm
+1 0 0 1 54.000000 469.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 445.219727 Tm
+1 0 0 1 58.000000 469.219727 Tm
 (disable-optimizer) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 174.000000 445.219727 Tm
+1 0 0 1 174.000000 469.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 178.000000 445.219727 Tm
+1 0 0 1 178.000000 469.219727 Tm
 (\( -- \)) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 424.219727 Tm
+1 0 0 1 54.000000 448.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 424.219727 Tm
+1 0 0 1 58.000000 448.219727 Tm
 (enable-optimizer) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 170.000000 424.219727 Tm
+1 0 0 1 170.000000 448.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 174.000000 424.219727 Tm
+1 0 0 1 174.000000 448.219727 Tm
 (\( -- \)) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 397.759766 Tm
+1 0 0 1 54.000000 421.759766 Tm
 (More words can be found in ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 206.000000 397.759766 Tm
+1 0 0 1 206.000000 421.759766 Tm
 (Compilation units) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 308.000000 397.759766 Tm
+1 0 0 1 308.000000 421.759766 Tm
 (.) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 368.679688 Tm
+1 0 0 1 54.000000 392.679688 Tm
 (Compiler implementation) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 355.759766 Tm
+1 0 0 1 54.000000 379.759766 Tm
 (The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 96.000000 355.759766 Tm
+1 0 0 1 79.000000 379.759766 Tm
 (compiler) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 147.000000 355.759766 Tm
+1 0 0 1 130.000000 379.759766 Tm
 (vocabulary, in addition to providing the user-visible words of the compiler, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 343.759766 Tm
+1 0 0 1 54.000000 367.759766 Tm
 (implements the main compilation loop.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 324.759766 Tm
+1 0 0 1 54.000000 348.759766 Tm
 (Once compiled, a word is added to the assoc stored in the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 367.000000 324.759766 Tm
+1 0 0 1 367.000000 348.759766 Tm
 (compiled) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 420.000000 324.759766 Tm
+1 0 0 1 420.000000 348.759766 Tm
 ( variable. When ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 312.759766 Tm
+1 0 0 1 54.000000 336.759766 Tm
 (compilation is complete, this assoc is passed to ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 310.000000 312.759766 Tm
+1 0 0 1 310.000000 336.759766 Tm
 (modify-code-heap) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 414.000000 312.759766 Tm
+1 0 0 1 414.000000 336.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 293.759766 Tm
+1 0 0 1 54.000000 317.759766 Tm
 (The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 96.000000 293.759766 Tm
+1 0 0 1 79.000000 317.759766 Tm
 (compile-word) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 175.000000 293.759766 Tm
+1 0 0 1 158.000000 317.759766 Tm
 ( word performs the actual task of compiling an individual word. The ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 281.759766 Tm
+1 0 0 1 54.000000 305.759766 Tm
 (process proceeds as follows:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 269.759766 Tm
+1 0 0 1 54.000000 293.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 269.759766 Tm
+1 0 0 1 59.947306 293.759766 Tm
 (The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 101.947306 269.759766 Tm
+1 0 0 1 84.947306 293.759766 Tm
 (frontend) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 150.947306 269.759766 Tm
+1 0 0 1 133.947306 293.759766 Tm
 ( word calls ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 211.947306 269.759766 Tm
+1 0 0 1 194.947306 293.759766 Tm
 (build-tree) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 266.947306 269.759766 Tm
-(. If this fails, the error is passed ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 257.759766 Tm
-(to ) Tj
+1 0 0 1 249.947306 293.759766 Tm
+(. If this fails, the error is passed to ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 73.947306 257.759766 Tm
+1 0 0 1 59.947306 281.759766 Tm
 (deoptimize) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 136.947306 257.759766 Tm
-(. The logic for ignoring certain compile errors ) Tj
+1 0 0 1 122.947306 281.759766 Tm
+(. The logic for ignoring certain compile errors generated ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 245.759766 Tm
-(generated for inline words and macros is located here. If the error is ) Tj
+1 0 0 1 59.947306 269.759766 Tm
+(for inline words and macros is located here. If the error is not ignorable, ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 233.759766 Tm
-(not ignorable, it is added to the global ) Tj
+1 0 0 1 59.947306 257.759766 Tm
+(it is added to the global ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 262.947306 233.759766 Tm
+1 0 0 1 186.947306 257.759766 Tm
 (compiler-errors) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 351.947306 233.759766 Tm
+1 0 0 1 275.947306 257.759766 Tm
 ( assoc \(see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 59.947306 221.759766 Tm
+1 0 0 1 340.947306 257.759766 Tm
 (Compiler errors) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 150.947306 221.759766 Tm
+1 0 0 1 431.947306 257.759766 Tm
 (\).) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 204.759766 Tm
+1 0 0 1 54.000000 240.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 204.759766 Tm
+1 0 0 1 59.947306 240.759766 Tm
 (If the word contains a breakpoint, compilation ends here. Otherwise, all ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 192.759766 Tm
+1 0 0 1 59.947306 228.759766 Tm
 (remaining steps execute until machine code is generated. Any further ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 180.759766 Tm
+1 0 0 1 59.947306 216.759766 Tm
 (errors thrown by the compiler are not reported as compile errors, but ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 168.759766 Tm
+1 0 0 1 59.947306 204.759766 Tm
 (instead are ordinary exceptions. This is because they indicate bugs in ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 156.759766 Tm
+1 0 0 1 59.947306 192.759766 Tm
 (the compiler, not errors in user code.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 139.759766 Tm
+1 0 0 1 54.000000 175.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 139.759766 Tm
+1 0 0 1 59.947306 175.759766 Tm
 (The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 101.947306 139.759766 Tm
+1 0 0 1 84.947306 175.759766 Tm
 (frontend) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 150.947306 139.759766 Tm
+1 0 0 1 133.947306 175.759766 Tm
 ( word then calls ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 237.947306 139.759766 Tm
+1 0 0 1 220.947306 175.759766 Tm
 (optimize-tree) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 312.947306 139.759766 Tm
+1 0 0 1 295.947306 175.759766 Tm
 (. This produces the final ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 127.759766 Tm
+1 0 0 1 59.947306 163.759766 Tm
 (optimized tree IR, and this stage of the compiler is complete.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 110.759766 Tm
+1 0 0 1 54.000000 146.759766 Tm
 ( ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 110.759766 Tm
+1 0 0 1 59.947306 146.759766 Tm
 (The ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 101.947306 110.759766 Tm
+1 0 0 1 84.947306 146.759766 Tm
 (backend) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 150.947306 110.759766 Tm
+1 0 0 1 133.947306 146.759766 Tm
 ( word calls ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 211.947306 110.759766 Tm
+1 0 0 1 194.947306 146.759766 Tm
 (build-cfg) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 262.947306 110.759766 Tm
+1 0 0 1 245.947306 146.759766 Tm
 ( followed by ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 329.947306 110.759766 Tm
+1 0 0 1 312.947306 146.759766 Tm
 (optimize-cfg) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 400.947306 110.759766 Tm
-( and a ) Tj
+1 0 0 1 383.947306 146.759766 Tm
+( and a few ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 59.947306 98.759766 Tm
-(few other stages. Finally, it calls ) Tj
+1 0 0 1 59.947306 134.759766 Tm
+(other stages. Finally, it calls ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 231.947306 98.759766 Tm
+1 0 0 1 209.947306 134.759766 Tm
 (generate) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 282.947306 98.759766 Tm
+1 0 0 1 260.947306 134.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 74.759766 Tm
+1 0 0 1 54.000000 110.759766 Tm
 (If compilation fails, the word is stored in the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 287.000000 74.759766 Tm
+1 0 0 1 287.000000 110.759766 Tm
 (compiled) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 340.000000 74.759766 Tm
+1 0 0 1 340.000000 110.759766 Tm
 ( assoc with a value of ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 459.000000 74.759766 Tm
+1 0 0 1 459.000000 110.759766 Tm
 (f) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 463.000000 74.759766 Tm
+1 0 0 1 463.000000 110.759766 Tm
 (. This causes ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 62.759766 Tm
+1 0 0 1 54.000000 98.759766 Tm
 (the VM to compile the word with the non-optimizing compiler.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 79.759766 Tm
+(Calling ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 95.000000 79.759766 Tm
+(modify-code-heap) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 199.000000 79.759766 Tm
+( is handled not by the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 317.000000 79.759766 Tm
+(compiler) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 368.000000 79.759766 Tm
+( vocabulary, but rather ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 54.000000 67.759766 Tm
+(compiler.units) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 136.000000 67.759766 Tm
+(. The optimizing compiler merely provides an implementation of the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 496.000000 67.759766 Tm
+(recompile) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 553.000000 67.759766 Tm
+( ) Tj
 ET
 
 endstream
@@ -4108,67 +4120,13 @@ endobj
 endobj
 35 0 obj
 <<
-/Length 1030
+/Length 98
 >>
 stream
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 721.759766 Tm
-(Calling ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 95.000000 721.759766 Tm
-(modify-code-heap) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 199.000000 721.759766 Tm
-( is handled not by the ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 317.000000 721.759766 Tm
-(compiler) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 368.000000 721.759766 Tm
-( vocabulary, but rather ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 54.000000 709.759766 Tm
-(compiler.units) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 136.000000 709.759766 Tm
-(. The optimizing compiler merely provides an implementation of the ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 496.000000 709.759766 Tm
-(recompile) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 553.000000 709.759766 Tm
-( ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 697.759766 Tm
+1 0 0 1 54.000000 728.759766 Tm
 (generic word.) Tj
 ET
 
@@ -5107,49 +5065,49 @@ ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 67.000000 431.953125 Tm
+1 0 0 1 62.000000 431.953125 Tm
 (-) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 75.000000 431.953125 Tm
+1 0 0 1 70.000000 431.953125 Tm
 (foo) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 97.000000 431.759766 Tm
+1 0 0 1 92.000000 431.759766 Tm
 ( - sets the global variable ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 234.000000 431.953125 Tm
+1 0 0 1 229.000000 431.953125 Tm
 (") Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 242.000000 431.953125 Tm
+1 0 0 1 237.000000 431.953125 Tm
 (foo) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 264.000000 431.953125 Tm
+1 0 0 1 259.000000 431.953125 Tm
 (") Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 272.000000 431.759766 Tm
+1 0 0 1 267.000000 431.759766 Tm
 ( to ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 289.000000 431.759766 Tm
+1 0 0 1 284.000000 431.759766 Tm
 (t) Tj
 ET
 BT
@@ -5161,49 +5119,49 @@ ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 67.000000 414.953125 Tm
+1 0 0 1 62.000000 414.953125 Tm
 (-no-) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 96.000000 414.953125 Tm
+1 0 0 1 91.000000 414.953125 Tm
 (foo) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 118.000000 414.759766 Tm
+1 0 0 1 113.000000 414.759766 Tm
 ( - sets the global variable ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 255.000000 414.953125 Tm
+1 0 0 1 250.000000 414.953125 Tm
 (") Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 263.000000 414.953125 Tm
+1 0 0 1 258.000000 414.953125 Tm
 (foo) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 285.000000 414.953125 Tm
+1 0 0 1 280.000000 414.953125 Tm
 (") Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 293.000000 414.759766 Tm
+1 0 0 1 288.000000 414.759766 Tm
 ( to ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 310.000000 414.759766 Tm
+1 0 0 1 305.000000 414.759766 Tm
 (f) Tj
 ET
 BT
@@ -5215,73 +5173,73 @@ ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 67.000000 397.953125 Tm
+1 0 0 1 62.000000 397.953125 Tm
 (-) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 75.000000 397.953125 Tm
+1 0 0 1 70.000000 397.953125 Tm
 (foo) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 97.000000 397.953125 Tm
+1 0 0 1 92.000000 397.953125 Tm
 (=) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 105.000000 397.953125 Tm
+1 0 0 1 100.000000 397.953125 Tm
 (bar) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 127.000000 397.759766 Tm
+1 0 0 1 122.000000 397.759766 Tm
 ( - sets the global variable ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 264.000000 397.953125 Tm
+1 0 0 1 259.000000 397.953125 Tm
 (") Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 272.000000 397.953125 Tm
+1 0 0 1 267.000000 397.953125 Tm
 (foo) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 294.000000 397.953125 Tm
+1 0 0 1 289.000000 397.953125 Tm
 (") Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 302.000000 397.759766 Tm
+1 0 0 1 297.000000 397.759766 Tm
 ( to ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 319.000000 397.953125 Tm
+1 0 0 1 314.000000 397.953125 Tm
 (") Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 327.000000 397.953125 Tm
+1 0 0 1 322.000000 397.953125 Tm
 (bar) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 349.000000 397.953125 Tm
+1 0 0 1 344.000000 397.953125 Tm
 (") Tj
 ET
 BT
@@ -5512,7 +5470,7 @@ endobj
 endobj
 43 0 obj
 <<
-/Length 8738
+/Length 8689
 >>
 stream
 BT
@@ -5618,148 +5576,148 @@ BT
 (caching, > 1 enables polymorphic inline caching) Tj
 ET
 BT
-/F3 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 566.953125 Tm
-(-securegc) Tj
-ET
-BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 117.566978 566.759766 Tm
-(If specified, unused portions of the data heap will be zeroed ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 117.566978 554.759766 Tm
-(out after every garbage collection) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 530.759766 Tm
+1 0 0 1 54.000000 559.759766 Tm
 (If an ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 81.000000 530.953125 Tm
+1 0 0 1 81.000000 559.953125 Tm
 (-i=) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 103.000000 530.759766 Tm
+1 0 0 1 103.000000 559.759766 Tm
 ( switch is not present, the default image file is used, which is usually a file named ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 518.953125 Tm
+1 0 0 1 54.000000 547.953125 Tm
 (factor.image) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 141.000000 518.759766 Tm
+1 0 0 1 141.000000 547.759766 Tm
 ( in the same directory as the Factor executable.) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 489.679688 Tm
+1 0 0 1 54.000000 518.679688 Tm
 (Command line switches for bootstrap) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 476.759766 Tm
+1 0 0 1 54.000000 505.759766 Tm
 (A number of command line switches can be passed to a bootstrap image to modify the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 464.759766 Tm
+1 0 0 1 54.000000 493.759766 Tm
 (behavior of the resulting image:) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 452.953125 Tm
+1 0 0 1 54.000000 481.953125 Tm
 (-output-image=) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 440.953125 Tm
+1 0 0 1 54.000000 469.953125 Tm
 (image) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 154.961995 452.759766 Tm
+1 0 0 1 154.961995 481.759766 Tm
 (Save the result to ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 251.961995 452.953125 Tm
+1 0 0 1 251.961995 481.953125 Tm
 (image) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 288.961995 452.759766 Tm
+1 0 0 1 288.961995 481.759766 Tm
 (. The default is ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 370.961995 452.953125 Tm
+1 0 0 1 370.961995 481.953125 Tm
 (factor.image) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
+1 0 0 1 154.961995 469.759766 Tm
+(.) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 452.953125 Tm
+(-no-user-init) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 154.961995 452.759766 Tm
+(Inhibits the running of user initialization files on startup. ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
 1 0 0 1 154.961995 440.759766 Tm
+(See ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 187.961995 440.759766 Tm
+(Running code on startup) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 329.961995 440.759766 Tm
 (.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
 1 0 0 1 54.000000 423.953125 Tm
-(-no-user-init) Tj
+(-include=) Tj
+ET
+BT
+/F9 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 54.000000 411.953125 Tm
+(components...) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 154.961995 423.759766 Tm
-(Inhibits the running of user initialization files on startup. ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 154.961995 411.759766 Tm
-(See ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 187.961995 411.759766 Tm
-(Running code on startup) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 329.961995 411.759766 Tm
-(.) Tj
+(A list of components to include \(see below\).) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
 1 0 0 1 54.000000 394.953125 Tm
-(-include=) Tj
+(-exclude=) Tj
 ET
 BT
 /F9 12 Tf
@@ -5771,247 +5729,241 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 154.961995 394.759766 Tm
-(A list of components to include \(see below\).) Tj
-ET
-BT
-/F3 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 365.953125 Tm
-(-exclude=) Tj
-ET
-BT
-/F9 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 353.953125 Tm
-(components...) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 154.961995 365.759766 Tm
 (A list of components to exclude.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 336.953125 Tm
+1 0 0 1 54.000000 365.953125 Tm
 (-ui-backend=) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 324.953125 Tm
+1 0 0 1 54.000000 353.953125 Tm
 (backend) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 154.961995 336.759766 Tm
+1 0 0 1 154.961995 365.759766 Tm
 (One of ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 194.961995 336.953125 Tm
+1 0 0 1 194.961995 365.953125 Tm
 (x11) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 216.961995 336.759766 Tm
+1 0 0 1 216.961995 365.759766 Tm
 (, ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 223.961995 336.953125 Tm
+1 0 0 1 223.961995 365.953125 Tm
 (windows) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 274.961995 336.759766 Tm
+1 0 0 1 274.961995 365.759766 Tm
 (, or ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 295.961995 336.953125 Tm
+1 0 0 1 295.961995 365.953125 Tm
 (cocoa) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 332.961995 336.759766 Tm
+1 0 0 1 332.961995 365.759766 Tm
 (. The default is ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 154.961995 324.759766 Tm
+1 0 0 1 154.961995 353.759766 Tm
 (platform-specific.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 300.759766 Tm
+1 0 0 1 54.000000 329.759766 Tm
 (Bootstrap can load various optional components:) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 288.953125 Tm
+1 0 0 1 54.000000 317.953125 Tm
 (math) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 288.759766 Tm
+1 0 0 1 153.000000 317.759766 Tm
 (Rational and complex number support.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 271.953125 Tm
+1 0 0 1 54.000000 300.953125 Tm
 (threads) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 271.759766 Tm
+1 0 0 1 153.000000 300.759766 Tm
 (Thread support.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 254.953125 Tm
+1 0 0 1 54.000000 283.953125 Tm
 (compiler) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 254.759766 Tm
+1 0 0 1 153.000000 283.759766 Tm
 (The compiler.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 237.953125 Tm
+1 0 0 1 54.000000 266.953125 Tm
 (tools) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 237.759766 Tm
+1 0 0 1 153.000000 266.759766 Tm
 (Terminal-based developer tools.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 220.953125 Tm
+1 0 0 1 54.000000 249.953125 Tm
 (help) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 220.759766 Tm
+1 0 0 1 153.000000 249.759766 Tm
 (The help system.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 203.953125 Tm
+1 0 0 1 54.000000 232.953125 Tm
 (help.handbook) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 203.759766 Tm
+1 0 0 1 153.000000 232.759766 Tm
 (The help handbook.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 186.953125 Tm
+1 0 0 1 54.000000 215.953125 Tm
 (ui) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 186.759766 Tm
+1 0 0 1 153.000000 215.759766 Tm
 (The graphical user interface.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 169.953125 Tm
+1 0 0 1 54.000000 198.953125 Tm
 (ui.tools) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 169.759766 Tm
+1 0 0 1 153.000000 198.759766 Tm
 (Graphical developer tools.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 152.953125 Tm
+1 0 0 1 54.000000 181.953125 Tm
 (io) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 153.000000 152.759766 Tm
+1 0 0 1 153.000000 181.759766 Tm
 (Non-blocking I/O and networking.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 128.759766 Tm
+1 0 0 1 54.000000 157.759766 Tm
 (By default, all optional components are loaded. To load all optional components except for a ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 116.759766 Tm
+1 0 0 1 54.000000 145.759766 Tm
 (given list, use the ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 151.000000 116.953125 Tm
+1 0 0 1 151.000000 145.953125 Tm
 (-exclude=) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 216.000000 116.759766 Tm
+1 0 0 1 216.000000 145.759766 Tm
 ( switch; to only load specified optional components, use the ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 104.953125 Tm
+1 0 0 1 54.000000 133.953125 Tm
 (-include=) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 119.000000 104.759766 Tm
+1 0 0 1 119.000000 133.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 85.759766 Tm
+1 0 0 1 54.000000 114.759766 Tm
 (For example, to build an image with the compiler but no other components, you could do:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 73.953125 Tm
-(./factor -i=boot.macosx-ppc.image -include=compiler) Tj
+1 0 0 1 54.000000 102.953125 Tm
+(./factor -i=boot.unix-x86.64.image -include=compiler) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 83.759766 Tm
+(To build an image with everything except for the user interface and graphical tools,) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 71.953125 Tm
+(./factor -i=boot.unix-x86.64.image -exclude="ui ui.tools") Tj
 ET
 
 endstream
@@ -6031,224 +5983,176 @@ endobj
 endobj
 45 0 obj
 <<
-/Length 3795
+/Length 2914
 >>
 stream
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 728.759766 Tm
-(To build an image with everything except for the user interface and graphical tools,) Tj
-ET
-BT
-/F3 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 716.953125 Tm
-(./factor -i=boot.macosx-ppc.image -exclude="ui ui.tools") Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 697.759766 Tm
 (To generate a bootstrap image in the first place, see ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 334.000000 697.759766 Tm
+1 0 0 1 334.000000 728.759766 Tm
 (Bootstrapping new images) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 488.000000 697.759766 Tm
+1 0 0 1 488.000000 728.759766 Tm
 (.) Tj
 ET
 BT
 /F4 16 Tf
 0.215686 0.243137 0.282353 rg
-1 0 0 1 54.000000 668.679688 Tm
+1 0 0 1 54.000000 699.679688 Tm
 (Command line switches for general usage) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 655.759766 Tm
+1 0 0 1 54.000000 686.759766 Tm
 (The following command line switches can be passed to a bootstrapped Factor image:) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 643.953125 Tm
+1 0 0 1 54.000000 674.953125 Tm
 (-e=) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 76.000000 643.953125 Tm
+1 0 0 1 76.000000 674.953125 Tm
 (code) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.138211 643.759766 Tm
+1 0 0 1 120.138211 674.759766 Tm
 (This specifies a code snippet to evaluate. If you want Factor ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.138211 631.759766 Tm
+1 0 0 1 120.138211 662.759766 Tm
 (to exit immediately after, also specify ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 319.138211 631.953125 Tm
+1 0 0 1 319.138211 662.953125 Tm
 (-run=none) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 384.138211 631.759766 Tm
+1 0 0 1 384.138211 662.759766 Tm
 (.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 614.953125 Tm
+1 0 0 1 54.000000 645.953125 Tm
 (-run=) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 602.953125 Tm
+1 0 0 1 54.000000 633.953125 Tm
 (vocab) Tj
 ET
 BT
 /F9 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 120.138211 614.953125 Tm
+1 0 0 1 120.138211 645.953125 Tm
 (vocab) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 157.138211 614.759766 Tm
+1 0 0 1 157.138211 645.759766 Tm
 ( is the name of a vocabulary with a ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 346.138211 614.759766 Tm
+1 0 0 1 346.138211 645.759766 Tm
 (MAIN:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 381.138211 614.759766 Tm
+1 0 0 1 381.138211 645.759766 Tm
 ( hook to run ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.138211 602.759766 Tm
+1 0 0 1 120.138211 633.759766 Tm
 (on startup, for example ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 247.138211 602.759766 Tm
+1 0 0 1 247.138211 633.759766 Tm
 (listener) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 290.138211 602.759766 Tm
+1 0 0 1 290.138211 633.759766 Tm
 (, ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 297.138211 602.759766 Tm
+1 0 0 1 297.138211 633.759766 Tm
 (ui.tools) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 340.138211 602.759766 Tm
+1 0 0 1 340.138211 633.759766 Tm
 ( or ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 358.138211 602.759766 Tm
+1 0 0 1 358.138211 633.759766 Tm
 (none) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 387.138211 602.759766 Tm
+1 0 0 1 387.138211 633.759766 Tm
 (.) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 585.953125 Tm
+1 0 0 1 54.000000 616.953125 Tm
 (-no-user-init) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 120.138211 585.759766 Tm
+1 0 0 1 120.138211 616.759766 Tm
 (Inhibits the running of user initialization files on startup. See ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 120.138211 573.759766 Tm
+1 0 0 1 120.138211 604.759766 Tm
 (Running code on startup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 262.138211 573.759766 Tm
+1 0 0 1 262.138211 604.759766 Tm
 (.) Tj
-ET
-BT
-/F3 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 54.000000 556.953125 Tm
-(-quiet) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 120.138211 556.759766 Tm
-(If set, ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 153.138211 556.759766 Tm
-(run-file) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 194.138211 556.759766 Tm
-( and ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 221.138211 556.759766 Tm
-(require) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 262.138211 556.759766 Tm
-( will not print load messages.) Tj
 ET
 
 endstream
@@ -6268,7 +6172,7 @@ endobj
 endobj
 47 0 obj
 <<
-/Length 7742
+/Length 7536
 >>
 stream
 BT
@@ -6641,66 +6545,54 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 335.000000 197.759766 Tm
-( on Windows and ) Tj
-ET
-BT
-/F3 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 431.000000 197.953125 Tm
-(.factor-roots) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 525.000000 197.759766 Tm
-( on ) Tj
+(. If it exists, it is loaded every ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 185.759766 Tm
-(Unix. If it exists, it is loaded every time Factor starts. It contains a newline-separated list of ) Tj
+(time Factor starts. It contains a newline-separated list of ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 54.000000 173.759766 Tm
+1 0 0 1 355.000000 185.759766 Tm
 (Vocabulary roots) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 152.000000 173.759766 Tm
+1 0 0 1 453.000000 185.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 154.759766 Tm
+1 0 0 1 54.000000 166.759766 Tm
 (A word to run this file from an existing Factor session:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 141.219727 Tm
+1 0 0 1 54.000000 153.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 141.219727 Tm
+1 0 0 1 58.000000 153.219727 Tm
 (load-vocab-roots) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 172.000000 141.219727 Tm
+1 0 0 1 172.000000 153.219727 Tm
 ( ) Tj
 ET
 BT
 /F1 14 Tf
 0.000000 0.200000 0.000000 rg
-1 0 0 1 176.000000 141.219727 Tm
+1 0 0 1 176.000000 153.219727 Tm
 (\( -- \)) Tj
 ET
 
@@ -7006,7 +6898,7 @@ endobj
 endobj
 51 0 obj
 <<
-/Length 6522
+/Length 6453
 >>
 stream
 BT
@@ -7367,7 +7259,7 @@ BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
 1 0 0 1 58.000000 164.219727 Tm
-(freebsd) Tj
+(linux) Tj
 ET
 BT
 /F4 14 Tf
@@ -7379,7 +7271,7 @@ BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
 1 0 0 1 58.000000 143.219727 Tm
-(linux) Tj
+(macosx) Tj
 ET
 BT
 /F4 14 Tf
@@ -7391,43 +7283,37 @@ BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
 1 0 0 1 58.000000 122.219727 Tm
-(macosx) Tj
+(windows) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 95.759766 Tm
+(Operating system families:) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 101.219727 Tm
+1 0 0 1 54.000000 82.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 101.219727 Tm
-(openbsd) Tj
+1 0 0 1 58.000000 82.219727 Tm
+(unix) Tj
 ET
 BT
 /F4 14 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 80.219727 Tm
+1 0 0 1 54.000000 61.219727 Tm
 ( ) Tj
 ET
 BT
 /F4 14 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 80.219727 Tm
-(netbsd) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 59.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 59.219727 Tm
-(solaris) Tj
+1 0 0 1 58.000000 61.219727 Tm
+(windows) Tj
 ET
 
 endstream
@@ -7447,75 +7333,9 @@ endobj
 endobj
 53 0 obj
 <<
-/Length 980
+/Length 1
 >>
 stream
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 720.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 720.219727 Tm
-(wince) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 699.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 699.219727 Tm
-(winnt) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 672.759766 Tm
-(Operating system families:) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 659.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 659.219727 Tm
-(bsd) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 638.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 638.219727 Tm
-(unix) Tj
-ET
-BT
-/F4 14 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 617.219727 Tm
-( ) Tj
-ET
-BT
-/F4 14 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 58.000000 617.219727 Tm
-(windows) Tj
-ET
 
 endstream
 endobj
@@ -7661,13 +7481,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 529.759766 Tm
-(Corresponding to every built-in class is a built-in type number. An object can be asked for its ) Tj
+(Corresponding to every built-in class is a built-in type number. An object can be asked for ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 517.759766 Tm
-(built-in type number:) Tj
+(its built-in type number:) Tj
 ET
 BT
 /F4 14 Tf
@@ -7871,13 +7691,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 209.759766 Tm
-(The above words operate on integers; they are used in the bootstrap image generator ) Tj
+(The above words operate on integers; they are used in the bootstrap image generator and ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 197.759766 Tm
-(and the optimizing compiler.) Tj
+(the optimizing compiler.) Tj
 ET
 BT
 /F4 16 Tf
@@ -8293,36 +8113,36 @@ xref
 000000836E 00000 n
 0000008B68 00000 n
 0000008C47 00000 n
-000000B2FF 00000 n
-000000B3DE 00000 n
-000000C6EA 00000 n
-000000C7C9 00000 n
-000000EAC8 00000 n
-000000EBA7 00000 n
-0000011471 00000 n
-0000011550 00000 n
-000001198A 00000 n
-0000011A69 00000 n
-0000012B48 00000 n
-0000012C27 00000 n
-0000014835 00000 n
-0000014914 00000 n
-0000017285 00000 n
-0000017364 00000 n
-00000195BA 00000 n
-0000019699 00000 n
-000001A5A0 00000 n
-000001A67F 00000 n
-000001C4F1 00000 n
-000001C5D0 00000 n
-000001D6D9 00000 n
-000001D7B8 00000 n
-000001F166 00000 n
-000001F245 00000 n
-000001F64C 00000 n
-000001F72B 00000 n
-000002167F 00000 n
-000002175E 00000 n
+000000B181 00000 n
+000000B260 00000 n
+000000C56C 00000 n
+000000C64B 00000 n
+000000E99F 00000 n
+000000EA7E 00000 n
+0000011595 00000 n
+0000011674 00000 n
+0000011708 00000 n
+00000117E7 00000 n
+00000128C6 00000 n
+00000129A5 00000 n
+00000145B3 00000 n
+0000014692 00000 n
+0000017003 00000 n
+00000170E2 00000 n
+0000019307 00000 n
+00000193E6 00000 n
+0000019F7C 00000 n
+000001A05B 00000 n
+000001BDFF 00000 n
+000001BEDE 00000 n
+000001CFE7 00000 n
+000001D0C6 00000 n
+000001EA2F 00000 n
+000001EB0E 00000 n
+000001EB40 00000 n
+000001EC1F 00000 n
+0000020B73 00000 n
+0000020C52 00000 n
 trailer
 <<
 /Size 58
@@ -8330,5 +8150,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-140874
+138046
 %%EOF

@@ -1,7 +1,7 @@
 %PDF-1.4
 1 0 obj
 <<
-/CreationDate D:20110828190553
+/CreationDate D:20120922122827
 /Producer (Factor)
 /Author (jbenedik)
 /Creator (created with Factor)
@@ -323,13 +323,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 325.000000 658.759766 Tm
-(. Before we can write our first program, ) Tj
+(. Before we can write our first ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 646.759766 Tm
-(we must create a vocabulary for it.) Tj
+(program, we must create a vocabulary for it.) Tj
 ET
 BT
 /F1 12 Tf
@@ -511,7 +511,7 @@ endobj
 endobj
 21 0 obj
 <<
-/Length 10970
+/Length 10855
 >>
 stream
 BT
@@ -578,511 +578,499 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 643.759766 Tm
+(The Factor workflow is to edit source code on disk and then to refresh the live image. Let's ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 631.759766 Tm
+(examine the file that we just created with the scaffold tool.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 612.759766 Tm
 (Your ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 79.000000 643.953125 Tm
+1 0 0 1 104.000000 612.953125 Tm
 (palindrome.factor) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 202.000000 643.759766 Tm
+1 0 0 1 227.000000 612.759766 Tm
 ( file should look like the following after the previous section:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 631.953125 Tm
+1 0 0 1 54.000000 600.953125 Tm
 (! Copyright \(C\) 2011 <your name here>) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 619.953125 Tm
+1 0 0 1 54.000000 588.953125 Tm
 (! See http://factorcode.org/license.txt for BSD license.) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 607.953125 Tm
+1 0 0 1 54.000000 576.953125 Tm
 (USING: ;) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 595.953125 Tm
+1 0 0 1 54.000000 564.953125 Tm
 (IN: palindrome) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 576.759766 Tm
+1 0 0 1 54.000000 545.759766 Tm
 (Notice that the file ends with an ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 225.000000 576.759766 Tm
+1 0 0 1 225.000000 545.759766 Tm
 (IN:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 241.000000 576.759766 Tm
+1 0 0 1 241.000000 545.759766 Tm
 ( form telling Factor that all definitions in this source file ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 564.759766 Tm
+1 0 0 1 54.000000 533.759766 Tm
 (should go into the ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 153.000000 564.953125 Tm
+1 0 0 1 153.000000 533.953125 Tm
 (palindrome) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 226.000000 564.759766 Tm
+1 0 0 1 226.000000 533.759766 Tm
 ( vocabulary using the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 343.000000 564.759766 Tm
+1 0 0 1 343.000000 533.759766 Tm
 (IN:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 359.000000 564.759766 Tm
+1 0 0 1 359.000000 533.759766 Tm
 ( word. We will add new definitions ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 552.759766 Tm
+1 0 0 1 54.000000 521.759766 Tm
 (after the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 102.000000 552.759766 Tm
+1 0 0 1 102.000000 521.759766 Tm
 (IN:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 118.000000 552.759766 Tm
+1 0 0 1 118.000000 521.759766 Tm
 ( form.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 533.759766 Tm
+1 0 0 1 54.000000 502.759766 Tm
 (In order to be able to call the words defined in the ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 321.000000 533.953125 Tm
+1 0 0 1 321.000000 502.953125 Tm
 (palindrome) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 394.000000 533.759766 Tm
+1 0 0 1 394.000000 502.759766 Tm
 ( vocabulary, you need to ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 521.759766 Tm
+1 0 0 1 54.000000 490.759766 Tm
 (issue the following command in the listener:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 509.953125 Tm
+1 0 0 1 54.000000 478.953125 Tm
 (USE: palindrome) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 490.759766 Tm
+1 0 0 1 54.000000 459.759766 Tm
 (Now, we will be making some additions to the file. Since the file was loaded by the scaffold ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 478.759766 Tm
-(tool in the previous step, you need to tell Factor to reload it if it changes. Factor has a handy ) Tj
+1 0 0 1 54.000000 447.759766 Tm
+(tool in the previous step, you need to tell Factor to reload it if it changes. Factor has a ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 466.759766 Tm
-(feature for this; pressing ) Tj
+1 0 0 1 54.000000 435.759766 Tm
+(handy feature for this; pressing ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 187.000000 466.953125 Tm
+1 0 0 1 223.000000 435.953125 Tm
 (F2) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 202.000000 466.759766 Tm
-( in the listener window will reload any changed source files. You ) Tj
+1 0 0 1 238.000000 435.759766 Tm
+( in the listener window will reload any changed source ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 454.759766 Tm
-(can also force a single vocabulary to reload, in case the refresh feature does not ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 442.759766 Tm
-(pick up changes from disk:) Tj
-ET
-BT
-/F3 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 430.953125 Tm
-("palindrome" reload) Tj
+1 0 0 1 54.000000 423.759766 Tm
+(files. You can also force a single vocabulary to reload, in case the refresh feature does ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 411.759766 Tm
+(not pick up changes from disk:) Tj
+ET
+BT
+/F3 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 399.953125 Tm
+("palindrome" reload) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 380.759766 Tm
 (We will now write our first word using ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 254.000000 411.759766 Tm
+1 0 0 1 254.000000 380.759766 Tm
 (:) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 258.000000 411.759766 Tm
+1 0 0 1 258.000000 380.759766 Tm
 (. This word will test if a string is a palindrome; it will ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 399.759766 Tm
+1 0 0 1 54.000000 368.759766 Tm
 (take a string as input, and give back a boolean as output. We will call this word ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 475.000000 399.953125 Tm
+1 0 0 1 475.000000 368.953125 Tm
 (palindrome?) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 387.759766 Tm
+1 0 0 1 54.000000 356.759766 Tm
 (, following a naming convention that words returning booleans have names ending with ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 519.000000 387.953125 Tm
+1 0 0 1 519.000000 356.953125 Tm
 (?) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 527.000000 387.759766 Tm
+1 0 0 1 527.000000 356.759766 Tm
 (.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 368.759766 Tm
+1 0 0 1 54.000000 337.759766 Tm
 (Recall that a string is a palindrome if it is spelled the same forwards or backwards; that is, if ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 356.759766 Tm
+1 0 0 1 54.000000 325.759766 Tm
 (the string is equal to its reverse. We can express this in Factor as follows:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 344.953125 Tm
+1 0 0 1 54.000000 313.953125 Tm
 (: palindrome? \( string -- ? \) dup reverse = ;) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 325.759766 Tm
+1 0 0 1 54.000000 294.759766 Tm
 (Place this definition at the end of your source file.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 306.759766 Tm
+1 0 0 1 54.000000 275.759766 Tm
 (Now we have changed the source file, we must reload it into Factor so that we can test the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 294.759766 Tm
+1 0 0 1 54.000000 263.759766 Tm
 (new definition. To do this, simply go to the Factor listener and press ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 415.000000 294.953125 Tm
+1 0 0 1 415.000000 263.953125 Tm
 (F2) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 430.000000 294.759766 Tm
+1 0 0 1 430.000000 263.759766 Tm
 (. This will find any ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 282.759766 Tm
+1 0 0 1 54.000000 251.759766 Tm
 (previously-loaded source files which have changed on disk, and reload them.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 263.759766 Tm
+1 0 0 1 54.000000 232.759766 Tm
 (When you do this, you will get an error about the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 315.000000 263.759766 Tm
+1 0 0 1 315.000000 232.759766 Tm
 (dup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 337.000000 263.759766 Tm
+1 0 0 1 337.000000 232.759766 Tm
 ( word not being found. This is because ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 251.759766 Tm
+1 0 0 1 54.000000 220.759766 Tm
 (this word is part of the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 175.000000 251.759766 Tm
+1 0 0 1 175.000000 220.759766 Tm
 (kernel) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 211.000000 251.759766 Tm
-( vocabulary, but this vocabulary is not part of the ) Tj
+1 0 0 1 211.000000 220.759766 Tm
+( vocabulary, but this vocabulary is not part of the source ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 239.759766 Tm
-(source file's ) Tj
+1 0 0 1 54.000000 208.759766 Tm
+(file's ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 121.000000 239.759766 Tm
+1 0 0 1 81.000000 208.759766 Tm
 (Parse-time word lookup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 258.000000 239.759766 Tm
-(. You must explicitly list dependencies in source files. ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 227.759766 Tm
-(This allows Factor to automatically load required vocabularies and makes larger programs ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 215.759766 Tm
-(easier to maintain.) Tj
+1 0 0 1 218.000000 208.759766 Tm
+(. You must explicitly list dependencies in source files. This ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 196.759766 Tm
-(To add the word to the search path, first convince yourself that this word is in the ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 484.000000 196.759766 Tm
-(kernel) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 520.000000 196.759766 Tm
-( ) Tj
+(allows Factor to automatically load required vocabularies and makes larger programs easier ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 184.759766 Tm
+(to maintain.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 165.759766 Tm
+(To add the word to the search path, first convince yourself that this word is in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 484.000000 165.759766 Tm
+(kernel) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 520.000000 165.759766 Tm
+( ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 153.759766 Tm
 (vocabulary. Enter ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 150.000000 184.953125 Tm
+1 0 0 1 150.000000 153.953125 Tm
 (dup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 172.000000 184.759766 Tm
+1 0 0 1 172.000000 153.759766 Tm
 ( in the listener's input area, and press ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 375.000000 184.953125 Tm
+1 0 0 1 375.000000 153.953125 Tm
 (H) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 383.000000 184.759766 Tm
+1 0 0 1 383.000000 153.759766 Tm
 (. This will open the ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 172.759766 Tm
+1 0 0 1 54.000000 141.759766 Tm
 (documentation browser tool, viewing the help for the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 335.000000 172.759766 Tm
+1 0 0 1 335.000000 141.759766 Tm
 (dup) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 357.000000 172.759766 Tm
+1 0 0 1 357.000000 141.759766 Tm
 ( word. One of the subheadings in ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 160.759766 Tm
+1 0 0 1 54.000000 129.759766 Tm
 (the help article will mention the word's vocabulary.) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 141.759766 Tm
+1 0 0 1 54.000000 110.759766 Tm
 (Go back to the third line in your source file and change it to:) Tj
 ET
 BT
 /F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 129.953125 Tm
+1 0 0 1 54.000000 98.953125 Tm
 (USING: kernel ;) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 110.759766 Tm
+1 0 0 1 54.000000 79.759766 Tm
 (Next, find out what vocabulary ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 219.000000 110.759766 Tm
+1 0 0 1 219.000000 79.759766 Tm
 (reverse) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 262.000000 110.759766 Tm
+1 0 0 1 262.000000 79.759766 Tm
 ( lives in; type the word name ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 418.000000 110.953125 Tm
+1 0 0 1 418.000000 79.953125 Tm
 (reverse) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 469.000000 110.759766 Tm
-( in the ) Tj
+1 0 0 1 469.000000 79.759766 Tm
+( in the listener's ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 98.759766 Tm
-(listener's input area, and press ) Tj
+1 0 0 1 54.000000 67.759766 Tm
+(input area, and press ) Tj
 ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 221.000000 98.953125 Tm
+1 0 0 1 171.000000 67.953125 Tm
 (H) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 229.000000 98.759766 Tm
+1 0 0 1 179.000000 67.759766 Tm
 (.) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 79.759766 Tm
-(It lives in the ) Tj
-ET
-BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 125.000000 79.759766 Tm
-(sequences) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 188.000000 79.759766 Tm
-( vocabulary, so we add that to the search path:) Tj
-ET
-BT
-/F3 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 67.953125 Tm
-(USING: kernel sequences ;) Tj
 ET
 
 endstream
@@ -1102,79 +1090,103 @@ endobj
 endobj
 23 0 obj
 <<
-/Length 1288
+/Length 1723
 >>
 stream
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 721.759766 Tm
-(Finally, check what vocabulary ) Tj
+(It lives in the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 220.000000 721.759766 Tm
-(=) Tj
+1 0 0 1 125.000000 721.759766 Tm
+(sequences) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 228.000000 721.759766 Tm
-( lives in, and confirm that it's in the ) Tj
+1 0 0 1 188.000000 721.759766 Tm
+( vocabulary, so we add that to the search path:) Tj
 ET
 BT
-/F4 12 Tf
-0.062745 0.305882 0.545098 rg
-1 0 0 1 415.000000 721.759766 Tm
-(kernel) Tj
-ET
-BT
-/F1 12 Tf
+/F3 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 451.000000 721.759766 Tm
-( vocabulary, which ) Tj
-ET
-BT
-/F1 12 Tf
-0.000000 0.000000 0.000000 rg
-1 0 0 1 54.000000 709.759766 Tm
-(we've already added to the search path.) Tj
+1 0 0 1 54.000000 709.953125 Tm
+(USING: kernel sequences ;) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 690.759766 Tm
-(Now press ) Tj
+(Finally, check what vocabulary ) Tj
 ET
 BT
-/F3 12 Tf
-0.545098 0.270588 0.000000 rg
-1 0 0 1 115.000000 690.953125 Tm
-(F2) Tj
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 220.000000 690.759766 Tm
+(=) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 130.000000 690.759766 Tm
-( again, and the source file should reload without any errors. You can now go ) Tj
+1 0 0 1 228.000000 690.759766 Tm
+( lives in, and confirm that it's in the ) Tj
+ET
+BT
+/F4 12 Tf
+0.062745 0.305882 0.545098 rg
+1 0 0 1 415.000000 690.759766 Tm
+(kernel) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 451.000000 690.759766 Tm
+( vocabulary, which ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 678.759766 Tm
+(we've already added to the search path.) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 659.759766 Tm
+(Now press ) Tj
+ET
+BT
+/F3 12 Tf
+0.545098 0.270588 0.000000 rg
+1 0 0 1 115.000000 659.953125 Tm
+(F2) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 130.000000 659.759766 Tm
+( again, and the source file should reload without any errors. You can now go ) Tj
+ET
+BT
+/F1 12 Tf
+0.000000 0.000000 0.000000 rg
+1 0 0 1 54.000000 647.759766 Tm
 (on and learn about ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 158.000000 678.759766 Tm
+1 0 0 1 158.000000 647.759766 Tm
 (Testing your first program) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 308.000000 678.759766 Tm
+1 0 0 1 308.000000 647.759766 Tm
 (.) Tj
 ET
 
@@ -1195,7 +1207,7 @@ endobj
 endobj
 25 0 obj
 <<
-/Length 8100
+/Length 8101
 >>
 stream
 BT
@@ -1267,13 +1279,13 @@ ET
 BT
 /F3 12 Tf
 0.545098 0.270588 0.000000 rg
-1 0 0 1 79.000000 643.953125 Tm
+1 0 0 1 104.000000 643.953125 Tm
 (palindrome.factor) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 202.000000 643.759766 Tm
+1 0 0 1 227.000000 643.759766 Tm
 ( file should look like the following after the previous section:) Tj
 ET
 BT
@@ -1532,24 +1544,24 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 230.759766 Tm
-(We will add some unit tests, which are similar to the interactive tests we did above. Unit tests ) Tj
+(We will add some unit tests, which are similar to the interactive tests we did above. Unit ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 218.759766 Tm
-(are defined with the ) Tj
+(tests are defined with the ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 163.000000 218.759766 Tm
+1 0 0 1 191.000000 218.759766 Tm
 (unit-test) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 211.000000 218.759766 Tm
+1 0 0 1 239.000000 218.759766 Tm
 ( word, which takes a sequence of expected outputs, and a ) Tj
 ET
 BT
@@ -2039,13 +2051,13 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 166.000000 121.759766 Tm
-( prefix is a naming convention for conversion operations, and should ) Tj
+( prefix is a naming convention for conversion operations, and should be ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 109.759766 Tm
-(be read as "to":) Tj
+(read as "to":) Tj
 ET
 BT
 /F3 12 Tf
@@ -2180,36 +2192,36 @@ BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 379.000000 623.759766 Tm
-( to the vocabulary ) Tj
+( to the vocabulary search ) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
 1 0 0 1 54.000000 611.759766 Tm
-(search path, so that ) Tj
+(path, so that ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 163.000000 611.759766 Tm
+1 0 0 1 124.000000 611.759766 Tm
 (>lower) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 202.000000 611.759766 Tm
+1 0 0 1 163.000000 611.759766 Tm
 ( and ) Tj
 ET
 BT
 /F4 12 Tf
 0.062745 0.305882 0.545098 rg
-1 0 0 1 229.000000 611.759766 Tm
+1 0 0 1 190.000000 611.759766 Tm
 (Letter?) Tj
 ET
 BT
 /F1 12 Tf
 0.000000 0.000000 0.000000 rg
-1 0 0 1 270.000000 611.759766 Tm
+1 0 0 1 231.000000 611.759766 Tm
 ( can be used in the source file.) Tj
 ET
 BT
@@ -2341,14 +2353,14 @@ xref
 0000000ED3 00000 n
 00000020B6 00000 n
 0000002195 00000 n
-0000004CA4 00000 n
-0000004D83 00000 n
-00000052BF 00000 n
-000000539E 00000 n
-0000007376 00000 n
-0000007455 00000 n
-00000093C8 00000 n
-00000094A7 00000 n
+0000004C31 00000 n
+0000004D10 00000 n
+00000053FF 00000 n
+00000054DE 00000 n
+00000074B7 00000 n
+0000007596 00000 n
+0000009509 00000 n
+00000095E8 00000 n
 trailer
 <<
 /Size 30
@@ -2356,5 +2368,5 @@ trailer
 /Root 2 0 R
 >>
 startxref
-42321
+42642
 %%EOF
