@@ -1,178 +1,49 @@
-! Copyright (C) 2011 John Benediktsson
+! Copyright (C) 2011-2012 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors arrays assocs colors.constants combinators
-fonts formatting fry io io.streams.string io.styles literals
-locals kernel make math math.order math.ranges memoize pdf.text
-pdf.wrap sequences sorting splitting ui.text unicode.categories
-xml.entities ;
-
+USING: accessors assocs calendar combinators environment fonts
+formatting fry io io.streams.string kernel literals locals make
+math math.order math.ranges pdf.canvas pdf.values pdf.wrap
+sequences sorting splitting ui.text xml.entities ;
 FROM: assocs => change-at ;
 FROM: sequences => change-nth ;
+FROM: pdf.canvas => draw-text ;
 
 IN: pdf.layout
 
-
-TUPLE: margin left right top bottom ;
-
-C: <margin> margin
-
-
-TUPLE: canvas x y width height margin col-width font stream
-foreground background page-color inset line-height metrics ;
-
-: <canvas> ( -- canvas )
-    canvas new
-        0 >>x
-        0 >>y
-        612 >>width
-        792 >>height
-        54 54 54 54 <margin> >>margin
-        612 >>col-width
-        sans-serif-font 12 >>size >>font
-        SBUF" " >>stream
-        0 >>line-height
-        { 0 0 } >>inset
-    dup font>> font-metrics >>metrics ;
-
-
 ! TODO: inset, image
+! Insets:
+! before:
+!   y += inset-height
+!   margin-left, margin-right += inset-width
+! after:
+!   y += inset-height
+!   margin-left, margin-right -= inset-width
+
+! TUPLE: pre < p
+! C: <pre> pre
+
+! TUPLE: spacer width height ;
+! C: <spacer> spacer
+
+! TUPLE: image < span ;
+! C: <image> image
+
+! Outlines (add to catalog):
+!   /Outlines 3 0 R
+!   /PageMode /UseOutlines
+! Table of Contents
+! Thumbnails
+! Annotations
+! Images
 
 ! FIXME: spacing oddities if run multiple times
 ! FIXME: make sure highlights text "in order"
 ! FIXME: don't modify layout objects in pdf-render
 ! FIXME: make sure unicode "works"
 ! FIXME: only set style differences to reduce size?
-
-: set-style ( canvas style -- canvas )
-    {
-        [
-            font-name swap at "sans-serif" or {
-                { "sans-serif" [ "Helvetica" ] }
-                { "serif"      [ "Times"     ] }
-                { "monospace"  [ "Courier"   ] }
-                [ " is unsupported" append throw ]
-            } case [ dup font>> ] dip >>name drop
-        ]
-        [
-            font-size swap at 12 or
-            [ dup font>> ] dip >>size drop
-        ]
-        [
-            font-style swap at [ dup font>> ] dip {
-                { bold        [ t f ] }
-                { italic      [ f t ] }
-                { bold-italic [ t t ] }
-                [ drop f f ]
-            } case [ >>bold? ] [ >>italic? ] bi* drop
-        ]
-        [ foreground swap at COLOR: black or >>foreground ]
-        [ background swap at f or >>background ]
-        [ page-color swap at f or >>page-color ]
-        [ inset swap at { 0 0 } or >>inset ]
-    } cleave
-    dup font>> font-metrics
-    [ >>metrics ] [ height>> '[ _ max ] change-line-height ] bi ;
-
-! introduce positioning of elements versus canvas?
-
-: margin-x ( canvas -- n )
-    margin>> [ left>> ] [ right>> ] bi + ;
-
-: margin-y ( canvas -- n )
-    margin>> [ top>> ] [ bottom>> ] bi + ;
-
-: (width) ( canvas -- n )
-    [ width>> ] [ margin>> [ left>> ] [ right>> ] bi + ] bi - ;
-
-: width ( canvas -- n )
-    [ (width) ] [ col-width>> ] bi min ;
-
-: height ( canvas -- n )
-    [ height>> ] [ margin>> [ top>> ] [ bottom>> ] bi + ] bi - ;
-
-: x ( canvas -- n )
-    [ margin>> left>> ] [ x>> ] bi + ;
-
-: y ( canvas -- n )
-    [ height>> ] [ margin>> top>> ] [ y>> ] tri + - ;
-
-: inc-x ( canvas n -- )
-    '[ _ + ] change-x drop ;
-
-: inc-y ( canvas n -- )
-    '[ _ + ] change-y drop ;
-
-: line-height ( canvas -- n )
-    [ line-height>> ] [ inset>> first 2 * ] bi + ;
-
-: line-break ( canvas -- )
-    [ line-height>> ] keep [ + ] change-y 0 >>x
-    dup metrics>> height>> >>line-height drop ;
-
-: ?line-break ( canvas -- )
-    dup x>> 0 > [ line-break ] [ drop ] if ;
-
-: ?break ( canvas -- )
-    dup x>> 0 > [ ?line-break ] [
-        [ 7 + ] change-y 0 >>x drop
-    ] if ;
-
-: inc-lines ( canvas n -- )
-    [ 0 >>x ] dip [ dup line-break ] times drop ;
-
-: avail-width ( canvas -- n )
-    [ width ] [ x>> ] bi - 0 max ;
-
-: avail-height ( canvas -- n )
-    [ height ] [ y>> ] bi - 0 max ;
-
-: avail-lines ( canvas -- n )
-    [ avail-height ] [ line-height>> ] bi /i ; ! FIXME: 1 +
-
-: text-fits? ( canvas string -- ? )
-    [ dup font>> ] [ word-split1 drop ] bi*
-    text-width swap avail-width <= ;
-
-: draw-page-color ( canvas -- ) ! FIXME:
-    dup page-color>> [
-        "0.0 G" print
-        foreground-color
-        [ 0 0 ] dip [ width>> ] [ height>> ] bi
-        rectangle fill
-    ] [ drop ] if* ;
-
-: draw-background ( canvas line -- )
-    over background>> [
-        "0.0 G" print
-        foreground-color
-        [ drop [ x ] [ y ] bi ]
-        [ [ font>> ] [ text-dim first2 neg ] bi* ] 2bi
-        rectangle fill
-    ] [ 2drop ] if* ;
-
-: draw-text1 ( canvas line -- canvas )
-    [ draw-background ] [
-        text-start
-        over font>> text-size
-        over foreground>> [ foreground-color ] when*
-        over [ x ] [ y ] [ metrics>> ascent>> - ] tri text-location
-        over dup font>> pick text-width inc-x
-        text-write
-        text-end
-    ] 2bi ;
-
-: draw-text ( canvas lines -- )
-    [ drop ] [
-        unclip-last
-        [ [ draw-text1 dup line-break ] each ]
-        [ [ draw-text1 ] when* ] bi* drop
-    ] if-empty ;
-
-: draw-line ( canvas width -- )
-    swap [ x ] [ y ] [ line-height>> 2 / - ] tri
-    [ line-move ] [ [ + ] [ line-line ] bi* ] 2bi
-    stroke ;
+! FIXME: gadget. to take a "screenshot" into a pdf?
+! FIXME: compress each pdf object to reduce file size?
 
 
 GENERIC: pdf-render ( canvas obj -- remain/f )
@@ -199,7 +70,6 @@ PRIVATE>
     ] { } make ;
 
 
-
 TUPLE: div items style ;
 
 C: <div> div
@@ -211,15 +81,6 @@ M: div pdf-render
 M: div pdf-width
     [ style>> set-style ] keep
     items>> [ dupd pdf-width ] map nip supremum ;
-
-
-! Insets:
-! before:
-!   y += inset-height
-!   margin-left, margin-right += inset-width
-! after:
-!   y += inset-height
-!   margin-left, margin-right -= inset-width
 
 
 <PRIVATE
@@ -433,25 +294,12 @@ M: table pdf-width
     2drop 400 ; ! FIXME: hardcoded max-width
 
 
-! TUPLE: pre < p
-! C: <pre> pre
+: pdf-object ( str n -- str' )
+    "%d 0 obj\n" sprintf "\nendobj" surround ;
 
-! TUPLE: spacer width height ;
-! C: <spacer> spacer
-
-! TUPLE: image < span ;
-! C: <image> image
-
-
-! Outlines (add to catalog):
-!   /Outlines 3 0 R
-!   /PageMode /UseOutlines
-! Table of Contents
-! Thumbnails
-! Annotations
-! Images
-
-
+: pdf-stream ( str -- str' )
+    [ length 1 + "<<\n/Length %d\n>>" sprintf ]
+    [ "\nstream\n" "\nendstream" surround ] bi append ;
 
 : pdf-catalog ( -- str )
     {
@@ -509,3 +357,70 @@ M: table pdf-width
         "%%EOF" ,
     ] { } make "\n" join ;
 
+TUPLE: pdf-info title timestamp producer author creator ;
+
+: <pdf-info> ( -- pdf-info )
+    pdf-info new
+        now >>timestamp
+        "Factor" >>producer
+        "USER" os-env "unknown" or >>author
+        "created with Factor" >>creator ;
+
+M: pdf-info pdf-value
+    [
+        "<<" print [
+            [ timestamp>> [ "/CreationDate " write pdf-write nl ] when* ]
+            [ producer>> [ "/Producer " write pdf-write nl ] when* ]
+            [ author>> [ "/Author " write pdf-write nl ] when* ]
+            [ title>> [ "/Title " write pdf-write nl ] when* ]
+            [ creator>> [ "/Creator " write pdf-write nl ] when* ]
+        ] cleave ">>" print
+    ] with-string-writer ;
+
+
+TUPLE: pdf-ref object revision ;
+
+C: <pdf-ref> pdf-ref
+
+M: pdf-ref pdf-value
+    [ object>> ] [ revision>> ] bi "%d %d R" sprintf ;
+
+
+TUPLE: pdf info pages fonts ;
+
+: <pdf> ( -- pdf )
+    pdf new
+        <pdf-info> >>info
+        V{ } clone >>pages
+        V{ } clone >>fonts ;
+
+:: pages>objects ( pdf -- objects )
+    [
+        pdf info>> pdf-value ,
+        pdf-catalog ,
+        { $ sans-serif-font $ serif-font $ monospace-font } {
+            [ [ f >>bold? f >>italic? pdf-value , ] each ]
+            [ [ t >>bold? f >>italic? pdf-value , ] each ]
+            [ [ f >>bold? t >>italic? pdf-value , ] each ]
+            [ [ t >>bold? t >>italic? pdf-value , ] each ]
+        } cleave
+        pdf pages>> length pdf-pages ,
+        pdf pages>>
+        dup length 16 swap 2 range boa zip
+        [ pdf-page , , ] assoc-each
+    ] { } make
+    dup length [1,b] zip [ first2 pdf-object ] map ;
+
+: objects>pdf ( objects -- str )
+    [ "\n" join "\n" append "%PDF-1.4\n" ]
+    [ pdf-trailer ] bi surround ;
+
+! Rename to pdf>string, have it take a <pdf> object?
+
+: pdf>string ( seq -- pdf )
+    <pdf> swap pdf-layout  [
+        stream>> pdf-stream over pages>> push
+    ] each pages>objects objects>pdf ;
+
+: write-pdf ( seq -- )
+    pdf>string write ;

@@ -63,5 +63,3 @@ PRIVATE>
         "error-index"
         "class-index"
     } topics>pdf "index.pdf" write-pdf ;
-
-

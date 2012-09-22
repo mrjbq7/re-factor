@@ -1,24 +1,8 @@
-! Copyright (C) 2011 John Benediktsson
+! Copyright (C) 2011-2012 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USE: accessors
-USE: arrays
-USE: assocs
-USE: colors.constants
-USE: combinators
-USE: destructors
-USE: fonts
-USE: fry
-USE: io
-USE: io.streams.string
-USE: io.styles
-USE: kernel
-USE: memoize
-USE: pdf.layout
-USE: pdf.text
-USE: sequences
-USE: splitting
-USE: strings
+USING: accessors arrays assocs destructors fry io io.styles
+kernel pdf.layout sequences splitting strings ;
 
 IN: pdf.streams
 
@@ -44,8 +28,6 @@ TUPLE: pdf-writer style data ;
 : with-pdf-writer ( quot -- pdf )
     <pdf-writer> [ swap with-output-stream* ] keep data>> ; inline
 
-
-
 TUPLE: pdf-sub-stream < pdf-writer parent ;
 
 : new-pdf-sub-stream ( style stream class -- stream )
@@ -53,8 +35,6 @@ TUPLE: pdf-sub-stream < pdf-writer parent ;
         swap >>parent
         swap >>style
     dup parent>> style>> '[ _ swap assoc-union ] change-style ;
-
-! FIXME: M: pdf-sub-stream dispose throw ;
 
 TUPLE: pdf-block-stream < pdf-sub-stream ;
 
@@ -70,6 +50,7 @@ M: pdf-span-stream dispose
 
 
 ! Stream protocol
+
 M: pdf-writer stream-flush drop ;
 
 M: pdf-writer stream-write1
@@ -101,5 +82,4 @@ M: pdf-writer stream-write-table ! FIXME: needs style?
     ] map <table> swap data>> push ;
 
 M: pdf-writer dispose drop ;
-
 

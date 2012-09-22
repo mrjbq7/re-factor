@@ -1,4 +1,4 @@
-! Copyright (C) 2011 John Benediktsson
+! Copyright (C) 2011-2012 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs calendar colors colors.gray
