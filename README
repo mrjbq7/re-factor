@@ -13,9 +13,6 @@ Factor programming language (http://factorcode.org).  These include:
 accessors.maybe:
     the "set if unset then get" accessor
 
-ant:
-    implements the "ant puzzle"
-
 birthday:
     sing birthday wishes from the command line
 
@@ -30,9 +27,6 @@ calc:
 
 calc-ui:
     a simple graphical calculator
-
-cgi:
-    support for writing Factor CGI programs
 
 cpu-speed:
     estimate the cpu speed of your computer
