@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs http.client json.reader kernel locals sequences
-urls utils ;
+USING: assocs classes.tuple http.client json.reader kernel
+locals sequences urls ;
 
 IN: geonames
 
@@ -123,5 +123,3 @@ lng population rank summary thumbnailImg title wikipediaUrl ;
         "JSON" "type" set-query-param
     http-get nip json> "geonames" swap at
     [ \ article from-slots ] map ;
-
-

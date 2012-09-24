@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors assocs formatting http.client json.reader
-kernel sequences urls utils ;
+USING: accessors assocs classes.tuple formatting http.client
+json.reader kernel sequences urls utils ;
 
 IN: domainr
 

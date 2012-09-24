@@ -1,16 +1,16 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors assocs assocs.extras combinators http.client
-images.http json.reader kernel sequences urls urls.encoding
-urls.secure utils ;
+USING: accessors assocs assocs.extras classes.tuple combinators
+http.client images.http json.reader kernel sequences urls
+urls.encoding urls.secure ;
 
 IN: facebook
 
 TUPLE: result application caption category created_time
 description end_time from icon id likes link location message
-name object_id picture properties source start_time to type
-updated_time ;
+name object_id picture properties source start_time status_type
+story to type updated_time ;
 
 TUPLE: search results next-url prev-url ;
 

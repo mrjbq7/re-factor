@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors assocs combinators formatting http.client
-json.reader kernel math sequences sorting utils ;
+USING: accessors assocs classes.tuple combinators formatting
+http.client json.reader kernel math sequences sorting ;
 
 IN: github
 
@@ -82,4 +82,3 @@ PRIVATE>
             } cleave "%-25s %13s %12s %s\n" printf
         ] each
     ] bi ;
-
