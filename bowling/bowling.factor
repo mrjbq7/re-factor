@@ -13,19 +13,19 @@ ERROR: invalid-throw ;
 
 <PRIVATE
 
+: in-game ( game before-last-frame last-frame -- game )
+    [ dup frame#>> 9 < ] 2dip if ; inline
+
 : next-frame ( game -- game )
-    dup frame#>> 9 < [
-        [ 1 + ] change-frame# 0 >>throw# 10 >>pins
-    ] [ [ 1 + ] change-throw# 10 >>pins ] if ;
+    [ [ 1 + ] change-frame# 0 >>throw# 10 >>pins ]
+    [ [ 1 + ] change-throw# 10 >>pins ] in-game ;
 
 : next-throw ( game -- game )
-    dup throw#>> zero?
-    [ [ 1 + ] change-throw# ] [ next-frame ] if ;
+    dup throw#>> zero? [ 1 >>throw# ] [ next-frame ] if ;
 
 : check-throw# ( game n -- game )
-    over frame#>> 9 < [
-        over throw#>> = [ invalid-throw ] unless
-    ] [ drop ] if ;
+    [ over throw#>> = [ invalid-throw ] unless ]
+    [ drop ] in-game ;
 
 : check-pins ( game n -- game n )
     over pins>> dupd <= [ invalid-throw ] unless ;
@@ -44,18 +44,17 @@ ERROR: invalid-throw ;
     [ bonus '[ _ + ] change-score ]
     bi ;
 
+: take-all-pins ( game -- game )
+    dup pins>> take-pins ;
+
 : add-bonus ( game n -- game )
-    over frame#>> 9 < [
-        '[ _ + ] change-bonus
-    ] [ drop ] if ;
+    '[ [ _ + ] change-bonus ] [ drop ] in-game ;
 
 : strike ( game -- game )
-    0 check-throw# 10 take-pins
-    2 add-bonus next-frame ;
+    0 check-throw# 10 take-pins 2 add-bonus next-frame ;
 
 : spare ( game -- game )
-    1 check-throw# dup pins>> take-pins
-    1 add-bonus next-frame ;
+    1 check-throw# take-all-pins 1 add-bonus next-frame ;
 
 : hit ( game n -- game )
     take-pins next-throw ;
