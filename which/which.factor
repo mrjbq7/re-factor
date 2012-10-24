@@ -1,7 +1,6 @@
 USING: arrays assocs combinators combinators.short-circuit
-environment io.backend io.files io.files.info
-io.files.info.unix io.pathnames kernel sequences sets splitting
-system unicode.case ;
+environment io.backend io.files io.files.info io.pathnames
+kernel sequences sets splitting system unicode.case ;
 
 IN: which
 
@@ -21,7 +20,8 @@ IN: which
 : executable? ( path -- ? )
     {
         [ exists? ]
-        [ file-info [ any-execute? ] [ directory? not ] bi and ]
+        [ file-executable? ]
+        [ file-info directory? not ]
     } 1&& ;
 
 : path-extensions ( command -- commands )
