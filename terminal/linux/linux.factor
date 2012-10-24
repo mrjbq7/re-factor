@@ -19,4 +19,4 @@ PRIVATE>
 M: unix (terminal-size)
     stdout-handle fileno TIOCGWINSZ winsize <struct>
     [ ioctl ] keep swap io-error
-    [ ws_col>> ] [ ws_row>> ] bi 2array ;
+    [ ws_col>> ] [ ws_row>> ] bi ;

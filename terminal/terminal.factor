@@ -1,8 +1,9 @@
-USING: sequences system ;
+USING: arrays combinators environment kernel math math.parser
+sequences system vocabs ;
 
 IN: terminal
 
-HOOK: (terminal-size) os ( -- dim )
+HOOK: (terminal-size) os ( -- columns lines )
 
 {
     { [ os macosx?  ] [ "terminal.macosx"  ] }
@@ -11,7 +12,12 @@ HOOK: (terminal-size) os ( -- dim )
 } cond require
 
 : terminal-size ( -- dim )
-    (terminal-size) ;
+    "COLUMNS" "LINES"
+    [ os-env [ string>number ] [ 0 ] if* ] bi@
+    2dup [ 0 <= ] either? [
+        (terminal-size)
+        [ over 0 <= [ nip ] [ drop ] if ] bi-curry@ bi*
+    ] when 2array ;
 
 : terminal-width ( -- width ) terminal-size first ;
 

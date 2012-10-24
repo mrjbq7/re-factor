@@ -1,5 +1,5 @@
-USING: alien.c-types classes.struct io.streams.c kernel math
-memoize scratchpad system terminal unix unix.ffi ;
+USING: accessors alien.c-types classes.struct io.streams.c
+kernel math memoize scratchpad system terminal unix unix.ffi ;
 
 QUALIFIED-WITH: alien.c-types c
 
@@ -35,4 +35,4 @@ PRIVATE>
 M: macosx (terminal-size)
     stdout-handle fileno TIOCGWINSZ winsize <struct>
     [ ioctl ] keep swap io-error
-    [ ws_col>> ] [ ws_row>> ] bi 2array ;
+    [ ws_col>> ] [ ws_row>> ] bi ;

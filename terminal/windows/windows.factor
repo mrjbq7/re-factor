@@ -31,4 +31,4 @@ HOOK: windows (terminal-size)
     CONSOLE_SCREEN_BUFFER_INFO <struct>
     [ GetConsoleScreenBufferInfo nip ] keep srWindow>>
     [ [ Right>> ] [ Left>> ] bi - 1 + ]
-    [ [ Bottom>> ] [ Top>> ] bi - 1 + ] bi 2array ;
+    [ [ Bottom>> ] [ Top>> ] bi - 1 + ] bi ;
