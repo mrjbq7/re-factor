@@ -1,4 +1,4 @@
-USING: accessors classes.struct math system terminal
+USING: accessors classes.struct kernel math system terminal
 windows.kernel32 windows.types ;
 
 IN: terminal.windows
