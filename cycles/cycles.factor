@@ -1,4 +1,5 @@
-USING: kernel math memoize sequences sequences.extras ;
+USING: formatting io kernel math math.parser math.ranges
+memoize sequences sequences.extras splitting unicode.categories ;
 
 IN: cycles
 
@@ -19,3 +20,12 @@ IN: cycles
 
 MEMO: fast-num-cycles ( n -- m )
     dup 1 > [ next-cycle fast-num-cycles 1 + ] [ drop 1 ] if ;
+
+: run-cycles ( -- )
+    [
+        [ blank? ] split-when harvest first2
+        [ string>number ] bi@ 2dup [a,b] max-cycles
+        "%s %s %s\n" printf
+    ] each-line ;
+
+MAIN: run-cycles
