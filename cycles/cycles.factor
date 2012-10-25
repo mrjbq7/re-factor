@@ -1,4 +1,4 @@
-USING: formatting io kernel math math.parser math.ranges
+USING: assocs formatting io kernel math math.parser math.ranges
 memoize sequences sequences.extras splitting unicode.categories ;
 
 IN: cycles
@@ -12,11 +12,12 @@ IN: cycles
 : num-cycles ( n -- m )
     1 swap [ dup 1 > ] [ [ 1 + ] [ next-cycle ] bi* ] while drop ;
 
-: max-cycles ( seq -- m )
-    [ num-cycles ] map supremum ;
+: max-cycle ( seq -- elt )
+    [ [ num-cycles ] keep ] { } map>assoc [ first ] supremum-by ;
 
-: max-cycle-value ( seq -- n )
-    [ num-cycles ] supremum-by ;
+: max-cycles ( seq -- m ) max-cycle first ;
+
+: max-cycle-value ( seq -- n ) max-cycle second ;
 
 MEMO: fast-num-cycles ( n -- m )
     dup 1 > [ next-cycle fast-num-cycles 1 + ] [ drop 1 ] if ;
