@@ -9,7 +9,7 @@ IN: cycles
     [ dup 1 > ] [ [ next-cycle ] keep ] produce swap suffix ;
 
 : num-cycles ( n -- m )
-    1 swap [ dup 1 = ] [ [ 1 + ] [ next-cycle ] bi* ] until drop ;
+    1 swap [ dup 1 > ] [ [ 1 + ] [ next-cycle ] bi* ] while drop ;
 
 : max-cycles ( seq -- m )
     [ num-cycles ] map supremum ;
