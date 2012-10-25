@@ -13,11 +13,11 @@ IN: cycles
     1 swap [ dup 1 > ] [ [ 1 + ] [ next-cycle ] bi* ] while drop ;
 
 : max-cycle ( seq -- elt )
-    [ [ cycle-length ] keep ] { } map>assoc [ first ] supremum-by ;
+    [ dup cycle-length ] { } map>assoc [ second ] supremum-by ;
 
-: max-cycle-length ( seq -- m ) max-cycle first ;
+: max-cycle-value ( seq -- n ) max-cycle first ;
 
-: max-cycle-value ( seq -- n ) max-cycle second ;
+: max-cycle-length ( seq -- m ) max-cycle second ;
 
 MEMO: fast-cycle-length ( n -- m )
     dup 1 > [ next-cycle fast-cycle-length 1 + ] [ drop 1 ] if ;
