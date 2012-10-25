@@ -18,4 +18,4 @@ IN: cycles
     [ num-cycles ] supremum-by ;
 
 MEMO: fast-num-cycles ( n -- m )
-    dup 1 = [ drop 1 ] [ next-cycle fast-num-cycles 1 + ] if ;
+    dup 1 > [ next-cycle fast-num-cycles 1 + ] [ drop 1 ] if ;
