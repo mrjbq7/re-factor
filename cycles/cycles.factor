@@ -4,7 +4,7 @@ memoize sequences sequences.extras splitting unicode.categories ;
 IN: cycles
 
 : next-cycle ( x -- y )
-    dup odd? [ 3 * 1 + ] [ 2 / ] if ;
+    dup odd? [ 3 * 1 + ] [ 2/ ] if ; inline
 
 : cycles ( n -- seq )
     [ dup 1 > ] [ [ next-cycle ] keep ] produce swap suffix ;
