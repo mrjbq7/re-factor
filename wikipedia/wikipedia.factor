@@ -15,7 +15,7 @@ IN: wikipedia
 : link. ( tag -- )
     "a" assure-name over tag-named? [ "a" tag-named ] unless
     [ deep-children>string ] [ attrs>> "href" swap at ] bi
-    "http://en.wikipedia.org/" prepend >url H{
+    "http://en.wikipedia.org" prepend >url H{
         { font-name "monospace" }
         { foreground COLOR: blue }
     } [ write-object ] with-style ;
