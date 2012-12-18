@@ -12,8 +12,10 @@ IN: wikipedia
 : header. ( string -- )
     H{ { font-size 20 } { font-style bold } } format nl ;
 
+: link ( tag -- tag/f )
+    "a" assure-name over tag-named? [ "a" deep-tag-named ] unless ;
+
 : link. ( tag -- )
-    "a" assure-name over tag-named? [ "a" tag-named ] unless
     [ deep-children>string ] [ attrs>> "href" swap at ] bi
     "http://en.wikipedia.org" prepend >url H{
         { font-name "monospace" }
@@ -22,7 +24,9 @@ IN: wikipedia
 
 : item. ( tag -- )
     children>> [
-        dup tag? [ link. ] [ [ write ] unless-empty ] if
+        dup tag? [
+            dup link [ link. drop ] [ children>string write ] if*
+        ] [ [ write ] unless-empty ] if
     ] each nl ;
 
 : items. ( seq -- )
