@@ -32,10 +32,12 @@ IN: wikipedia
 : items. ( seq -- )
     children-tags [ item. ] each nl ;
 
-: (historical-events) ( timestamp -- seq )
+: historical-url ( timestamp -- url )
     [ month-name ] [ day>> ] bi
-    "http://en.wikipedia.org/wiki/%s_%s" sprintf
-    http-get nip string>xml "ul" deep-tags-named ;
+    "http://en.wikipedia.org/wiki/%s_%s" sprintf ;
+
+: (historical-events) ( timestamp -- seq )
+    historical-url http-get nip string>xml "ul" deep-tags-named ;
 
 : items>sequence ( tag -- seq )
     children-tags [ deep-children>string ] map ;
