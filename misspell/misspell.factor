@@ -7,7 +7,7 @@ IN: mispell
     dup [ ",'.:;!?" member? not ] find-last drop 0 or
     dup 2 > [
         dupd head-slice dup [ Letter? ] all?
-        [ 1 tail-slice randomize ] when drop
+        [ rest-slice randomize ] when drop
     ] [ drop ] if ;
 
 : misspell-line ( line -- line' )
