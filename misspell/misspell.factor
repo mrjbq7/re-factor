@@ -4,7 +4,8 @@ math.ranges random sequences splitting ;
 IN: mispell
 
 : misspell-word ( word -- word' )
-    dup [ Letter? ] find-last drop 0 or dup 2 > [
+    dup [ ",'.:;!?" member? not ] find-last drop 0 or
+    dup 2 > [
         dupd head-slice dup [ Letter? ] all?
         [ rest-slice randomize ] when drop
     ] [ drop ] if ;
