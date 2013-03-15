@@ -1,8 +1,8 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii combinators fry kernel literals make math random
-sequences ;
+USING: ascii combinators fry kernel literals make math
+math.parser random sequences ;
 
 IN: fake-data
 
@@ -598,6 +598,48 @@ CONSTANT: US-STATE-ABBR {
     "AA" "AP"
 }
 
+
+CONSTANT: BR-STATES {
+    "Acre" "Alagoas" "Amapá" "Amazonas" "Bahia" "Ceará"
+    "Distrito Federal" "Espírito Santo" "Goiás" "Maranhão"
+    "Mato Grosso" "Mato Grosso do Sul" "Minas Gerais"
+    "Paraná" "Paraíba" "Pará" "Pernambuco" "Piauí" "Rio
+    de Janeiro" "Rio Grande do Norte" "Rio Grande do Sul"
+    "Rondônia" "Roraima" "Santa Catarina" "Sergipe" "São
+    Paulo" "Tocantins"
+}
+
+CONSTANT: BR-STATE-ABBR {
+    "AC" "AL" "AP" "AM" "BA" "CE" "DF" "ES" "GO" "MA" "MT" "MS"
+    "MG" "PR" "PB" "PA" "PE" "PI" "RJ" "RN" "RS" "RO" "RR" "SC"
+    "SE" "SP" "TO"
+}
+
+CONSTANT: UK-COUNTY {
+    "Avon" "Bedfordshire" "Berkshire" "Borders"
+    "Buckinghamshire" "Cambridgeshire" "Central" "Cheshire"
+    "Cleveland" "Clwyd" "Cornwall" "County Antrim"
+    "County Armagh" "County Down" "County Fermanagh"
+    "County Londonderry" "County Tyrone" "Cumbria" "Derbyshire"
+    "Devon" "Dorset" "Dumfries and Galloway" "Durham" "Dyfed"
+    "East Sussex" "Essex" "Fife" "Gloucestershire" "Grampian"
+    "Greater Manchester" "Gwent" "Gwynedd County" "Hampshire"
+    "Herefordshire" "Hertfordshire" "Highlands and Islands"
+    "Humberside" "Isle of Wight" "Kent" "Lancashire"
+    "Leicestershire" "Lincolnshire" "Lothian" "Merseyside"
+    "Mid Glamorgan" "Norfolk" "North Yorkshire"
+    "Northamptonshire" "Northumberland" "Nottinghamshire"
+    "Oxfordshire" "Powys" "Rutland" "Shropshire" "Somerset"
+    "South Glamorgan" "South Yorkshire" "Staffordshire"
+    "Strathclyde" "Suffolk" "Surrey" "Tayside" "Tyne and Wear"
+    "Warwickshire" "West Glamorgan" "West Midlands"
+    "West Sussex" "West Yorkshire" "Wiltshire" "Worcestershire"
+}
+
+CONSTANT: UK-COUNTRY {
+    "England" "Scotland" "Wales" "Northern Ireland"
+}
+
 CONSTANT: CITY-PREFIX {
     "North" "East" "West" "South" "New" "Lake" "Port"
 }
@@ -880,8 +922,17 @@ PRIVATE>
         { 3 [ LAST-NAME random CITY-SUFFIX random append ] }
     } case ;
 
-: fake-state ( -- str )
+: fake-us-state ( -- str )
     { $ US-STATES $ US-STATE-ABBR } random random ;
+
+: fake-uk-county ( -- str )
+    UK-COUNTY random ;
+
+: fake-uk-country ( -- str )
+    UK-COUNTRY random ;
+
+: fake-br-state ( -- str )
+    { $ BR-STATES $ BR-STATE-ABBR } random random ;
 
 : fake-zip-code ( -- str )
     { "#####" "#####-####" } random (numbers) ;
@@ -927,6 +978,9 @@ PRIVATE>
 : fake-email ( -- str )
     fake-username fake-domainname "@" glue ;
 
+: fake-ip ( -- str )
+    4 [ 255 random 1 + number>string ] replicate "." join ;
+
 ! LOREM
 
 : fake-words ( n -- str )
@@ -937,19 +991,21 @@ PRIVATE>
     [ 0 ] dip [ ch>upper ] change-nth ;
 
 : fake-sentences ( n -- str )
-    [
-        [ 3 fake-sentence , ] times
-    ] { } make "\n" join ;
+    [ [ 3 fake-sentence , ] times ] { } make "\n" join ;
 
 : fake-paragraph ( n -- str )
     3 random + fake-sentences ;
 
 : fake-paragraphs ( n -- str )
-    [
-        [ 3 fake-paragraph , ] times
-    ] { } make "\n \r\t" join ;
+    [ [ 3 fake-paragraph , ] times ] { } make "\n \r\t" join ;
 
 ! NAME
+
+: fake-first-name ( -- str )
+    FIRST-NAME random ;
+
+: fake-last-name ( -- str )
+    LAST-NAME random ;
 
 : fake-name ( -- str )
     FIRST-NAME random LAST-NAME random " " glue
@@ -963,5 +1019,3 @@ PRIVATE>
 
 : fake-phone-number ( -- str )
     PHONE-NUMBER random (numbers) ;
-
-
