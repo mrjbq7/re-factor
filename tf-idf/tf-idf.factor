@@ -1,10 +1,10 @@
 ! Copyright (C) 2011 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: accessors arrays assocs combinators.short-circuit fry
-io.encodings.utf8 io.files kernel math math.functions
-math.statistics memoize sequences sets sorting splitting
-unicode.case unicode.categories utils ;
+USING: accessors arrays assocs assocs.extras
+combinators.short-circuit fry io.encodings.utf8 io.files kernel
+math math.functions math.statistics memoize sequences sets
+sorting splitting unicode.case unicode.categories utils ;
 
 IN: tf-idf
 

@@ -11,26 +11,8 @@ IN: utils
 
 USE: math.statistics
 
-[ { { 1 3 } { "Other" 2 } } ]
-[ { 1 1 1 2 2 } histogram 1 trim-histogram ] unit-test
-
-[ { "negative" 0 "positive" } ] [
-    { -1 0 1 } [
-        {
-           { [ 0 > ] [ "positive" ] }
-           { [ 0 < ] [ "negative" ] }
-           [ ]
-        } cond-case
-    ] map
-] unit-test
-
-[ H{ } ] [ { } assoc-merge ] unit-test
-
-[ H{ { "a" V{ 2 5 } } { "b" V{ 3 } } { "c" V{ 10 } } } ]
-[
-    { H{ { "a" 2 } { "b" 3 } } H{ { "a" 5 } { "c" 10 } } }
-    assoc-merge
-] unit-test
+[ { { 1 3 } { "Other" 3 } } ]
+[ { 1 1 1 2 2 3 } histogram 1 trim-histogram ] unit-test
 
 [ "1" "123" ] [ "1" "123" [ length ] [ > ] swap-when ] unit-test
 [ "123" "1" ] [ "1" "123" [ length ] [ < ] swap-when ] unit-test

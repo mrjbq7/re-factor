@@ -47,21 +47,7 @@ USE: sorting
 
 USE: quotations
 
-MACRO: cond-case ( assoc -- )
-    [
-        dup callable? not [
-            [ first [ dup ] prepose ]
-            [ second [ drop ] prepose ] bi 2array
-        ] when
-    ] map [ cond ] curry ;
-
 USE: assocs.private
-
-: (assoc-merge) ( assoc1 assoc2 -- assoc1 )
-    over [ push-at ] with-assoc assoc-each ;
-
-: assoc-merge ( seq -- merge )
-    H{ } clone [ (assoc-merge) ] reduce ;
 
 USE: grouping
 
@@ -116,3 +102,38 @@ SYNTAX: AFTER:
     scan-word scan-word lookup-method
     [ ] parse-definition wrap-method ;
 >>
+
+: (count-digits) ( n m -- n' )
+    {
+        { [ dup 10 < ] [ drop ] }
+        { [ dup 100 < ] [ drop 1 fixnum+fast ] }
+        { [ dup 1000 < ] [ drop 2 fixnum+fast ] }
+        { [ dup 1000000000000 < ] [
+            dup 100000000 < [
+                dup 1000000 < [
+                    dup 10000 < [
+                        drop 3
+                    ] [
+                        100000 >= 5 4 ?
+                    ] if
+                ] [
+                    10000000 >= 7 6 ?
+                ] if
+            ] [
+                dup 10000000000 < [
+                    1000000000 >= 9 8 ?
+                ] [
+                    100000000000 >= 10 9 ?
+                ] if
+            ] if fixnum+fast
+        ] }
+        [ [ 12 fixnum+fast ] [ 1000000000000 /i ] bi* (count-digits) ]
+    } cond ; inline recursive
+
+GENERIC: count-digits ( m -- n )
+
+M: fixnum count-digits 1 swap (count-digits) ;
+M: bignum count-digits 1 swap (count-digits) ;
+
+: count-digits2 ( num radix -- n )
+    [ log ] [ log ] bi* /i 1 + ; inline
