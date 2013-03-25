@@ -33,11 +33,11 @@ system-micros "now" set
 
 <cgi-simple-form>
 {
-    [ "x"      [ swap at "3" or ] keep 10 input-text ]
-    [ "action" [ swap at "+" or ] keep 4  input-text ]
-    [ "y"      [ swap at "5" or ] keep 10 input-text ]
+    [ "x"      [ of "3" or ] keep 10 input-text ]
+    [ "action" [ of "+" or ] keep 4  input-text ]
+    [ "y"      [ of "5" or ] keep 10 input-text ]
     [ " = " write drop ]
-    [ "result" [ swap at "8" or ] keep 10 input-text ]
+    [ "result" [ of "8" or ] keep 10 input-text ]
 } cleave
 
 """

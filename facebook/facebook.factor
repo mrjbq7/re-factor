@@ -18,7 +18,7 @@ TUPLE: search results next-url prev-url ;
 
 : http-search ( url -- search )
     http-get nip json> {
-        [ "data" swap at [ result from-slots ] map ]
+        [ "data" of [ result from-slots ] map ]
         [ { "paging" "next" } deep-at ]
         [ { "paging" "previous" } deep-at ]
     } cleave \ search boa ;

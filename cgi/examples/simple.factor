@@ -51,13 +51,13 @@ USE: prettyprint
     [
         "<label for='a'>A</label>" write
         "<input type='text' name='a' size='20' value='" write
-        "a" swap at [ write ] when* 
+        "a" of [ write ] when* 
         "'><br>" print
     ]
     [
         "<label for='b'>B</label>" write
         "<input type='text' name='b' size='20' value='" write
-        "b" swap at [ write ] when* "'><br>" print
+        "b" of [ write ] when* "'><br>" print
     ]
 } cleave
 

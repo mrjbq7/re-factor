@@ -27,7 +27,7 @@ USE: xml
 
 begin-form 
 
-<cgi-simple-form> "numbers" swap at "" or 
+<cgi-simple-form> "numbers" of "" or 
 [ write ] 
 [ "," split [ empty? not ] filter "numbers" set-value ] bi
 

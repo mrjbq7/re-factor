@@ -27,29 +27,29 @@ definition redirect ;
 
 : >abstract ( json -- abstract )
     {
-        [ "Abstract" swap at ]
-        [ "AbstractText" swap at ]
-        [ "AbstractURL" swap at ]
-        [ "AbstractSource" swap at ]
-        [ "Heading" swap at ]
+        [ "Abstract" of ]
+        [ "AbstractText" of ]
+        [ "AbstractURL" of ]
+        [ "AbstractSource" of ]
+        [ "Heading" of ]
     } cleave abstract boa ;
 
 : >answer ( json -- answer )
-    [ "Answer" swap at ]
-    [ "AnswerType" swap at ] bi f answer boa ;
+    [ "Answer" of ]
+    [ "AnswerType" of ] bi f answer boa ;
 
 : >definition ( json -- definition )
-    [ "Definition" swap at ]
-    [ "DefinitionURL" swap at ]
-    [ "DefinitionSource" swap at ] tri definition boa ;
+    [ "Definition" of ]
+    [ "DefinitionURL" of ]
+    [ "DefinitionSource" of ] tri definition boa ;
 
 : >redirect ( json -- redirect )
-    "Redirect" swap at redirect boa ;
+    "Redirect" of redirect boa ;
 
 : >result ( json -- result )
-    [ "Result" swap at ]
-    [ "Text" swap at ]
-    [ "FirstURL" swap at ] tri result boa ;
+    [ "Result" of ]
+    [ "Text" of ]
+    [ "FirstURL" of ] tri result boa ;
 
 SYMBOLS: +article+ +disambiguation+ +category+ +name+
 +exclusive+ +nothing+ ;
@@ -57,7 +57,7 @@ SYMBOLS: +article+ +disambiguation+ +category+ +name+
 : >results ( json -- results )
     {
         [
-            "Type" swap at H{
+            "Type" of H{
                 { "A" +article+ }
                 { "D" +disambiguation+ }
                 { "C" +category+ }
@@ -66,10 +66,10 @@ SYMBOLS: +article+ +disambiguation+ +category+ +name+
                 { "" +nothing+ }
             } at
         ]
-        [ "Image" swap at ]
+        [ "Image" of ]
         [ >answer ]
-        [ "Results" swap at [ >result ] map ]
-        [ "RelatedTopics" swap at [ >result ] map ]
+        [ "Results" of [ >result ] map ]
+        [ "RelatedTopics" of [ >result ] map ]
         [ >abstract ]
         [ >definition ]
         [ >redirect ]

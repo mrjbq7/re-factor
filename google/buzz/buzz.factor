@@ -23,7 +23,7 @@ IN: google.buzz
         google-api-key get-global "key" set-query-param ;
 
 : buzz-get ( url -- data )
-    http-get nip json> "data" swap at ;
+    http-get nip json> "data" of ;
 
 PRIVATE>
 
@@ -42,13 +42,13 @@ PRIVATE>
     "/activities/search" buzz-url
         swap "q" set-query-param
         "json" "alt" set-query-param
-    buzz-get "items" swap at ;
+    buzz-get "items" of ;
 
 : activities/search-people ( query -- results )
     "/activities/search/@people" buzz-url
         swap "q" set-query-param
         "json" "alt" set-query-param
-    buzz-get "entry" swap at ;
+    buzz-get "entry" of ;
 
 : people/get ( user-id -- xml )
     "/people/%s/@self" sprintf buzz-url
@@ -58,6 +58,6 @@ PRIVATE>
     "/people/search" buzz-url
         swap "q" set-query-param
         "json" "alt" set-query-param
-    buzz-get "entry" swap at ;
+    buzz-get "entry" of ;
 
 

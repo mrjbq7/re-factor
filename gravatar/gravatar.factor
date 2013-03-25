@@ -12,7 +12,7 @@ profileBackground profileUrl requestHash thumbnailUrl urls ;
 
 : gravatar-info ( gravatar-id -- info )
     "http://gravatar.com/%s.json" sprintf http-get nip
-    >string json> "entry" swap at first info from-slots ;
+    >string json> "entry" of first info from-slots ;
 
 : gravatar. ( gravatar-id -- )
     gravatar-info thumbnailUrl>> http-image. ;
