@@ -46,13 +46,6 @@ USE: grouping
 : swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
     '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
 
-: majority ( seq -- elt/f )
-    [ f 0 ] dip [
-        over zero? [ 2nip 1 ] [
-            pick = [ 1 + ] [ 1 - ] if
-        ] if
-    ] each zero? [ drop f ] when ;
-
 : compose-all ( seq -- quot )
     [ ] [ compose ] reduce ;
 

@@ -17,14 +17,6 @@ USE: math.statistics
 [ "1" "123" ] [ "1" "123" [ length ] [ > ] swap-when ] unit-test
 [ "123" "1" ] [ "1" "123" [ length ] [ < ] swap-when ] unit-test
 
-[ f ] [ { } majority ] unit-test
-[ 1 ] [ { 1 } majority ] unit-test
-[ f ] [ { 1 2 } majority ] unit-test
-[ 1 ] [ { 1 1 2 } majority ] unit-test
-[ f ] [ { 1 1 2 2 } majority ] unit-test
-[ 2 ] [ { 1 1 2 2 2 } majority ] unit-test
-[ 3 ] [ { 1 2 3 1 2 3 1 2 3 3 } majority ] unit-test
-
 [ "1st" ] [ 1 humanize ] unit-test
 [ "2nd" ] [ 2 humanize ] unit-test
 [ "3rd" ] [ 3 humanize ] unit-test
