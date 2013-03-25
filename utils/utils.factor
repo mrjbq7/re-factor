@@ -8,12 +8,6 @@ FROM: sequences => change-nth ;
 
 IN: utils
 
-MACRO: cleave-array ( quots -- )
-    [ '[ _ cleave ] ] [ length '[ _ narray ] ] bi compose ;
-
-: until-empty ( seq quot -- )
-    [ dup empty? ] swap until drop ; inline
-
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
@@ -35,8 +29,6 @@ PRIVATE>
 SYNTAX: INCLUDE: scan-token (include) ;
 
 SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
-
-: of ( assoc key -- value ) swap at ;
 
 USE: math.statistics
 USE: sorting
