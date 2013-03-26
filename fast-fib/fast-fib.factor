@@ -1,7 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel locals math math.parser memoize sequences ;
+USING: combinators kernel locals math math.parser memoize
+sequences ;
 
 IN: fast-fib
 
@@ -31,3 +32,13 @@ MEMO: slow-fib ( m -- n )
             a c + b *
         ] if b! a! a b + c!
     ] each b ;
+
+MEMO: faster-fib ( m -- n )
+    dup 0 >= [ throw ] unless
+    dup 1 > [
+        [ 2/ dup 1 - [ faster-fib ] bi@ ] [ 4 mod ] bi {
+            { 1 [ [ 2 * ] dip [ + ] [ - ] 2bi * 2 + ] }
+            { 3 [ [ 2 * ] dip [ + ] [ - ] 2bi * 2 - ] }
+            [ drop dupd 2 * + * ]
+        } case
+    ] when ;
