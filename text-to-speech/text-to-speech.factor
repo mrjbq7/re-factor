@@ -1,8 +1,8 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: combinators generic present strings system ui.operations
-vocabs ;
+USING: combinators generic kernel math math.text.english present
+strings system ui.operations vocabs ;
 
 IN: text-to-speech
 
@@ -19,7 +19,10 @@ HOOK: speak-text os ( str -- )
     { [ os windows? ] [ "text-to-speech.windows" ] }
 } cond require
 
-: speak ( obj -- )
-    present speak-text ;
+GENERIC: speak ( obj -- )
+
+M: object speak present speak-text ;
+
+M: integer speak number>text speak-text ;
 
 [ \ present ?lookup-method ] \ speak H{ } define-operation
