@@ -24,8 +24,8 @@ ERROR: invalid-throw ;
     dup throw#>> zero? [ 1 >>throw# ] [ next-frame ] if ;
 
 : check-throw# ( game n -- game )
-    [ over throw#>> = [ invalid-throw ] unless ]
-    [ drop ] in-game ;
+    '[ dup throw#>> _ = [ invalid-throw ] unless ]
+    [ ] in-game ;
 
 : check-pins ( game n -- game n )
     over pins>> dupd <= [ invalid-throw ] unless ;
@@ -48,7 +48,7 @@ ERROR: invalid-throw ;
     dup pins>> take-pins ;
 
 : add-bonus ( game n -- game )
-    '[ [ _ + ] change-bonus ] [ drop ] in-game ;
+    '[ [ _ + ] change-bonus ] [ ] in-game ;
 
 : strike ( game -- game )
     0 check-throw# 10 take-pins 2 add-bonus next-frame ;
