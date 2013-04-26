@@ -1,7 +1,7 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: combinators system vocabs ;
+USING: combinators strings system ui.operations vocabs ;
 
 IN: text-to-speech
 
@@ -17,3 +17,5 @@ HOOK: speak os ( str -- )
     { [ os linux?   ] [ "text-to-speech.linux"   ] }
     { [ os windows? ] [ "text-to-speech.windows" ] }
 } cond require
+
+[ string? ] \ speak H{ } define-operation
