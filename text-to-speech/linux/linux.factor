@@ -6,5 +6,5 @@ text-to-speech ;
 
 IN: text-to-speech.linux
 
-M: linux speak ( str -- )
+M: linux speak-text ( str -- )
     "festival --tts" utf8 [ print ] with-process-writer ;

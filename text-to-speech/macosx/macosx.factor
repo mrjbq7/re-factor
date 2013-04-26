@@ -5,5 +5,5 @@ USING: formatting io.launcher system text-to-speech ;
 
 IN: text-to-speech.macosx
 
-M: macosx speak ( str -- )
+M: macosx speak-text ( str -- )
     "say \"%s\"" sprintf try-process ;

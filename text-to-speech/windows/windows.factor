@@ -5,5 +5,5 @@ USING: google.translate system text-to-speech windows.winmm ;
 
 IN: text-to-speech.windows
 
-M: windows speak ( str -- )
+M: windows speak-text ( str -- )
     translate-tts open-command play-command close-command ;
