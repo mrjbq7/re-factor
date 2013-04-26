@@ -1,25 +1,16 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: arrays assocs combinators db.types fry kernel lexer
-locals macros math math.functions math.private math.order
-math.ranges parser sequences sequences.generalizations
-classes.tuple ;
-FROM: sequences => change-nth ;
-
+USING: accessors arrays assocs combinators fry generic
+io.pathnames kernel lexer math math.functions math.order
+math.parser math.private namespaces parser random sequences
+sorting source-files tools.annotations ;
 IN: utils
 
 SYNTAX: =>
     unclip-last scan-object 2array suffix! ;
 
 <PRIVATE
-
-USE: accessors
-USE: io.pathnames
-USE: namespaces
-USE: source-files
-USE: vocabs.loader
-USE: vocabs.parser
 
 : (include) ( parsed name -- parsed )
     [ file get path>> parent-directory ] dip
@@ -31,26 +22,15 @@ SYNTAX: INCLUDE: scan-token (include) ;
 
 SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
 
-USE: math.statistics
-USE: sorting
-
 : trim-histogram ( assoc n -- alist )
     [ sort-values reverse ] [ cut ] bi* values sum
     [ "Other" swap 2array suffix ] unless-zero ;
-
-USE: quotations
-
-USE: assocs.private
-
-USE: grouping
 
 : swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
     '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
 
 : compose-all ( seq -- quot )
     [ ] [ compose ] reduce ;
-
-USE: math.parser
 
 : humanize ( n -- str )
     dup 100 mod 11 13 between? [ "th" ] [
@@ -62,17 +42,8 @@ USE: math.parser
         } case
     ] if [ number>string ] [ append ] bi* ;
 
-USE: alien.c-types
-USE: classes.struct
-USE: io
-USE: random
-
 : remove-random ( seq -- elt seq' )
     [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
-
-USE: sets
-USE: generic
-USE: tools.annotations
 
 <<
 : wrap-method ( word before-quot after-quot -- )
