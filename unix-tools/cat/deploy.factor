@@ -1,15 +1,16 @@
 USING: tools.deploy.config ;
 H{
-    { deploy-name "cat" }
-    { deploy-ui? f }
     { deploy-c-types? f }
-    { deploy-console? t }
-    { deploy-unicode? f }
+    { deploy-help? f }
+    { deploy-name "cat" }
     { "stop-after-last-window?" t }
+    { deploy-unicode? f }
+    { deploy-console? t }
     { deploy-io 3 }
-    { deploy-reflection 6 }
-    { deploy-word-props? f }
-    { deploy-math? t }
-    { deploy-threads? t }
+    { deploy-reflection 1 }
+    { deploy-ui? f }
     { deploy-word-defs? f }
+    { deploy-threads? t }
+    { deploy-math? t }
+    { deploy-word-props? f }
 }
