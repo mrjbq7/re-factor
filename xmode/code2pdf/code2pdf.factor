@@ -1,7 +1,7 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel io.encodings.utf8 io.files pdf pdf.streams
+USING: kernel io.encodings.utf8 io.files pdf.layout pdf.streams
 sequences xmode.highlight ;
 
 IN: xmode.code2pdf

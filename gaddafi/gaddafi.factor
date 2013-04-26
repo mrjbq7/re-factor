@@ -5,6 +5,7 @@ USING: literals regexp sequences soundex ;
 
 IN: gaddafi
 
+<<
 CONSTANT: names {
     "Gadaffi"
     "Gadafi"
@@ -39,6 +40,7 @@ CONSTANT: names {
     "Qudhafi"
     ! "Qaḏḏāfī"
 }
+>>
 
 : gaddafi? ( string -- ? )
     names member? ;
