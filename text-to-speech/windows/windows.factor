@@ -1,12 +1,9 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: formatting google.translate io.launcher system
-text-to-speech ;
+USING: google.translate system text-to-speech windows.winmm ;
 
 IN: text-to-speech.windows
 
 M: windows speak ( str -- )
-    translate-tts
-    "powershell -c (New-Object Media.SoundPlayer \"%s\").PlaySync();"
-    sprintf try-process ;
+    translate-tts open-command play-command close-command ;
