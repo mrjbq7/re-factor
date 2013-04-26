@@ -2,8 +2,9 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays assocs combinators db.types fry kernel lexer
-locals macros math math.private math.order math.ranges parser
-sequences sequences.generalizations classes.tuple ;
+locals macros math math.functions math.private math.order
+math.ranges parser sequences sequences.generalizations
+classes.tuple ;
 FROM: sequences => change-nth ;
 
 IN: utils
