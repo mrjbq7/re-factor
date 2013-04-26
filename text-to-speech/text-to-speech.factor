@@ -1,9 +1,7 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: formatting http.client io io.encodings.ascii
-io.encodings.binary io.files io.files.unique io.launcher kernel
-sequences system urls ;
+USING: combinators system vocabs ;
 
 IN: text-to-speech
 
@@ -14,17 +12,8 @@ IN: text-to-speech
 
 HOOK: speak os ( str -- )
 
-M: macosx speak ( str -- )
-    "say \"%s\"" sprintf try-process ;
-
-M: linux speak ( str -- )
-    "festival --tts" ascii [ print ] with-process-writer ;
-
-M: windows speak ( str -- )
-    "http://translate.google.com/translate_tts?tl=en" >url
-    swap "q" set-query-param http-get nip
-    temporary-file ".mp3" append
-    [ binary set-file-contents ] [
-        "powershell -c (New-Object Media.SoundPlayer \"%s\").PlaySync();"
-        sprintf try-process
-    ] bi ;
+{
+    { [ os macosx?  ] [ "text-to-speech.macosx"  ] }
+    { [ os linux?   ] [ "text-to-speech.linux"   ] }
+    { [ os windows? ] [ "text-to-speech.windows" ] }
+} cond require
