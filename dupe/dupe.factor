@@ -1,15 +1,19 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs checksums checksums.md5 command-line formatting
-fry io.directories.search io.pathnames kernel math namespaces
-sequences ;
+USING: accessors assocs checksums checksums.md5 command-line
+formatting fry io.directories.search io.files.types io.pathnames
+kernel math namespaces sequences ;
 
 IN: dupe
 
 : collect-files ( path -- assoc )
     t H{ } clone [
-        '[ dup file-name _ push-at ] each-file
+        '[
+            dup type>> +regular-file+ = [
+                name>> dup file-name _ push-at
+            ] [ drop ] if
+        ] each-directory-entry
     ] keep ;
 
 : duplicate-files ( path -- dupes )
