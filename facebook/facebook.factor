@@ -8,9 +8,9 @@ urls.encoding urls.secure ;
 IN: facebook
 
 TUPLE: result application caption category created_time
-description end_time from icon id likes link location message
-name object_id picture properties source start_time status_type
-story to type updated_time ;
+description end_time from icon id likes link location message message_tags
+name object_id picture privacy properties shares source start_time status_type
+story to type updated_time with_tags ;
 
 TUPLE: search results next-url prev-url ;
 
