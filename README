@@ -100,6 +100,9 @@ ipinfodb:
 mail-ui
     simple UI for composing emails
 
+metar:
+    parse METAR weather reports
+
 n-partition:
     evenly partition an integer
 
