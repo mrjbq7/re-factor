@@ -121,6 +121,7 @@ CONSTANT: abbreviations H{
     { "DU" "widespread dust" }
     { "DVR" "dispatch visual range" }
     { "DZ" "drizzle" }
+    { "E" "east" }
     { "FAA" "Federal Aviation Administration" }
     { "FC" "funnel cloud" }
     { "FEW" "few clouds" }
@@ -204,6 +205,7 @@ CONSTANT: abbreviations H{
     { "SC" "stratocumulus" }
     { "SCSL" "stratocumulus standing lenticular cloud" }
     { "SCT" "scattered clouds" }
+    { "SE" "southeast" }
     { "SFC" "surface" }
     { "SG" "snow grains" }
     { "SH" "shower(s)" }
