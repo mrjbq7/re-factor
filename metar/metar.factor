@@ -430,26 +430,29 @@ PRIVATE>
 
 <PRIVATE
 
+: ?write ( seq -- )
+    [ write ] when* ; inline
+
 : named-row ( name quot -- )
     '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
 
 : station. ( report -- )
-    "Station" [ station>> write ] named-row ;
+    "Station" [ station>> ?write ] named-row ;
 
 : timestamp. ( report -- )
     "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ;
 
 : wind. ( report -- )
-    "Wind" [ wind>> write ] named-row ;
+    "Wind" [ wind>> ?write ] named-row ;
 
 : visibility. ( report -- )
-    "Visibility" [ visibility>> write ] named-row ;
+    "Visibility" [ visibility>> ?write ] named-row ;
 
 : weather. ( report -- )
-    "Weather" [ weather>> write ] named-row ;
+    "Weather" [ weather>> ?write ] named-row ;
 
 : sky-condition. ( report -- )
-    "Sky condition" [ sky-condition>> write ] named-row ;
+    "Sky condition" [ sky-condition>> ?write ] named-row ;
 
 : temperature. ( report -- )
     "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ;
@@ -458,10 +461,10 @@ PRIVATE>
     "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ;
 
 : altimeter. ( report -- )
-    "Altimeter" [ altimeter>> "%.2f" printf ] named-row ;
+    "Altimeter" [ altimeter>> [ "%.2f" printf ] when* ] named-row ;
 
 : remarks. ( report -- )
-    "Remarks" [ remarks>> 65 wrap-string print ] named-row ;
+    "Remarks" [ remarks>> [ 65 wrap-string print ] when* ] named-row ;
 
 PRIVATE>
 
