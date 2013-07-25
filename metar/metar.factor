@@ -2,9 +2,9 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays ascii assocs calendar calendar.format
-combinators csv formatting fry http.client io io.styles kernel
-math math.extras math.parser namespaces regexp sequences sorting
-splitting urls wrap.strings ;
+combinators csv formatting fry grouping http.client io io.styles
+kernel math math.extras math.parser namespaces regexp sequences
+sorting splitting urls wrap.strings ;
 
 IN: metar
 
@@ -63,6 +63,13 @@ CONSTANT: pressure-tendency H{
     { "8" "decreasing more quickly" }
 }
 
+CONSTANT: lightning H{
+    { "CA" "cloud-air lightning" }
+    { "CC" "cloud-cloud lightning" }
+    { "CG" "cloud-ground lightning" }
+    { "IC" "in-cloud lightning" }
+}
+
 CONSTANT: abbreviations H{
     { "$" "maintenance check indicator" }
     { "+" "heavy intensity" }
@@ -85,19 +92,16 @@ CONSTANT: abbreviations H{
     { "AUTO" "automated report" }
     { "B" "began" }
     { "BC" "patches" }
-    { "BKN" "broken" }
+    { "BKN" "broken clouds" }
     { "BL" "blowing" }
     { "BLU" "blue" }
     { "BR" "mist" }
     { "BYD" "by day" }
     { "C" "center" }
-    { "CA" "cloud-air lightning" }
     { "CB" "cumulonimbus cloud" }
     { "CBMAM" "cumulonimbus mammatus cloud" }
-    { "CC" "cloud-cloud lightning" }
     { "CCSL" "cirrocumulus standing lenticular cloud" }
     { "CD" "candela" }
-    { "CG" "cloud-ground lightning" }
     { "CHI" "cloud-height indicator" }
     { "CHINO" "sky condition at secondary location not available" }
     { "CIG" "ceiling" }
@@ -137,7 +141,7 @@ CONSTANT: abbreviations H{
     { "GS" "small hail and/or snow pellets" }
     { "HLSTO" "hailstone" }
     { "HZ" "haze" }
-    { "IC" "ice crystals, in-cloud lightning" }
+    { "IC" "ice crystals" }
     { "ICAO" "International Civil Aviation Organization" }
     { "INCRG" "increasing" }
     { "INTMT" "intermittent" }
@@ -154,6 +158,7 @@ CONSTANT: abbreviations H{
     { "MI" "shallow" }
     { "MIN" "minimum" }
     { "MOV" "moved/moving/movement" }
+    { "MOVD" "moved" }
     { "MSHP" "mishap" }
     { "MT" "mountains" }
     { "N" "north" }
@@ -186,6 +191,7 @@ CONSTANT: abbreviations H{
     { "PY" "spray" }
     { "R" "right" }
     { "RA" "rain" }
+    { "RAE" "rain ended" }
     { "RED" "red" }
     { "RTD" "Routine Delayed (late) observation" }
     { "RV" "reportable value" }
@@ -197,7 +203,7 @@ CONSTANT: abbreviations H{
     { "SA" "sand" }
     { "SC" "stratocumulus" }
     { "SCSL" "stratocumulus standing lenticular cloud" }
-    { "SCT" "scattered" }
+    { "SCT" "scattered clouds" }
     { "SFC" "surface" }
     { "SG" "snow grains" }
     { "SH" "shower(s)" }
@@ -216,6 +222,7 @@ CONSTANT: abbreviations H{
     { "TCU" "towering cumulus" }
     { "THLD" "threshold" }
     { "TS" "thunderstorm" }
+    { "TSE" "thunderstorm ended" }
     { "TSNO" "thunderstorm information not available" }
     { "TWR" "tower" }
     { "UNKN" "unknown" }
@@ -240,6 +247,7 @@ CONSTANT: abbreviations H{
     { "YLO" "yellow" }
     { "Z" "zulu (i.e. Coordinated Universal Time)" }
 }
+
 : split-abbreviations ( str -- seq )
     abbreviations >alist [ first length ] inv-sort-with
     keys '[
@@ -404,6 +412,9 @@ CONSTANT: re-altimeter R! [A]\d{4}!
     "SLP" ?head drop string>number 10.0 /f 1000 +
     "sea-level pressure is %s hPa" sprintf ;
 
+: parse-lightning ( str -- str' )
+    "LTG" ?head drop 2 group [ lightning at ] map " " join ;
+
 : parse-remarks ( report seq -- report )
     [
         {
@@ -417,6 +428,7 @@ CONSTANT: re-altimeter R! [A]\d{4}!
             { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
             { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
+            { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
             [ parse-abbreviations ]
         } cond
     ] map " " join >>remarks ;
@@ -436,52 +448,21 @@ PRIVATE>
 : named-row ( name quot -- )
     '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
 
-: station. ( report -- )
-    "Station" [ station>> ?write ] named-row ;
-
-: timestamp. ( report -- )
-    "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ;
-
-: wind. ( report -- )
-    "Wind" [ wind>> ?write ] named-row ;
-
-: visibility. ( report -- )
-    "Visibility" [ visibility>> ?write ] named-row ;
-
-: weather. ( report -- )
-    "Weather" [ weather>> ?write ] named-row ;
-
-: sky-condition. ( report -- )
-    "Sky condition" [ sky-condition>> ?write ] named-row ;
-
-: temperature. ( report -- )
-    "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ;
-
-: dew-point. ( report -- )
-    "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ;
-
-: altimeter. ( report -- )
-    "Altimeter" [ altimeter>> [ "%.2f" printf ] when* ] named-row ;
-
-: remarks. ( report -- )
-    "Remarks" [ remarks>> [ 65 wrap-string print ] when* ] named-row ;
-
 PRIVATE>
 
 : report. ( report -- )
-    [ raw>> print ] keep
-    standard-table-style [
+    [ raw>> print ] keep standard-table-style [
         {
-            [ station. ]
-            [ timestamp. ]
-            [ wind. ]
-            [ visibility. ]
-            [ weather. ]
-            [ sky-condition. ]
-            [ temperature. ]
-            [ dew-point. ]
-            [ altimeter. ]
-            [ remarks. ]
+            [ "Station" [ station>> ?write ] named-row ]
+            [ "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ]
+            [ "Wind" [ wind>> ?write ] named-row ]
+            [ "Visibility" [ visibility>> ?write ] named-row ]
+            [ "Weather" [ weather>> ?write ] named-row ]
+            [ "Sky condition" [ sky-condition>> ?write ] named-row ]
+            [ "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ]
+            [ "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ]
+            [ "Altimeter" [ altimeter>> [ "%.2f" printf ] when* ] named-row ]
+            [ "Remarks" [ remarks>> [ 65 wrap-string print ] when* ] named-row ]
         } cleave
     ] tabular-output nl ;
 
