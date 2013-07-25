@@ -40,11 +40,11 @@ C: <station> station
     "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
     sprintf http-get nip ;
 
+<PRIVATE
+
 TUPLE: report type station timestamp modifier wind visibility
 weather sky-condition temperature dew-point altimeter remarks
 raw ;
-
-<PRIVATE
 
 CONSTANT: pressure-tendency H{
     { "0" "increasing then decreasing" }
@@ -435,14 +435,10 @@ CONSTANT: re-altimeter R! [A]\d{4}!
         } cond
     ] map " " join >>remarks ;
 
-PRIVATE>
-
 : <report> ( metar -- report )
     [ report new ] dip [ >>raw ] keep
     [ blank? ] split-when { "RMK" } split1
     [ parse-body ] [ parse-remarks ] bi* ;
-
-<PRIVATE
 
 : ?write ( seq -- )
     [ write ] when* ; inline
@@ -450,10 +446,8 @@ PRIVATE>
 : named-row ( name quot -- )
     '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
 
-PRIVATE>
-
 : report. ( report -- )
-    [ raw>> print ] keep standard-table-style [
+    [ raw>> 80 wrap-string print nl ] keep standard-table-style [
         {
             [ "Station" [ station>> ?write ] named-row ]
             [ "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ]
@@ -467,6 +461,11 @@ PRIVATE>
             [ "Remarks" [ remarks>> [ 65 wrap-string print ] when* ] named-row ]
         } cleave
     ] tabular-output nl ;
+
+PRIVATE>
+
+: metar. ( station -- )
+    get-metar <report> report. ;
 
 ! TODO: runway-visual-range
 ! TODO: numerical remarks:
