@@ -36,14 +36,9 @@ C: <station> station
         } cleave <station>
     ] map ;
 
-: get-report ( station -- report )
+: get-metar ( station -- metar )
     "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
     sprintf http-get nip ;
-
-: metar>timestamp ( str -- timestamp )
-    [ now [ year>> ] [ month>> ] bi ] dip
-    2 cut 2 cut 2 cut drop [ string>number ] tri@
-    0 instant <timestamp> ;
 
 TUPLE: report type station timestamp modifier wind visibility
 weather sky-condition temperature dew-point altimeter remarks
@@ -267,6 +262,14 @@ CONSTANT: abbreviations H{
 : parse-abbreviations ( str -- str' )
     split-abbreviations [ abbreviations ?at drop ] map " " join ;
 
+: metar>timestamp ( str -- timestamp )
+    [ now [ year>> ] [ month>> ] bi ] dip
+    2 cut 2 cut 2 cut drop [ string>number ] tri@
+    0 instant <timestamp> ;
+
+: parse-timestamp ( report str -- report )
+    metar>timestamp >>timestamp ;
+
 CONSTANT: compass-directions H{
     { 0 "N" }
     { 22.5 "NNE" }
@@ -289,9 +292,6 @@ CONSTANT: compass-directions H{
 
 : direction>compass ( direction -- compass )
     22.5 round-to-step compass-directions at ;
-
-: parse-timestamp ( report str -- report )
-    metar>timestamp >>timestamp ;
 
 : parse-wind ( report str -- report )
     dup "00000KT" = [ drop "calm" ] [
@@ -437,7 +437,7 @@ CONSTANT: re-altimeter R! [A]\d{4}!
 
 PRIVATE>
 
-: <report> ( str -- report )
+: <report> ( metar -- report )
     [ report new ] dip [ >>raw ] keep
     [ blank? ] split-when { "RMK" } split1
     [ parse-body ] [ parse-remarks ] bi* ;
