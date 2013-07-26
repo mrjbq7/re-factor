@@ -568,17 +568,17 @@ CONSTANT: high-clouds H{
 
 : parse-1hr-precipitation ( str -- str' )
     "P" ?head drop parse-inches
-    "%s precipitation in last hour" sprintf ;
+    "%.2f precipitation in last hour" sprintf ;
 
 : parse-6hr-precipitation ( str -- str' )
     "6" ?head drop dup "////" = [ drop f ] [
         parse-inches
-        "%s precipitation in last 6 hours" sprintf
+        "%.2f precipitation in last 6 hours" sprintf
     ] if ;
 
 : parse-24hr-precipitation ( str -- str' )
     "7" ?head drop parse-inches
-    "%s precipitation in last 24 hours" sprintf ;
+    "%.2f precipitation in last 24 hours" sprintf ;
 
 : parse-recent-time ( str -- str' )
     dup length 2 >
