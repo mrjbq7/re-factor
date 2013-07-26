@@ -94,8 +94,8 @@ CONSTANT: abbreviations H{
     { "ALQS" "all quadrants" } ! (Unofficial)
     { "AMB" "amber" }
     { "AND" "and" }
-    { "AO1" "station without a precipitation descriminator" }
-    { "AO2" "station with a precipitation descriminator" }
+    { "AO1" "station without a precipitation discriminator" }
+    { "AO2" "station with a precipitation discriminator" }
     { "APCH" "approach" }
     { "APRNT" "apparent" }
     { "APRX" "approximately" }
