@@ -339,13 +339,10 @@ CONSTANT: abbreviations H{
         [ abbreviations ?at drop ] map " " join
     ] map "/" join ;
 
-: metar>timestamp ( str -- timestamp )
+: parse-timestamp ( str -- timestamp )
     [ now [ year>> ] [ month>> ] bi ] dip
     2 cut 2 cut 2 cut drop [ string>number ] tri@
     0 instant <timestamp> ;
-
-: parse-timestamp ( report str -- report )
-    metar>timestamp >>timestamp ;
 
 CONSTANT: compass-directions H{
     { 0 "N" }
@@ -453,26 +450,16 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
             { [ dup { "METAR" "SPECI" } member? ] [ >>type ] }
             { [ dup { "AUTO" "COR" } member? ] [ >>modifier ] }
             { [ dup re-station matches? pick station>> not and ] [ >>station ] }
-            { [ dup re-visibility matches? ] [
-                parse-visibility >>visibility ] }
-            { [ dup re-timestamp matches? ] [ parse-timestamp ] }
-            { [ dup re-wind matches? ] [
-                parse-wind append-to change-wind ] }
-            { [ dup re-wind-gust matches? ] [
-                parse-wind-gust append-to change-wind ] }
-            { [ dup re-wind-variable matches? ] [
-                parse-wind-variable append-to change-wind ] }
-            { [ dup re-rvr matches? ] [
-                parse-rvr glue-to change-rvr ] }
-            { [ dup re-weather matches? ] [
-                parse-weather glue-to change-weather ] }
-            { [ dup re-sky-condition matches? ] [
-                parse-sky-condition glue-to change-sky-condition ] }
-            { [ dup re-temperature matches? ] [
-                parse-temperature
-                [ >>temperature ] [ >>dew-point ] bi* ] }
-            { [ dup re-altimeter matches? ] [
-                parse-altimeter >>altimeter ] }
+            { [ dup re-visibility matches? ] [ parse-visibility >>visibility ] }
+            { [ dup re-timestamp matches? ] [ parse-timestamp >>timestamp ] }
+            { [ dup re-wind matches? ] [ parse-wind append-to change-wind ] }
+            { [ dup re-wind-gust matches? ] [ parse-wind-gust append-to change-wind ] }
+            { [ dup re-wind-variable matches? ] [ parse-wind-variable append-to change-wind ] }
+            { [ dup re-rvr matches? ] [ parse-rvr glue-to change-rvr ] }
+            { [ dup re-weather matches? ] [ parse-weather glue-to change-weather ] }
+            { [ dup re-sky-condition matches? ] [ parse-sky-condition glue-to change-sky-condition ] }
+            { [ dup re-temperature matches? ] [ parse-temperature [ >>temperature ] [ >>dew-point ] bi* ] }
+            { [ dup re-altimeter matches? ] [ parse-altimeter >>altimeter ] }
             [ drop ]
         } cond
     ] each ;
