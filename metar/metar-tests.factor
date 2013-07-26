@@ -1,9 +1,7 @@
 
-USING: tools.test ;
+USING: metar.private tools.test ;
 
 IN: metar
 
-{ "freezing fog" } [ "FZFG" parse-abbreviations ] unit-test
-{ { "FZ" "FG" } } [ "FZFG" split-abbreviations ] unit-test
-
-{ { "RA" "B" "15" "E" "25" } } [ "RAB15E25" split-abbreviations ] unit-test
+{ { "RAB05" "E30" "SNB20" "E55" } }
+[ "RAB05E30SNB20E55" split-recent-weather ] unit-test
