@@ -4,8 +4,8 @@
 USING: accessors arrays ascii assocs calendar calendar.format
 combinators continuations csv formatting fry grouping
 http.client io io.styles kernel math math.extras math.parser
-memoize namespaces regexp sequences sorting splitting strings
-urls wrap.strings ;
+memoize regexp sequences sorting.human splitting strings urls
+wrap.strings ;
 
 IN: metar
 
@@ -134,10 +134,12 @@ CONSTANT: abbreviations H{
     { "ATCT" "airport traffic control tower" }
     { "AUTO" "automated report" }
     { "B" "began" }
+    { "BA" "braking action" }
     { "BECMG" "becoming" }
     { "BFR" "before" }
     { "BINOVC" "breaks in overcast" }
     { "BKN" "broken" }
+    { "BLDG" "building" }
     { "BLU" "blue" }
     { "BLW" "below" }
     { "BTWN" "between" }
@@ -151,7 +153,7 @@ CONSTANT: abbreviations H{
     { "CHI" "cloud-height indicator" }
     { "CHINO" "sky condition at secondary location not available" }
     { "CIG" "ceiling" }
-    { "CLD" "cold" }
+    { "CLD" "cloud" }
     { "CLDS" "clouds" }
     { "CLR" "clear sky" }
     { "CNTRL" "central" }
@@ -167,6 +169,7 @@ CONSTANT: abbreviations H{
     { "DOC" "Department of Commerce" }
     { "DOD" "Department of Defense" }
     { "DOT" "Department of Transportation" }
+    { "DRY" "dry" }
     { "DSIPTG" "dissipating" }
     { "DSNT" "distant" }
     { "DVR" "dispatch visual range" }
@@ -181,6 +184,7 @@ CONSTANT: abbreviations H{
     { "FEW" "few" }
     { "FIBI" "filed but impracticable to transmit" }
     { "FIRST" "first observation after a break in coverage at manual station" }
+    { "FM" "from" }
     { "FMH-1" "Federal Meteorological Handbook No.1, Surface Weather Observations & Reports (METAR)" }
     { "FMH2" "Federal Meteorological Handbook No.2, Surface Synoptic Codes" }
     { "FNT" "front" }
@@ -190,6 +194,7 @@ CONSTANT: abbreviations H{
     { "FT" "feet" }
     { "FZRANO" "freezing rain sensor not available" }
     { "GRN" "green" }
+    { "HFS" "high-friction surface" }
     { "HLSTO" "hailstone" }
     { "ICAO" "International Civil Aviation Organization" }
     { "IFR" "IFR" }
@@ -197,16 +202,19 @@ CONSTANT: abbreviations H{
     { "INTMT" "intermittent" }
     { "INTO" "into" }
     { "INVOF" "in vicinity of" }
+    { "IR" "ice on the runway" }
     { "ISOL" "isolated" }
     { "JTSTR" "jetstream" }
     { "KT" "knots" }
     { "L" "left" }
     { "LAST" "last observation before a break in coverage at a manual station" }
+    { "LSR" "loose snow on the runway" }
     { "LST" "Local Standard Time" }
     { "LTG" "lightning" }
     { "LWR" "lower" }
     { "M" "minus, less than" }
     { "MAX" "maximum" }
+    { "MEDIUM" "medium" }
     { "METAR" "aviation routine weather report" }
     { "MIN" "minimum" }
     { "MOD" "moderate" }
@@ -251,10 +259,13 @@ CONSTANT: abbreviations H{
     { "PRESFR" "pressure falling rapidly" }
     { "PRESRR" "pressure rising rapidly" }
     { "PROB" "probability" }
+    { "PSR" "packed snow on the runway" }
     { "PWINO" "precipitation identifier sensor not available" }
     { "QTR" "quarter" }
     { "R" "right" }
+    { "RCRNR" "base operations closed" }
     { "RED" "red" }
+    { "ROTOR" "rotor" }
     { "RTD" "Routine Delayed (late) observation" }
     { "RV" "reportable value" }
     { "RVR" "Runway visual range" }
@@ -272,6 +283,7 @@ CONSTANT: abbreviations H{
     { "SKC" "clear sky" }
     { "SLP" "sea-level pressure" }
     { "SLPNO" "sea-level pressure not available" }
+    { "SLR" "slush on the runway" }
     { "SM" "statute miles" }
     { "SNINCR" "snow increasing rapidly" }
     { "SNOW" "snow" }
@@ -284,6 +296,7 @@ CONSTANT: abbreviations H{
     { "TCU" "towering cumulus" }
     { "TEMPO" "temporary" }
     { "THLD" "threshold" }
+    { "TO" "to" }
     { "TROF" "trough" }
     { "TSNO" "thunderstorm information not available" }
     { "TURB" "turbulence" }
@@ -308,6 +321,7 @@ CONSTANT: abbreviations H{
     { "WLY" "westerly" }
     { "WMO" "World Meteorological Organization" }
     { "WND" "wind" }
+    { "WR" "wet runway" }
     { "WRM" "warm" }
     { "WRN" "western" }
     { "WS" "wind shear" }
@@ -318,24 +332,13 @@ CONSTANT: abbreviations H{
     { "Z" "zulu (i.e. Coordinated Universal Time)" }
 }
 
-: split-abbreviations ( str -- seq )
-    abbreviations >alist [ first length ] inv-sort-with
-    keys '[
-        [ dup empty? not ] [
-            dup first digit? [
-                dup [ digit? not ] find drop
-                [ cut swap ] [ f swap ] if*
-            ] [
-                _ [ dupd head? ] find nip
-                [ [ ?head drop ] keep ] [ f swap ] if*
-            ] if
-        ] produce nip
-    ] call ;
-
 : parse-abbreviations ( str -- str' )
     "/" split [
-        split-abbreviations
-        [ abbreviations ?at drop ] map " " join
+        find-numbers [
+            dup number?
+            [ number>string ]
+            [ abbreviations ?at drop ] if
+        ] map " " join
     ] map "/" join ;
 
 : parse-timestamp ( str -- timestamp )
