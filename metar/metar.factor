@@ -695,7 +695,11 @@ M: string metar
     "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
     sprintf http-get nip ;
 
-: metar. ( station -- )
+GENERIC: metar. ( station -- )
+
+M: station metar. cccc>> metar. ;
+
+M: string metar.
     [ metar <report> report. ]
     [ drop "%s METAR not found\n" printf ] recover ;
 
