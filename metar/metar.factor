@@ -245,6 +245,7 @@ CONSTANT: abbreviations H{
     { "QTR" "quarter" }
     { "R" "right" }
     { "RA" "rain" }
+    { "RE" "recent" }
     { "RED" "red" }
     { "RTD" "Routine Delayed (late) observation" }
     { "RV" "reportable value" }
