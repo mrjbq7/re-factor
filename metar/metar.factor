@@ -100,6 +100,7 @@ CONSTANT: abbreviations H{
     { "APRNT" "apparent" }
     { "APRX" "approximately" }
     { "ASSOCD" "associated" }
+    { "ASOS" "Automated Surface Observing System" }
     { "ATCT" "airport traffic control tower" }
     { "AUTO" "automated report" }
     { "B" "began" }
@@ -133,6 +134,7 @@ CONSTANT: abbreviations H{
     { "CONTG" "continuing" }
     { "COR" "correction to a previously disseminated observation" }
     { "CU" "cumulus" }
+    { "DATA" "data" }
     { "DEGS" "degrees" }
     { "DEPTH" "depth" }
     { "DOC" "Department of Commerce" }
@@ -149,6 +151,7 @@ CONSTANT: abbreviations H{
     { "ENDG" "ending" }
     { "ERN" "eastern" }
     { "ESTIMATE" "estimate" }
+    { "ESTMD" "estimated" }
     { "EWD" "eastward" }
     { "FAA" "Federal Aviation Administration" }
     { "FC" "funnel cloud" }
