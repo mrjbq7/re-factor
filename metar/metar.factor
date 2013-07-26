@@ -3,8 +3,8 @@
 
 USING: accessors arrays ascii assocs calendar calendar.format
 combinators csv formatting fry grouping http.client io io.styles
-kernel math math.extras math.parser namespaces regexp sequences
-sorting splitting urls wrap.strings ;
+kernel math math.extras math.parser memoize namespaces regexp
+sequences sorting splitting strings urls wrap.strings ;
 
 IN: metar
 
@@ -12,17 +12,25 @@ TUPLE: station cccc name state country latitude longitude ;
 
 C: <station> station
 
+<PRIVATE
+
 : string>longitude ( str -- lon )
-    "-" split1 unclip-last
-    [ [ string>number ] bi@ 60.0 / + ]
-    [ CHAR: W = [ neg ] when ] bi* ;
+    dup R/ \d+-\d+[WE]/ matches? [
+        "-" split1 unclip-last
+        [ [ string>number ] bi@ 60.0 / + ]
+        [ CHAR: W = [ neg ] when ] bi*
+    ] [ drop f ] if ;
 
 : string>latitude ( str -- lat )
-    "-" split1 unclip-last
-    [ [ string>number ] bi@ 60.0 / + ]
-    [ CHAR: S = [ neg ] when ] bi* ;
+    dup R/ \d+-\d+[NS]/ matches? [
+        "-" split1 unclip-last
+        [ [ string>number ] bi@ 60.0 / + ]
+        [ CHAR: S = [ neg ] when ] bi*
+    ] [ drop f ] if ;
 
-: load-stations ( -- seq )
+PRIVATE>
+
+MEMO: all-stations ( -- seq )
     URL" http://weather.noaa.gov/data/nsd_cccc.txt"
     http-get nip CHAR: ; [ string>csv ] with-delimiter
     [
@@ -36,9 +44,14 @@ C: <station> station
         } cleave <station>
     ] map ;
 
-: get-metar ( station -- metar )
-    "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
-    sprintf http-get nip ;
+: find-by-cccc ( cccc -- station )
+    all-stations swap '[ cccc>> _ = ] find nip ;
+
+: find-by-country ( country -- stations )
+    all-stations swap '[ country>> _ = ] filter ;
+
+: find-by-state ( state -- stations )
+    all-stations swap '[ state>> _ = ] filter ;
 
 <PRIVATE
 
@@ -74,6 +87,7 @@ CONSTANT: abbreviations H{
     { "ACC" "altocumulus castellanus" }
     { "ACFT" "aircraft" }
     { "ACSL" "standing lenticular altocumulus" }
+    { "AFT" "after" }
     { "ALP" "aircraft location point" }
     { "ALQDS" "all quadrants" } ! (Official)
     { "ALQS" "all quadrants" } ! (Unofficial)
@@ -84,15 +98,20 @@ CONSTANT: abbreviations H{
     { "APCH" "approach" }
     { "APRNT" "apparent" }
     { "APRX" "approximately" }
+    { "ASSOCD" "associated" }
     { "ATCT" "airport traffic control tower" }
     { "AUTO" "automated report" }
     { "B" "began" }
     { "BC" "patches" }
+    { "BECMG" "becoming" }
+    { "BFR" "before" }
     { "BINOVC" "breaks in overcast" }
     { "BKN" "broken" }
     { "BL" "blowing" }
     { "BLU" "blue" }
+    { "BLW" "below" }
     { "BR" "mist" }
+    { "BTWN" "between" }
     { "BYD" "by day" }
     { "C" "center" }
     { "CAVOK" "clear skies and unlimited visibility" }
@@ -103,9 +122,14 @@ CONSTANT: abbreviations H{
     { "CHI" "cloud-height indicator" }
     { "CHINO" "sky condition at secondary location not available" }
     { "CIG" "ceiling" }
+    { "CLD" "cold" }
+    { "CLDS" "clouds" }
     { "CLR" "clear sky" }
+    { "CNTRL" "central" }
     { "CNTRLN" "centerline" }
+    { "CONDS" "conditions" }
     { "CONS" "continuous" }
+    { "CONTG" "continuing" }
     { "COR" "correction to a previously disseminated observation" }
     { "CU" "cumulus" }
     { "DEGS" "degrees" }
@@ -120,14 +144,19 @@ CONSTANT: abbreviations H{
     { "DVR" "dispatch visual range" }
     { "DZ" "drizzle" }
     { "E" "east" }
+    { "ENDG" "ending" }
+    { "ERN" "eastern" }
+    { "EWD" "eastward" }
     { "FAA" "Federal Aviation Administration" }
     { "FC" "funnel cloud" }
+    { "FCST" "forecast" }
     { "FEW" "few" }
     { "FG" "fog" }
     { "FIBI" "filed but impracticable to transmit" }
     { "FIRST" "first observation after a break in coverage at manual station" }
     { "FMH-1" "Federal Meteorological Handbook No.1, Surface Weather Observations & Reports (METAR)" }
     { "FMH2" "Federal Meteorological Handbook No.2, Surface Synoptic Codes" }
+    { "FNT" "front" }
     { "FROIN" "Frost On The Indicator" }
     { "FROPA" "frontal passage" }
     { "FRQ" "frequent" }
@@ -142,9 +171,13 @@ CONSTANT: abbreviations H{
     { "HZ" "haze" }
     { "IC" "ice crystals" }
     { "ICAO" "International Civil Aviation Organization" }
+    { "IFR" "IFR" }
     { "INCRG" "increasing" }
     { "INTMT" "intermittent" }
+    { "INTO" "into" }
     { "INVOF" "in vicinity of" }
+    { "ISOL" "isolated" }
+    { "JTSTR" "jetstream" }
     { "KT" "knots" }
     { "L" "left" }
     { "LAST" "last observation before a break in coverage at a manual station" }
@@ -156,10 +189,13 @@ CONSTANT: abbreviations H{
     { "METAR" "aviation routine weather report" }
     { "MI" "shallow" }
     { "MIN" "minimum" }
+    { "MOD" "moderate" }
     { "MOV" "moved/moving/movement" }
     { "MOVD" "moved" }
     { "MSHP" "mishap" }
     { "MT" "mountains" }
+    { "MTN" "mountain" }
+    { "MVFR" "marginal VFR" }
     { "N" "north" }
     { "N/A" "not applicable" }
     { "NCD" "clear sky" }
@@ -169,26 +205,35 @@ CONSTANT: abbreviations H{
     { "NOSIG" "no significant change is expected in next 2 hours" }
     { "NOSPECI" "no SPECI reports are taken at the station" }
     { "NOTAM" "Notice to Airmen" }
+    { "NRN" "northern" }
     { "NSC" "clear sky" }
     { "NW" "northwest" }
+    { "NWD" "northward" }
     { "NWS" "National Weather Service" }
+    { "OBS" "observed" }
+    { "OBSCD" "obscured" }
     { "OCNL" "occasional" }
     { "OFCM" "Office of the Federal Coordinator for Meteorology" }
     { "OHD" "overhead" }
+    { "OTLK" "outlook" }
     { "OVC" "overcast" }
     { "OVR" "over" }
     { "P" "greater than" }
     { "PCPN" "precipitation" }
+    { "PCPN" "precipitation" }
     { "PK" "peak" }
     { "PL" "ice pellets" }
+    { "PNHDL" "pandhandle" }
     { "PNO" "precipitation amount not available" }
     { "PO" "well-developed dust/sand whirls" }
     { "PR" "partial" }
     { "PRES" "Atmospheric pressure" }
     { "PRESFR" "pressure falling rapidly" }
     { "PRESRR" "pressure rising rapidly" }
+    { "PROB" "probability" }
     { "PWINO" "precipitation identifier sensor not available" }
     { "PY" "spray" }
+    { "QTR" "quarter" }
     { "R" "right" }
     { "RA" "rain" }
     { "RED" "red" }
@@ -204,9 +249,11 @@ CONSTANT: abbreviations H{
     { "SCSL" "stratocumulus standing lenticular cloud" }
     { "SCT" "scattered" }
     { "SE" "southeast" }
+    { "SEV" "severe" }
     { "SFC" "surface" }
     { "SG" "snow grains" }
     { "SH" "shower(s)" }
+    { "SHR" "shear" }
     { "SKC" "clear sky" }
     { "SLP" "sea-level pressure" }
     { "SLPNO" "sea-level pressure not available" }
@@ -216,13 +263,18 @@ CONSTANT: abbreviations H{
     { "SOG" "Snow on the ground" }
     { "SPECI" "an unscheduled report taken when certain criteria have been met" }
     { "SQ" "squalls" }
+    { "SRN" "southern" }
     { "SS" "sand storm" }
     { "STN" "station" }
     { "SW" "southwest" }
+    { "SWD" "southward" }
     { "TCU" "towering cumulus" }
+    { "TEMPO" "temporary" }
     { "THLD" "threshold" }
+    { "TROF" "trough" }
     { "TS" "thunderstorm" }
     { "TSNO" "thunderstorm information not available" }
+    { "TURB" "turbulence" }
     { "TWR" "tower" }
     { "UNKN" "unknown" }
     { "UNUSBL" "unusable" }
@@ -231,6 +283,7 @@ CONSTANT: abbreviations H{
     { "V" "variable" }
     { "VA" "volcanic ash" }
     { "VC" "in the vicinity" }
+    { "VFR" "VFR" }
     { "VIRGA" "virga" }
     { "VIS" "visibility" }
     { "VISNO" "visibility at secondary location not available" }
@@ -238,13 +291,18 @@ CONSTANT: abbreviations H{
     { "VRB" "variable" }
     { "VV" "vertical visibility" }
     { "W" "west" }
+    { "WLY" "westerly" }
     { "WG/AOS" "Working Group for Atmospheric Observing Systems" }
     { "WG/SO" "Working Group for Surface Observations" }
     { "WHT" "white" }
     { "WMO" "World Meteorological Organization" }
     { "WND" "wind" }
+    { "WRM" "warm" }
+    { "WRN" "western" }
     { "WS" "wind shear" }
     { "WSHFT" "wind shift" }
+    { "WWD" "westward" }
+    { "XTRM" "extreme" }
     { "YLO" "yellow" }
     { "Z" "zulu (i.e. Coordinated Universal Time)" }
 }
@@ -433,6 +491,60 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 : parse-snow-depth ( str -- str' )
     "4/" ?head drop string>number "snow depth %s inches" sprintf ;
 
+CONSTANT: low-clouds H{
+    { CHAR: 1 "Cumulus (fair weather)" }
+    { CHAR: 2 "Cumulus (towering)" }
+    { CHAR: 3 "Cumulonimbus (no anvil)" }
+    { CHAR: 4 "Stratocumulus (from Cumulus)" }
+    { CHAR: 5 "Stratocumuls (not Cumulus)" }
+    { CHAR: 6 "Stratus or Fractostratus (fair)" }
+    { CHAR: 7 "Fractocumulus / Fractostratus (bad weather)" }
+    { CHAR: 8 "Cumulus and Stratocumulus" }
+    { CHAR: 9 "Cumulonimbus (thunderstorm)" }
+    { CHAR: / "not valid" }
+}
+
+CONSTANT: mid-clouds H{
+    { CHAR: 1 "Altostratus (thin)" }
+    { CHAR: 2 "Altostratus (thick)" }
+    { CHAR: 3 "Altocumulus (thin)" }
+    { CHAR: 4 "Altocumulus (patchy)" }
+    { CHAR: 5 "Altocumulus (thickening)" }
+    { CHAR: 6 "Altocumulus (from Cumulus)" }
+    { CHAR: 7 "Altocumulus (with Altocumulus, Altostratus, Nimbostratus" }
+    { CHAR: 8 "Altocumulus (with turrets)" }
+    { CHAR: 9 "Altocumulus (chaotic)" }
+    { CHAR: / "above overcast" }
+}
+
+CONSTANT: high-clouds H{
+    { CHAR: 1 "Cirrus (filaments)" }
+    { CHAR: 2 "Cirrus (dense)" }
+    { CHAR: 3 "Cirrus (often with Cumulonimbus)" }
+    { CHAR: 4 "Cirrus (thickening)" }
+    { CHAR: 5 "Cirrus / Cirrostratus (low in sky)" }
+    { CHAR: 6 "Cirrus / Cirrostratus (hi in sky)" }
+    { CHAR: 7 "Cirrostratus (entire sky)" }
+    { CHAR: 8 "Cirrostratus (partial)" }
+    { CHAR: 9 "Cirrocumulus or Cirrocumulus / Cirrus / Cirrostratus" }
+    { CHAR: / "above overcast" }
+}
+
+: parse-cloud-cover ( str -- str' )
+    "8/" ?head drop first3 [
+        dup CHAR: 0 = [ drop f ] [
+            low-clouds at "low clouds are %s" sprintf
+        ] if
+    ] [
+        dup CHAR: 0 = [ drop f ] [
+            mid-clouds at "mid clouds are %s" sprintf
+        ] if
+    ] [
+        dup CHAR: 0 = [ drop f ] [
+            high-clouds at "high clouds are %s" sprintf
+        ] if
+    ] tri* 3array " " join ;
+
 : parse-inches ( str -- str' )
     string>number
     [ "trace" ] [ 100 /f "%s inches" sprintf ] if-zero ;
@@ -502,6 +614,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! 5\d{4}! matches? ] [ parse-1hr-pressure ] }
             { [ dup R! 6\d{4}! matches? ] [ parse-6hr-precipitation ] }
             { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
+            { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
             { [ dup R! T\d{8}! matches? ] [ parse-1hr-temp ] }
             { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
@@ -529,7 +642,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
 
 : report. ( report -- )
-    [ raw>> ?write nl nl ] keep standard-table-style [
+    standard-table-style [
         {
             [ "Station" [ station>> ?write ] named-row ]
             [ "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ]
@@ -541,14 +654,23 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             [ "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ]
             [ "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ]
             [ "Altimeter" [ altimeter>> [ ?write ] when* ] named-row ]
-            [ "Remarks" [ remarks>> [ ?write nl ] when* ] named-row ]
+            [ "Remarks" [ remarks>> [ ?write ] when* ] named-row ]
+            [ "Raw Text" [ raw>> ?write ] named-row ]
         } cleave
     ] tabular-output nl ;
 
 PRIVATE>
 
+GENERIC: metar ( station -- metar )
+
+M: station metar cccc>> metar ;
+
+M: string metar
+    "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
+    sprintf http-get nip ;
+
 : metar. ( station -- )
-    get-metar <report> report. ;
+    metar <report> report. ;
 
 ! TODO: numerical remarks:
 ! 8/765 Cloud cover using WMO Code.
