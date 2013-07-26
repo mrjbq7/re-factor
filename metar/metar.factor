@@ -383,15 +383,11 @@ CONSTANT: compass-directions H{
 
 : parse-wind ( str -- str' )
     dup "00000KT" = [ drop "calm" ] [
-        3 cut "KT" ?tail drop
-        [ parse-direction ] [ string>number ] bi*
-        "%s at %s knots" sprintf
+        3 cut "KT" ?tail drop "G" split1
+        [ parse-direction ] [ string>number ] [ string>number ] tri*
+        [ "%s at %s knots with gusts to %s knots" sprintf ]
+        [ "%s at %s knots" sprintf ] if*
     ] if ;
-
-: parse-wind-gust ( str -- str' )
-    3 cut "KT" ?tail drop "G" split1
-    [ parse-direction ] [ string>number ] [ string>number ] tri*
-    "%s at %s knots with gusts to %s knots" sprintf ;
 
 : parse-wind-variable ( str -- str' )
     "V" split1 [ string>number [ direction>compass ] keep ] bi@
@@ -452,8 +448,7 @@ CONSTANT: VC " in the vicinity"
 CONSTANT: re-timestamp R! \d{6}Z!
 CONSTANT: re-station R! \w{4}!
 CONSTANT: re-temperature R! [M]?\d{2}/([M]?\d{2})?!
-CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}KT!
-CONSTANT: re-wind-gust R! \d{3}\d{2,3}G\d{2,3}KT!
+CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}(G\d{2,3})?KT!
 CONSTANT: re-wind-variable R! \d{3}V\d{3}!
 CONSTANT: re-visibility R! [M]?\d+(/\d+)?SM!
 CONSTANT: re-rvr R! R\d{2}[RLC]?/\d{4}(V\d{4})?FT!
@@ -470,7 +465,6 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
             { [ dup re-visibility matches? ] [ parse-visibility >>visibility ] }
             { [ dup re-timestamp matches? ] [ parse-timestamp >>timestamp ] }
             { [ dup re-wind matches? ] [ parse-wind append-to change-wind ] }
-            { [ dup re-wind-gust matches? ] [ parse-wind-gust append-to change-wind ] }
             { [ dup re-wind-variable matches? ] [ parse-wind-variable append-to change-wind ] }
             { [ dup re-rvr matches? ] [ parse-rvr glue-to change-rvr ] }
             { [ dup re-weather matches? ] [ parse-weather glue-to change-weather ] }
