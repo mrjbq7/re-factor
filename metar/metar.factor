@@ -444,7 +444,7 @@ CONSTANT: re-weather R! [+-]?(VC)?(\w\w)?\w\w!
 CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|\w{3}|CAVOK)!
 CONSTANT: re-altimeter R! [AQ]\d{4}!
 
-: parse-body ( report seq -- report )
+: body ( report seq -- report )
     [
         {
             { [ dup { "METAR" "SPECI" } member? ] [ >>type ] }
@@ -617,7 +617,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : parse-from-to ( str -- str' )
     "-" split1 [ parse-abbreviations ] bi@ " to " glue ;
 
-: parse-remarks ( report seq -- report )
+: remarks ( report seq -- report )
     [
         {
             { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
@@ -647,7 +647,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : <report> ( metar -- report )
     [ report new ] dip [ >>raw ] keep
     [ blank? ] split-when { "RMK" } split1
-    [ parse-body ] [ parse-remarks ] bi* ;
+    [ body ] [ remarks ] bi* ;
 
 : ?write ( seq -- )
     [ 65 wrap-string write ] when* ; inline
@@ -684,14 +684,8 @@ M: string metar
     sprintf http-get nip ;
 
 : metar. ( station -- )
-    metar <report> report. ;
-
-: metars. ( stations -- )
-    [
-        [ metar. ]
-        [ drop cccc>> "%s METAR not found\n" printf ]
-        recover
-    ] each ;
+    [ metar <report> report. ]
+    [ drop "%s METAR not found\n" printf ] recover ;
 
 ! TODO: numerical remarks:
 ! RH/41
