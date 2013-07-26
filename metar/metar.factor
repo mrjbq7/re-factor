@@ -421,7 +421,8 @@ CONSTANT: VC " in the vicinity"
             [ "" "" ]
         } cond [
             2 group dup [ weather key? ] all?
-            [ [ weather at ] map " " join ] [ concat ] if
+            [ [ weather at ] map " " join ]
+            [ concat parse-abbreviations ] if
         ] 2dip surround
     ] if ;
 
