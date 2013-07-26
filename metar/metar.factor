@@ -689,7 +689,6 @@ M: string metar
 
 ! TODO: numerical remarks:
 ! RH/41
-! 8/765 Cloud cover using WMO Code.
 ! 98060 Duration of sunshine in minutes.
 ! 931222 Snowfall in the last 6-hours.
 ! 933021 Liquid water equivalent of the snow (SWE).
