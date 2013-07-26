@@ -334,7 +334,8 @@ CONSTANT: abbreviations H{
     ] call ;
 
 : parse-abbreviations ( str -- str' )
-    split-abbreviations [ abbreviations ?at drop ] map " " join ;
+    "/" split [ split-abbreviations ] map concat
+    [ abbreviations ?at drop ] map " " join ;
 
 : metar>timestamp ( str -- timestamp )
     [ now [ year>> ] [ month>> ] bi ] dip
