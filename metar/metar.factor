@@ -129,8 +129,8 @@ CONSTANT: abbreviations H{
     { "APCH" "approach" }
     { "APRNT" "apparent" }
     { "APRX" "approximately" }
-    { "ASSOCD" "associated" }
     { "ASOS" "Automated Surface Observing System" }
+    { "ASSOCD" "associated" }
     { "ATCT" "airport traffic control tower" }
     { "AUTO" "automated report" }
     { "B" "began" }
@@ -212,6 +212,7 @@ CONSTANT: abbreviations H{
     { "MOD" "moderate" }
     { "MOV" "moved/moving/movement" }
     { "MOVD" "moved" }
+    { "MOVG" "moving" }
     { "MSHP" "mishap" }
     { "MT" "mountains" }
     { "MTN" "mountain" }
@@ -243,7 +244,6 @@ CONSTANT: abbreviations H{
     { "P" "greater than" }
     { "PASS" "pass" }
     { "PCPN" "precipitation" }
-    { "PCPN" "precipitation" }
     { "PK" "peak" }
     { "PNHDL" "pandhandle" }
     { "PNO" "precipitation amount not available" }
@@ -273,8 +273,8 @@ CONSTANT: abbreviations H{
     { "SLP" "sea-level pressure" }
     { "SLPNO" "sea-level pressure not available" }
     { "SM" "statute miles" }
-    { "SNOW" "snow" }
     { "SNINCR" "snow increasing rapidly" }
+    { "SNOW" "snow" }
     { "SOG" "Snow on the ground" }
     { "SPECI" "an unscheduled report taken when certain criteria have been met" }
     { "SRN" "southern" }
@@ -302,10 +302,10 @@ CONSTANT: abbreviations H{
     { "VSBY" "visibility" }
     { "VV" "vertical visibility" }
     { "W" "west" }
-    { "WLY" "westerly" }
     { "WG/AOS" "Working Group for Atmospheric Observing Systems" }
     { "WG/SO" "Working Group for Surface Observations" }
     { "WHT" "white" }
+    { "WLY" "westerly" }
     { "WMO" "World Meteorological Organization" }
     { "WND" "wind" }
     { "WRM" "warm" }
@@ -604,7 +604,7 @@ CONSTANT: high-clouds H{
 : parse-lightning ( str -- str' )
     "LTG" ?head drop 2 group [ lightning at ] map " " join ;
 
-CONSTANT: re-recent-weather R! \w{2}[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?!
+CONSTANT: re-recent-weather R! ((\w{2})?[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?)+!
 CONSTANT: re-began/ended R! [BE]\d{2,4}!
 
 : parse-began/ended ( str -- str' )
@@ -612,16 +612,21 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     [ CHAR: B = "began" "ended" ? ]
     [ parse-recent-time ] bi* "%s at %s" sprintf ;
 
+: split-recent-weather ( str -- seq )
+    [ dup empty? not ] [
+        dup [ digit? ] find drop
+        over [ digit? not ] find-from drop
+        [ cut ] [ f ] if* swap
+    ] produce nip ;
+
 : (parse-recent-weather) ( str -- str' )
     dup [ digit? ] find drop 2 > [
-        2 cut [ abbreviations at " " append ] dip
+        2 cut [ weather at " " append ] dip
     ] [ f swap ] if parse-began/ended "" append-as ;
 
 : parse-recent-weather ( str -- str' )
-    dup [ digit? ] find drop
-    over [ digit? not ] find-from drop [
-        cut [ (parse-recent-weather) ] bi@ " " glue
-    ] [ (parse-recent-weather) ] if* ;
+    split-recent-weather
+    [ (parse-recent-weather) ] map " " join ;
 
 : parse-varying ( str -- str' )
     "V" split1 [ string>number ] bi@
