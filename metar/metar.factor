@@ -89,7 +89,7 @@ CONSTANT: abbreviations H{
     { "B" "began" }
     { "BC" "patches" }
     { "BINOVC" "breaks in overcast" }
-    { "BKN" "broken clouds" }
+    { "BKN" "broken" }
     { "BL" "blowing" }
     { "BLU" "blue" }
     { "BR" "mist" }
@@ -122,7 +122,7 @@ CONSTANT: abbreviations H{
     { "E" "east" }
     { "FAA" "Federal Aviation Administration" }
     { "FC" "funnel cloud" }
-    { "FEW" "few clouds" }
+    { "FEW" "few" }
     { "FG" "fog" }
     { "FIBI" "filed but impracticable to transmit" }
     { "FIRST" "first observation after a break in coverage at manual station" }
@@ -166,6 +166,7 @@ CONSTANT: abbreviations H{
     { "NCDC" "National Climatic Data Center" }
     { "NE" "northeast" }
     { "NOS" "National Ocean Survey" }
+    { "NOSIG" "no significant change is expected in next 2 hours" }
     { "NOSPECI" "no SPECI reports are taken at the station" }
     { "NOTAM" "Notice to Airmen" }
     { "NSC" "clear sky" }
@@ -201,7 +202,7 @@ CONSTANT: abbreviations H{
     { "SA" "sand" }
     { "SC" "stratocumulus" }
     { "SCSL" "stratocumulus standing lenticular cloud" }
-    { "SCT" "scattered clouds" }
+    { "SCT" "scattered" }
     { "SE" "southeast" }
     { "SFC" "surface" }
     { "SG" "snow grains" }
