@@ -75,8 +75,8 @@ CONSTANT: abbreviations H{
     { "ACFT" "aircraft" }
     { "ACSL" "standing lenticular altocumulus" }
     { "ALP" "aircraft location point" }
-    { "ALQDS" "All Quadrants" } ! (Official)
-    { "ALQS" "All Quadrants" } ! (Unofficial)
+    { "ALQDS" "all quadrants" } ! (Official)
+    { "ALQS" "all quadrants" } ! (Unofficial)
     { "AMB" "amber" }
     { "AND" "and" }
     { "AO1" "station without a precipitation descriminator" }
@@ -306,7 +306,7 @@ CONSTANT: compass-directions H{
 : parse-direction ( str -- str' )
     dup "VRB" = [ drop "variable" ] [
         string>number [ direction>compass ] keep
-        "from %s (%s degrees)" sprintf
+        "from %s (%s°)" sprintf
     ] if ;
 
 : parse-wind ( str -- str' )
@@ -322,8 +322,8 @@ CONSTANT: compass-directions H{
     "%s at %s knots with gusts to %s knots" sprintf ;
 
 : parse-wind-variable ( str -- str' )
-    "V" split1 [ string>number ] bi@
-    ", variable from %s to %s" sprintf ;
+    "V" split1 [ string>number [ direction>compass ] keep ] bi@
+    ", variable from %s (%s°) to %s (%s°)" sprintf ;
 
 : parse-visibility ( str -- str' )
     "M" ?head "less than " "" ? swap "SM" ?tail drop
