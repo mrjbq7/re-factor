@@ -420,7 +420,8 @@ CONSTANT: VC " in the vicinity"
             { [ dup "-" head? ] [ rest "light " "" ] }
             [ "" "" ]
         } cond [
-            2 group [ weather at ] map " " join
+            2 group dup [ weather key? ] all?
+            [ [ weather at ] map " " join ] [ concat ] if
         ] 2dip surround
     ] if ;
 
