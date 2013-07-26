@@ -2,9 +2,10 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays ascii assocs calendar calendar.format
-combinators csv formatting fry grouping http.client io io.styles
-kernel math math.extras math.parser memoize namespaces regexp
-sequences sorting splitting strings urls wrap.strings ;
+combinators continuations csv formatting fry grouping
+http.client io io.styles kernel math math.extras math.parser
+memoize namespaces regexp sequences sorting splitting strings
+urls wrap.strings ;
 
 IN: metar
 
@@ -133,6 +134,7 @@ CONSTANT: abbreviations H{
     { "COR" "correction to a previously disseminated observation" }
     { "CU" "cumulus" }
     { "DEGS" "degrees" }
+    { "DEPTH" "depth" }
     { "DOC" "Department of Commerce" }
     { "DOD" "Department of Defense" }
     { "DOT" "Department of Transportation" }
@@ -146,6 +148,7 @@ CONSTANT: abbreviations H{
     { "E" "east" }
     { "ENDG" "ending" }
     { "ERN" "eastern" }
+    { "ESTIMATE" "estimate" }
     { "EWD" "eastward" }
     { "FAA" "Federal Aviation Administration" }
     { "FC" "funnel cloud" }
@@ -201,6 +204,7 @@ CONSTANT: abbreviations H{
     { "NCD" "clear sky" }
     { "NCDC" "National Climatic Data Center" }
     { "NE" "northeast" }
+    { "NO" "no" }
     { "NOS" "National Ocean Survey" }
     { "NOSIG" "no significant change is expected in next 2 hours" }
     { "NOSPECI" "no SPECI reports are taken at the station" }
@@ -215,10 +219,12 @@ CONSTANT: abbreviations H{
     { "OCNL" "occasional" }
     { "OFCM" "Office of the Federal Coordinator for Meteorology" }
     { "OHD" "overhead" }
+    { "OPEN" "open" }
     { "OTLK" "outlook" }
     { "OVC" "overcast" }
     { "OVR" "over" }
     { "P" "greater than" }
+    { "PASS" "pass" }
     { "PCPN" "precipitation" }
     { "PCPN" "precipitation" }
     { "PK" "peak" }
@@ -259,6 +265,7 @@ CONSTANT: abbreviations H{
     { "SLPNO" "sea-level pressure not available" }
     { "SM" "statute miles" }
     { "SN" "snow" }
+    { "SNOW" "snow" }
     { "SNINCR" "snow increasing rapidly" }
     { "SOG" "Snow on the ground" }
     { "SPECI" "an unscheduled report taken when certain criteria have been met" }
@@ -283,6 +290,7 @@ CONSTANT: abbreviations H{
     { "V" "variable" }
     { "VA" "volcanic ash" }
     { "VC" "in the vicinity" }
+    { "VCNTY" "vicinity" }
     { "VFR" "VFR" }
     { "VIRGA" "virga" }
     { "VIS" "visibility" }
@@ -409,19 +417,20 @@ CONSTANT: compass-directions H{
         tri* 3append
     ] if* ;
 
-: parse-temperature ( report str -- report )
-    "/" split1
-    [ "M" ?head [ string>number ] [ [ neg ] when ] bi* ] bi@
-    [ >>temperature ] [ >>dew-point ] bi* ;
+: parse-temperature ( str -- temp dew-point )
+    "/" split1 [
+        [ f ] [
+            "M" ?head [ string>number ] [ [ neg ] when ] bi*
+        ] if-empty
+    ] bi@ ;
 
-: parse-altimeter ( report str -- report )
+: parse-altimeter ( str -- str' )
     unclip [ string>number ] [ CHAR: A = ] bi*
-    [ 100 /f "%.2f Hg" sprintf ]
-    [ "%s mb" sprintf ] if >>altimeter ;
+    [ 100 /f "%.2f Hg" sprintf ] [ "%s mb" sprintf ] if ;
 
 CONSTANT: re-timestamp R! \d{6}Z!
 CONSTANT: re-station R! \w{4}!
-CONSTANT: re-temperature R! [M]?\d{2}/[M]?\d{2}!
+CONSTANT: re-temperature R! [M]?\d{2}/([M]?\d{2})?!
 CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}KT!
 CONSTANT: re-wind-gust R! \d{3}\d{2,3}G\d{2,3}KT!
 CONSTANT: re-wind-variable R! \d{3}V\d{3}!
@@ -452,8 +461,11 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
                 parse-weather glue-to change-weather ] }
             { [ dup re-sky-condition matches? ] [
                 parse-sky-condition glue-to change-sky-condition ] }
-            { [ dup re-temperature matches? ] [ parse-temperature ] }
-            { [ dup re-altimeter matches? ] [ parse-altimeter ] }
+            { [ dup re-temperature matches? ] [
+                parse-temperature
+                [ >>temperature ] [ >>dew-point ] bi* ] }
+            { [ dup re-altimeter matches? ] [
+                parse-altimeter >>altimeter ] }
             [ drop ]
         } cond
     ] each ;
@@ -468,20 +480,25 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
     1 cut 3 cut [ signed-number ] dip 1 cut signed-number ;
 
 : parse-1hr-temp ( str -- str' )
-    "T" ?head drop double-value
-    "hourly temperature %s and dew point %s" sprintf ;
+    "T" ?head drop dup length 4 > [
+        double-value
+        "hourly temperature %.1f and dew point %.1f" sprintf
+    ] [
+        single-value
+        "hourly temperature %.1f" sprintf
+    ] if ;
 
 : parse-6hr-max-temp ( str -- str' )
     "1" ?head drop single-value
-    "6-hourly maximum temperature %s" sprintf ;
+    "6-hourly maximum temperature %.1f" sprintf ;
 
 : parse-6hr-min-temp ( str -- str' )
     "2" ?head drop single-value
-    "6-hourly minimum temperature %s" sprintf ;
+    "6-hourly minimum temperature %.1f" sprintf ;
 
 : parse-24hr-temp ( str -- str' )
     "4" ?head drop double-value
-    "24-hour maximum temperature %s minimum temperature %s"
+    "24-hour maximum temperature %.1f minimum temperature %.1f"
     sprintf ;
 
 : parse-1hr-pressure ( str -- str' )
@@ -554,8 +571,10 @@ CONSTANT: high-clouds H{
     "%s precipitation in last hour" sprintf ;
 
 : parse-6hr-precipitation ( str -- str' )
-    "6" ?head drop parse-inches
-    "%s precipitation in last 6 hours" sprintf ;
+    "6" ?head drop dup "////" = [ drop f ] [
+        parse-inches
+        "%s precipitation in last 6 hours" sprintf
+    ] if ;
 
 : parse-24hr-precipitation ( str -- str' )
     "7" ?head drop parse-inches
@@ -612,16 +631,17 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
             { [ dup R! 4/\d{3}! matches? ] [ parse-snow-depth ] }
             { [ dup R! 5\d{4}! matches? ] [ parse-1hr-pressure ] }
-            { [ dup R! 6\d{4}! matches? ] [ parse-6hr-precipitation ] }
+            { [ dup R! 6[\d/]{4}! matches? ] [ parse-6hr-precipitation ] }
             { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
             { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
-            { [ dup R! T\d{8}! matches? ] [ parse-1hr-temp ] }
+            { [ dup R! T\d{4,8}! matches? ] [ parse-1hr-temp ] }
             { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
             { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
             { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
             { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
             { [ dup R! [^-]+-[^-]+! matches? ] [ parse-from-to ] }
+            { [ dup R! \d+.\d+! matches? ] [ ] }
             { [ dup re-began/ended matches? ] [ parse-began/ended ] }
             { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
             { [ dup re-weather matches? ] [ parse-weather ] }
@@ -672,7 +692,15 @@ M: string metar
 : metar. ( station -- )
     metar <report> report. ;
 
+: metars. ( stations -- )
+    [
+        [ metar. ]
+        [ drop cccc>> "%s METAR not found\n" printf ]
+        recover
+    ] each ;
+
 ! TODO: numerical remarks:
+! RH/41
 ! 8/765 Cloud cover using WMO Code.
 ! 98060 Duration of sunshine in minutes.
 ! 931222 Snowfall in the last 6-hours.
