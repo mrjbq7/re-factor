@@ -79,12 +79,42 @@ CONSTANT: lightning H{
     { "IC" "in-cloud lightning" }
 }
 
+CONSTANT: weather H{
+    { "BC" "patches" }
+    { "BL" "blowing" }
+    { "BR" "mist" }
+    { "DR" "low drifting" }
+    { "DS" "duststorm" }
+    { "DU" "widespread dust" }
+    { "DZ" "drizzle" }
+    { "FC" "funnel clouds" }
+    { "FG" "fog" }
+    { "FU" "smoke" }
+    { "FZ" "freezing" }
+    { "GR" "hail" }
+    { "GS" "small hail and/or snow pellets" }
+    { "HZ" "haze" }
+    { "IC" "ice crystals" }
+    { "MI" "shallow" }
+    { "PL" "ice pellets" }
+    { "PO" "well-developed dust/sand whirls" }
+    { "PR" "partial" }
+    { "PY" "spray" }
+    { "RA" "rain" }
+    { "RE" "recent" }
+    { "SA" "sand" }
+    { "SG" "snow grains" }
+    { "SH" "showers" }
+    { "SN" "snow" }
+    { "SQ" "squalls" }
+    { "SS" "sandstorm" }
+    { "TS" "thuderstorm" }
+    { "UP" "unknown" }
+    { "VA" "volcanic ash" }
+}
+
 CONSTANT: abbreviations H{
     { "$" "maintenance check indicator" }
-    { "+" "heavy intensity" }
-    { "+FC" "tornado or waterspout" }
-    { "-" "light intensity" }
-    { "/" "indicator that visual range data follows; separator between temperature and dew point data." }
     { "ACC" "altocumulus castellanus" }
     { "ACFT" "aircraft" }
     { "ACSL" "standing lenticular altocumulus" }
@@ -104,15 +134,12 @@ CONSTANT: abbreviations H{
     { "ATCT" "airport traffic control tower" }
     { "AUTO" "automated report" }
     { "B" "began" }
-    { "BC" "patches" }
     { "BECMG" "becoming" }
     { "BFR" "before" }
     { "BINOVC" "breaks in overcast" }
     { "BKN" "broken" }
-    { "BL" "blowing" }
     { "BLU" "blue" }
     { "BLW" "below" }
-    { "BR" "mist" }
     { "BTWN" "between" }
     { "BYD" "by day" }
     { "C" "center" }
@@ -140,13 +167,9 @@ CONSTANT: abbreviations H{
     { "DOC" "Department of Commerce" }
     { "DOD" "Department of Defense" }
     { "DOT" "Department of Transportation" }
-    { "DR" "low drifting" }
-    { "DS" "duststorm" }
     { "DSIPTG" "dissipating" }
     { "DSNT" "distant" }
-    { "DU" "widespread dust" }
     { "DVR" "dispatch visual range" }
-    { "DZ" "drizzle" }
     { "E" "east" }
     { "ENDG" "ending" }
     { "ERN" "eastern" }
@@ -154,10 +177,8 @@ CONSTANT: abbreviations H{
     { "ESTMD" "estimated" }
     { "EWD" "eastward" }
     { "FAA" "Federal Aviation Administration" }
-    { "FC" "funnel cloud" }
     { "FCST" "forecast" }
     { "FEW" "few" }
-    { "FG" "fog" }
     { "FIBI" "filed but impracticable to transmit" }
     { "FIRST" "first observation after a break in coverage at manual station" }
     { "FMH-1" "Federal Meteorological Handbook No.1, Surface Weather Observations & Reports (METAR)" }
@@ -167,15 +188,9 @@ CONSTANT: abbreviations H{
     { "FROPA" "frontal passage" }
     { "FRQ" "frequent" }
     { "FT" "feet" }
-    { "FU" "smoke" }
-    { "FZ" "freezing" }
     { "FZRANO" "freezing rain sensor not available" }
-    { "GR" "hail" }
     { "GRN" "green" }
-    { "GS" "small hail and/or snow pellets" }
     { "HLSTO" "hailstone" }
-    { "HZ" "haze" }
-    { "IC" "ice crystals" }
     { "ICAO" "International Civil Aviation Organization" }
     { "IFR" "IFR" }
     { "INCRG" "increasing" }
@@ -193,7 +208,6 @@ CONSTANT: abbreviations H{
     { "M" "minus, less than" }
     { "MAX" "maximum" }
     { "METAR" "aviation routine weather report" }
-    { "MI" "shallow" }
     { "MIN" "minimum" }
     { "MOD" "moderate" }
     { "MOV" "moved/moving/movement" }
@@ -231,21 +245,15 @@ CONSTANT: abbreviations H{
     { "PCPN" "precipitation" }
     { "PCPN" "precipitation" }
     { "PK" "peak" }
-    { "PL" "ice pellets" }
     { "PNHDL" "pandhandle" }
     { "PNO" "precipitation amount not available" }
-    { "PO" "well-developed dust/sand whirls" }
-    { "PR" "partial" }
     { "PRES" "Atmospheric pressure" }
     { "PRESFR" "pressure falling rapidly" }
     { "PRESRR" "pressure rising rapidly" }
     { "PROB" "probability" }
     { "PWINO" "precipitation identifier sensor not available" }
-    { "PY" "spray" }
     { "QTR" "quarter" }
     { "R" "right" }
-    { "RA" "rain" }
-    { "RE" "recent" }
     { "RED" "red" }
     { "RTD" "Routine Delayed (late) observation" }
     { "RV" "reportable value" }
@@ -254,28 +262,22 @@ CONSTANT: abbreviations H{
     { "RWY" "runway" }
     { "RY" "runway" }
     { "S" "south" }
-    { "SA" "sand" }
     { "SC" "stratocumulus" }
     { "SCSL" "stratocumulus standing lenticular cloud" }
     { "SCT" "scattered" }
     { "SE" "southeast" }
     { "SEV" "severe" }
     { "SFC" "surface" }
-    { "SG" "snow grains" }
-    { "SH" "shower(s)" }
     { "SHR" "shear" }
     { "SKC" "clear sky" }
     { "SLP" "sea-level pressure" }
     { "SLPNO" "sea-level pressure not available" }
     { "SM" "statute miles" }
-    { "SN" "snow" }
     { "SNOW" "snow" }
     { "SNINCR" "snow increasing rapidly" }
     { "SOG" "Snow on the ground" }
     { "SPECI" "an unscheduled report taken when certain criteria have been met" }
-    { "SQ" "squalls" }
     { "SRN" "southern" }
-    { "SS" "sand storm" }
     { "STN" "station" }
     { "SW" "southwest" }
     { "SWD" "southward" }
@@ -283,17 +285,13 @@ CONSTANT: abbreviations H{
     { "TEMPO" "temporary" }
     { "THLD" "threshold" }
     { "TROF" "trough" }
-    { "TS" "thunderstorm" }
     { "TSNO" "thunderstorm information not available" }
     { "TURB" "turbulence" }
     { "TWR" "tower" }
     { "UNKN" "unknown" }
     { "UNUSBL" "unusable" }
-    { "UP" "unknown precipitation" }
     { "UTC" "Coordinated Universal Time" }
     { "V" "variable" }
-    { "VA" "volcanic ash" }
-    { "VC" "in the vicinity" }
     { "VCNTY" "vicinity" }
     { "VFR" "VFR" }
     { "VIRGA" "virga" }
@@ -410,8 +408,21 @@ CONSTANT: compass-directions H{
         string>number "of %s" sprintf
     ] if* "runway %s visibility %s ft" sprintf ;
 
+CONSTANT: VC " in the vicinity"
+
 : parse-weather ( str -- str' )
-    parse-abbreviations ;
+    dup "+FC" = [ drop "tornadoes or waterspouts" ] [
+        {
+            { [ dup "+VC" head? ] [ 3 tail "heavy " VC ] }
+            { [ dup "-VC" head? ] [ 3 tail "light " VC ] }
+            { [ dup "VC" head? ] [ 2 tail "" VC ] }
+            { [ dup "+" head? ] [ rest "heavy " "" ] }
+            { [ dup "-" head? ] [ rest "light " "" ] }
+            [ "" "" ]
+        } cond [
+            2 group [ weather at ] map " " join
+        ] 2dip surround
+    ] if ;
 
 : parse-sky-condition ( str -- str' )
     dup abbreviations at [ nip ] [
