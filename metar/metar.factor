@@ -297,6 +297,7 @@ CONSTANT: abbreviations H{
     { "VISNO" "visibility at secondary location not available" }
     { "VR" "visual range" }
     { "VRB" "variable" }
+    { "VSBY" "visibility" }
     { "VV" "vertical visibility" }
     { "W" "west" }
     { "WLY" "westerly" }
