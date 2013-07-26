@@ -78,6 +78,7 @@ CONSTANT: abbreviations H{
     { "ALQDS" "All Quadrants" } ! (Official)
     { "ALQS" "All Quadrants" } ! (Unofficial)
     { "AMB" "amber" }
+    { "AND" "and" }
     { "AO1" "station without a precipitation descriminator" }
     { "AO2" "station with a precipitation descriminator" }
     { "APCH" "approach" }
@@ -189,7 +190,6 @@ CONSTANT: abbreviations H{
     { "PY" "spray" }
     { "R" "right" }
     { "RA" "rain" }
-    { "RAE" "rain ended" }
     { "RED" "red" }
     { "RTD" "Routine Delayed (late) observation" }
     { "RV" "reportable value" }
@@ -221,7 +221,6 @@ CONSTANT: abbreviations H{
     { "TCU" "towering cumulus" }
     { "THLD" "threshold" }
     { "TS" "thunderstorm" }
-    { "TSE" "thunderstorm ended" }
     { "TSNO" "thunderstorm information not available" }
     { "TWR" "tower" }
     { "UNKN" "unknown" }
@@ -297,58 +296,59 @@ CONSTANT: compass-directions H{
 : direction>compass ( direction -- compass )
     22.5 round-to-step compass-directions at ;
 
+: append-to ( str -- quot )
+    '[ _ "" append-as ] ; inline
+
+: glue-to ( str -- quot )
+    '[  _ swap [ swap ", " glue ] unless-empty ] ; inline
+
 : parse-direction ( str -- str' )
     dup "VRB" = [ drop "variable" ] [
         string>number [ direction>compass ] keep
         "from %s (%s degrees)" sprintf
     ] if ;
 
-: parse-wind ( report str -- report )
+: parse-wind ( str -- str' )
     dup "00000KT" = [ drop "calm" ] [
         3 cut "KT" ?tail drop
         [ parse-direction ] [ string>number ] bi*
         "%s at %s knots" sprintf
-    ] if '[ _ "" append-as ] change-wind ;
+    ] if ;
 
-: parse-wind-gust ( report str -- report )
+: parse-wind-gust ( str -- str' )
     3 cut "KT" ?tail drop "G" split1
     [ parse-direction ] [ string>number ] [ string>number ] tri*
-    "%s at %s knots with gusts to %s knots" sprintf
-    '[ _ "" append-as ] change-wind ;
+    "%s at %s knots with gusts to %s knots" sprintf ;
 
-: parse-wind-variable ( report str -- report )
+: parse-wind-variable ( str -- str' )
     "V" split1 [ string>number ] bi@
-    ", variable from %s to %s" sprintf
-    '[ _ "" append-as ] change-wind ;
+    ", variable from %s to %s" sprintf ;
 
-: parse-visibility ( report str -- report )
+: parse-visibility ( str -- str' )
     "M" ?head "less than " "" ? swap "SM" ?tail drop
     CHAR: / over index [ 1 > [ 1 cut "+" glue ] when ] when*
-    string>number "%s%s statute miles" sprintf >>visibility ;
+    string>number "%s%s statute miles" sprintf ;
 
-: append-to ( str -- quot )
-    '[  _ swap [ swap ", " glue ] unless-empty ] ; inline
-
-: parse-rvr ( report str -- report )
+: parse-rvr ( str -- str' )
     "R" ?head drop "/" split1 "FT" ?tail drop
     "V" split1 [
         [ string>number ] bi@
         "varying between %s and %s" sprintf
     ] [
         string>number "of %s" sprintf
-    ] if* "runway %s visibility %s ft" sprintf append-to change-rvr ;
+    ] if* "runway %s visibility %s ft" sprintf ;
 
-: parse-weather ( report str -- report )
-    parse-abbreviations append-to change-weather ;
+: parse-weather ( str -- str' )
+    parse-abbreviations ;
 
-: parse-sky-condition ( report str -- report )
+: parse-sky-condition ( str -- str' )
     dup abbreviations at [ nip ] [
         3 cut 3 cut
         [ abbreviations at ]
         [ string>number " at %s00 ft" sprintf ]
         [ abbreviations at [ " (%s)" sprintf ] [ f ] if* ]
         tri* 3append
-    ] if* append-to change-sky-condition ;
+    ] if* ;
 
 : parse-temperature ( report str -- report )
     "/" split1
@@ -378,14 +378,21 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
             { [ dup { "METAR" "SPECI" } member? ] [ >>type ] }
             { [ dup { "AUTO" "COR" } member? ] [ >>modifier ] }
             { [ dup re-station matches? pick station>> not and ] [ >>station ] }
-            { [ dup re-visibility matches? ] [ parse-visibility ] }
+            { [ dup re-visibility matches? ] [
+                parse-visibility >>visibility ] }
             { [ dup re-timestamp matches? ] [ parse-timestamp ] }
-            { [ dup re-wind matches? ] [ parse-wind ] }
-            { [ dup re-wind-gust matches? ] [ parse-wind-gust ] }
-            { [ dup re-wind-variable matches? ] [ parse-wind-variable ] }
-            { [ dup re-rvr matches? ] [ parse-rvr ] }
-            { [ dup re-weather matches? ] [ parse-weather ] }
-            { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
+            { [ dup re-wind matches? ] [
+                parse-wind append-to change-wind ] }
+            { [ dup re-wind-gust matches? ] [
+                parse-wind-gust append-to change-wind ] }
+            { [ dup re-wind-variable matches? ] [
+                parse-wind-variable append-to change-wind ] }
+            { [ dup re-rvr matches? ] [
+                parse-rvr glue-to change-rvr ] }
+            { [ dup re-weather matches? ] [
+                parse-weather glue-to change-weather ] }
+            { [ dup re-sky-condition matches? ] [
+                parse-sky-condition glue-to change-sky-condition ] }
             { [ dup re-temperature matches? ] [ parse-temperature ] }
             { [ dup re-altimeter matches? ] [ parse-altimeter ] }
             [ drop ]
@@ -420,27 +427,35 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : parse-1hr-pressure ( str -- str' )
     "5" ?head drop 1 cut single-value [ pressure-tendency at ] dip
-    "hourly pressure %s at %s millibars" sprintf ;
+    "hourly pressure %s %s mb" sprintf ;
 
 : parse-snow-depth ( str -- str' )
     "4/" ?head drop string>number "snow depth %s inches" sprintf ;
 
+: parse-inches ( str -- str' )
+    string>number
+    [ "trace" ] [ 100 /f "%s inches" sprintf ] if-zero ;
+
 : parse-1hr-precipitation ( str -- str' )
-    "P" ?head drop string>number 100 /f
-    "hourly precipitation %.2f inches" sprintf ;
+    "P" ?head drop parse-inches
+    "%s precipitation in last hour" sprintf ;
 
 : parse-6hr-precipitation ( str -- str' )
-    "6" ?head drop string>number
-    [ "trace" ] [ 100 /f "%s inches" sprintf ] if-zero
+    "6" ?head drop parse-inches
     "%s precipitation in last 6 hours" sprintf ;
 
 : parse-24hr-precipitation ( str -- str' )
-    "7" ?head drop string>number 100 /f
-    "%.2f inches precipitation in last 24 hours" sprintf ;
+    "7" ?head drop parse-inches
+    "%s precipitation in last 24 hours" sprintf ;
+
+: parse-recent-time ( str -- str' )
+    dup length 2 >
+    [ 2 cut ":" glue ]
+    [ " minutes past the hour" append ] if ;
 
 : parse-peak-wind ( str -- str' )
     3 cut "/" split1 [ [ string>number ] bi@ ] dip
-    dup length 2 > [ 2 cut ":" glue ] [ " past the hour" append ] if
+    parse-recent-time
     "from %s at %s knots occuring at %s" sprintf ;
 
 : parse-sea-level-pressure ( str -- str' )
@@ -449,6 +464,32 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : parse-lightning ( str -- str' )
     "LTG" ?head drop 2 group [ lightning at ] map " " join ;
+
+CONSTANT: re-recent-weather R! \w{2}[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?!
+CONSTANT: re-began/ended R! [BE]\d{2,4}!
+
+: parse-began/ended ( str -- str' )
+    unclip swap
+    [ CHAR: B = "began" "ended" ? ]
+    [ parse-recent-time ] bi* "%s at %s" sprintf ;
+
+: (parse-recent-weather) ( str -- str' )
+    dup [ digit? ] find drop 2 > [
+        2 cut [ abbreviations at " " append ] dip
+    ] [ f swap ] if parse-began/ended "" append-as ;
+
+: parse-recent-weather ( str -- str' )
+    dup [ digit? ] find drop
+    over [ digit? not ] find-from drop [
+        cut [ (parse-recent-weather) ] bi@ " " glue
+    ] [ (parse-recent-weather) ] if* ;
+
+: parse-varying ( str -- str' )
+    "V" split1 [ string>number ] bi@
+    "varying between %s00 and %s00 ft" sprintf ;
+
+: parse-from-to ( str -- str' )
+    "-" split1 [ parse-abbreviations ] bi@ " to " glue ;
 
 : parse-remarks ( report seq -- report )
     [
@@ -465,6 +506,12 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
             { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
             { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
+            { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
+            { [ dup R! [^-]+-[^-]+! matches? ] [ parse-from-to ] }
+            { [ dup re-began/ended matches? ] [ parse-began/ended ] }
+            { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
+            { [ dup re-weather matches? ] [ parse-weather ] }
+            { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
             [ parse-abbreviations ]
         } cond
     ] map " " join >>remarks ;
