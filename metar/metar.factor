@@ -43,8 +43,8 @@ C: <station> station
 <PRIVATE
 
 TUPLE: report type station timestamp modifier wind visibility
-weather sky-condition temperature dew-point altimeter remarks
-raw ;
+rvr weather sky-condition temperature dew-point altimeter
+remarks raw ;
 
 CONSTANT: pressure-tendency H{
     { "0" "increasing then decreasing" }
@@ -87,12 +87,14 @@ CONSTANT: abbreviations H{
     { "AUTO" "automated report" }
     { "B" "began" }
     { "BC" "patches" }
+    { "BINOVC" "breaks in overcast" }
     { "BKN" "broken clouds" }
     { "BL" "blowing" }
     { "BLU" "blue" }
     { "BR" "mist" }
     { "BYD" "by day" }
     { "C" "center" }
+    { "CAVOK" "clear skies and unlimited visibility" }
     { "CB" "cumulonimbus cloud" }
     { "CBMAM" "cumulonimbus mammatus cloud" }
     { "CCSL" "cirrocumulus standing lenticular cloud" }
@@ -229,12 +231,14 @@ CONSTANT: abbreviations H{
     { "V" "variable" }
     { "VA" "volcanic ash" }
     { "VC" "in the vicinity" }
+    { "VIRGA" "virga" }
     { "VIS" "visibility" }
     { "VISNO" "visibility at secondary location not available" }
     { "VR" "visual range" }
     { "VRB" "variable" }
     { "VV" "vertical visibility" }
     { "W" "west" }
+    { "WG/AOS" "Working Group for Atmospheric Observing Systems" }
     { "WG/SO" "Working Group for Surface Observations" }
     { "WHT" "white" }
     { "WMO" "World Meteorological Organization" }
@@ -293,16 +297,23 @@ CONSTANT: compass-directions H{
 : direction>compass ( direction -- compass )
     22.5 round-to-step compass-directions at ;
 
+: parse-direction ( str -- str' )
+    dup "VRB" = [ drop "variable" ] [
+        string>number [ direction>compass ] keep
+        "from %s (%s degrees)" sprintf
+    ] if ;
+
 : parse-wind ( report str -- report )
     dup "00000KT" = [ drop "calm" ] [
-        3 cut "KT" ?tail drop [ string>number ] bi@
-        [ direction>compass ] dip
-        "from %s at %s knots" sprintf
+        3 cut "KT" ?tail drop
+        [ parse-direction ] [ string>number ] bi*
+        "%s at %s knots" sprintf
     ] if '[ _ "" append-as ] change-wind ;
 
 : parse-wind-gust ( report str -- report )
-    3 cut "KT" ?tail drop "G" split1 [ string>number ] tri@
-    "from %s at %s knots with gusts to %s knots" sprintf
+    3 cut "KT" ?tail drop "G" split1
+    [ parse-direction ] [ string>number ] [ string>number ] tri*
+    "%s at %s knots with gusts to %s knots" sprintf
     '[ _ "" append-as ] change-wind ;
 
 : parse-wind-variable ( report str -- report )
@@ -310,40 +321,56 @@ CONSTANT: compass-directions H{
     ", variable from %s to %s" sprintf
     '[ _ "" append-as ] change-wind ;
 
-: parse-visibility ( report str -- miles )
+: parse-visibility ( report str -- report )
     "M" ?head "less than " "" ? swap "SM" ?tail drop
     CHAR: / over index [ 1 > [ 1 cut "+" glue ] when ] when*
     string>number "%s%s statute miles" sprintf >>visibility ;
 
+: append-to ( str -- quot )
+    '[  _ swap [ swap ", " glue ] unless-empty ] ; inline
+
+: parse-rvr ( report str -- report )
+    "R" ?head drop "/" split1 "FT" ?tail drop
+    "V" split1 [
+        [ string>number ] bi@
+        "varying between %s and %s" sprintf
+    ] [
+        string>number "of %s" sprintf
+    ] if* "runway %s visibility %s ft" sprintf append-to change-rvr ;
+
 : parse-weather ( report str -- report )
-    parse-abbreviations '[
-        _ swap [ swap ", " glue ] unless-empty
-    ] change-weather ;
+    parse-abbreviations append-to change-weather ;
 
 : parse-sky-condition ( report str -- report )
-    parse-abbreviations '[
-        _ swap [ swap ", " glue ] unless-empty
-    ] change-sky-condition ;
+    dup abbreviations at [ nip ] [
+        3 cut 3 cut
+        [ abbreviations at ]
+        [ string>number " at %s00 ft" sprintf ]
+        [ abbreviations at [ " (%s)" sprintf ] [ f ] if* ]
+        tri* 3append
+    ] if* append-to change-sky-condition ;
 
 : parse-temperature ( report str -- report )
-    "/" split1 "M" ?head
-    [ [ string>number ] bi@ ]
-    [ [ neg ] when ] bi*
+    "/" split1
+    [ "M" ?head [ string>number ] [ [ neg ] when ] bi* ] bi@
     [ >>temperature ] [ >>dew-point ] bi* ;
 
 : parse-altimeter ( report str -- report )
-    "A" ?head drop string>number 100 /f >>altimeter ;
+    unclip [ string>number ] [ CHAR: A = ] bi*
+    [ 100 /f "%.2f Hg" sprintf ]
+    [ "%s mb" sprintf ] if >>altimeter ;
 
 CONSTANT: re-timestamp R! \d{6}Z!
 CONSTANT: re-station R! \w{4}!
-CONSTANT: re-temperature R! \d{2}/[M]?\d{2}!
-CONSTANT: re-wind R! \d{3}\d{2,3}KT!
+CONSTANT: re-temperature R! [M]?\d{2}/[M]?\d{2}!
+CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}KT!
 CONSTANT: re-wind-gust R! \d{3}\d{2,3}G\d{2,3}KT!
 CONSTANT: re-wind-variable R! \d{3}V\d{3}!
 CONSTANT: re-visibility R! [M]?\d+(/\d+)?SM!
+CONSTANT: re-rvr R! R\d{2}[RLC]?/\d{4}(V\d{4})?FT!
 CONSTANT: re-weather R! [+-]?(VC)?(\w\w)?\w\w!
-CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|\w{3})!
-CONSTANT: re-altimeter R! [A]\d{4}!
+CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|\w{3}|CAVOK)!
+CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : parse-body ( report seq -- report )
     [
@@ -356,6 +383,7 @@ CONSTANT: re-altimeter R! [A]\d{4}!
             { [ dup re-wind matches? ] [ parse-wind ] }
             { [ dup re-wind-gust matches? ] [ parse-wind-gust ] }
             { [ dup re-wind-variable matches? ] [ parse-wind-variable ] }
+            { [ dup re-rvr matches? ] [ parse-rvr ] }
             { [ dup re-weather matches? ] [ parse-weather ] }
             { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
             { [ dup re-temperature matches? ] [ parse-temperature ] }
@@ -401,9 +429,14 @@ CONSTANT: re-altimeter R! [A]\d{4}!
     "P" ?head drop string>number 100 /f
     "hourly precipitation %.2f inches" sprintf ;
 
+: parse-6hr-precipitation ( str -- str' )
+    "6" ?head drop string>number
+    [ "trace" ] [ 100 /f "%s inches" sprintf ] if-zero
+    "%s precipitation in last 6 hours" sprintf ;
+
 : parse-24hr-precipitation ( str -- str' )
     "7" ?head drop string>number 100 /f
-    "24-hour precipitation %.2f inches" sprintf ;
+    "%.2f inches precipitation in last 24 hours" sprintf ;
 
 : parse-peak-wind ( str -- str' )
     3 cut "/" split1 [ [ string>number ] bi@ ] dip
@@ -425,6 +458,7 @@ CONSTANT: re-altimeter R! [A]\d{4}!
             { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
             { [ dup R! 4/\d{3}! matches? ] [ parse-snow-depth ] }
             { [ dup R! 5\d{4}! matches? ] [ parse-1hr-pressure ] }
+            { [ dup R! 6\d{4}! matches? ] [ parse-6hr-precipitation ] }
             { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
             { [ dup R! T\d{8}! matches? ] [ parse-1hr-temp ] }
             { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
@@ -441,24 +475,25 @@ CONSTANT: re-altimeter R! [A]\d{4}!
     [ parse-body ] [ parse-remarks ] bi* ;
 
 : ?write ( seq -- )
-    [ write ] when* ; inline
+    [ 65 wrap-string write ] when* ; inline
 
 : named-row ( name quot -- )
     '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
 
 : report. ( report -- )
-    [ raw>> 80 wrap-string print nl ] keep standard-table-style [
+    [ raw>> ?write nl nl ] keep standard-table-style [
         {
             [ "Station" [ station>> ?write ] named-row ]
             [ "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ]
             [ "Wind" [ wind>> ?write ] named-row ]
             [ "Visibility" [ visibility>> ?write ] named-row ]
+            [ "RVR" [ rvr>> ?write ] named-row ]
             [ "Weather" [ weather>> ?write ] named-row ]
             [ "Sky condition" [ sky-condition>> ?write ] named-row ]
             [ "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ]
             [ "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ]
-            [ "Altimeter" [ altimeter>> [ "%.2f" printf ] when* ] named-row ]
-            [ "Remarks" [ remarks>> [ 65 wrap-string print ] when* ] named-row ]
+            [ "Altimeter" [ altimeter>> [ ?write ] when* ] named-row ]
+            [ "Remarks" [ remarks>> [ ?write nl ] when* ] named-row ]
         } cleave
     ] tabular-output nl ;
 
