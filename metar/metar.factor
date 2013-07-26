@@ -345,7 +345,7 @@ CONSTANT: abbreviations H{
     0 instant <timestamp> ;
 
 CONSTANT: compass-directions H{
-    { 0 "N" }
+    { 0.0 "N" }
     { 22.5 "NNE" }
     { 45.0 "NE" }
     { 67.5 "ENE" }
