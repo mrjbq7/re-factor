@@ -550,9 +550,7 @@ PRIVATE>
 : metar. ( station -- )
     get-metar <report> report. ;
 
-! TODO: runway-visual-range
 ! TODO: numerical remarks:
-! 60123 3 or 6 hour precipitation amount.
 ! 8/765 Cloud cover using WMO Code.
 ! 98060 Duration of sunshine in minutes.
 ! 931222 Snowfall in the last 6-hours.
