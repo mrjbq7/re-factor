@@ -574,22 +574,22 @@ CONSTANT: high-clouds H{
     ] tri* 3array " " join ;
 
 : parse-inches ( str -- str' )
-    string>number
-    [ "trace" ] [ 100 /f "%s inches" sprintf ] if-zero ;
+    dup [ CHAR: / = ] all? [ drop "unknown" ] [
+        string>number
+        [ "trace" ] [ 100 /f "%.2f inches" sprintf ] if-zero
+    ] if ;
 
 : parse-1hr-precipitation ( str -- str' )
     "P" ?head drop parse-inches
-    "%.2f precipitation in last hour" sprintf ;
+    "%s precipitation in last hour" sprintf ;
 
 : parse-6hr-precipitation ( str -- str' )
-    "6" ?head drop dup "////" = [ drop f ] [
-        parse-inches
-        "%.2f precipitation in last 6 hours" sprintf
-    ] if ;
+    "6" ?head drop parse-inches
+    "%s precipitation in last 6 hours" sprintf ;
 
 : parse-24hr-precipitation ( str -- str' )
     "7" ?head drop parse-inches
-    "%.2f precipitation in last 24 hours" sprintf ;
+    "%s precipitation in last 24 hours" sprintf ;
 
 : parse-recent-time ( str -- str' )
     dup length 2 >
@@ -639,6 +639,15 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : parse-from-to ( str -- str' )
     "-" split1 [ parse-abbreviations ] bi@ " to " glue ;
 
+: parse-water-equivalent-snow ( str -- str' )
+    "933" ?head drop parse-inches
+    "%s water equivalent of snow on ground" sprintf ;
+
+: parse-duration-of-sunshine ( str -- str' )
+    "98" ?head drop string>number
+    [ "no" ] [ "%s minutes of" sprintf ] if-zero
+    "%s sunshine" sprintf ;
+
 : remarks ( report seq -- report )
     [
         {
@@ -650,6 +659,8 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! 6[\d/]{4}! matches? ] [ parse-6hr-precipitation ] }
             { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
             { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
+            { [ dup R! 933\d{3}! matches? ] [ parse-water-equivalent-snow ] }
+            { [ dup R! 98\d{3}! matches? ] [ parse-duration-of-sunshine ] }
             { [ dup R! T\d{4,8}! matches? ] [ parse-1hr-temp ] }
             { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
