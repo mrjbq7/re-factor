@@ -145,7 +145,6 @@ CONSTANT: abbreviations H{
     { "BTWN" "between" }
     { "BYD" "by day" }
     { "C" "center" }
-    { "CAVOK" "clear skies and unlimited visibility" }
     { "CB" "cumulonimbus cloud" }
     { "CBMAM" "cumulonimbus mammatus cloud" }
     { "CCSL" "cirrocumulus standing lenticular cloud" }
@@ -407,9 +406,7 @@ CONSTANT: compass-directions H{
             { CHAR: - [ rest "light " ] }
             [ drop f ]
         } case [
-            2 group dup [ weather key? ] all?
-            [ [ weather at ] map " " join ]
-            [ concat parse-abbreviations ] if
+            2 group [ weather at ] map " " join
         ] dip prepend
     ] if ;
 
@@ -419,13 +416,15 @@ CONSTANT: compass-directions H{
     [ [ " in the vicinity" append ] when ] bi* ;
 
 : parse-sky-condition ( str -- str' )
-    dup abbreviations at [ nip ] [
+    dup "CAVOK" = [
+        drop "clear skies and unlimited visibility"
+    ] [
         3 cut 3 cut
         [ abbreviations at ]
         [ string>number " at %s00 ft" sprintf ]
         [ abbreviations at [ " (%s)" sprintf ] [ f ] if* ]
         tri* 3append
-    ] if* ;
+    ] if ;
 
 : parse-temperature ( str -- temp dew-point )
     "/" split1 [
@@ -447,7 +446,7 @@ CONSTANT: re-wind-variable R! \d{3}V\d{3}!
 CONSTANT: re-visibility R! [M]?\d+(/\d+)?SM!
 CONSTANT: re-rvr R! R\d{2}[RLC]?/\d{4}(V\d{4})?FT!
 CONSTANT: re-weather R! [+-]?(VC)?(\w{2}|\w{4})!
-CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|\w{3}|CAVOK)!
+CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|CAVOK)!
 CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : find-one ( seq quot: ( elt -- ? ) -- seq elt/f )
@@ -658,7 +657,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     "varying between %s00 and %s00 ft" sprintf ;
 
 : parse-from-to ( str -- str' )
-    "-" split1 [ parse-abbreviations ] bi@ " to " glue ;
+    "-" split [ parse-abbreviations ] map " to " join ;
 
 : parse-water-equivalent-snow ( str -- str' )
     "933" ?head drop parse-inches
@@ -672,7 +671,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : remarks ( report seq -- report )
     [
         {
-            { [ dup abbreviations key? ] [ parse-abbreviations ] }
+            { [ dup abbreviations key? ] [ abbreviations at ] }
             { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
             { [ dup R! 2\d{4}! matches? ] [ parse-6hr-min-temp ] }
             { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
@@ -689,7 +688,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
             { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
             { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
-            { [ dup R! [^-]+-[^-]+! matches? ] [ parse-from-to ] }
+            { [ dup R! [^-]+(-[^-]+)+! matches? ] [ parse-from-to ] }
             { [ dup R! \d+.\d+! matches? ] [ ] }
             { [ dup re-began/ended matches? ] [ parse-began/ended ] }
             { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
