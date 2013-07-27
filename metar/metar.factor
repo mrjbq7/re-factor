@@ -514,28 +514,28 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 : parse-1hr-temp ( str -- str' )
     "T" ?head drop dup length 4 > [
         double-value
-        "hourly temperature %.1f and dew point %.1f" sprintf
+        "hourly temperature %.1f °C and dew point %.1f °C" sprintf
     ] [
         single-value
-        "hourly temperature %.1f" sprintf
+        "hourly temperature %.1f °C" sprintf
     ] if ;
 
 : parse-6hr-max-temp ( str -- str' )
     "1" ?head drop single-value
-    "6-hourly maximum temperature %.1f" sprintf ;
+    "6-hourly maximum temperature %.1f °C" sprintf ;
 
 : parse-6hr-min-temp ( str -- str' )
     "2" ?head drop single-value
-    "6-hourly minimum temperature %.1f" sprintf ;
+    "6-hourly minimum temperature %.1f °C" sprintf ;
 
 : parse-24hr-temp ( str -- str' )
     "4" ?head drop double-value
-    "24-hour maximum temperature %.1f minimum temperature %.1f"
+    "24-hour maximum temperature %.1f °C minimum temperature %.1f °C"
     sprintf ;
 
 : parse-1hr-pressure ( str -- str' )
     "5" ?head drop 1 cut single-value [ pressure-tendency at ] dip
-    "hourly pressure %s %s mb" sprintf ;
+    "hourly pressure %s %s hPa" sprintf ;
 
 : parse-snow-depth ( str -- str' )
     "4/" ?head drop string>number "snow depth %s inches" sprintf ;
@@ -672,6 +672,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : remarks ( report seq -- report )
     [
         {
+            { [ dup abbreviations key? ] [ parse-abbreviations ] }
             { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
             { [ dup R! 2\d{4}! matches? ] [ parse-6hr-min-temp ] }
             { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
