@@ -341,7 +341,7 @@ CONSTANT: abbreviations H{
         ] map " " join
     ] map "/" join ;
 
-: parse-timestamp ( str -- timestamp )
+: parse-timestamp ( str -- str' )
     [ now [ year>> ] [ month>> ] bi ] dip
     2 cut 2 cut 2 cut drop [ string>number ] tri@
     0 instant <timestamp> timestamp>rfc822 ;
@@ -748,7 +748,6 @@ M: string metar.
 
 ! TODO: numerical remarks:
 ! RH/41
-! 98060 Duration of sunshine in minutes.
 ! 931222 Snowfall in the last 6-hours.
 ! 933021 Liquid water equivalent of the snow (SWE).
 
