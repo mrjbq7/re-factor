@@ -149,7 +149,6 @@ CONSTANT: abbreviations H{
     { "CB" "cumulonimbus cloud" }
     { "CBMAM" "cumulonimbus mammatus cloud" }
     { "CCSL" "cirrocumulus standing lenticular cloud" }
-    { "CD" "candela" }
     { "CHI" "cloud-height indicator" }
     { "CHINO" "sky condition at secondary location not available" }
     { "CIG" "ceiling" }
