@@ -704,13 +704,10 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     [ blank? ] split-when { "RMK" } split1
     [ body ] [ remarks ] bi* ;
 
-: ?write ( seq -- )
-    [ 65 wrap-string write ] when* ; inline
-
 : row. ( name quot -- )
     '[
         [ _ write ] with-cell
-        [ @ ?write ] with-cell
+        [ @ [ 65 wrap-string write ] when* ] with-cell
     ] with-row ; inline
 
 : report. ( report -- )
