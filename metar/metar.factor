@@ -344,7 +344,7 @@ CONSTANT: abbreviations H{
 : parse-timestamp ( str -- timestamp )
     [ now [ year>> ] [ month>> ] bi ] dip
     2 cut 2 cut 2 cut drop [ string>number ] tri@
-    0 instant <timestamp> ;
+    0 instant <timestamp> timestamp>rfc822 ;
 
 CONSTANT: compass-directions H{
     { 0.0 "N" }
@@ -368,12 +368,6 @@ CONSTANT: compass-directions H{
 
 : direction>compass ( direction -- compass )
     22.5 round-to-step compass-directions at ;
-
-: append-to ( str -- quot )
-    '[ _ "" append-as ] ; inline
-
-: glue-to ( str -- quot )
-    '[  _ swap [ swap ", " glue ] unless-empty ] ; inline
 
 : parse-direction ( str -- str' )
     dup "VRB" = [ drop "variable" ] [
@@ -407,23 +401,23 @@ CONSTANT: compass-directions H{
         string>number "of %s" sprintf
     ] if* "runway %s visibility %s ft" sprintf ;
 
-CONSTANT: VC " in the vicinity"
-
-: parse-weather ( str -- str' )
+: (parse-weather) ( str -- str' )
     dup "+FC" = [ drop "tornadoes or waterspouts" ] [
-        {
-            { [ dup "+VC" head? ] [ 3 tail "heavy " VC ] }
-            { [ dup "-VC" head? ] [ 3 tail "light " VC ] }
-            { [ dup "VC" head? ] [ 2 tail "" VC ] }
-            { [ dup "+" head? ] [ rest "heavy " "" ] }
-            { [ dup "-" head? ] [ rest "light " "" ] }
-            [ "" "" ]
-        } cond [
+        dup first {
+            { CHAR: + [ rest "heavy " ] }
+            { CHAR: - [ rest "light " ] }
+            [ drop f ]
+        } case [
             2 group dup [ weather key? ] all?
             [ [ weather at ] map " " join ]
             [ concat parse-abbreviations ] if
-        ] 2dip surround
+        ] dip prepend
     ] if ;
+
+: parse-weather ( str -- str' )
+    "VC" over subseq? [ "VC" "" replace t ] [ f ] if
+    [ (parse-weather) ]
+    [ [ " in the vicinity" append ] when ] bi* ;
 
 : parse-sky-condition ( str -- str' )
     dup abbreviations at [ nip ] [
@@ -438,12 +432,13 @@ CONSTANT: VC " in the vicinity"
     "/" split1 [
         [ f ] [
             "M" ?head [ string>number ] [ [ neg ] when ] bi*
+            "%s °C" sprintf
         ] if-empty
     ] bi@ ;
 
 : parse-altimeter ( str -- str' )
     unclip [ string>number ] [ CHAR: A = ] bi*
-    [ 100 /f "%.2f Hg" sprintf ] [ "%s mb" sprintf ] if ;
+    [ 100 /f "%.2f Hg" sprintf ] [ "%s hPa" sprintf ] if ;
 
 CONSTANT: re-timestamp R! \d{6}Z!
 CONSTANT: re-station R! \w{4}!
@@ -452,28 +447,61 @@ CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}(G\d{2,3})?KT!
 CONSTANT: re-wind-variable R! \d{3}V\d{3}!
 CONSTANT: re-visibility R! [M]?\d+(/\d+)?SM!
 CONSTANT: re-rvr R! R\d{2}[RLC]?/\d{4}(V\d{4})?FT!
-CONSTANT: re-weather R! [+-]?(VC)?(\w\w)?\w\w!
+CONSTANT: re-weather R! [+-]?(VC)?(\w{2}|\w{4})!
 CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|\w{3}|CAVOK)!
 CONSTANT: re-altimeter R! [AQ]\d{4}!
 
+: find-one ( seq quot: ( elt -- ? ) -- seq elt/f )
+    dupd find drop [ tail unclip ] [ f ] if* ; inline
+
+: find-all ( seq quot: ( elt -- ? ) -- seq elts )
+    [ find-one swap ] keep '[
+        dup [ f ] [ first @ ] if-empty
+    ] [ unclip ] produce rot [ prefix ] when* ; inline
+
 : body ( report seq -- report )
+
+    [ { "METAR" "SPECI" } member? ] find-one
+    [ pick type<< ] when*
+
+    [ re-station matches? ] find-one
+    [ pick station<< ] when*
+
+    [ re-timestamp matches? ] find-one
+    [ parse-timestamp pick timestamp<< ] when*
+
+    [ { "AUTO" "COR" } member? ] find-one
+    [ pick modifier<< ] when*
+
+    [ re-wind matches? ] find-one
+    [ parse-wind pick wind<< ] when*
+
+    [ re-wind-variable matches? ] find-one
+    [ parse-wind-variable pick wind>> prepend pick wind<< ] when*
+
+    [ re-visibility matches? ] find-one
+    [ parse-visibility pick visibility<< ] when*
+
+    [ re-rvr matches? ] find-all " " join
+    [ parse-rvr ] map ", " join pick rvr<<
+
+    [ re-weather matches? ] find-all
+    [ parse-weather ] map ", " join pick weather<<
+
+    [ re-sky-condition matches? ] find-all
+    [ parse-sky-condition ] map ", " join pick sky-condition<<
+
+    [ re-temperature matches? ] find-one
     [
-        {
-            { [ dup { "METAR" "SPECI" } member? ] [ >>type ] }
-            { [ dup { "AUTO" "COR" } member? ] [ >>modifier ] }
-            { [ dup re-station matches? pick station>> not and ] [ >>station ] }
-            { [ dup re-visibility matches? ] [ parse-visibility >>visibility ] }
-            { [ dup re-timestamp matches? ] [ parse-timestamp >>timestamp ] }
-            { [ dup re-wind matches? ] [ parse-wind append-to change-wind ] }
-            { [ dup re-wind-variable matches? ] [ parse-wind-variable append-to change-wind ] }
-            { [ dup re-rvr matches? ] [ parse-rvr glue-to change-rvr ] }
-            { [ dup re-weather matches? ] [ parse-weather glue-to change-weather ] }
-            { [ dup re-sky-condition matches? ] [ parse-sky-condition glue-to change-sky-condition ] }
-            { [ dup re-temperature matches? ] [ parse-temperature [ >>temperature ] [ >>dew-point ] bi* ] }
-            { [ dup re-altimeter matches? ] [ parse-altimeter >>altimeter ] }
-            [ drop ]
-        } cond
-    ] each ;
+        parse-temperature
+        [ pick temperature<< ]
+        [ pick dew-point<< ] bi*
+    ] when*
+
+    [ re-altimeter matches? ] find-one
+    [ parse-altimeter pick altimeter<< ] when*
+
+    drop ;
 
 : signed-number ( sign value -- n )
     [ string>number ] bi@ swap zero? [ neg ] unless 10.0 / ;
@@ -679,24 +707,27 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
 : ?write ( seq -- )
     [ 65 wrap-string write ] when* ; inline
 
-: named-row ( name quot -- )
-    '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
+: row. ( name quot -- )
+    '[
+        [ _ write ] with-cell
+        [ @ ?write ] with-cell
+    ] with-row ; inline
 
 : report. ( report -- )
     standard-table-style [
         {
-            [ "Station" [ station>> ?write ] named-row ]
-            [ "Timestamp" [ timestamp>> timestamp>rfc822 write ] named-row ]
-            [ "Wind" [ wind>> ?write ] named-row ]
-            [ "Visibility" [ visibility>> ?write ] named-row ]
-            [ "RVR" [ rvr>> ?write ] named-row ]
-            [ "Weather" [ weather>> ?write ] named-row ]
-            [ "Sky condition" [ sky-condition>> ?write ] named-row ]
-            [ "Temperature" [ temperature>> [ "%s °C" printf ] when* ] named-row ]
-            [ "Dew point" [ dew-point>> [ "%s °C" printf ] when* ] named-row ]
-            [ "Altimeter" [ altimeter>> [ ?write ] when* ] named-row ]
-            [ "Remarks" [ remarks>> [ ?write ] when* ] named-row ]
-            [ "Raw Text" [ raw>> ?write ] named-row ]
+            [ "Station" [ station>> ] row. ]
+            [ "Timestamp" [ timestamp>> ] row. ]
+            [ "Wind" [ wind>> ] row. ]
+            [ "Visibility" [ visibility>> ] row. ]
+            [ "RVR" [ rvr>> ] row. ]
+            [ "Weather" [ weather>> ] row. ]
+            [ "Sky condition" [ sky-condition>> ] row. ]
+            [ "Temperature" [ temperature>> ] row. ]
+            [ "Dew point" [ dew-point>> ] row. ]
+            [ "Altimeter" [ altimeter>> ] row. ]
+            [ "Remarks" [ remarks>> ] row. ]
+            [ "Raw Text" [ raw>> ] row. ]
         } cleave
     ] tabular-output nl ;
 
