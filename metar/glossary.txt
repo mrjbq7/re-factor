@@ -1,4 +1,6 @@
 $,maintenance check indicator
+A01,station without a precipitation discriminator
+A02,station with a precipitation discriminator
 AAF,Army Air Field
 AAL,above aerodrome level
 AATM,at all times
@@ -76,9 +78,7 @@ ANAPROP,anomalous propagation
 ANCPT,anticipate
 AND,and
 ANLYS,analysis
-A01,station without a precipitation discriminator
 AO1,station without a precipitation discriminator
-A02,station with a precipitation discriminator
 AO2,station with a precipitation discriminator
 AOA,at or above
 AOB,at or below
@@ -386,8 +386,8 @@ ECMWF,European Centre for Medium Range Weather Forecasts
 EFCT,effect
 ELNGT,elongate
 ELNGTD,elongated
-ELSW,elsewhere
 ELR,environmental lapse rate
+ELSW,elsewhere
 EMBD,embedded
 EMBDD,embedded
 EMERG,emergency
@@ -473,8 +473,8 @@ FNTL,frontal
 FNTLYS,frontolysis
 FNTS,fronts
 FORNN,forenoon
-FPS,feet per second
 FPM,feet per minute
+FPS,feet per second
 FQT,frequent
 FQTLY,frequently
 FRM,form
@@ -502,8 +502,8 @@ GCM,global computer model
 GEN,general
 GENLY,generally
 GEO,geographic
-GEOS,geostationary satellite
 GEOREF,geographical reference
+GEOS,geostationary satellite
 GF,ground fog
 GICG,glaze icing
 GLFALSK,Gulf of Alaska
@@ -724,8 +724,8 @@ MOVD,moved
 MOVG,moving
 MOVMT,movement
 MOVS,moves
-MPS,meters per second
 MPH,miles per hour
+MPS,meters per second
 MRF,medium range forecast
 MRGL,marginal
 MRGLLY,marginally
@@ -775,9 +775,9 @@ NGM,Nested Grid Model
 NGT,night
 NH,New Hampshire
 NIL,none
-NLC,noctilucent cloud
 NJ,New Jersey
 NL,no layers
+NLC,noctilucent cloud
 NLT,not later than
 NLY,northerly
 NM,New Mexico
@@ -1230,8 +1230,8 @@ SUPSDS,supersedes
 SVG,serving
 SVR,severe
 SVRL,several
-SW,southwest
 SW+,heavy snow shower
+SW,southwest
 SW-,light snow shower
 SWD,southward
 SWLG,swelling
@@ -1305,10 +1305,10 @@ TRPCD,tropical continental
 TRPCL,tropical
 TRRN,terrain
 TRSN,transition
-TRW,thunderstorm
 TRW+,thunderstorm with heavy rain shower
-TS,thunderstorm with snow
+TRW,thunderstorm
 TS+,thunderstorm with heavy snow
+TS,thunderstorm with snow
 TSFR,transfer
 TSFRD,transfered
 TSFRG,transfering
@@ -1320,8 +1320,8 @@ TSNT,transient
 TSQLS,thundersqualls
 TSTM,thunderstorm
 TSTMS,thunderstorms
-TSW,thunderstorm with snow showers
 TSW+,thunderstorm with heavy snow showers
+TSW,thunderstorm with snow showers
 TURB,turbulence
 TURBC,turbulence
 TURBT,turbulent
