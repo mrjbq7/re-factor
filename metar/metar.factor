@@ -113,37 +113,6 @@ CONSTANT: weather H{
     { "VA" "volcanic ash" }
 }
 
-! 23500G00KT == "calm" ?
-! P000
-! A01 ?
-! AO2A ?
-! T2 SET
-! WSHFT 2244
-! CIG 043
-! CIG 043V080
-! 11/4V03/ASOS
-! SEAS 2
-! SEAS 1-3
-! PCPN 1/3/6/12/24H 0.00 0.01 0.02 0.02 0.04
-! LAG
-! RH/15
-! CONS = Constant
-! ENSO = El Nino/a Southern Oscillation
-! ERS = Earth Resources Satellite 
-! IR = Infra-Red 
-! K = Kelvin 
-! H = High
-! L = Low
-! KT = Knots 
-! METAR = Meteorological Actual Report
-! MO = Met Office (usually UKMO)
-! MOV(G) = Moving
-! Ns = Nimbostratus cloud
-! NWP = Numerical Weather Predication (A computer model)
-! RE = Recent
-! WV = Water vapour (reffering to satellite images)
-! WWW = World Weather Watch
-
 MEMO: glossary ( -- assoc )
     "vocab:metar/glossary.txt" ascii file-lines
     [ "," split1 ] H{ } map>assoc ;
@@ -156,9 +125,6 @@ MEMO: glossary ( -- assoc )
             [ glossary ?at drop ] if
         ] map " " join
     ] map "/" join ;
-
-! elapsed time?
-! Date (%d minutes ago)
 
 : parse-timestamp ( str -- str' )
     [ now [ year>> ] [ month>> ] bi ] dip
@@ -579,14 +545,3 @@ M: station metar. cccc>> metar. ;
 M: string metar.
     [ metar <report> report. ]
     [ drop "%s METAR not found\n" printf ] recover ;
-
-! TODO: numerical remarks:
-! RH/41
-
-! TODO: calculate wind chill?
-! http://en.wikipedia.org/wiki/Wind_chill
-!   if (self.temp and self.temp <= 10 and
-!      self.windspeed and (self.windspeed*3.6) > 4.8):
-!      self.w_chill = (13.12 + 0.6215*self.temp -
-!                      11.37*(self.windspeed*3.6)**0.16 +
-!                      0.3965*self.temp*(self.windspeed*3.6)**0.16)
