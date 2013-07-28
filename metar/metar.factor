@@ -3,9 +3,9 @@
 
 USING: accessors arrays ascii assocs calendar calendar.format
 combinators continuations csv formatting fry grouping
-http.client io io.styles kernel math math.extras math.parser
-memoize regexp sequences sorting.human splitting strings urls
-wrap.strings ;
+http.client io io.encodings.ascii io.files io.styles kernel math
+math.extras math.parser memoize regexp sequences sorting.human
+splitting strings urls wrap.strings ;
 
 IN: metar
 
@@ -113,231 +113,52 @@ CONSTANT: weather H{
     { "VA" "volcanic ash" }
 }
 
-CONSTANT: abbreviations H{
-    { "$" "maintenance check indicator" }
-    { "ACC" "altocumulus castellanus" }
-    { "ACFT" "aircraft" }
-    { "ACSL" "standing lenticular altocumulus" }
-    { "AFT" "after" }
-    { "ALP" "aircraft location point" }
-    { "ALQDS" "all quadrants" } ! (Official)
-    { "ALQS" "all quadrants" } ! (Unofficial)
-    { "AMB" "amber" }
-    { "AND" "and" }
-    { "AO1" "station without a precipitation discriminator" }
-    { "AO2" "station with a precipitation discriminator" }
-    { "APCH" "approach" }
-    { "APRNT" "apparent" }
-    { "APRX" "approximately" }
-    { "ASOS" "Automated Surface Observing System" }
-    { "ASSOCD" "associated" }
-    { "ATCT" "airport traffic control tower" }
-    { "AUTO" "automated report" }
-    { "B" "began" }
-    { "BA" "braking action" }
-    { "BECMG" "becoming" }
-    { "BFR" "before" }
-    { "BINOVC" "breaks in overcast" }
-    { "BKN" "broken" }
-    { "BLDG" "building" }
-    { "BLU" "blue" }
-    { "BLW" "below" }
-    { "BTWN" "between" }
-    { "BYD" "by day" }
-    { "C" "center" }
-    { "CB" "cumulonimbus cloud" }
-    { "CBMAM" "cumulonimbus mammatus cloud" }
-    { "CCSL" "cirrocumulus standing lenticular cloud" }
-    { "CHI" "cloud-height indicator" }
-    { "CHINO" "sky condition at secondary location not available" }
-    { "CIG" "ceiling" }
-    { "CLD" "cloud" }
-    { "CLDS" "clouds" }
-    { "CLR" "clear sky" }
-    { "CNTRL" "central" }
-    { "CNTRLN" "centerline" }
-    { "CONDS" "conditions" }
-    { "CONS" "continuous" }
-    { "CONTG" "continuing" }
-    { "COR" "correction to a previously disseminated observation" }
-    { "CU" "cumulus" }
-    { "DATA" "data" }
-    { "DEGS" "degrees" }
-    { "DEPTH" "depth" }
-    { "DOC" "Department of Commerce" }
-    { "DOD" "Department of Defense" }
-    { "DOT" "Department of Transportation" }
-    { "DRY" "dry" }
-    { "DSIPTG" "dissipating" }
-    { "DSNT" "distant" }
-    { "DVR" "dispatch visual range" }
-    { "E" "east" }
-    { "ENDG" "ending" }
-    { "ERN" "eastern" }
-    { "ESTIMATE" "estimate" }
-    { "ESTMD" "estimated" }
-    { "EWD" "eastward" }
-    { "FAA" "Federal Aviation Administration" }
-    { "FCST" "forecast" }
-    { "FEW" "few" }
-    { "FIBI" "filed but impracticable to transmit" }
-    { "FIRST" "first observation after a break in coverage at manual station" }
-    { "FM" "from" }
-    { "FMH-1" "Federal Meteorological Handbook No.1, Surface Weather Observations & Reports (METAR)" }
-    { "FMH2" "Federal Meteorological Handbook No.2, Surface Synoptic Codes" }
-    { "FNT" "front" }
-    { "FROIN" "Frost On The Indicator" }
-    { "FROPA" "frontal passage" }
-    { "FRQ" "frequent" }
-    { "FT" "feet" }
-    { "FZRANO" "freezing rain sensor not available" }
-    { "GRN" "green" }
-    { "HFS" "high-friction surface" }
-    { "HLSTO" "hailstone" }
-    { "ICAO" "International Civil Aviation Organization" }
-    { "IFR" "IFR" }
-    { "INCRG" "increasing" }
-    { "INTMT" "intermittent" }
-    { "INTO" "into" }
-    { "INVOF" "in vicinity of" }
-    { "IR" "ice on the runway" }
-    { "ISOL" "isolated" }
-    { "JTSTR" "jetstream" }
-    { "KT" "knots" }
-    { "L" "left" }
-    { "LAST" "last observation before a break in coverage at a manual station" }
-    { "LSR" "loose snow on the runway" }
-    { "LST" "Local Standard Time" }
-    { "LTG" "lightning" }
-    { "LWR" "lower" }
-    { "M" "minus, less than" }
-    { "MAX" "maximum" }
-    { "MEDIUM" "medium" }
-    { "METAR" "aviation routine weather report" }
-    { "MIN" "minimum" }
-    { "MOD" "moderate" }
-    { "MOV" "moved/moving/movement" }
-    { "MOVD" "moved" }
-    { "MOVG" "moving" }
-    { "MSHP" "mishap" }
-    { "MT" "mountains" }
-    { "MTN" "mountain" }
-    { "MVFR" "marginal VFR" }
-    { "N" "north" }
-    { "N/A" "not applicable" }
-    { "NCD" "clear sky" }
-    { "NCDC" "National Climatic Data Center" }
-    { "NE" "northeast" }
-    { "NO" "no" }
-    { "NOS" "National Ocean Survey" }
-    { "NOSIG" "no significant change is expected in next 2 hours" }
-    { "NOSPECI" "no SPECI reports are taken at the station" }
-    { "NOTAM" "Notice to Airmen" }
-    { "NRN" "northern" }
-    { "NSC" "clear sky" }
-    { "NW" "northwest" }
-    { "NWD" "northward" }
-    { "NWS" "National Weather Service" }
-    { "OBS" "observed" }
-    { "OBSCD" "obscured" }
-    { "OCNL" "occasional" }
-    { "OFCM" "Office of the Federal Coordinator for Meteorology" }
-    { "OHD" "overhead" }
-    { "OPEN" "open" }
-    { "OTLK" "outlook" }
-    { "OVC" "overcast" }
-    { "OVR" "over" }
-    { "P" "greater than" }
-    { "PASS" "pass" }
-    { "PCPN" "precipitation" }
-    { "PK" "peak" }
-    { "PNHDL" "pandhandle" }
-    { "PNO" "precipitation amount not available" }
-    { "PRES" "Atmospheric pressure" }
-    { "PRESFR" "pressure falling rapidly" }
-    { "PRESRR" "pressure rising rapidly" }
-    { "PROB" "probability" }
-    { "PSR" "packed snow on the runway" }
-    { "PWINO" "precipitation identifier sensor not available" }
-    { "QTR" "quarter" }
-    { "R" "right" }
-    { "RCRNR" "base operations closed" }
-    { "RED" "red" }
-    { "ROTOR" "rotor" }
-    { "RTD" "Routine Delayed (late) observation" }
-    { "RV" "reportable value" }
-    { "RVR" "Runway visual range" }
-    { "RVRNO" "RVR system values not available" }
-    { "RWY" "runway" }
-    { "RY" "runway" }
-    { "S" "south" }
-    { "SC" "stratocumulus" }
-    { "SCSL" "stratocumulus standing lenticular cloud" }
-    { "SCT" "scattered" }
-    { "SE" "southeast" }
-    { "SEV" "severe" }
-    { "SFC" "surface" }
-    { "SHR" "shear" }
-    { "SKC" "clear sky" }
-    { "SLP" "sea-level pressure" }
-    { "SLPNO" "sea-level pressure not available" }
-    { "SLR" "slush on the runway" }
-    { "SM" "statute miles" }
-    { "SNINCR" "snow increasing rapidly" }
-    { "SNOW" "snow" }
-    { "SOG" "Snow on the ground" }
-    { "SPECI" "an unscheduled report taken when certain criteria have been met" }
-    { "SRN" "southern" }
-    { "STN" "station" }
-    { "SW" "southwest" }
-    { "SWD" "southward" }
-    { "TCU" "towering cumulus" }
-    { "TEMPO" "temporary" }
-    { "THLD" "threshold" }
-    { "TO" "to" }
-    { "TROF" "trough" }
-    { "TSNO" "thunderstorm information not available" }
-    { "TURB" "turbulence" }
-    { "TWR" "tower" }
-    { "UNKN" "unknown" }
-    { "UNUSBL" "unusable" }
-    { "UTC" "Coordinated Universal Time" }
-    { "V" "variable" }
-    { "VCNTY" "vicinity" }
-    { "VFR" "VFR" }
-    { "VIRGA" "virga" }
-    { "VIS" "visibility" }
-    { "VISNO" "visibility at secondary location not available" }
-    { "VR" "visual range" }
-    { "VRB" "variable" }
-    { "VSBY" "visibility" }
-    { "VV" "vertical visibility" }
-    { "W" "west" }
-    { "WG/AOS" "Working Group for Atmospheric Observing Systems" }
-    { "WG/SO" "Working Group for Surface Observations" }
-    { "WHT" "white" }
-    { "WLY" "westerly" }
-    { "WMO" "World Meteorological Organization" }
-    { "WND" "wind" }
-    { "WR" "wet runway" }
-    { "WRM" "warm" }
-    { "WRN" "western" }
-    { "WS" "wind shear" }
-    { "WSHFT" "wind shift" }
-    { "WWD" "westward" }
-    { "XTRM" "extreme" }
-    { "YLO" "yellow" }
-    { "Z" "zulu (i.e. Coordinated Universal Time)" }
-}
+! 23500G00KT == "calm" ?
+! P000
+! A01 ?
+! AO2A ?
+! T2 SET
+! WSHFT 2244
+! CIG 043
+! CIG 043V080
+! 11/4V03/ASOS
+! SEAS 2
+! SEAS 1-3
+! PCPN 1/3/6/12/24H 0.00 0.01 0.02 0.02 0.04
+! LAG
+! RH/15
+! CONS = Constant
+! ENSO = El Nino/a Southern Oscillation
+! ERS = Earth Resources Satellite 
+! IR = Infra-Red 
+! K = Kelvin 
+! H = High
+! L = Low
+! KT = Knots 
+! METAR = Meteorological Actual Report
+! MO = Met Office (usually UKMO)
+! MOV(G) = Moving
+! Ns = Nimbostratus cloud
+! NWP = Numerical Weather Predication (A computer model)
+! RE = Recent
+! WV = Water vapour (reffering to satellite images)
+! WWW = World Weather Watch
 
-: parse-abbreviations ( str -- str' )
+MEMO: glossary ( -- assoc )
+    "vocab:metar/glossary.txt" ascii file-lines
+    [ "," split1 ] H{ } map>assoc ;
+
+: parse-glossary ( str -- str' )
     "/" split [
         find-numbers [
             dup number?
             [ number>string ]
-            [ abbreviations ?at drop ] if
+            [ glossary ?at drop ] if
         ] map " " join
     ] map "/" join ;
+
+! elapsed time?
+! Date (%d minutes ago)
 
 : parse-timestamp ( str -- str' )
     [ now [ year>> ] [ month>> ] bi ] dip
@@ -386,7 +207,11 @@ CONSTANT: compass-directions H{
     ", variable from %s (%s°) to %s (%s°)" sprintf ;
 
 : parse-visibility ( str -- str' )
-    "M" ?head "less than " "" ? swap "SM" ?tail drop
+    dup first {
+        { CHAR: M [ rest "less than " ] }
+        { CHAR: P [ rest "more than " ] }
+        [ drop "" ]
+    } case swap "SM" ?tail drop
     CHAR: / over index [ 1 > [ 1 cut "+" glue ] when ] when*
     string>number "%s%s statute miles" sprintf ;
 
@@ -406,7 +231,9 @@ CONSTANT: compass-directions H{
             { CHAR: - [ rest "light " ] }
             [ drop f ]
         } case [
-            2 group [ weather at ] map " " join
+            2 group dup [ weather key? ] all?
+            [ [ weather at ] map " " join ]
+            [ concat parse-glossary ] if
         ] dip prepend
     ] if ;
 
@@ -416,15 +243,13 @@ CONSTANT: compass-directions H{
     [ [ " in the vicinity" append ] when ] bi* ;
 
 : parse-sky-condition ( str -- str' )
-    dup "CAVOK" = [
-        drop "clear skies and unlimited visibility"
-    ] [
+    dup glossary at [ nip ] [
         3 cut 3 cut
-        [ abbreviations at ]
+        [ glossary at ]
         [ string>number " at %s00 ft" sprintf ]
-        [ abbreviations at [ " (%s)" sprintf ] [ f ] if* ]
+        [ glossary at [ " (%s)" sprintf ] [ f ] if* ]
         tri* 3append
-    ] if ;
+    ] if* ;
 
 : parse-temperature ( str -- temp dew-point )
     "/" split1 [
@@ -443,10 +268,10 @@ CONSTANT: re-station R! \w{4}!
 CONSTANT: re-temperature R! [M]?\d{2}/([M]?\d{2})?!
 CONSTANT: re-wind R! (VRB|\d{3})\d{2,3}(G\d{2,3})?KT!
 CONSTANT: re-wind-variable R! \d{3}V\d{3}!
-CONSTANT: re-visibility R! [M]?\d+(/\d+)?SM!
+CONSTANT: re-visibility R! [MP]?\d+(/\d+)?SM!
 CONSTANT: re-rvr R! R\d{2}[RLC]?/\d{4}(V\d{4})?FT!
 CONSTANT: re-weather R! [+-]?(VC)?(\w{2}|\w{4})!
-CONSTANT: re-sky-condition R! (\w{3}\d{3}(\w+)?|CAVOK)!
+CONSTANT: re-sky-condition R! (\w{2,3}\d{3}(\w+)?|\w{3}|CAVOK)!
 CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : find-one ( seq quot: ( elt -- ? ) -- seq elt/f )
@@ -521,11 +346,11 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 
 : parse-6hr-max-temp ( str -- str' )
     "1" ?head drop single-value
-    "6-hourly maximum temperature %.1f °C" sprintf ;
+    "6-hour maximum temperature %.1f °C" sprintf ;
 
 : parse-6hr-min-temp ( str -- str' )
     "2" ?head drop single-value
-    "6-hourly minimum temperature %.1f °C" sprintf ;
+    "6-hour minimum temperature %.1f °C" sprintf ;
 
 : parse-24hr-temp ( str -- str' )
     "4" ?head drop double-value
@@ -559,7 +384,7 @@ CONSTANT: mid-clouds H{
     { CHAR: 4 "Altocumulus (patchy)" }
     { CHAR: 5 "Altocumulus (thickening)" }
     { CHAR: 6 "Altocumulus (from Cumulus)" }
-    { CHAR: 7 "Altocumulus (with Altocumulus, Altostratus, Nimbostratus" }
+    { CHAR: 7 "Altocumulus (with Altocumulus, Altostratus, Nimbostratus)" }
     { CHAR: 8 "Altocumulus (with turrets)" }
     { CHAR: 9 "Altocumulus (chaotic)" }
     { CHAR: / "above overcast" }
@@ -585,7 +410,7 @@ CONSTANT: high-clouds H{
         ] if
     ] [
         dup CHAR: 0 = [ drop f ] [
-            mid-clouds at "mid clouds are %s" sprintf
+            mid-clouds at "middle clouds are %s" sprintf
         ] if
     ] [
         dup CHAR: 0 = [ drop f ] [
@@ -611,15 +436,16 @@ CONSTANT: high-clouds H{
     "7" ?head drop parse-inches
     "%s precipitation in last 24 hours" sprintf ;
 
+! "on the hour" instead of "00 minutes past the hour" ?
+
 : parse-recent-time ( str -- str' )
     dup length 2 >
     [ 2 cut ":" glue ]
     [ " minutes past the hour" append ] if ;
 
 : parse-peak-wind ( str -- str' )
-    3 cut "/" split1 [ [ string>number ] bi@ ] dip
-    parse-recent-time
-    "from %s at %s knots occuring at %s" sprintf ;
+    "/" split1 [ parse-wind ] [ parse-recent-time ] bi*
+    "%s occuring at %s" sprintf ;
 
 : parse-sea-level-pressure ( str -- str' )
     "SLP" ?head drop string>number 10.0 /f 1000 +
@@ -629,7 +455,6 @@ CONSTANT: high-clouds H{
     "LTG" ?head drop 2 group [ lightning at ] map " " join ;
 
 CONSTANT: re-recent-weather R! ((\w{2})?[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?)+!
-CONSTANT: re-began/ended R! [BE]\d{2,4}!
 
 : parse-began/ended ( str -- str' )
     unclip swap
@@ -657,7 +482,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     "varying between %s00 and %s00 ft" sprintf ;
 
 : parse-from-to ( str -- str' )
-    "-" split [ parse-abbreviations ] map " to " join ;
+    "-" split [ parse-glossary ] map " to " join ;
 
 : parse-water-equivalent-snow ( str -- str' )
     "933" ?head drop parse-inches
@@ -668,10 +493,18 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
     [ "no" ] [ "%s minutes of" sprintf ] if-zero
     "%s sunshine" sprintf ;
 
+: parse-6hr-snowfall ( str -- str' )
+    "931" ?head drop parse-inches
+    "%s snowfall in last 6 hours" sprintf ;
+
+: parse-probability ( str -- str' )
+    "PROB" ?head drop string>number
+    "probability of %d%%" sprintf ;
+
 : remarks ( report seq -- report )
     [
         {
-            { [ dup abbreviations key? ] [ abbreviations at ] }
+            { [ dup glossary key? ] [ glossary at ] }
             { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
             { [ dup R! 2\d{4}! matches? ] [ parse-6hr-min-temp ] }
             { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
@@ -680,6 +513,7 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! 6[\d/]{4}! matches? ] [ parse-6hr-precipitation ] }
             { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
             { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
+            { [ dup R! 931\d{3}! matches? ] [ parse-6hr-snowfall ] }
             { [ dup R! 933\d{3}! matches? ] [ parse-water-equivalent-snow ] }
             { [ dup R! 98\d{3}! matches? ] [ parse-duration-of-sunshine ] }
             { [ dup R! T\d{4,8}! matches? ] [ parse-1hr-temp ] }
@@ -687,14 +521,15 @@ CONSTANT: re-began/ended R! [BE]\d{2,4}!
             { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
             { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
             { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
+            { [ dup R! PROB\d+! matches? ] [ parse-probability ] }
             { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
             { [ dup R! [^-]+(-[^-]+)+! matches? ] [ parse-from-to ] }
+            { [ dup R! [^/]+(/[^/]+)+! matches? ] [ ] }
             { [ dup R! \d+.\d+! matches? ] [ ] }
-            { [ dup re-began/ended matches? ] [ parse-began/ended ] }
             { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
             { [ dup re-weather matches? ] [ parse-weather ] }
             { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
-            [ parse-abbreviations ]
+            [ parse-glossary ]
         } cond
     ] map " " join >>remarks ;
 
@@ -747,8 +582,6 @@ M: string metar.
 
 ! TODO: numerical remarks:
 ! RH/41
-! 931222 Snowfall in the last 6-hours.
-! 933021 Liquid water equivalent of the snow (SWE).
 
 ! TODO: calculate wind chill?
 ! http://en.wikipedia.org/wiki/Wind_chill
@@ -757,4 +590,3 @@ M: string metar.
 !      self.w_chill = (13.12 + 0.6215*self.temp -
 !                      11.37*(self.windspeed*3.6)**0.16 +
 !                      0.3965*self.temp*(self.windspeed*3.6)**0.16)
-
