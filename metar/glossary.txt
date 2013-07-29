@@ -200,7 +200,7 @@ CHGG,changing
 CHGS,changes
 CHI,cloud-height indicator
 CHINO,sky condition at secondary location not available
-CHSPK,Chesepeake
+CHSPK,Chesapeake
 CI,cirrus
 CIG,ceiling
 CIGS,ceilings
