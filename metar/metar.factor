@@ -160,12 +160,18 @@ CONSTANT: compass-directions H{
         "from %s (%s°)" sprintf
     ] if ;
 
+: kt>mph ( kt -- mph ) 1.15077945 * ;
+
+: mph>kt ( mph -- kt ) 1.15077945 / ;
+
 : parse-wind ( str -- str' )
     dup "00000KT" = [ drop "calm" ] [
         3 cut "KT" ?tail drop "G" split1
-        [ parse-direction ] [ string>number ] [ string>number ] tri*
-        [ "%s at %s knots with gusts to %s knots" sprintf ]
-        [ "%s at %s knots" sprintf ] if*
+        [ parse-direction ]
+        [ string>number dup kt>mph ]
+        [ string>number [ dup kt>mph ] [ f f ] if* ] tri* dup
+        [ "%s at %s knots (%.1f mph) with gusts to %s knots (%.1f mph) " sprintf ]
+        [ 2drop "%s at %s knots (%.1f mph)" sprintf ] if
     ] if ;
 
 : parse-wind-variable ( str -- str' )
@@ -217,11 +223,15 @@ CONSTANT: compass-directions H{
         tri* 3append
     ] if* ;
 
+: F>C ( F -- C ) 32 - 5/9 * ;
+
+: C>F ( C -- F ) 9/5 * 32 + ;
+
 : parse-temperature ( str -- temp dew-point )
     "/" split1 [
         [ f ] [
             "M" ?head [ string>number ] [ [ neg ] when ] bi*
-            "%s °C" sprintf
+            dup C>F "%d °C (%.1f °F)" sprintf
         ] if-empty
     ] bi@ ;
 
@@ -304,23 +314,25 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
 : parse-1hr-temp ( str -- str' )
     "T" ?head drop dup length 4 > [
         double-value
-        "hourly temperature %.1f °C and dew point %.1f °C" sprintf
+        [ dup C>F "%.1f °C (%.1f °F)" sprintf ] bi@
+        "hourly temperature %s and dew point %s" sprintf
     ] [
-        single-value
-        "hourly temperature %.1f °C" sprintf
+        single-value dup C>F
+        "hourly temperature %.1f °C (%.1f °F)" sprintf
     ] if ;
 
 : parse-6hr-max-temp ( str -- str' )
-    "1" ?head drop single-value
-    "6-hour maximum temperature %.1f °C" sprintf ;
+    "1" ?head drop single-value dup C>F
+    "6-hour maximum temperature %.1f °C (%.1f °F)" sprintf ;
 
 : parse-6hr-min-temp ( str -- str' )
-    "2" ?head drop single-value
-    "6-hour minimum temperature %.1f °C" sprintf ;
+    "2" ?head drop single-value dup C>F
+    "6-hour minimum temperature %.1f °C (%.1f °F)" sprintf ;
 
 : parse-24hr-temp ( str -- str' )
     "4" ?head drop double-value
-    "24-hour maximum temperature %.1f °C minimum temperature %.1f °C"
+    [ dup C>F "%.1f °C (%.1f °F)" sprintf ] bi@
+    "24-hour maximum temperature %s minimum temperature %s"
     sprintf ;
 
 : parse-1hr-pressure ( str -- str' )
