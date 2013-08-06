@@ -8,14 +8,21 @@ IN: unix-tools.uniq
 
 : uniq-lines ( -- )
     f [
-        2dup = [ dup print flush ] unless nip
+        2dup = [ dup print ] unless nip
     ] each-line drop ;
 
-: uniq-file ( path -- )
-    utf8 [ uniq-lines ] with-file-reader ;
+: uniq-file ( path/f -- )
+    [
+        utf8 [ uniq-lines ] with-file-reader
+    ] [
+        uniq-lines
+    ] if* ;
 
 : run-uniq ( -- )
-    command-line get ?first "-" or
-    dup "-" = [ drop uniq-lines ] [ uniq-file ] if ;
+    command-line get [ ?first ] [ ?second ] bi [
+        utf8 [ uniq-file ] with-file-writer
+    ] [
+        uniq-file
+    ] if* ;
 
 MAIN: run-uniq
