@@ -44,29 +44,29 @@ PRIVATE>
 : anything ( verbexp -- verbexp )
     "(?:.*)" add ;
 
-: anything-but ( verbexp val -- verbexp )
+: anything-but ( verbexp value -- verbexp )
     re-escape "(?:[^" "]*)" surround add ;
 
 : something ( verbexp -- verbexp )
     "(?:.+)" add ;
 
-: something-but ( verbexp val -- verbexp )
+: something-but ( verbexp value -- verbexp )
     re-escape "(?:[^" "]+)" surround add ;
 
 : end-of-line ( verbexp -- verbexp )
     [ "$" append ] change-suffix ;
 
-: maybe ( verbexp val -- verbexp )
+: maybe ( verbexp value -- verbexp )
     re-escape "(?:" ")?" surround add ;
 
 : start-of-line ( verbexp -- verbexp )
     [ "^" append ] change-prefix ;
 
-: then ( verbexp val -- verbexp )
+: then ( verbexp value -- verbexp )
     re-escape "(?:" ")" surround add ;
 
-: any-of ( verbexp val -- verbexp )
-    "(?:[" "])" surround add ;
+: any-of ( verbexp value -- verbexp )
+    re-escape "(?:[" "])" surround add ;
 
 : line-break ( verbexp -- verbexp )
     "(?:(?:\\n)|(?:\\r\\n))" add ;
@@ -84,7 +84,7 @@ ALIAS: br line-break
     "\\w+" add ;
 
 : spaces ( verbexp -- verbexp )
-    "\s+" add ;
+    "\\s+" add ;
 
 : -or- ( verbexp -- verbexp )
     [ "(" append ] change-prefix
