@@ -6,13 +6,15 @@ json.reader kernel sequences urls utils ;
 
 IN: domainr
 
+: domainr-url ( query -- url )
+    URL" http://domai.nr/api/json/search"
+    swap "q" set-query-param ;
+
 TUPLE: result domain host path subdomain availability
 register_url ;
 
 : domainr ( query -- data )
-    URL" http://domai.nr/api/json/search"
-        swap "q" set-query-param
-    http-get nip json> "results" swap at
+    domainr-url http-get nip json> "results" swap at
     [ result from-slots ] map ;
 
 : domainr. ( query -- )
