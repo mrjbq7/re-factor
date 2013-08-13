@@ -27,14 +27,14 @@ minPostalCode numPostalCodes population ;
 
 : postal-code-countries ( -- countries )
     "/postalCodeCountryInfoJSON" geonames-url
-    http-get nip json> "geonames" swap at
+    http-get nip json> "geonames" of
     [ \ country from-slots ] map ;
 
 : country-info ( name/f -- countries )
     "/countryInfo" geonames-url
         swap "country" set-query-param
         "JSON" "type" set-query-param
-    http-get nip json> "geonames" swap at
+    http-get nip json> "geonames" of
     [ \ country from-slots ] map ;
 
 :: country-code ( lat lon -- data )
@@ -113,7 +113,7 @@ lng population rank summary thumbnailImg title wikipediaUrl ;
     "/findNearbyWikipediaJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> "geonames" swap at
+    http-get nip json> "geonames" of
     [ \ article from-slots ] map ;
 
 :: wikipedia-search ( query -- articles )
@@ -121,5 +121,5 @@ lng population rank summary thumbnailImg title wikipediaUrl ;
         query "q" set-query-param
         "10" "maxRows" set-query-param
         "JSON" "type" set-query-param
-    http-get nip json> "geonames" swap at
+    http-get nip json> "geonames" of
     [ \ article from-slots ] map ;
