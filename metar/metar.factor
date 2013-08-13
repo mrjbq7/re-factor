@@ -557,3 +557,19 @@ M: station metar. cccc>> metar. ;
 M: string metar.
     [ metar <report> report. ]
     [ drop "%s METAR not found\n" printf ] recover ;
+
+GENERIC: taf ( station -- taf )
+
+M: station taf cccc>> taf ;
+
+M: string taf
+    "http://weather.noaa.gov/pub/data/forecasts/taf/stations/%s.TXT"
+    sprintf http-get nip ;
+
+GENERIC: taf. ( station -- )
+
+M: station taf. cccc>> taf. ;
+
+M: string taf.
+    [ taf print ]
+    [ drop "%s TAF not found\n" printf ] recover ;
