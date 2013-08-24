@@ -77,14 +77,16 @@ ALIAS: br line-break
     [ [ re-escape ] bi@ "-" glue ] { } assoc>map concat
     "([" "])" surround add ;
 
-: tab ( verbexp -- verbexp )
-    "\\t" add ;
+: tab ( verbexp -- verbexp ) "\\t" add ;
 
-: word ( verbexp -- verbexp )
-    "\\w+" add ;
+: word ( verbexp -- verbexp ) "\\w+" add ;
 
-: spaces ( verbexp -- verbexp )
-    "\\s+" add ;
+: space ( verbexp -- verbexp ) "\\s" add ;
+
+: many ( verbexp -- verbexp )
+    [
+        dup ?last "*+" member? [ "+" append ] unless
+    ] change-source ;
 
 : -or- ( verbexp -- verbexp )
     [ "(" append ] change-prefix
@@ -102,3 +104,14 @@ ALIAS: br line-break
 
 : singleline ( verbexp -- verbexp )
     CHAR: m remove-modifier ;
+
+ALIAS: ^( start-of-line
+ALIAS: () then
+ALIAS: ()? maybe
+ALIAS: [] range
+ALIAS: ()* anything
+ALIAS: ^]* anything-but
+ALIAS: ()+ something
+ALIAS: [^]+ something-but
+ALIAS: )|( -or-
+ALIAS: )$ end-of-line
