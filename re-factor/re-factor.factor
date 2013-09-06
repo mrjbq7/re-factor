@@ -1,10 +1,10 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs colors.constants fry html.parser
+USING: ascii assocs colors.constants fry html.parser
 html.parser.printer http.client io io.streams.string io.styles
-json.reader kernel memoize sequences splitting strings urls
-wrap.strings ;
+json.reader kernel memoize sequences sequences.extras splitting
+strings urls wrap.strings ;
 
 IN: re-factor
 
@@ -51,6 +51,8 @@ CONSTANT: html-entities H{
     [
         { "content" "$t" } [ of ] each
         parse-html [ html-text. ] with-string-writer
-        html-unescape string-lines
-        [ 70 wrap-string print ] each
+        html-unescape string-lines [
+            [ blank? not ] cut-when
+            [ write ] [ 70 wrap-string print ] bi*
+        ] each
     ] bi ;
