@@ -7,7 +7,7 @@ json.reader kernel sequences urls utils ;
 IN: domainr
 
 : domainr-url ( query -- url )
-    URL" http://domai.nr/api/json/search"
+    URL" https://domai.nr/api/json/search"
     swap "q" set-query-param ;
 
 TUPLE: result domain host path subdomain availability
