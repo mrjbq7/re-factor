@@ -15,26 +15,38 @@ C: <station> station
 
 <PRIVATE
 
-: string>longitude ( str -- lon )
-    dup R/ \d+-\d+[WE]/ matches? [
-        "-" split1 unclip-last
-        [ [ string>number ] bi@ 60.0 / + ]
+ERROR: bad-location str ;
+
+: parse-location ( str -- n )
+    "-" split dup length {
+        { 3 [ first3 [ string>number ] tri@ 60.0 / + 60.0 / + ] }
+        { 2 [ first2 [ string>number ] bi@ 60.0 / + ] }
+        { 1 [ first string>number ] }
+        [ drop bad-location ]
+    } case ;
+
+: string>longitude ( str -- lon/f )
+    dup R/ \d+-\d+(-\d+(\.\d+)?)?[WE]/ matches? [
+        unclip-last
+        [ parse-location ]
         [ CHAR: W = [ neg ] when ] bi*
     ] [ drop f ] if ;
 
-: string>latitude ( str -- lat )
-    dup R/ \d+-\d+[NS]/ matches? [
-        "-" split1 unclip-last
-        [ [ string>number ] bi@ 60.0 / + ]
+: string>latitude ( str -- lat/f )
+    dup R/ \d+-\d+(-\d+(\.\d+)?)?[NS]/ matches? [
+        unclip-last
+        [ parse-location ]
         [ CHAR: S = [ neg ] when ] bi*
     ] [ drop f ] if ;
+
+: stations-data ( -- seq )
+    URL" http://weather.noaa.gov/data/nsd_cccc.txt"
+    http-get nip CHAR: ; [ string>csv ] with-delimiter ;
 
 PRIVATE>
 
 MEMO: all-stations ( -- seq )
-    URL" http://weather.noaa.gov/data/nsd_cccc.txt"
-    http-get nip CHAR: ; [ string>csv ] with-delimiter
-    [
+    stations-data [
         {
             [ 0 swap nth ]
             [ 3 swap nth ]
@@ -154,29 +166,34 @@ CONSTANT: compass-directions H{
 : direction>compass ( direction -- compass )
     22.5 round-to-step compass-directions at ;
 
+: parse-compass ( str -- str' )
+    string>number [ direction>compass ] keep "%s (%s°)" sprintf ;
+
 : parse-direction ( str -- str' )
     dup "VRB" = [ drop "variable" ] [
-        string>number [ direction>compass ] keep
-        "from %s (%s°)" sprintf
+        parse-compass "from %s" sprintf
     ] if ;
 
 : kt>mph ( kt -- mph ) 1.15077945 * ;
 
 : mph>kt ( mph -- kt ) 1.15077945 / ;
 
+: parse-speed ( str -- str'/f )
+    string>number [
+        dup kt>mph "%s knots (%.1f mph)" sprintf
+    ] [ f ] if* ;
+
 : parse-wind ( str -- str' )
     dup "00000KT" = [ drop "calm" ] [
         3 cut "KT" ?tail drop "G" split1
-        [ parse-direction ]
-        [ string>number dup kt>mph ]
-        [ string>number [ dup kt>mph ] [ f f ] if* ] tri* dup
-        [ "%s at %s knots (%.1f mph) with gusts to %s knots (%.1f mph) " sprintf ]
-        [ 2drop "%s at %s knots (%.1f mph)" sprintf ] if
+        [ parse-direction ] [ parse-speed ] [ parse-speed ] tri*
+        [ "%s at %s with gusts to %s " sprintf ]
+        [ "%s at %s" sprintf ] if*
     ] if ;
 
 : parse-wind-variable ( str -- str' )
-    "V" split1 [ string>number [ direction>compass ] keep ] bi@
-    ", variable from %s (%s°) to %s (%s°)" sprintf ;
+    "V" split1 [ parse-compass ] bi@
+    ", variable from %s to %s" sprintf ;
 
 : parse-visibility ( str -- str' )
     dup first {
@@ -214,14 +231,17 @@ CONSTANT: compass-directions H{
     [ (parse-weather) ]
     [ [ " in the vicinity" append ] when ] bi* ;
 
+: parse-altitude ( str -- str' )
+    string>number " at %s00 ft" sprintf ;
+
 : parse-sky-condition ( str -- str' )
-    dup glossary at [ nip ] [
+    glossary ?at [
         3 cut 3 cut
         [ glossary at ]
-        [ string>number " at %s00 ft" sprintf ]
+        [ parse-altitude ]
         [ glossary at [ " (%s)" sprintf ] [ f ] if* ]
         tri* 3append
-    ] if* ;
+    ] unless ;
 
 : F>C ( F -- C ) 32 - 5/9 * ;
 
@@ -343,58 +363,50 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
     "4/" ?head drop string>number "snow depth %s inches" sprintf ;
 
 CONSTANT: low-clouds H{
-    { CHAR: 1 "Cumulus (fair weather)" }
-    { CHAR: 2 "Cumulus (towering)" }
-    { CHAR: 3 "Cumulonimbus (no anvil)" }
-    { CHAR: 4 "Stratocumulus (from Cumulus)" }
-    { CHAR: 5 "Stratocumuls (not Cumulus)" }
-    { CHAR: 6 "Stratus or Fractostratus (fair)" }
-    { CHAR: 7 "Fractocumulus / Fractostratus (bad weather)" }
-    { CHAR: 8 "Cumulus and Stratocumulus" }
-    { CHAR: 9 "Cumulonimbus (thunderstorm)" }
-    { CHAR: / "not valid" }
+    { 1 "cumulus (fair weather)" }
+    { 2 "cumulus (towering)" }
+    { 3 "cumulonimbus (no anvil)" }
+    { 4 "stratocumulus (from cumulus)" }
+    { 5 "stratocumuls (not cumulus)" }
+    { 6 "stratus or Fractostratus (fair)" }
+    { 7 "fractocumulus / fractostratus (bad weather)" }
+    { 8 "cumulus and stratocumulus" }
+    { 9 "cumulonimbus (thunderstorm)" }
+    { -1 "not valid" }
 }
 
 CONSTANT: mid-clouds H{
-    { CHAR: 1 "Altostratus (thin)" }
-    { CHAR: 2 "Altostratus (thick)" }
-    { CHAR: 3 "Altocumulus (thin)" }
-    { CHAR: 4 "Altocumulus (patchy)" }
-    { CHAR: 5 "Altocumulus (thickening)" }
-    { CHAR: 6 "Altocumulus (from Cumulus)" }
-    { CHAR: 7 "Altocumulus (with Altocumulus, Altostratus, Nimbostratus)" }
-    { CHAR: 8 "Altocumulus (with turrets)" }
-    { CHAR: 9 "Altocumulus (chaotic)" }
-    { CHAR: / "above overcast" }
+    { 1 "altostratus (thin)" }
+    { 2 "altostratus (thick)" }
+    { 3 "altocumulus (thin)" }
+    { 4 "altocumulus (patchy)" }
+    { 5 "altocumulus (thickening)" }
+    { 6 "altocumulus (from cumulus)" }
+    { 7 "altocumulus (with altocumulus, altostratus, nimbostratus)" }
+    { 8 "altocumulus (with turrets)" }
+    { 9 "altocumulus (chaotic)" }
+    { -1 "above overcast" }
 }
 
 CONSTANT: high-clouds H{
-    { CHAR: 1 "Cirrus (filaments)" }
-    { CHAR: 2 "Cirrus (dense)" }
-    { CHAR: 3 "Cirrus (often with Cumulonimbus)" }
-    { CHAR: 4 "Cirrus (thickening)" }
-    { CHAR: 5 "Cirrus / Cirrostratus (low in sky)" }
-    { CHAR: 6 "Cirrus / Cirrostratus (hi in sky)" }
-    { CHAR: 7 "Cirrostratus (entire sky)" }
-    { CHAR: 8 "Cirrostratus (partial)" }
-    { CHAR: 9 "Cirrocumulus or Cirrocumulus / Cirrus / Cirrostratus" }
-    { CHAR: / "above overcast" }
+    { 1 "cirrus (filaments)" }
+    { 2 "cirrus (dense)" }
+    { 3 "cirrus (often with cumulonimbus)" }
+    { 4 "cirrus (thickening)" }
+    { 5 "cirrus / cirrostratus (low in sky)" }
+    { 6 "cirrus / cirrostratus (hi in sky)" }
+    { 7 "cirrostratus (entire sky)" }
+    { 8 "cirrostratus (partial)" }
+    { 9 "cirrocumulus or cirrocumulus / cirrus / cirrostratus" }
+    { -1 "above overcast" }
 }
 
 : parse-cloud-cover ( str -- str' )
-    "8/" ?head drop first3 [
-        dup CHAR: 0 = [ drop f ] [
-            low-clouds at "low clouds are %s" sprintf
-        ] if
-    ] [
-        dup CHAR: 0 = [ drop f ] [
-            mid-clouds at "middle clouds are %s" sprintf
-        ] if
-    ] [
-        dup CHAR: 0 = [ drop f ] [
-            high-clouds at "high clouds are %s" sprintf
-        ] if
-    ] tri* 3array " " join ;
+    "8/" ?head drop first3 [ CHAR: 0 - ] tri@
+    [ [ f ] [ low-clouds at "low clouds are %s" sprintf ] if-zero ]
+    [ [ f ] [ mid-clouds at "middle clouds are %s" sprintf ] if-zero ]
+    [ [ f ] [ high-clouds at "high clouds are %s" sprintf ] if-zero ]
+    tri* 3array " " join ;
 
 : parse-inches ( str -- str' )
     dup [ CHAR: / = ] all? [ drop "unknown" ] [
