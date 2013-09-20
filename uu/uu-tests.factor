@@ -15,3 +15,7 @@ end
 
 { t } [ plain string>uu encoded = ] unit-test
 { t } [ encoded uu>string plain = ] unit-test
+
+{ "Cat" } [
+    "begin 644 cat.txt\n#0V%T\n`\nend\n" uu>string
+] unit-test

@@ -47,12 +47,13 @@ ERROR: illegal-character ch ;
     0 :> char!
     0 :> bits!
 
-    seq unclip-slice CHAR: \s - :> binlen!
+    seq unclip-slice dup CHAR: \s =
+    [ drop 0 ] [ CHAR: \s - ] if :> len!
 
     [
-        [ binlen 0 > ] [
+        [ dup empty? not len 0 > and ] [
             dup empty? [ 0 ] [ unclip-slice ] if
-            dup "\r\n" member? [
+            dup "\r\n\0" member? [
                 drop 0
             ] [
                 check-illegal-character
@@ -67,7 +68,7 @@ ERROR: illegal-character ch ;
                 [ char swap neg shift 0xff bitand , ]
                 [ on-bits char bitand char! ]
                 [ bits! ] tri
-                binlen 1 - binlen!
+                len 1 - len!
             ] when
         ] while drop
 
