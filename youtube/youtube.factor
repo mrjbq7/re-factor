@@ -84,17 +84,18 @@ TUPLE: video-format fallback_host itag quality sig type url ;
 : video-download-url ( video-format -- url )
     [ url>> ] [ sig>> ] bi "&signature=" glue ;
 
-: safe-filename ( filename -- filename' )
+: sanitize ( title -- title' )
     [ 0 31 between? not ] filter
     "\"#$%'*,./:;<>?^|~\\" [ member? not ] curry filter
     200 short head ;
+
+: http-download ( url filename -- )
+    binary [ [ write ] with-http-get drop ] with-file-writer ;
 
 : download-video ( video-id -- )
     get-video-info [
         video-formats [ type>> "video/mp4" head? ] find nip
         video-download-url
     ] [
-        title>> safe-filename ".mp4" append binary [
-            [ write ] with-http-get drop
-        ] with-file-writer
+        title>> sanitize ".mp4" append http-download
     ] bi ;
