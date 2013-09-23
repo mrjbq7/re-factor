@@ -86,7 +86,7 @@ TUPLE: video-format fallback_host itag quality sig type url ;
 
 : sanitize ( title -- title' )
     [ 0 31 between? not ] filter
-    "\"#$%'*,./:;<>?^|~\\" [ member? not ] curry filter
+    [ "\"#$%'*,./:;<>?^|~\\" member? not ] filter
     200 short head ;
 
 : http-download ( url filename -- )
