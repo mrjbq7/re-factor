@@ -62,10 +62,10 @@ length_seconds loeid max_dynamic_allocation_ad_tag_length
 midroll_freqcap mpu mpvid muted no_afv_instream no_get_video_log
 oid plid pltype ptchn ptk pyv_in_related_cafe_experiment_id rvs
 sendtmp sffb share_icons shortform status storyboard_spec
-supported_without_ads sw thumbnail_url timestamp title tmi token
-track_embed trueview url_encoded_fmt_stream_map
-use_cipher_signature video_id video_verticals view_count vq
-watermark yt_pt ;
+supported_without_ads sw tag_for_child_directed thumbnail_url
+timestamp title tmi token track_embed trueview
+url_encoded_fmt_stream_map use_cipher_signature video_id
+video_verticals view_count vq watermark yt_pt ;
 
 TUPLE: video-format fallback_host itag quality sig type url ;
 
@@ -89,13 +89,10 @@ TUPLE: video-format fallback_host itag quality sig type url ;
     [ "\"#$%'*,./:;<>?^|~\\" member? not ] filter
     200 short head ;
 
-: http-download ( url filename -- )
-    binary [ [ write ] with-http-get drop ] with-file-writer ;
-
 : download-video ( video-id -- )
     get-video-info [
         video-formats [ type>> "video/mp4" head? ] find nip
         video-download-url
     ] [
-        title>> sanitize ".mp4" append http-download
+        title>> sanitize ".mp4" append download-to
     ] bi ;
