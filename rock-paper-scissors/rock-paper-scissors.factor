@@ -1,5 +1,5 @@
-USING: combinators formatting io kernel multi-methods random ;
-FROM: multi-methods => GENERIC: ;
+USING: combinators formatting io kernel random ;
+FROM: multi-methods => GENERIC: METHOD: ;
 IN: rock-paper-scissors
 
 SINGLETONS: rock paper scissors ;
