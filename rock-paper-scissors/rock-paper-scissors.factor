@@ -4,16 +4,16 @@ IN: rock-paper-scissors
 
 SINGLETONS: rock paper scissors ;
 
-GENERIC: win? ( obj1 obj2 -- ? )
+GENERIC: beats? ( obj1 obj2 -- ? )
 
-METHOD: win? { paper scissors } 2drop t ;
-METHOD: win? { scissors rock } 2drop t ;
-METHOD: win? { rock paper } 2drop t ;
-METHOD: win? { object object } 2drop f ;
+METHOD: beats? { paper scissors } 2drop t ;
+METHOD: beats? { scissors rock } 2drop t ;
+METHOD: beats? { rock paper } 2drop t ;
+METHOD: beats? { object object } 2drop f ;
 
 : play. ( obj1 obj2 -- )
     {
-        { [ 2dup win? ] [ "WIN" ] }
+        { [ 2dup beats? ] [ "WIN" ] }
         { [ 2dup = ] [ "TIE" ] }
         [ "LOSE" ]
     } cond "%s vs. %s: %s\n" printf ;
