@@ -6,9 +6,9 @@ SINGLETONS: rock paper scissors ;
 
 GENERIC: beats? ( obj1 obj2 -- ? )
 
-METHOD: beats? { paper scissors } 2drop t ;
-METHOD: beats? { scissors rock } 2drop t ;
-METHOD: beats? { rock paper } 2drop t ;
+METHOD: beats? { scissors paper } 2drop t ;
+METHOD: beats? { rock scissors } 2drop t ;
+METHOD: beats? { paper rock } 2drop t ;
 METHOD: beats? { object object } 2drop f ;
 
 : play. ( obj1 obj2 -- )
