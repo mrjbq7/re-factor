@@ -14,7 +14,7 @@ IN: text-summary
     R/ (?<=[.!?]|[.!?][\'"])\s+/ re-split ;
 
 : content>paragraphs ( content -- paragraphs )
-    "\n\n" split-subseq ;
+    "\n\n" split-subseq [ content>sentences ] map ;
 
 : sentence-score ( sentence1 sentence2 -- n )
     [ [ blank? ] split-when ] bi@
@@ -25,9 +25,8 @@ IN: text-summary
 : sentence-key ( sentence -- key )
     "" like R/ \W+/ "" re-replace ;
 
-: sentence-ranks ( content -- ranks )
-    content>sentences 2 all-combinations
-    H{ } clone [
+: sentence-ranks ( paragraphs -- ranks )
+    concat 2 all-combinations H{ } clone [
         dup '[
             [ sentence-score ] 2keep
             [ nip sentence-key _ at+ ]
@@ -36,15 +35,14 @@ IN: text-summary
     ] keep ;
 
 : best-sentence ( paragraph ranks -- sentence )
-    [ content>sentences ] dip
     over length 2 < [ 2drop "" ] [
         '[ sentence-key _ at 0 or ] supremum-by
     ] if ;
 
 PRIVATE>
 
-: summary ( content ranks -- summary )
-    [ content>paragraphs ] dip
+: summary ( content -- summary )
+    content>paragraphs dup sentence-ranks
     '[ _ best-sentence ] map harvest
     [ "" like 72 wrap-string ] map "\n\n" join ;
 
@@ -146,4 +144,4 @@ Image credit: Thinkstock
 """
 
 : run-example ( -- string )
-    example-content dup sentence-ranks summary ;
+    example-content summary ;
