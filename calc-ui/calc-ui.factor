@@ -10,18 +10,16 @@ FROM: models => change-model ;
 
 IN: calc-ui
 
-TUPLE: calculator < model x y op valid ;
+TUPLE: calculator < model x y op valid? ;
 
 : <calculator> ( -- model )
     "0" calculator new-model 0 >>x ;
 
 : reset ( model -- )
-    0 >>x f >>y f >>op f >>valid "0" swap set-model ;
+    0 >>x f >>y f >>op f >>valid? "0" swap set-model ;
 
 : display ( n -- str )
-    >float number>string dup ".0" tail? [
-        dup length 2 - head
-    ] when ;
+    >float number>string dup ".0" tail? [ 2 head* ] when ;
 
 : set-x ( model -- model )
     dup value>> string>number >>x ;
@@ -30,31 +28,31 @@ TUPLE: calculator < model x y op valid ;
     dup value>> string>number >>y ;
 
 : set-op ( model quot: ( x y -- z ) -- )
-    >>op set-x f >>y f >>valid drop ;
+    >>op set-x f >>y f >>valid? drop ;
 
 : (solve) ( model -- )
     dup [ x>> ] [ y>> ] [ op>> ] tri call( x y -- z )
-    [ >>x ] keep display swap set-model ;
+    [ >>x ] [ display ] bi swap set-model ;
 
 : solve ( model -- )
     dup op>> [ dup y>> [ set-y ] unless (solve) ] [ drop ] if ;
 
 : negate ( model -- )
-    dup valid>> [
+    dup valid?>> [
         dup value>> "-" head?
         [ [ rest ] change-model ]
         [ [ "-" prepend ] change-model ] if
     ] [ drop ] if ;
 
 : decimal ( model -- )
-    dup valid>>
+    dup valid?>>
     [ [ dup "." subseq? [ "." append ] unless ] change-model ]
-    [ t >>valid "0." swap set-model ] if ;
+    [ t >>valid? "0." swap set-model ] if ;
 
 : digit ( n model -- )
-    dup valid>>
-    [ swap [ append ] curry change-model ]
-    [ t >>valid set-model ] if ;
+    dup valid?>>
+    [ [ prepend ] with change-model ]
+    [ t >>valid? set-model ] if ;
 
 : [C] ( calc -- button )
     "C" swap '[ drop _ reset ] <border-button> ;
