@@ -1,9 +1,9 @@
 ! Copyright (C) 2009 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii assocs combinators.short-circuit formatting fry
-kernel io io.directories.search io.encodings.ascii io.files
-sequences sorting splitting ;
+USING: accessors ascii assocs combinators.short-circuit
+formatting fry io io.directories.search io.encodings.ascii
+io.files io.files.info kernel sequences sorting splitting ;
 
 IN: wordcount
 
@@ -14,18 +14,20 @@ IN: wordcount
     [ \w? not ] split-when harvest ;
 
 : count-words ( path -- assoc )
-    f recursive-directory-files H{ } clone [
+    f H{ } clone [
         '[
-            ascii file-contents >lower
-            split-words [ _ inc-at ] each
-        ] each
+            dup regular-file? [
+                name>> ascii file-contents >lower
+                split-words [ _ inc-at ] each
+            ] [ drop ] if
+        ] each-directory-entry
     ] keep ;
 
-: print-words ( seq -- )
-    [ first2 "%s\t%d\n" printf ] each ;
+: print-words ( alist -- )
+    [ "%s\t%d\n" printf ] assoc-each ;
 
 : write-count ( assoc -- )
-    >alist [
+    [
         "Writing counts in decreasing order" write nl
         [ "/tmp/counts-decreasing-factor" ascii ] dip
         '[ _ sort-values reverse print-words ] with-file-writer
@@ -37,5 +39,3 @@ IN: wordcount
 
 ! http://blogs.sourceallies.com/2009/12/word-counts-example-in-ruby-and-scala/
 ! http://www.bestinclass.dk/index.php/2009/12/clojure-vs-ruby-scala-transient-newsgroups/
-
-
