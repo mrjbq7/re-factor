@@ -1,50 +1,56 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs fry kernel math math.combinatorics regexp
-sequences sets splitting strings unicode.categories
-wrap.strings ;
+USING: assocs fry io io.streams.string kernel math
+math.combinatorics regexp sequences sets splitting strings
+unicode.categories wikipedia wrap.strings ;
 
 IN: text-summary
 
 <PRIVATE
 
-: content>sentences ( content -- sentences )
-    "" like string-lines harvest " " join
+: split-words ( sentence -- words )
+    [ blank? ] split-when harvest ;
+
+: split-sentences ( content -- sentences )
+    split-words " " join
     R/ (?<=[.!?]|[.!?][\'"])\s+/ re-split ;
 
-: content>paragraphs ( content -- paragraphs )
-    "\n\n" split-subseq [ content>sentences ] map ;
+: split-paragraphs ( content -- paragraphs )
+    "\n\n" split-subseq [ split-sentences ] map ;
 
 : sentence-score ( sentence1 sentence2 -- n )
-    [ [ blank? ] split-when ] bi@
+    [ split-words ] bi@
     2dup [ length ] bi@ + [ 2drop 0 ] [
         [ intersect length ] [ 2 / ] bi* /
     ] if-zero ;
-
-: sentence-key ( sentence -- key )
-    "" like R/ \W+/ "" re-replace ;
 
 : sentence-ranks ( paragraphs -- ranks )
     concat 2 all-combinations H{ } clone [
         dup '[
             [ sentence-score ] 2keep
-            [ nip sentence-key _ at+ ]
-            [ drop sentence-key _ at+ ] 3bi
+            [ nip _ at+ ]
+            [ drop _ at+ ] 3bi
         ] assoc-each
     ] keep ;
 
 : best-sentence ( paragraph ranks -- sentence )
     over length 2 < [ 2drop "" ] [
-        '[ sentence-key _ at 0 or ] supremum-by
+        '[ _ at 0 or ] supremum-by
     ] if ;
 
 PRIVATE>
 
 : summary ( content -- summary )
-    content>paragraphs dup sentence-ranks
-    '[ _ best-sentence ] map harvest
-    [ "" like 72 wrap-string ] map "\n\n" join ;
+    split-paragraphs dup sentence-ranks
+    '[ _ best-sentence ] map harvest ;
+
+: summary. ( content -- )
+    summary [ "" like 72 wrap-string print nl ] each ;
+
+: article-summary. ( name -- )
+    [ article. ] with-string-writer
+    R/ \[\d+\]/ "" re-replace summary. ;
 
 CONSTANT: example-content """
 Lior Degani, the Co-Founder and head of Marketing of Swayy,
@@ -143,5 +149,5 @@ secret URL and enter the promotion code thenextweb . The first
 Image credit: Thinkstock
 """
 
-: run-example ( -- string )
-    example-content summary ;
+: run-example ( -- )
+    example-content summary. ;
