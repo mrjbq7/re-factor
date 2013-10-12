@@ -23,7 +23,7 @@ TUPLE: commit added author authored_date committed_date
 committer id message modified parents tree url ;
 
 : json-data ( url root -- data )
-    [ API-URL prepend http-get nip json> ] [ of ] bi* ;
+    [ API-URL prepend http-get* json> ] [ of ] bi* ;
 
 PRIVATE>
 

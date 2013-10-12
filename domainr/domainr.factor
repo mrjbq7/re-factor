@@ -14,7 +14,7 @@ TUPLE: result domain host path subdomain availability
 register_url ;
 
 : domainr ( query -- data )
-    domainr-url http-get nip json> "results" of
+    domainr-url http-get* json> "results" of
     [ result from-slots ] map ;
 
 : domainr. ( query -- )

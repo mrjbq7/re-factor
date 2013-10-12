@@ -11,7 +11,7 @@ hash id ims name phoneNumbers photos preferredUsername
 profileBackground profileUrl requestHash thumbnailUrl urls ;
 
 : gravatar-info ( gravatar-id -- info )
-    "http://gravatar.com/%s.json" sprintf http-get nip
+    "http://gravatar.com/%s.json" sprintf http-get*
     >string json> "entry" of first info from-slots ;
 
 : gravatar. ( gravatar-id -- )

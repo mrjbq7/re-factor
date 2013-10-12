@@ -69,7 +69,7 @@ CONSTANT: languages H{
         text "q" set-query-param ;
 
 : translate ( text source target -- text' )
-    translate-url http-get nip json>
+    translate-url http-get* json>
     { "data" "translations" } deep-at
     first "translatedText" of ;
 

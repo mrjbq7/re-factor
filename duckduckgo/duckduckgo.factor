@@ -78,4 +78,4 @@ SYMBOLS: +article+ +disambiguation+ +category+ +name+
 PRIVATE>
 
 : search ( query -- results )
-    search-url http-get nip json> >results ;
+    search-url http-get* json> >results ;

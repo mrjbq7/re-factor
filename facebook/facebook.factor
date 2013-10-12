@@ -17,7 +17,7 @@ TUPLE: search results next-url prev-url ;
 <PRIVATE
 
 : http-search ( url -- search )
-    http-get nip json> {
+    http-get* json> {
         [ "data" of [ result from-slots ] map ]
         [ { "paging" "next" } deep-at ]
         [ { "paging" "previous" } deep-at ]
@@ -57,4 +57,4 @@ PRIVATE>
     http-image. ;
 
 : id-lookup ( id -- data )
-    "http://graph.facebook.com/" prepend http-get nip json> ;
+    "http://graph.facebook.com/" prepend http-get* json> ;

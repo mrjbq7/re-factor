@@ -15,7 +15,7 @@ IN: re-factor
     "feeds/posts/default?alt=json&max-results=200" re-factor-url ;
 
 MEMO: all-posts ( -- posts )
-    posts-url http-get nip json> { "feed" "entry" } [ of ] each ;
+    posts-url http-get* json> { "feed" "entry" } [ of ] each ;
 
 CONSTANT: post-style H{
     { foreground COLOR: blue }

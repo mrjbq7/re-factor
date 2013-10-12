@@ -18,7 +18,7 @@ PRIVATE>
     "/postalCodeLookupJSON" geonames-url
         code "postalcode" set-query-param
         country "country" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 TUPLE: country areaInSqKm bBoxEast bBoxNorth bBoxSouth bBoxWest
 capital continent countryCode countryName currencyCode fipsCode
@@ -27,14 +27,14 @@ minPostalCode numPostalCodes population ;
 
 : postal-code-countries ( -- countries )
     "/postalCodeCountryInfoJSON" geonames-url
-    http-get nip json> "geonames" of
+    http-get* json> "geonames" of
     [ \ country from-slots ] map ;
 
 : country-info ( name/f -- countries )
     "/countryInfo" geonames-url
         swap "country" set-query-param
         "JSON" "type" set-query-param
-    http-get nip json> "geonames" of
+    http-get* json> "geonames" of
     [ \ country from-slots ] map ;
 
 :: country-code ( lat lon -- data )
@@ -42,13 +42,13 @@ minPostalCode numPostalCodes population ;
         lat "lat" set-query-param
         lon "lng" set-query-param
         "JSON" "type" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: country-subdivision ( lat lon -- data )
     "/countrySubdivisionJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: cities ( north south east west -- data )
     "/citiesJSON" geonames-url
@@ -56,55 +56,55 @@ minPostalCode numPostalCodes population ;
         south "south" set-query-param
         east "east" set-query-param
         west "west" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: timezone ( lat lon -- data )
     "/timezone" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: ocean ( lat lon -- data )
     "/oceanJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: neighborhood ( lat lon -- data )
     "/neighbourhoodJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: elevation-srtm3 ( lat lon -- data )
     "/srtm3JSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: elevation-astergdem ( lat lon -- data )
     "/astergdemJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: elevation-gtopo30 ( lat lon -- data )
     "/gtopo30JSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: find-nearby ( lat lon -- data )
     "/findNearbyJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 :: find-nearby-place-name ( lat lon -- data )
     "/findNearbyPlaceNameJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> ;
+    http-get* json> ;
 
 TUPLE: article countryCode distance elevation feature lang lat
 lng population rank summary thumbnailImg title wikipediaUrl ;
@@ -113,7 +113,7 @@ lng population rank summary thumbnailImg title wikipediaUrl ;
     "/findNearbyWikipediaJSON" geonames-url
         lat "lat" set-query-param
         lon "lng" set-query-param
-    http-get nip json> "geonames" of
+    http-get* json> "geonames" of
     [ \ article from-slots ] map ;
 
 :: wikipedia-search ( query -- articles )
@@ -121,5 +121,5 @@ lng population rank summary thumbnailImg title wikipediaUrl ;
         query "q" set-query-param
         "10" "maxRows" set-query-param
         "JSON" "type" set-query-param
-    http-get nip json> "geonames" of
+    http-get* json> "geonames" of
     [ \ article from-slots ] map ;
