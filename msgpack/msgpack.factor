@@ -20,7 +20,7 @@ DEFER: read-msgpack
 
 PRIVATE>
 
-SYMBOL: +msgpack-nil+
+SINGLETON: +msgpack-nil+
 
 ERROR: unknown-format n ;
 
@@ -69,23 +69,29 @@ ERROR: cannot-convert obj ;
 
 GENERIC: write-msgpack ( obj -- )
 
+M: +msgpack-nil+ write-msgpack drop 0xc0 write1 ;
+
+M: f write-msgpack drop 0xc2 write1 ;
+
+M: t write-msgpack drop 0xc3 write1 ;
+
 M: integer write-msgpack
     dup 0 >= [
         {
             { [ dup 0 0x7f between? ] [ write1 ] }
-            { [ dup 0xff <= ] [ 0xcc write 1 >be write ] }
-            { [ dup 0xffff <= ] [ 0xcd write 2 >be write ] }
-            { [ dup 0xffffffff <= ] [ 0xce write 4 >be write ] }
-            { [ dup 0xffffffffffffffff <= ] [ 0xcf write 8 >be write ] }
+            { [ dup 0xff <= ] [ 0xcc write1 1 >be write ] }
+            { [ dup 0xffff <= ] [ 0xcd write1 2 >be write ] }
+            { [ dup 0xffffffff <= ] [ 0xce write1 4 >be write ] }
+            { [ dup 0xffffffffffffffff <= ] [ 0xcf write1 8 >be write ] }
             [ cannot-convert ]
         } cond
     ] [
         {
             { [ dup -31 -1 between? ] [ 1 >be write ] }
-            { [ dup -0x80 >= ] [ 0xd0 write 1 >be write ] }
-            { [ dup -0x8000 >= ] [ 0xd1 write 2 >be write ] }
-            { [ dup -0x80000000 >= ] [ 0xd2 write 4 >be write ] }
-            { [ dup -0x8000000000000000 >= ] [ 0xd3 write 8 >be write ] }
+            { [ dup -0x80 >= ] [ 0xd0 write1 1 >be write ] }
+            { [ dup -0x8000 >= ] [ 0xd1 write1 2 >be write ] }
+            { [ dup -0x80000000 >= ] [ 0xd2 write1 4 >be write ] }
+            { [ dup -0x8000000000000000 >= ] [ 0xd3 write1 8 >be write ] }
             [ cannot-convert ]
         } cond
     ] if ;

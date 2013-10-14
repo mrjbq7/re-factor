@@ -1,4 +1,4 @@
-USING: io.streams.string sequences tools.test ;
+USING: io.streams.string kernel math sequences tools.test ;
 
 IN: msgpack
 
@@ -34,3 +34,22 @@ IN: msgpack
         "\x82\x01\xa5hello\x02\xa7goodbye"
     } [ msgpack> ] map
 ] unit-test
+
+{ t } [
+    {
+        +msgpack-nil+
+        f
+        t
+        -1
+        -31
+        128
+        -1152921504606846976
+        1.5
+        1.23434536
+        "hello"
+        { 1 1234 123456789 }
+        H{ { 1 "hello" } { 2 "goodbye" } }
+    } [ dup >msgpack msgpack> = ] all?
+] unit-test
+
+[ 64 2^ >msgpack ] [ cannot-convert? ] must-fail-with
