@@ -78,7 +78,7 @@ M: t write-msgpack drop 0xc3 write1 ;
 M: integer write-msgpack
     dup 0 >= [
         {
-            { [ dup 0 0x7f between? ] [ write1 ] }
+            { [ dup 0x7f <= ] [ write1 ] }
             { [ dup 0xff <= ] [ 0xcc write1 1 >be write ] }
             { [ dup 0xffff <= ] [ 0xcd write1 2 >be write ] }
             { [ dup 0xffffffff <= ] [ 0xce write1 4 >be write ] }
@@ -87,7 +87,7 @@ M: integer write-msgpack
         } cond
     ] [
         {
-            { [ dup -31 -1 between? ] [ 1 >be write ] }
+            { [ dup -0x1f >= ] [ 1 >be write ] }
             { [ dup -0x80 >= ] [ 0xd0 write1 1 >be write ] }
             { [ dup -0x8000 >= ] [ 0xd1 write1 2 >be write ] }
             { [ dup -0x80000000 >= ] [ 0xd2 write1 4 >be write ] }
