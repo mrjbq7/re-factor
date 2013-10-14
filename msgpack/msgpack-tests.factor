@@ -15,7 +15,7 @@ IN: msgpack
         1.23434536
         "hello"
         { 1 1234 123456789 }
-        { { 1 "hello" } { 2 "goodbye" } }
+        H{ { 1 "hello" } { 2 "goodbye" } }
     }
 } [
 
@@ -32,5 +32,5 @@ IN: msgpack
         "\xa5hello"
         "\x93\x01\xcd\x04\xd2\xce\x07[\xcd\x15"
         "\x82\x01\xa5hello\x02\xa7goodbye"
-    } [ [ read-msgpack ] with-string-reader ] map
+    } [ msgpack> ] map
 ] unit-test

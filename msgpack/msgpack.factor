@@ -1,6 +1,7 @@
 
-USING: arrays combinators grouping io io.binary kernel math
-math.bitwise math.order sequences ;
+USING: arrays assocs byte-arrays byte-vectors combinators
+grouping hashtables io io.binary io.streams.string kernel math
+math.bitwise math.order sbufs sequences strings ;
 
 IN: msgpack
 
@@ -12,7 +13,7 @@ DEFER: read-msgpack
     [ read-msgpack ] replicate ;
 
 : read-map ( n -- obj )
-    2 * read-array 2 group ;
+    2 * read-array 2 group >hashtable ;
 
 : read-ext ( n -- obj )
     read be> [ 1 read signed-be> ] dip read 2array ;
@@ -63,3 +64,98 @@ ERROR: unknown-format n ;
         { [ dup 0xc9 = ] [ drop 4 read be> read-ext ] }
         [ unknown-format ]
     } cond ;
+
+ERROR: cannot-convert obj ;
+
+GENERIC: write-msgpack ( obj -- )
+
+M: integer write-msgpack
+    dup 0 >= [
+        {
+            { [ dup 0 0x7f between? ] [ write1 ] }
+            { [ dup 0xff <= ] [ 0xcc write 1 >be write ] }
+            { [ dup 0xffff <= ] [ 0xcd write 2 >be write ] }
+            { [ dup 0xffffffff <= ] [ 0xce write 4 >be write ] }
+            { [ dup 0xffffffffffffffff <= ] [ 0xcf write 8 >be write ] }
+            [ cannot-convert ]
+        } cond
+    ] [
+        {
+            { [ dup -31 -1 between? ] [ 1 >be write ] }
+            { [ dup -0x80 >= ] [ 0xd0 write 1 >be write ] }
+            { [ dup -0x8000 >= ] [ 0xd1 write 2 >be write ] }
+            { [ dup -0x80000000 >= ] [ 0xd2 write 4 >be write ] }
+            { [ dup -0x8000000000000000 >= ] [ 0xd3 write 8 >be write ] }
+            [ cannot-convert ]
+        } cond
+    ] if ;
+
+M: float write-msgpack
+    0xcb write1 double>bits 8 >be write ;
+
+<PRIVATE
+
+: write-string ( obj -- )
+    dup length {
+        { [ dup 0x1f <= ] [ 0xa0 bitor write1 write ] }
+        { [ dup 0xff <= ] [ 0xd9 write1 write1 write ] }
+        { [ dup 0xffff <= ] [ 0xda write1 2 >be write write ] }
+        { [ dup 0xffffffff <= ] [ 0xdb write1 4 >be write write ] }
+        [ cannot-convert ]
+    } cond ;
+
+PRIVATE>
+
+M: string write-msgpack write-string ;
+M: sbuf write-msgpack write-string ;
+
+<PRIVATE
+
+: write-bytes ( obj -- )
+    dup length {
+        { [ dup 0xff <= ] [ 0xc4 write1 write1 write ] }
+        { [ dup 0xffff <= ] [ 0xc5 write1 2 >be write write ] }
+        { [ dup 0xffffffff <= ] [ 0xc6 write1 4 >be write write ] }
+        [ cannot-convert ]
+    } cond ;
+
+PRIVATE>
+
+M: byte-array write-msgpack write-bytes ;
+M: byte-vector write-msgpack write-bytes ;
+
+<PRIVATE
+
+: write-array ( obj -- )
+    [ write-msgpack ] each ; inline
+
+PRIVATE>
+
+M: sequence write-msgpack
+    dup length {
+        { [ dup 0xf <= ] [ 0x90 bitor write1 write-array ] }
+        { [ dup 0xffff <= ] [ 0xdc write1 2 >be write write-array ] }
+        { [ dup 0xffffffff <= ] [ 0xdd write1 4 >be write write-array ] }
+        [ cannot-convert ]
+    } cond ;
+
+<PRIVATE
+
+: write-map ( obj -- )
+    [ [ write-msgpack ] bi@ ] assoc-each ; inline
+
+PRIVATE>
+
+M: assoc write-msgpack
+    dup assoc-size {
+        { [ dup 0xf <= ] [ 0x80 bitor write1 write-map ] }
+        { [ dup 0xffff <= ] [ 0xde write1 2 >be write write-map ] }
+        { [ dup 0xffffffff <= ] [ 0xdf write1 4 >be write write-map ] }
+        [ cannot-convert ]
+    } cond ;
+
+: msgpack> ( string -- obj )
+    [ read-msgpack ] with-string-reader ;
+
+: >msgpack ( obj -- string )
+    [ write-msgpack ] with-string-writer ;
