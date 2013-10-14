@@ -69,6 +69,8 @@ ERROR: cannot-convert obj ;
 
 GENERIC: write-msgpack ( obj -- )
 
+<PRIVATE
+
 M: +msgpack-nil+ write-msgpack drop 0xc0 write1 ;
 
 M: f write-msgpack drop 0xc2 write1 ;
@@ -99,8 +101,6 @@ M: integer write-msgpack
 M: float write-msgpack
     0xcb write1 double>bits 8 >be write ;
 
-<PRIVATE
-
 : write-string ( obj -- )
     dup length {
         { [ dup 0x1f <= ] [ 0xa0 bitor write1 write ] }
@@ -110,12 +110,8 @@ M: float write-msgpack
         [ cannot-convert ]
     } cond ;
 
-PRIVATE>
-
 M: string write-msgpack write-string ;
 M: sbuf write-msgpack write-string ;
-
-<PRIVATE
 
 : write-bytes ( obj -- )
     dup length {
@@ -125,17 +121,14 @@ M: sbuf write-msgpack write-string ;
         [ cannot-convert ]
     } cond ;
 
-PRIVATE>
-
 M: byte-array write-msgpack write-bytes ;
 M: byte-vector write-msgpack write-bytes ;
-
-<PRIVATE
 
 : write-array ( obj -- )
     [ write-msgpack ] each ; inline
 
-PRIVATE>
+: write-map ( obj -- )
+    [ [ write-msgpack ] bi@ ] assoc-each ; inline
 
 M: sequence write-msgpack
     dup length {
@@ -145,13 +138,6 @@ M: sequence write-msgpack
         [ cannot-convert ]
     } cond ;
 
-<PRIVATE
-
-: write-map ( obj -- )
-    [ [ write-msgpack ] bi@ ] assoc-each ; inline
-
-PRIVATE>
-
 M: assoc write-msgpack
     dup assoc-size {
         { [ dup 0xf <= ] [ 0x80 bitor write1 write-map ] }
@@ -159,6 +145,8 @@ M: assoc write-msgpack
         { [ dup 0xffffffff <= ] [ 0xdf write1 4 >be write write-map ] }
         [ cannot-convert ]
     } cond ;
+
+PRIVATE>
 
 : msgpack> ( string -- obj )
     [ read-msgpack ] with-string-reader ;
