@@ -86,9 +86,9 @@ TUPLE: character name class age str agi int gold hp max-hp ;
         classes random >>class
         12 200 [a,b] random >>age
         5 12 [a,b] random [ >>hp ] [ >>max-hp ] bi
-        21 [1,b) random >>str
-        21 [1,b) random >>agi
-        21 [1,b) random >>int
+        20 [1,b] random >>str
+        20 [1,b] random >>agi
+        20 [1,b] random >>int
         50 random >>gold ;
 
 :: attack ( attacker defender -- )
