@@ -1,8 +1,8 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: colors colors.hex grouping kernel math math.parser
-regexp.classes sequences ;
+USING: colors colors.hex grouping kernel lexer math math.parser
+regexp.classes sequences splitting ;
 
 IN: colors.flex-hex
 
@@ -31,3 +31,5 @@ PRIVATE>
 
 : flex-hex>rgba ( str -- rgba )
     flex-hex hex>rgba ;
+
+SYNTAX: FLEXHEXCOLOR: scan-token flex-hex>rgba suffix! ;
