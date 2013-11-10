@@ -14,4 +14,6 @@ IN: colors.flex-hex
 { "c0a000" } [ "crap" flex-hex ] unit-test
 { "c00000" } [ "chucknorris" flex-hex ] unit-test
 
-{ "6ecde0" } [ "6db6ec49efd278cd0bc92d1e5e072d68" flex-hex ] unit-test
+{ "6ecde0" } [
+    "6db6ec49efd278cd0bc92d1e5e072d68" flex-hex
+] unit-test

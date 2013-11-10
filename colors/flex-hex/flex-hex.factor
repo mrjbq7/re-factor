@@ -11,11 +11,11 @@ IN: colors.flex-hex
 : hex-only ( str -- str' )
     [ dup hex-digit? [ drop CHAR: 0 ] unless ] map ;
 
-: pad-amount ( str -- n )
+: pad-length ( str -- n )
     length dup 3 mod [ 3 swap - + ] unless-zero ;
 
 : three-groups ( str -- array )
-    dup pad-amount [ CHAR: 0 pad-tail ] [ 3 / group ] bi ;
+    dup pad-length [ CHAR: 0 pad-tail ] [ 3 / group ] bi ;
 
 : hex-rgb ( array -- array' )
     [
