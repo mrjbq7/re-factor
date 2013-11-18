@@ -1,17 +1,14 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators command-line continuations
-formatting io io.directories io.files.types io.pathnames kernel
-math math.order namespaces sequences sorting utils ;
+USING: accessors command-line continuations formatting io
+io.directories io.files.types io.pathnames kernel math
+namespaces sequences sorting ;
 FROM: namespaces => change-global ;
 IN: unix-tools.tree
 
 SYMBOL: #files
 SYMBOL: #directories
-
-: usage ( -- )
-    "Usage: tree directory ..." print ;
 
 : indent ( n -- )
     [ [ "|   " write ] times ] unless-zero "+-- " write ;
@@ -45,6 +42,10 @@ DEFER: write-tree
     "\n%d directories, %d files\n" printf ;
 
 : run-tree ( -- )
-    command-line get [  usage ] [ [ tree ] each ] if-empty ;
+    command-line get [
+        current-directory get tree
+    ] [
+        [ tree ] each
+    ] if-empty ;
 
 MAIN: run-tree
