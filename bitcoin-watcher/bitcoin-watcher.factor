@@ -1,8 +1,8 @@
 
 USING: accessors assocs classes.tuple combinators
-generalizations hashtables help.stylesheet http.client io
-io.styles json.reader kernel math.parser namespaces sequences
-strings urls.secure ;
+concurrency.combinators generalizations hashtables
+help.stylesheet http.client io io.styles json.reader kernel
+math.parser namespaces sequences strings urls.secure ;
 
 IN: bitcoin-watcher
 
@@ -29,7 +29,7 @@ C: <quote> quote
 <PRIVATE
 
 : (bitcoin-quotes) ( -- json )
-    bitcoin-urls [ http-get* "" like json> ] assoc-map ;
+    bitcoin-urls [ http-get* "" like json> ] parallel-assoc-map ;
 
 : of* ( assoc seq -- assoc' )
     [ over at* [ [ nip ] [ drop ] if ] keep ] find 2drop ;
