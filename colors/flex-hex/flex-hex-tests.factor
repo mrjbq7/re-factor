@@ -2,6 +2,8 @@ USING: tools.test ;
 
 IN: colors.flex-hex
 
+{ "00b000" } [ "#zqbttv" flex-hex ] unit-test
+
 { "0f0000" } [ "f" flex-hex ] unit-test
 { "000f00" } [ "0f" flex-hex ] unit-test
 { "000f00" } [ "0f0" flex-hex ] unit-test
