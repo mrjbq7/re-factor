@@ -6,7 +6,8 @@ IN: birthday
 : sing ( name -- )
    4 iota swap '[
         2 = "dear " _ append "to You" ?
-        "Happy Birthday " prepend [ print ] [ speak ] bi
+        "Happy Birthday " prepend
+        [ write flush ] [ speak ] bi nl
     ] each ;
 
 : birthday ( -- )
