@@ -1,17 +1,15 @@
 #!/Users/jbenedik/Projects/factor/factor
-USING: fry io kernel sequences ;
+USING: fry io kernel sequences text-to-speech ;
 
 IN: birthday
 
 : sing ( name -- )
    4 iota swap '[
-        "Happy Birthday " write
-        2 = "dear " _ append "to You" ? print
+        2 = "dear " _ append "to You" ?
+        "Happy Birthday " prepend [ print ] [ speak ] bi
     ] each ;
 
-: main ( -- )
-    "Who do you want to sing to? " write flush
-    readln sing ;
+: birthday ( -- )
+    "Who do you want to sing to? " write flush readln sing ;
 
-MAIN: main
-
+MAIN: birthday
