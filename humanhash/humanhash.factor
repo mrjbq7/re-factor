@@ -1,8 +1,8 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii checksums combinators combinators.short-circuit
-grouping kernel math math.order sequences uuid ;
+USING: ascii combinators combinators.short-circuit grouping
+kernel math math.order math.parser sequences uuid ;
 
 IN: humanhash
 
