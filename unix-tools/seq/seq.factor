@@ -1,20 +1,23 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: command-line io kernel math.parser math.ranges namespaces
-sequences ;
+USING: combinators command-line io kernel math.parser
+math.ranges namespaces sequences ;
 
 IN: unix-tools.seq
 
 : usage ( -- )
-    "Usage: seq first last" print ;
+    "Usage: seq [first [incr]] last" print ;
 
-: seq ( a b -- )
-    [a,b] [ number>string print ] each ;
+: seq ( a step b -- )
+    swap <range> [ number>string print ] each ;
 
 : run-seq ( -- )
-    command-line get dup length 2 = [
-        first2 [ string>number ] bi@ seq
-    ] [ drop usage ] if ;
+    command-line get dup length {
+        { 1 [ first string>number [ 1 1 ] dip seq ] }
+        { 2 [ first2 [ string>number ] bi@ [ 1 ] dip seq ] }
+        { 3 [ first3 [ string>number ] tri@ seq ] }
+        [ 2drop usage ]
+    } case ;
 
 MAIN: run-seq
