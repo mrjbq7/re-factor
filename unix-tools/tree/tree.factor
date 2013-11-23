@@ -10,41 +10,45 @@ IN: unix-tools.tree
 SYMBOL: #files
 SYMBOL: #directories
 
-: indent ( #indents last? -- )
-    [ [ [ "|   " write ] times ] unless-zero ]
+: indent ( indents -- )
+    unclip-last-slice
+    [ [ "    " "|   " ? write ] each ]
     [ "└── " "├── " ? write ] bi* ;
 
-: write-name ( entry #indents last? -- )
+: write-name ( entry indents -- )
     indent name>> write ;
 
-: write-file ( entry #indents last? -- )
+: write-file ( entry indents -- )
     write-name #files [ 1 + ] change-global ;
 
 DEFER: write-tree
 
-: write-dir ( entry #indents last? -- )
+: write-dir ( entry indents -- )
     [ write-name ] [
-        drop
-        [ [ name>> ] [ 1 + ] bi* write-tree ]
+        [ [ name>> ] dip write-tree ]
         [ 3drop " [error opening dir]" write ] recover
-    ] 3bi #directories [ 1 + ] change-global ;
+    ] 2bi #directories [ 1 + ] change-global ;
 
-: write-entry ( entry #indents last? -- )
-    nl pick type>> +directory+ =
+: write-entry ( entry indents -- )
+    nl over type>> +directory+ =
     [ write-dir ] [ write-file ] if ;
 
-:: write-tree ( path #indents -- )
+:: write-tree ( path indents -- )
     path [
         [ name>> ] sort-with [ ] [
-            unclip-last
-            [ [ #indents f write-entry ] each ]
-            [ #indents t write-entry ] bi*
+            unclip-last [
+                f indents push
+                [ indents write-entry ] each
+            ] [
+                indents pop* t indents push
+                indents write-entry
+            ] bi* indents pop*
         ] if-empty
     ] with-directory-entries ;
 
 : tree ( path -- )
     0 #directories set-global 0 #files set-global
-    [ write ] [ 0 write-tree ] bi nl
+    [ write ] [ V{ } clone write-tree ] bi nl
     #directories get-global #files get-global
     "\n%d directories, %d files\n" printf ;
 
