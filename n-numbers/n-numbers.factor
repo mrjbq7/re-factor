@@ -21,9 +21,9 @@ IN: n-numbers
 ! (examples: N24BY and N123AZ).
 : n-number? ( str -- ? )
     "N" ?head drop {
-        [ [ length 1 5 between? ] [ f (n-number?) ] bi and ]
-        [ [ length 2 5 between? ] [ 1 cut* (n-number?) ] bi and ]
-        [ [ length 3 5 between? ] [ 2 cut* (n-number?) ] bi and ]
+        [ { [ length 1 5 between? ] [ f (n-number?) ] } 1&& ]
+        [ { [ length 2 5 between? ] [ 1 cut* (n-number?) ] } 1&& ]
+        [ { [ length 3 5 between? ] [ 2 cut* (n-number?) ] } 1&& ]
     } 1|| ;
 
 ! Registration numbers N1 through N99 are reserved for Federal
