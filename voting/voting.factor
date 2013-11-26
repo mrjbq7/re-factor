@@ -6,10 +6,12 @@ IN: voting
 : count-votes ( votes -- total )
     [ first ] histogram-by sort-values ;
 
-:: instant-runoff ( votes -- winner )
-    votes count-votes dup last first2
-    votes length 2/ > [ nip ] [
-        drop first first
-        votes [ remove ] with map
-        instant-runoff
-    ] if ;
+: choose-winner ( votes total -- winner/f )
+    last first2 rot length 2/ > [ drop f ] unless ;
+
+: remove-loser ( votes total -- newvotes )
+    first first swap [ remove ] with map ;
+
+: instant-runoff ( votes -- winner )
+    dup count-votes 2dup choose-winner
+    [ 2nip ] [ remove-loser instant-runoff ] if* ;
