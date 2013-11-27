@@ -9,3 +9,7 @@ IN: humanhash
 { "sodium-magnesium-nineteen-hydrogen" } [
     "60ad8d0d871b6095808297" humanhash
 ] unit-test
+
+{ "alpha-arizona-avocado-crazy" } [
+    B{ 4 8 15 16 23 42 } humanhash
+] unit-test
