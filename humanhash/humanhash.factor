@@ -1,8 +1,9 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii byte-arrays combinators combinators.short-circuit
-grouping kernel math math.order math.parser sequences uuid ;
+USING: arrays ascii byte-arrays combinators
+combinators.short-circuit grouping kernel math math.order
+math.parser sequences uuid ;
 
 IN: humanhash
 
@@ -65,8 +66,11 @@ ERROR: too-few-bytes seq #words ;
 : make-humanhash ( hexdigest #words wordlist sep -- hash )
     { [ byte-string ] [ compress-bytes ] [ nths ] [ join ] } spread ;
 
+: humanhash-words ( hexdigest #words -- )
+    default-wordlist "-" make-humanhash ;
+
 : humanhash ( hexdigest -- hash )
-    4 default-wordlist "-" make-humanhash ;
+    4 humanhash-words ;
 
 : hex? ( ch -- ? )
     {
@@ -76,4 +80,4 @@ ERROR: too-few-bytes seq #words ;
     } 1|| ;
 
 : human-uuid4 ( -- hash )
-    uuid4 [ hex? ] filter humanhash ;
+    uuid4 dup [ hex? ] filter humanhash 2array ;
