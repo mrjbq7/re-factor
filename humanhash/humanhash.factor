@@ -66,18 +66,11 @@ ERROR: too-few-bytes seq #words ;
 : make-humanhash ( hexdigest #words wordlist sep -- hash )
     { [ byte-string ] [ compress-bytes ] [ nths ] [ join ] } spread ;
 
-: humanhash-words ( hexdigest #words -- )
+: humanhash-words ( hexdigest #words -- hash )
     default-wordlist "-" make-humanhash ;
 
 : humanhash ( hexdigest -- hash )
     4 humanhash-words ;
 
-: hex? ( ch -- ? )
-    {
-        [ digit? ]
-        [ CHAR: a CHAR: f between? ]
-        [ CHAR: A CHAR: F between? ]
-    } 1|| ;
-
 : human-uuid4 ( -- hash )
-    uuid4 dup [ hex? ] filter humanhash 2array ;
+    uuid4 [ CHAR: - = not ] filter humanhash 2array ;
