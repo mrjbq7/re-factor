@@ -72,5 +72,5 @@ ERROR: too-few-bytes seq #words ;
 : humanhash ( hexdigest -- hash )
     4 humanhash-words ;
 
-: human-uuid4 ( -- hash )
-    uuid4 [ CHAR: - = not ] filter humanhash 2array ;
+: human-uuid4 ( -- uuid hash )
+    uuid4 dup [ CHAR: - = not ] filter humanhash ;
