@@ -4,7 +4,7 @@
 USING: accessors arrays assocs checksums checksums.md5
 combinators concurrency.combinators formatting fry http.client
 images.http io io.styles kernel locals make math math.constants
-math.functions math.libm math.parser sequences sorting
+math.functions math.libm math.parser sequences sorting strings
 tools.time urls urls.encoding xml xml.traversal ;
 
 IN: speedtest
@@ -65,12 +65,12 @@ C: <config> config
     [ (server-latency) "latency" ] keep [ set-at ] keep ;
 
 : best-server ( -- server )
-    closest-servers 5 short head [ server-latency ] map
+    closest-servers 5 short head
+    [ server-latency ] parallel-map
     [ "latency" of ] sort-with first ;
 
 : upload-data ( size -- data )
-    36 /i "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" <array> concat
-    9 head-slice* "content1=" prepend ;
+    9 - CHAR: 0 <string> "content1=" prepend ;
 
 ! TODO: upload 25 times each size
 
