@@ -23,7 +23,7 @@ IN: google.buzz
         google-api-key get-global "key" set-query-param ;
 
 : buzz-get ( url -- data )
-    http-get* json> "data" of ;
+    http-get nip json> "data" of ;
 
 PRIVATE>
 
@@ -31,12 +31,12 @@ PRIVATE>
     "/activities/count" buzz-url
         language "hl" set-query-param
         url "url" set-query-param
-    http-get* string>xml "total" deep-tag-named
+    http-get nip string>xml "total" deep-tag-named
     children>string string>number ;
 
 : activities/list ( user-id scope -- xml )
     "/activities/%s/%s" sprintf buzz-url
-    http-get* string>xml ;
+    http-get nip string>xml ;
 
 : activities/search ( query -- results )
     "/activities/search" buzz-url
@@ -52,7 +52,7 @@ PRIVATE>
 
 : people/get ( user-id -- xml )
     "/people/%s/@self" sprintf buzz-url
-    http-get* string>xml ;
+    http-get nip string>xml ;
 
 : people/search ( query -- results )
     "/people/search" buzz-url

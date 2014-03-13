@@ -11,11 +11,11 @@ IN: yahoo.finance
        "0" "a" set-query-param
        "1" "b" set-query-param
        "2009" "c" set-query-param
-    http-get* string>csv ;
+    http-get nip string>csv ;
 
 : quotes ( symbols -- csv )
     "http://finance.yahoo.com/d/quotes.csv" >url
         swap "+" join "s" set-query-param
         "sbal1v" "f" set-query-param
-    http-get* >string string>csv
+    http-get nip >string string>csv
     { "Symbol" "Bid" "Ask" "Last" "Volume" } prefix ;

@@ -24,7 +24,7 @@ CONSTANT: base-url "http://psydex.net/api"
 PRIVATE>
 
 : psyng-get ( url -- xml )
-    http-get* string>xml [ check-exception ] keep ;
+    http-get nip string>xml [ check-exception ] keep ;
 
 
 <PRIVATE

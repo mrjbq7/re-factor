@@ -41,7 +41,7 @@ ERROR: bad-location str ;
 
 : stations-data ( -- seq )
     URL" http://weather.noaa.gov/data/nsd_cccc.txt"
-    http-get* CHAR: ; [ string>csv ] with-delimiter ;
+    http-get nip CHAR: ; [ string>csv ] with-delimiter ;
 
 PRIVATE>
 
@@ -234,12 +234,30 @@ CONSTANT: compass-directions H{
 : parse-altitude ( str -- str' )
     string>number " at %s00 ft" sprintf ;
 
+CONSTANT: sky H{
+    { "BKN" "broken" }
+    { "FEW" "few" }
+    { "OVC" "overcast" }
+    { "SCT" "scattered" }
+    { "SKC" "clear sky" }
+    { "CLR" "clear sky" }
+    { "NSC" "clear sky" }
+
+    { "ACC" "altocumulus castellanus" }
+    { "ACSL" "standing lenticular altocumulus" }
+    { "CCSL" "cirrocumulus standing lenticular cloud" }
+    { "CU" "cumulus" }
+    { "SC" "stratocumulus" }
+    { "SCSL" "stratocumulus standing lenticular cloud" }
+    { "TCU" "towering cumulus" }
+}
+
 : parse-sky-condition ( str -- str' )
-    glossary ?at [
+    sky ?at [
         3 cut 3 cut
-        [ glossary at ]
+        [ sky at ]
         [ parse-altitude ]
-        [ glossary at [ " (%s)" sprintf ] [ f ] if* ]
+        [ sky at [ " (%s)" sprintf ] [ f ] if* ]
         tri* 3append
     ] unless ;
 
@@ -560,7 +578,7 @@ M: station metar cccc>> metar ;
 
 M: string metar
     "http://weather.noaa.gov/pub/data/observations/metar/stations/%s.TXT"
-    sprintf http-get* ;
+    sprintf http-get nip ;
 
 GENERIC: metar. ( station -- )
 
@@ -576,7 +594,7 @@ M: station taf cccc>> taf ;
 
 M: string taf
     "http://weather.noaa.gov/pub/data/forecasts/taf/stations/%s.TXT"
-    sprintf http-get* ;
+    sprintf http-get nip ;
 
 GENERIC: taf. ( station -- )
 

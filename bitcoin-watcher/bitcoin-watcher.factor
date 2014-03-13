@@ -29,7 +29,7 @@ C: <quote> quote
 <PRIVATE
 
 : (bitcoin-quotes) ( -- json )
-    bitcoin-urls [ http-get* "" like json> ] parallel-assoc-map ;
+    bitcoin-urls [ http-get nip "" like json> ] parallel-assoc-map ;
 
 : of* ( assoc seq -- assoc' )
     [ over at* [ [ nip ] [ drop ] if ] keep ] find 2drop ;

@@ -12,6 +12,8 @@ IN: speedtest
 ! TODO: 10 seconds http-timeout
 ! TODO: better threading, queue instead of parallel-map?
 
+! http://xmodulo.com/2014/01/check-internet-speed-command-line-linux.html
+
 <PRIVATE
 
 TUPLE: config client times download upload ;
@@ -21,8 +23,8 @@ C: <config> config
     attrs>> [ [ main>> ] dip ] H{ } assoc-map-as ;
 
 : speedtest-config ( -- config )
-    "http://www.speedtest.net/speedtest-config.php" http-get*
-    string>xml {
+    "http://www.speedtest.net/speedtest-config.php" http-get
+    nip string>xml {
         [ "client" deep-tag-named attr-map ]
         [ "times" deep-tag-named attr-map ]
         [ "download" deep-tag-named attr-map ]
@@ -30,8 +32,8 @@ C: <config> config
     } cleave <config> ;
 
 : speedtest-servers ( -- servers )
-    "http://www.speedtest.net/speedtest-servers.php" http-get*
-    string>xml "server" deep-tags-named [ attr-map ] map ;
+    "http://www.speedtest.net/speedtest-servers.php" http-get
+    nip string>xml "server" deep-tags-named [ attr-map ] map ;
 
 : radians ( degrees -- radians ) pi * 180 /f ; inline
 
@@ -58,7 +60,7 @@ C: <config> config
 
 : (server-latency) ( server -- ms )
     "url" of >url URL" latency.txt" derive-url
-    [ http-get* "test=test\n" = ] benchmark 1,000,000 /f
+    [ http-get nip "test=test\n" = ] benchmark 1,000,000 /f
     3,600,000 ? ;
 
 : server-latency ( server -- server )
@@ -91,7 +93,7 @@ C: <config> config
 
 : (download-speed) ( server -- Mbps )
     download-urls 4 swap <array> [
-        [ [ http-get* length ] map-sum ] parallel-map sum
+        [ [ http-get nip length ] map-sum ] parallel-map sum
     ] benchmark 1,000,000,000 /f / 8 * 1,000,000 / ;
 
 : download-speed ( server -- server )
@@ -110,7 +112,7 @@ C: <config> config
     "Testing upload speed" print flush upload-speed
     dup "upload" of "Upload: %0.2f Mbit/s\n" printf ;
 
-: submit-result ( server -- result-id )
+: make-result ( server -- result )
     [
         {
             [ "download" of 1,000 * >integer "download" ,, ]
@@ -129,8 +131,11 @@ C: <config> config
                 hex-string "hash" ,,
             ]
         } cleave
-    ] { } make
-    "http://www.speedtest.net/api/api.php" <post-request> [
+    ] { } make ;
+
+: submit-result ( server -- result-id )
+    make-result "http://www.speedtest.net/api/api.php"
+    <post-request> [
         [
             "http://c.speedtest.net/flash/speedtest.swf"
             "referer"
