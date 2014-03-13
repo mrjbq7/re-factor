@@ -79,7 +79,7 @@ C: <config> config
 : (upload-speed) ( server -- Mbps )
     "url" of >url { 250,000 500,000 } [
         [
-            upload-data [ swap http-put* drop ] keep length
+            upload-data [ swap http-put 2drop ] keep length
         ] with map-sum
     ] benchmark 1,000,000,000 /f / 8 * 1,000,000 / ;
 
@@ -140,7 +140,7 @@ C: <config> config
             "http://c.speedtest.net/flash/speedtest.swf"
             "referer"
         ] dip header>> set-at
-    ] keep http-request* query>assoc "resultid" of ;
+    ] keep http-request nip query>assoc "resultid" of ;
 
 PRIVATE>
 
