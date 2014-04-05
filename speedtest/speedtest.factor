@@ -17,14 +17,15 @@ IN: speedtest
 <PRIVATE
 
 TUPLE: config client times download upload ;
+
 C: <config> config
 
 : attr-map ( tag -- attrs )
     attrs>> [ [ main>> ] dip ] H{ } assoc-map-as ;
 
 : speedtest-config ( -- config )
-    "http://www.speedtest.net/speedtest-config.php" http-get
-    nip string>xml {
+    "http://www.speedtest.net/speedtest-config.php"
+    http-get nip string>xml {
         [ "client" deep-tag-named attr-map ]
         [ "times" deep-tag-named attr-map ]
         [ "download" deep-tag-named attr-map ]
@@ -32,8 +33,9 @@ C: <config> config
     } cleave <config> ;
 
 : speedtest-servers ( -- servers )
-    "http://www.speedtest.net/speedtest-servers.php" http-get
-    nip string>xml "server" deep-tags-named [ attr-map ] map ;
+    "http://www.speedtest.net/speedtest-servers.php"
+    http-get nip string>xml
+    "server" deep-tags-named [ attr-map ] map ;
 
 : radians ( degrees -- radians ) pi * 180 /f ; inline
 
@@ -46,7 +48,7 @@ C: <config> config
     a sqrt 1 a - sqrt fatan2 2 * :> c
     radius c * ;
 
-: lat/lon ( obj -- lat lon )
+: lat/lon ( assoc -- lat lon )
     [ "lat" of ] [ "lon" of ] bi [ string>number ] bi@ ;
 
 : closest-servers-to ( lat lon -- servers )
