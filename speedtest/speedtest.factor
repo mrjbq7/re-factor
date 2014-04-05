@@ -51,11 +51,13 @@ C: <config> config
 : lat/lon ( assoc -- lat lon )
     [ "lat" of ] [ "lon" of ] bi [ string>number ] bi@ ;
 
+: server-distance ( server lat lon -- server )
+    '[ lat/lon _ _ geo-distance "distance" ] keep
+    [ set-at ] keep ;
+
 : closest-servers-to ( lat lon -- servers )
-    [ speedtest-servers ] 2dip '[
-        [ lat/lon _ _ geo-distance "distance" ] keep
-        [ set-at ] keep
-    ] map [ "distance" of ] sort-with ;
+    [ speedtest-servers ] 2dip '[ _ _ server-distance ] map
+    [ "distance" of ] sort-with ;
 
 : closest-servers ( -- servers )
     speedtest-config client>> lat/lon closest-servers-to ;
