@@ -2,9 +2,9 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: ascii assocs colors.constants fry html.parser
-html.parser.printer http.client io io.streams.string io.styles
-json.reader kernel memoize sequences sequences.extras splitting
-strings urls wrap.strings ;
+html.parser.printer html.parser.utils http.client io
+io.streams.string io.styles json.reader kernel memoize sequences
+sequences.extras splitting strings urls wrap.strings ;
 
 IN: re-factor
 
@@ -27,20 +27,6 @@ CONSTANT: post-style H{
         over '[ "title" of _ = ] find nip "href" of
         >url post-style [ write-object ] with-style nl
     ] each ;
-
-CONSTANT: html-entities H{
-    { "&quot;" "\"" }
-    { "&lt;" "<" }
-    { "&gt;" ">" }
-    { "&amp;" "&" }
-    { "&#39;" "'" }
-}
-
-: html-unescape ( str -- str' )
-    html-entities [ replace ] assoc-each ;
-
-: html-escape ( str -- str' )
-    html-entities [ swap replace ] assoc-each ;
 
 : post. ( n -- )
     all-posts nth
