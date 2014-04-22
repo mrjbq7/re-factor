@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: ascii assocs colors.constants fry html.parser
-html.parser.printer html.parser.utils http.client io
+html.entities html.parser.printer http.client io
 io.streams.string io.styles json.reader kernel memoize sequences
 sequences.extras splitting strings urls wrap.strings ;
 
