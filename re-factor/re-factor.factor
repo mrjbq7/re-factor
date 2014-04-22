@@ -28,17 +28,17 @@ CONSTANT: post-style H{
         >url post-style [ write-object ] with-style nl
     ] each ;
 
+: post-title. ( post -- )
+    { "title" "$t" } [ of ] each
+    [ print ] [ length CHAR: - <string> print ] bi nl ;
+
+: post-content. ( post -- )
+    { "content" "$t" } [ of ] each
+    parse-html [ html-text. ] with-string-writer
+    html-unescape string-lines [
+        [ blank? not ] cut-when
+        [ write ] [ 70 wrap-string print ] bi*
+    ] each ;
+
 : post. ( n -- )
-    all-posts nth
-    [
-        { "title" "$t" } [ of ] each
-        [ print ] [ length CHAR: - <string> print ] bi nl
-    ]
-    [
-        { "content" "$t" } [ of ] each
-        parse-html [ html-text. ] with-string-writer
-        html-unescape string-lines [
-            [ blank? not ] cut-when
-            [ write ] [ 70 wrap-string print ] bi*
-        ] each
-    ] bi ;
+    all-posts nth [ post-title. ] [ post-content. ] bi ;
