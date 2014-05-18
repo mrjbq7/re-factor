@@ -1,21 +1,28 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel math sequences ;
+USING: fry io.binary kernel math namespaces sequences strings
+uuid uuid.private ;
 
 IN: shortuuid
 
-CONSTANT: alphabet
+SYMBOL: alphabet
 "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+alphabet set-global
 
-: (encode-uuid) ( n -- n c )
-    alphabet [ length /mod ] [ nth ] bi ;
+GENERIC: encode-uuid ( uuid -- shortuuid )
 
-: encode-uuid ( uuid -- shortuuid )
-    [ dup 0 > ] [ (encode-uuid) ] "" produce-as nip ;
+M: integer encode-uuid
+    [ dup 0 > ] alphabet get
+    '[ _ [ length /mod ] [ nth ] bi ]
+    "" produce-as nip ;
 
-: (decode-uuid) ( n c -- n )
-    alphabet index [ alphabet length * ] dip + ;
+M: string encode-uuid
+    string>uuid encode-uuid ;
 
-: decode-uuid ( shortuuid -- uuid )
-    <reversed> 0 [ (decode-uuid) ] reduce ;
+GENERIC: decode-uuid ( shortuuid -- uuid )
+
+M: string decode-uuid
+    <reversed> 0 alphabet get dup
+    '[ _ index [ _ length * ] dip + ] reduce
+    uuid>string ;
