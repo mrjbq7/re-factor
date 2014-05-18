@@ -1,9 +1,10 @@
 ! Copyright (C) 2014 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators formatting kernel literals math
-math.order multiline regexp sequences sequences.extras sets
-splitting unicode.case unicode.categories ;
+USING: accessors combinators formatting io.encodings.ascii
+io.files kernel literals math math.functions math.order
+multiline regexp sequences sequences.extras sets splitting
+unicode.case unicode.categories ;
 
 IN: text-analysis
 
@@ -98,14 +99,16 @@ CONSTANT: add-syllable {
 : split-words ( str -- words )
     R/ \b([a-z][a-z\-']*)\b/i all-matching-subseqs ;
 
-TUPLE: text-analysis #paragraphs #sentences #chars #words
-#syllables #complex-words #unique-words ;
+TUPLE: text-analysis #paragraphs #sentences #chars
+#letters #words #syllables #complex-words #unique-words
+#difficult-words ;
 
 : <text-analysis> ( str -- text-analysis )
     {
         [ split-paragraphs length ]
         [ split-sentences length ]
         [ length ]
+        [ [ blank? not ] count ]
         [ split-words ]
     } cleave {
         [ length ]
@@ -116,6 +119,10 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
             ] each
         ]
         [ members length ]
+        [
+            "vocab:text-analysis/difficult.txt" ascii
+            file-lines intersect length
+        ]
     } cleave text-analysis boa ;
 
 : syllables-per-word ( text-analysis -- n )
@@ -124,12 +131,24 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
 : words-per-sentence ( text-analysis -- n )
     [ #words>> ] [ #sentences>> ] bi / ;
 
+: chars-per-word ( text-analysis -- n )
+    [ #chars>> ] [ #words>> ] bi / ;
+
+: letters-per-100-words ( text-analysis -- n )
+    [ #letters>> ] [ #words>> ] bi / 100 * ;
+
+: sentences-per-100-words ( text-analysis -- n )
+    [ #sentences>> ] [ #words>> ] bi / 100 * ;
+
 : percent-complex-words ( text-analysis -- n )
     [ #complex-words>> ] [ #words>> ] bi / 100 * ;
 
+: percent-difficult-words ( text-analysis -- n )
+    [ #difficult-words>> ] [ #words>> ] bi / 100 * ;
+
 : flesch-kincaid ( text-analysis -- n )
-    [ syllables-per-word 11.8 * ]
-    [ words-per-sentence 0.39 * ] bi + 15.59 - ;
+    [ words-per-sentence 0.39 * ]
+    [ syllables-per-word 11.8 * ] bi + 15.59 - ;
 
 : flesch ( text-analysis -- n )
     206.835 swap
@@ -138,6 +157,22 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
 
 : gunning-fog ( text-analysis -- n )
     [ words-per-sentence ] [ percent-complex-words ] bi + 0.4 * ;
+
+: coleman-liau ( text-analysis -- n )
+    [ letters-per-100-words 0.0588 * ]
+    [ sentences-per-100-words 0.296 * ] bi - 15.8 - ;
+
+: smog ( text-analysis -- n )
+    [ #complex-words>> ] [ #sentences>> 30 swap / ] bi *
+    sqrt 1.0430 * 3.1291 + ;
+
+: automated-readability ( text-analysis -- n )
+    [ chars-per-word 4.71 * ]
+    [ words-per-sentence 0.5 * ] bi + 21.43 - ;
+
+: dale-chall ( text-analysis -- n )
+    [ percent-difficult-words 0.1579 * ]
+    [ words-per-sentence 0.0496 * ] bi + ;
 
 STRING: text-report-format
 Number of paragraphs           %d
@@ -148,9 +183,13 @@ Number of characters           %d
 Average words per sentence     %.2f
 Average syllables per word     %.2f
 
-Flesch score                   %2.2f
-Flesh-Kincaid grade level      %2.2f
+Flesch Reading Ease            %2.2f
+Flesh-Kincaid Grade Level      %2.2f
 Gunning fog index              %2.2f
+Coleman–Liau index             %2.2f
+SMOG grade                     %2.2f
+Automated Readability index    %2.2f
+Dale-Chall readability         %2.2f
 
 ;
 
@@ -167,4 +206,8 @@ PRIVATE>
         [ flesch ]
         [ flesch-kincaid ]
         [ gunning-fog ]
+        [ coleman-liau ]
+        [ smog ]
+        [ automated-readability ]
+        [ dale-chall ]
     } cleave text-report-format printf ;
