@@ -166,7 +166,10 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
     [ words-per-sentence 0.5 * ] bi + 21.43 - ;
 
 : dale-chall ( text-analysis -- n )
-    [ percent-difficult-words 0.1579 * ]
+    [
+        percent-difficult-words
+        [ 0.1579 * ] [ 0.05 > [ 3.6365 + ] when ] bi
+    ]
     [ words-per-sentence 0.0496 * ] bi + ;
 
 STRING: text-report-format
