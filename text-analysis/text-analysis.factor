@@ -99,8 +99,8 @@ CONSTANT: add-syllable {
 : split-words ( str -- words )
     R/ \b([a-z][a-z\-']*)\b/i all-matching-subseqs ;
 
-TUPLE: text-analysis #paragraphs #sentences #chars
-#words #syllables #complex-words #unique-words #difficult-words ;
+TUPLE: text-analysis #paragraphs #sentences #chars #words
+#syllables #complex-words #unique-words #difficult-words ;
 
 : <text-analysis> ( str -- text-analysis )
     {
