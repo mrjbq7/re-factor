@@ -10,8 +10,11 @@ IN: text-analysis
 
 <PRIVATE
 
+: trimmed ( seq -- seq )
+    [ [ blank? ] trim ] map harvest ;
+
 : split-paragraphs ( str -- seq )
-    R/ (?:\n[\r\t ]*)+/ re-split ;
+    "\n\n" split-subseq trimmed ;
 
 CONSTANT: ABBREVIATIONS {
     "jr" "mr" "mrs" "ms" "dr" "prof" "sr" "sen" "rep" "rev"
@@ -55,7 +58,7 @@ CONSTANT: ABBREVIATIONS {
     ] [ CHAR: . over index head ] re-replace-with
 
     ! Split on EOS marker
-    "\x01" split [ [ blank? ] trim ] map harvest ;
+    "\x01" split trimmed ;
 
 CONSTANT: sub-syllable {
     R/ [^aeiou]e$/ ! give, love, bone, done, ride ...
