@@ -1,7 +1,7 @@
 ! Copyright (C) 2014 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators formatting io.encodings.ascii
+USING: accessors combinators formatting fry io.encodings.ascii
 io.files kernel literals math math.functions math.order
 multiline regexp sequences sequences.extras sets splitting
 unicode.case unicode.categories ;
@@ -118,8 +118,8 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
         ]
         [ members length ]
         [
-            "vocab:text-analysis/difficult.txt" ascii
-            file-lines intersect length
+            "vocab:text-analysis/familiar.txt" ascii
+            file-lines fast-set '[ >lower _ in? not ] count
         ]
     } cleave text-analysis boa ;
 
