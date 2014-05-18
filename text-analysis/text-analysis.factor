@@ -100,14 +100,12 @@ CONSTANT: add-syllable {
     R/ \b([a-z][a-z\-']*)\b/i all-matching-subseqs ;
 
 TUPLE: text-analysis #paragraphs #sentences #chars
-#letters #words #syllables #complex-words #unique-words
-#difficult-words ;
+#words #syllables #complex-words #unique-words #difficult-words ;
 
 : <text-analysis> ( str -- text-analysis )
     {
         [ split-paragraphs length ]
         [ split-sentences length ]
-        [ length ]
         [ [ blank? not ] count ]
         [ split-words ]
     } cleave {
@@ -134,11 +132,8 @@ TUPLE: text-analysis #paragraphs #sentences #chars
 : chars-per-word ( text-analysis -- n )
     [ #chars>> ] [ #words>> ] bi / ;
 
-: letters-per-100-words ( text-analysis -- n )
-    [ #letters>> ] [ #words>> ] bi / 100 * ;
-
-: sentences-per-100-words ( text-analysis -- n )
-    [ #sentences>> ] [ #words>> ] bi / 100 * ;
+: sentences-per-word ( text-analysis -- n )
+    [ #sentences>> ] [ #words>> ] bi / ;
 
 : percent-complex-words ( text-analysis -- n )
     [ #complex-words>> ] [ #words>> ] bi / 100 * ;
@@ -159,8 +154,8 @@ TUPLE: text-analysis #paragraphs #sentences #chars
     [ words-per-sentence ] [ percent-complex-words ] bi + 0.4 * ;
 
 : coleman-liau ( text-analysis -- n )
-    [ letters-per-100-words 0.0588 * ]
-    [ sentences-per-100-words 0.296 * ] bi - 15.8 - ;
+    [ chars-per-word 5.88 * ]
+    [ sentences-per-word 29.6 * ] bi - 15.8 - ;
 
 : smog ( text-analysis -- n )
     [ #complex-words>> ] [ #sentences>> 30 swap / ] bi *
