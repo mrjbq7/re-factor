@@ -14,7 +14,7 @@ IN: text-analysis
     [ [ blank? ] trim ] map harvest ;
 
 : split-paragraphs ( str -- seq )
-    "\n\n" split-subseq trimmed ;
+    R/ \r?\n\r?\n/ re-split trimmed ;
 
 CONSTANT: ABBREVIATIONS {
     "jr" "mr" "mrs" "ms" "dr" "prof" "sr" "sen" "rep" "rev"
