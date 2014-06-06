@@ -3,21 +3,21 @@ math.vectors sequences sequences.private sets ;
 
 IN: magic-forest
 
-ALIAS: goats first-unsafe
-ALIAS: wolves second-unsafe
-ALIAS: lions third-unsafe
+: >forest< ( forest -- goats wolves lions )
+    { array } declare first3-unsafe
+    { array-capacity array-capacity array-capacity } declare ; inline
 
 : wolf-devours-goat ( forest -- forest/f )
-    dup { [ goats 0 > ] [ wolves 0 > ] } 1&&
-    [ { -1 -1 1 } v+ ] [ drop f ] if ;
+    >forest< { [ pick 0 > ] [ over 0 > ] } 0&&
+    [ [ 1 - ] [ 1 - ] [ 1 + ] tri* 3array ] [ 3drop f ] if ;
 
 : lion-devours-goat ( forest -- forest/f )
-    dup { [ goats 0 > ] [ lions 0 > ] } 1&&
-    [ { -1 1 -1 } v+ ] [ drop f ] if ;
+    >forest< { [ pick 0 > ] [ dup 0 > ] } 0&&
+    [ [ 1 - ] [ 1 + ] [ 1 - ] tri* 3array ] [ 3drop f ] if ;
 
 : lion-devours-wolf ( forest -- forest/f )
-    dup { [ lions 0 > ] [ wolves 0 > ] } 1&&
-    [ { 1 -1 -1 } v+ ] [ drop f ] if ;
+    >forest< { [ dup 0 > ] [ over 0 > ] } 0&&
+    [ [ 1 + ] [ 1 - ] [ 1 - ] tri* 3array ] [ 3drop f ] if ;
 
 : next-forests ( set forest -- set' )
     [ wolf-devours-goat [ over adjoin ] when* ]
@@ -28,11 +28,11 @@ ALIAS: lions third-unsafe
     [ length <hash-set> ] keep [ next-forests ] each members ;
 
 : stable? ( forest -- ? )
-    [ wolves ] [ lions ] [ goats zero? ] tri
+    >forest< rot zero?
     [ [ zero? ] either? ] [ [ zero? ] both? ] if ;
 
 : devouring-possible? ( forests -- ? )
-    [ stable? not ] any? ;
+    [ stable? ] any? not ;
 
 : stable-forests ( forests -- stable-forests )
     [ stable? ] filter ;
