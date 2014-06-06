@@ -1,5 +1,6 @@
-USING: arrays combinators.short-circuit hash-sets kernel math
-math.vectors sequences sequences.private sets ;
+USING: arrays combinators.short-circuit hash-sets kernel
+kernel.private math math.vectors sequences sequences.private
+sets ;
 
 IN: magic-forest
 
