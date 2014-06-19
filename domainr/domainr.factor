@@ -2,13 +2,14 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs classes.tuple formatting http.client
-json.reader kernel sequences urls utils ;
+json.reader kernel sequences urls urls.secure utils ;
 
 IN: domainr
 
 : domainr-url ( query -- url )
     URL" https://domai.nr/api/json/search"
-    swap "q" set-query-param ;
+    swap "q" set-query-param
+    "factor_lib" "client_id" set-query-param ;
 
 TUPLE: result domain host path subdomain availability
 register_url ;
