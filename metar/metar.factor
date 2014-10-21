@@ -68,9 +68,9 @@ MEMO: all-stations ( -- seq )
 
 <PRIVATE
 
-TUPLE: report type station timestamp modifier wind visibility
-rvr weather sky-condition temperature dew-point altimeter
-remarks raw ;
+TUPLE: metar-report type station timestamp modifier wind
+visibility rvr weather sky-condition temperature dew-point
+altimeter remarks raw ;
 
 CONSTANT: pressure-tendency H{
     { "0" "increasing then decreasing" }
@@ -296,7 +296,7 @@ CONSTANT: re-altimeter R! [AQ]\d{4}!
         dup [ f ] [ first @ ] if-empty
     ] [ unclip ] produce rot [ prefix ] when* ; inline
 
-: body ( report seq -- report )
+: metar-body ( report seq -- report )
 
     [ { "METAR" "SPECI" } member? ] find-one
     [ pick type<< ] when*
@@ -444,7 +444,7 @@ CONSTANT: high-clouds H{
     "7" ?head drop parse-inches
     "%s precipitation in last 24 hours" sprintf ;
 
-! "on the hour" instead of "00 minutes past the hour" ?
+! XXX: "on the hour" instead of "00 minutes past the hour" ?
 
 : parse-recent-time ( str -- str' )
     dup length 2 >
@@ -509,42 +509,43 @@ CONSTANT: re-recent-weather R! ((\w{2})?[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?)+!
     "PROB" ?head drop string>number
     "probability of %d%%" sprintf ;
 
-: remarks ( report seq -- report )
-    [
-        {
-            { [ dup glossary key? ] [ glossary at ] }
-            { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
-            { [ dup R! 2\d{4}! matches? ] [ parse-6hr-min-temp ] }
-            { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
-            { [ dup R! 4/\d{3}! matches? ] [ parse-snow-depth ] }
-            { [ dup R! 5\d{4}! matches? ] [ parse-1hr-pressure ] }
-            { [ dup R! 6[\d/]{4}! matches? ] [ parse-6hr-precipitation ] }
-            { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
-            { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
-            { [ dup R! 931\d{3}! matches? ] [ parse-6hr-snowfall ] }
-            { [ dup R! 933\d{3}! matches? ] [ parse-water-equivalent-snow ] }
-            { [ dup R! 98\d{3}! matches? ] [ parse-duration-of-sunshine ] }
-            { [ dup R! T\d{4,8}! matches? ] [ parse-1hr-temp ] }
-            { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
-            { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
-            { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
-            { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
-            { [ dup R! PROB\d+! matches? ] [ parse-probability ] }
-            { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
-            { [ dup R! [^-]+(-[^-]+)+! matches? ] [ parse-from-to ] }
-            { [ dup R! [^/]+(/[^/]+)+! matches? ] [ ] }
-            { [ dup R! \d+.\d+! matches? ] [ ] }
-            { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
-            { [ dup re-weather matches? ] [ parse-weather ] }
-            { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
-            [ parse-glossary ]
-        } cond
-    ] map " " join >>remarks ;
+: parse-remark ( str -- str' )
+    {
+        { [ dup glossary key? ] [ glossary at ] }
+        { [ dup R! 1\d{4}! matches? ] [ parse-6hr-max-temp ] }
+        { [ dup R! 2\d{4}! matches? ] [ parse-6hr-min-temp ] }
+        { [ dup R! 4\d{8}! matches? ] [ parse-24hr-temp ] }
+        { [ dup R! 4/\d{3}! matches? ] [ parse-snow-depth ] }
+        { [ dup R! 5\d{4}! matches? ] [ parse-1hr-pressure ] }
+        { [ dup R! 6[\d/]{4}! matches? ] [ parse-6hr-precipitation ] }
+        { [ dup R! 7\d{4}! matches? ] [ parse-24hr-precipitation ] }
+        { [ dup R! 8/\d{3}! matches? ] [ parse-cloud-cover ] }
+        { [ dup R! 931\d{3}! matches? ] [ parse-6hr-snowfall ] }
+        { [ dup R! 933\d{3}! matches? ] [ parse-water-equivalent-snow ] }
+        { [ dup R! 98\d{3}! matches? ] [ parse-duration-of-sunshine ] }
+        { [ dup R! T\d{4,8}! matches? ] [ parse-1hr-temp ] }
+        { [ dup R! \d{3}\d{2,3}/\d{2,4}! matches? ] [ parse-peak-wind ] }
+        { [ dup R! P\d{4}! matches? ] [ parse-1hr-precipitation ] }
+        { [ dup R! SLP\d{3}! matches? ] [ parse-sea-level-pressure ] }
+        { [ dup R! LTG\w+! matches? ] [ parse-lightning ] }
+        { [ dup R! PROB\d+! matches? ] [ parse-probability ] }
+        { [ dup R! \d{3}V\d{3}! matches? ] [ parse-varying ] }
+        { [ dup R! [^-]+(-[^-]+)+! matches? ] [ parse-from-to ] }
+        { [ dup R! [^/]+(/[^/]+)+! matches? ] [ ] }
+        { [ dup R! \d+.\d+! matches? ] [ ] }
+        { [ dup re-recent-weather matches? ] [ parse-recent-weather ] }
+        { [ dup re-weather matches? ] [ parse-weather ] }
+        { [ dup re-sky-condition matches? ] [ parse-sky-condition ] }
+        [ parse-glossary ]
+    } cond ;
 
-: <report> ( metar -- report )
-    [ report new ] dip [ >>raw ] keep
+: metar-remarks ( report seq -- report )
+    [ parse-remark ] map " " join >>remarks ;
+
+: <metar-report> ( metar -- report )
+    [ metar-report new ] dip [ >>raw ] keep
     [ blank? ] split-when { "RMK" } split1
-    [ body ] [ remarks ] bi* ;
+    [ metar-body ] [ metar-remarks ] bi* ;
 
 : row. ( name quot -- )
     '[
@@ -552,7 +553,7 @@ CONSTANT: re-recent-weather R! ((\w{2})?[BE]\d{2,4}((\w{2})?[BE]\d{2,4})?)+!
         [ @ [ 65 wrap-string write ] when* ] with-cell
     ] with-row ; inline
 
-: report. ( report -- )
+: metar-report. ( report -- )
     standard-table-style [
         {
             [ "Station" [ station>> ] row. ]
@@ -585,8 +586,127 @@ GENERIC: metar. ( station -- )
 M: station metar. cccc>> metar. ;
 
 M: string metar.
-    [ metar <report> report. ]
+    [ metar <metar-report> metar-report. ]
     [ drop "%s METAR not found\n" printf ] recover ;
+
+<PRIVATE
+
+: parse-wind-shear ( str -- str' )
+    "WS" ?head drop "/" split1
+    [ parse-altitude ] [ parse-wind ] bi* prepend
+    "wind shear " prepend ;
+
+CONSTANT: re-from-timestamp R! FM\d{6}!
+
+: parse-from-timestamp ( str -- str' )
+    "FM" ?head drop parse-timestamp ;
+
+CONSTANT: re-valid-timestamp R! \d{4}\/\d{4}!
+
+: parse-valid-timestamp ( str -- str' )
+    "/" split1 [ "00" append parse-timestamp ] bi@ " to " glue ;
+
+TUPLE: taf-report station timestamp valid-timestamp wind
+visibility rvr weather sky-condition partials raw ;
+
+TUPLE: taf-partial from-timestamp wind visibility rvr weather
+sky-condition raw ;
+
+: taf-body ( report str -- report )
+    [ blank? ] split-when
+
+    [ { "AMD" "COR" "RTD" } member? ] find-one drop
+
+    [ re-station matches? ] find-one
+    [ pick station<< ] when*
+
+    [ re-timestamp matches? ] find-one
+    [ parse-timestamp pick timestamp<< ] when*
+
+    [ re-valid-timestamp matches? ] find-one
+    [ parse-valid-timestamp pick valid-timestamp<< ] when*
+
+    [ re-wind matches? ] find-one
+    [ parse-wind pick wind<< ] when*
+
+    [ re-wind-variable matches? ] find-one
+    [ parse-wind-variable pick wind>> prepend pick wind<< ] when*
+
+    [ re-visibility matches? ] find-one
+    [ parse-visibility pick visibility<< ] when*
+
+    [ re-rvr matches? ] find-all " " join
+    [ parse-rvr ] map ", " join pick rvr<<
+
+    [ re-weather matches? ] find-all
+    [ parse-weather ] map ", " join pick weather<<
+
+    [ re-sky-condition matches? ] find-all
+    [ parse-sky-condition ] map ", " join pick sky-condition<<
+
+    drop ;
+
+: <taf-partial> ( str -- partial )
+    [ taf-partial new ] dip [ blank? ] split-when
+
+    [ re-from-timestamp matches? ] find-one
+    [ parse-from-timestamp pick from-timestamp<< ] when*
+
+    [ re-visibility matches? ] find-one
+    [ parse-visibility pick visibility<< ] when*
+
+    [ re-rvr matches? ] find-all " " join
+    [ parse-rvr ] map ", " join pick rvr<<
+
+    [ re-weather matches? ] find-all
+    [ parse-weather ] map ", " join pick weather<<
+
+    [ re-sky-condition matches? ] find-all
+    [ parse-sky-condition ] map ", " join pick sky-condition<<
+
+    drop ;
+
+: taf-partials ( report seq -- report )
+    [ <taf-partial> ] map >>partials ;
+
+: <taf-report> ( taf -- report )
+    [ taf-report new ] dip [ >>raw ] keep
+    string-lines [ [ blank? ] trim ] map
+    rest dup first "TAF" = [ rest ] when
+    harvest unclip swap
+    [ taf-body ] [ taf-partials ] bi* ;
+
+: taf-report. ( report -- )
+    [
+        standard-table-style [
+            {
+                [ "Station" [ station>> ] row. ]
+                [ "Timestamp" [ timestamp>> ] row. ]
+                [ "Valid From" [ valid-timestamp>> ] row. ]
+                [ "Wind" [ wind>> ] row. ]
+                [ "Visibility" [ visibility>> ] row. ]
+                [ "RVR" [ rvr>> ] row. ]
+                [ "Weather" [ weather>> ] row. ]
+                [ "Sky condition" [ sky-condition>> ] row. ]
+                [ "Raw Text" [ raw>> ] row. ]
+            } cleave
+        ] tabular-output nl
+    ] [
+        partials>> [
+            standard-table-style [
+                {
+                    [ "From" [ from-timestamp>> ] row. ]
+                    [ "Wind" [ wind>> ] row. ]
+                    [ "Visibility" [ visibility>> ] row. ]
+                    [ "RVR" [ rvr>> ] row. ]
+                    [ "Weather" [ weather>> ] row. ]
+                    [ "Sky condition" [ sky-condition>> ] row. ]
+                } cleave
+            ] tabular-output nl
+        ] each
+    ] bi ;
+
+PRIVATE>
 
 GENERIC: taf ( station -- taf )
 
@@ -601,5 +721,5 @@ GENERIC: taf. ( station -- )
 M: station taf. cccc>> taf. ;
 
 M: string taf.
-    [ taf print ]
+    [ taf <taf-report> taf-report. ]
     [ drop "%s TAF not found\n" printf ] recover ;
