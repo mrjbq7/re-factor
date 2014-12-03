@@ -26,12 +26,6 @@ SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
     [ sort-values reverse ] [ cut ] bi* values sum
     [ "Other" swap 2array suffix ] unless-zero ;
 
-: swap-when ( x y quot: ( x -- n ) quot: ( n n -- ? ) -- x' y' )
-    '[ _ _ 2dup _ bi@ @ [ swap ] when ] call ; inline
-
-: compose-all ( seq -- quot )
-    [ ] [ compose ] reduce ;
-
 : humanize ( n -- str )
     dup 100 mod 11 13 between? [ "th" ] [
         dup 10 mod {
@@ -41,9 +35,6 @@ SYNTAX: INCLUDING: ";" [ (include) ] each-token ;
             [ drop "th" ]
         } case
     ] if [ number>string ] [ append ] bi* ;
-
-: remove-random ( seq -- elt seq' )
-    [ length random ] keep [ nth ] [ remove-nth ] 2bi ;
 
 <<
 : wrap-method ( word before-quot after-quot -- )
