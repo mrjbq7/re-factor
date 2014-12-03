@@ -24,16 +24,15 @@ MEMO: (slow-fib) ( m -- n )
 :: fast-fib ( m -- n )
     m 0 >= [ m throw ] unless
     m 2 >base [ CHAR: 1 = ] { } map-as :> bits
-    1 :> a! 0 :> b! 1 :> c!
-    bits [
-        [
+    1 0 1 bits [| a b c bit |
+        bit [
             a c + b *
             b sq c sq +
         ] [
             a sq b sq +
             a c + b *
-        ] if b! a! a b + c!
-    ] each b ;
+        ] if 2dup +
+    ] each drop nip ;
 
 MEMO: (faster-fib) ( m -- n )
     dup 1 > [
