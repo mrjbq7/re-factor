@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays ascii kernel locals math random
-sequences sequences.extras utils ;
+sequences sequences.extras vectors ;
 
 IN: enigma
 
@@ -13,8 +13,11 @@ IN: enigma
     <alphabet> randomize ;
 
 : <reflector> ( -- reflector )
-    <alphabet> dup length iota [ dup empty? ] [
-        remove-random remove-random [ pick exchange ] dip
+    <alphabet> dup length iota >vector [ dup empty? ] [
+        [
+            [ delete-random ] [ delete-random ] bi
+            pick exchange
+        ] keep
     ] until drop ;
 
 TUPLE: enigma cogs prev-cogs reflector ;
