@@ -652,6 +652,12 @@ sky-condition raw ;
     [ re-from-timestamp matches? ] find-one
     [ parse-from-timestamp pick from-timestamp<< ] when*
 
+    [ re-wind matches? ] find-one
+    [ parse-wind pick wind<< ] when*
+
+    [ re-wind-variable matches? ] find-one
+    [ parse-wind-variable pick wind>> prepend pick wind<< ] when*
+
     [ re-visibility matches? ] find-one
     [ parse-visibility pick visibility<< ] when*
 
