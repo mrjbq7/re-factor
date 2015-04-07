@@ -7,7 +7,7 @@ json.reader kernel sequences urls urls.secure utils ;
 IN: domainr
 
 : domainr-url ( query -- url )
-    URL" https://domainr.com/api/json/search"
+    URL" https://api.domainr.com/v1/api/json/search"
     swap "q" set-query-param
     "factor_lib" "client_id" set-query-param ;
 
