@@ -119,5 +119,9 @@ M: beer-profile beer.
             [ "Style" [ style>> write ] row. ]
             [ "ABV" [ abv>> write ] row. ]
             [ "Image" [ beer-image. ] row. ]
+            [ "Retired?" [ link>> retired?>> "YES" "NO" ? write ] row. ]
         } cleave
     ] tabular-output nl ;
+
+: beers. ( query -- )
+    beer-search [ beer. ] each ;
