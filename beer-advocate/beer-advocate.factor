@@ -1,5 +1,5 @@
 
-USING: accessors combinators fry html.parser
+USING: accessors combinators continuations fry html.parser
 html.parser.analyzer http.client images.http io io.styles kernel
 math math.parser present sequences sequences.extras splitting
 strings unicode.case urls ;
@@ -88,8 +88,14 @@ M: object beer-image. lookup-beer beer-image. ;
 
 M: beer-profile beer-image.
     link>> url>> "/" split harvest last
-    "http://cdn.beeradvocate.com/im/beers/" ".jpg" surround
-    http-image. ;
+    '[
+        _ "http://cdn.beeradvocate.com/im/beers/" ".jpg" surround
+        http-image.
+    ] [
+        drop
+        "http://cdn.beeradvocate.com/im/beers/no_beer_pic.jpg"
+        http-image.
+    ] recover ;
 
 <PRIVATE
 
