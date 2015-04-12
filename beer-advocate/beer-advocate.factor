@@ -90,6 +90,13 @@ M: beer-profile beer-image.
     "http://cdn.beeradvocate.com/im/beers/" ".jpg" surround
     http-image. ;
 
+<PRIVATE
+
+: row. ( name quot -- )
+    '[ [ _ write ] with-cell _ with-cell ] with-row ; inline
+
+PRIVATE>
+
 GENERIC: beer. ( obj -- )
 
 M: object beer. lookup-beer beer. ;
@@ -97,53 +104,13 @@ M: object beer. lookup-beer beer. ;
 M: beer-profile beer.
     standard-table-style [
         {
-            [
-                [
-                    [ "Name" write ] with-cell
-                    [ link>> [ name>> ] [ url>> ] bi write-object ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "Brewer" write ] with-cell
-                    [ link>> brewer>> write ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "Location" write ] with-cell
-                    [ link>> location>> write ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "BA SCORE" write ] with-cell
-                    [ ba-score>> [ number>string write ] when* ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "THE BROS" write ] with-cell
-                    [ bro-score>> [ number>string write ] when* ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "Style" write ] with-cell
-                    [ style>> write ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "ABV" write ] with-cell
-                    [ abv>> write ] with-cell
-                ] with-row
-            ]
-            [
-                [
-                    [ "Image" write ] with-cell
-                    [ beer-image. ] with-cell
-                ] with-row
-            ]
+            [ "Name" [ link>> [ name>> ] [ url>> ] bi write-object ] row. ]
+            [ "Brewer" [ link>> brewer>> write ] row. ]
+            [ "Location" [ link>> location>> write ] row. ]
+            [ "BA SCORE" [ ba-score>> [ number>string write ] when* ] row. ]
+            [ "THE BROS" [ bro-score>> [ number>string write ] when* ] row. ]
+            [ "Style" [ style>> write ] row. ]
+            [ "ABV" [ abv>> write ] row. ]
+            [ "Image" [ beer-image. ] row. ]
         } cleave
     ] tabular-output nl ;
