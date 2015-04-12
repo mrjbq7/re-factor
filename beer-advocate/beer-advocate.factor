@@ -57,7 +57,8 @@ M: string lookup-beer
     dup length 1 = [
         first nip
     ] [
-        [ name>> >lower = ] with find nip
+        [ [ name>> >lower = ] with find nip ] keep swap
+        [ nip ] [ too-many-beers ] if*
     ] if lookup-beer ;
 
 M: beer-link lookup-beer
