@@ -34,8 +34,7 @@ CONSTANT: post-style H{
 
 : post-content. ( post -- )
     { "content" "$t" } [ of ] each
-    parse-html [ html-text. ] with-string-writer
-    html-unescape string-lines [
+    parse-html html-text html-unescape string-lines [
         [ blank? not ] cut-when
         [ write ] [ 70 wrap-string print ] bi*
     ] each ;
