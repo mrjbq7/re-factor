@@ -11,13 +11,12 @@ IN: midi
 ! TODO: sometimes track length not specified
 ! TODO: parse division
 ! TODO: key-signature-decode
-! TODO: running status in write-event
 
 TUPLE: midi header chunks ;
 
 C: <midi> midi
 
-TUPLE: midi-chunk raw type ;
+TUPLE: midi-chunk type bytes ;
 
 C: <midi-chunk> midi-chunk
 
@@ -29,7 +28,7 @@ TUPLE: meta-event delta name value ;
 
 C: <meta-event> meta-event
 
-TUPLE: sysex-event delta type raw ;
+TUPLE: sysex-event delta type bytes ;
 
 C: <sysex-event> sysex-event
 
@@ -96,7 +95,7 @@ CONSTANT: smpte-framerate H{
         7 shift read1 [ 0x7f bitand + ] keep
     ] do while ;
 
-: parse-meta ( type raw -- name value )
+: parse-meta ( type bytes -- name value )
     swap {
         { 0x00 [ 2 head be> "sequence-number" ] }
         { 0x01 [ utf8 decode "text" ] }
@@ -228,17 +227,17 @@ CONSTANT: smpte-framerate H{
         ] [ read-event ] produce 2nip nip
     ] with-input-stream ;
 
-: <midi-header> ( raw -- header )
+: <midi-header> ( bytes -- header )
     2 cut 2 cut [ be> ] tri@ midi-header boa ;
 
-: <midi-track> ( raw -- track )
+: <midi-track> ( bytes -- track )
     parse-events midi-track boa ;
 
 : read-chunk ( -- chunk )
     4 read 4 read be> read swap {
         { $[ "MThd" >byte-array ] [ <midi-header> ] }
         { $[ "MTrk" >byte-array ] [ <midi-track> ] }
-        [ <midi-chunk> ]
+        [ swap <midi-chunk> ]
     } case ;
 
 : read-header ( -- header )
@@ -274,7 +273,7 @@ PRIVATE>
 : write-string ( str -- )
     utf8 encode [ length write-number ] [ write ] bi ;
 
-GENERIC: write-event ( event -- )
+GENERIC: write-event ( prev-status event -- status )
 
 M: meta-event write-event
     [ delta>> write-number 0xff write1 ] [ value>> ] [ name>> ] tri {
@@ -313,15 +312,27 @@ M: meta-event write-event
         { "sequencer-specific" [
             0x7f write1
             [ length write-number ] [ write ] bi ] }
-    } case ;
+    } case drop f ;
 
 M: sysex-event write-event
+    drop
     [ delta>> write-number ]
     [ type>> write1 ]
-    [ raw>> write ] tri ;
+    [ bytes>> write ] tri f ;
 
-: write-channel ( value type quot -- )
-    [ swap [ "channel" of + write1 ] keep ] dip call ; inline
+: write-status ( prev-status status -- )
+    dup 0xf0 < [
+        [ = ] keep swap [ drop ] [ write1 ] if
+    ] [
+        nip write1
+    ] if ;
+
+: write-channel ( prev-status value status quot -- status )
+    [
+        swap [
+            "channel" of + [ write-status ] keep
+        ] keep
+    ] dip call ; inline
 
 M: midi-event write-event
     [ delta>> write-number ] [ value>> ] [ name>> ] tri {
@@ -358,25 +369,28 @@ M: midi-event write-event
             ] write-channel ] }
 
         ! system common messages
-        { "sysex" [ 0xf0 write1 write 0xf7 write1 ] }
+        { "sysex" [
+            [ drop 0xf0 dup write1 ] dip
+            write 0xf7 write1 ] }
         { "quarter-made" [
-            0xf1 write1
+            [ drop 0xf1 dup write1 ] dip
             [ "frame-type" of 4 shift ]
             [ "frame-value" of + ] bi write1 ] }
         { "songpos" [
-            0xf2 write1
+            [ drop 0xf2 dup write1 ] dip
             [ 0x7f bitand write1 ]
             [ -7 shift write1 ] bi ] }
-        { "song-select" [ 0xf3 write1 write1 ] }
-        { "tune-request" [ drop 0xf6 write1 ] }
+        { "song-select" [
+            [ drop 0xf3 dup write1 ] dip write1 ] }
+        { "tune-request" [ 2drop 0xf6 dup write1 ] }
 
         ! real-time messages
-        { "clock" [ drop 0xf8 write1 ] }
-        { "start" [ drop 0xfa write1 ] }
-        { "continue" [ drop 0xfb write1 ] }
-        { "stop" [ drop 0xfc write1 ] }
-        { "active-sensing" [ drop 0xfe write1 ] }
-        { "reset" [ drop 0xff write1 ] }
+        { "clock" [ 2drop 0xf8 dup write1 ] }
+        { "start" [ 2drop 0xfa dup write1 ] }
+        { "continue" [ 2drop 0xfb dup write1 ] }
+        { "stop" [ 2drop 0xfc dup write1 ] }
+        { "active-sensing" [ 2drop 0xfe dup write1 ] }
+        { "reset" [ 2drop 0xff dup write1 ] }
     } case ;
 
 : write-header ( header -- )
@@ -387,7 +401,9 @@ M: midi-event write-event
 
 : write-track ( track -- )
     $[ "MTrk" >byte-array ] write
-    binary [ events>> [ write-event ] each ] with-byte-writer
+    binary [
+        events>> f swap [ write-event ] each drop
+    ] with-byte-writer
     [ length 4 >be write ] [ write ] bi ;
 
 : write-chunk ( chunks -- )
@@ -396,7 +412,7 @@ M: midi-event write-event
         { [ dup midi-track? ] [ write-track ] }
         [
             [ type>> write ]
-            [ raw>> [ length 4 >be write ] [ write ] bi ] bi
+            [ bytes>> [ length 4 >be write ] [ write ] bi ] bi
         ]
     } cond ;
 
