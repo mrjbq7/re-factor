@@ -142,63 +142,49 @@ CONSTANT: smpte-framerate H{
 : read-sysex ( delta type -- event )
     read-number read <sysex-event> ;
 
-: read-channel ( type quot -- type data )
-    '[ 0x0f bitand "channel" ,, @ ] H{ } make ; inline
-
 : read-message ( delta type -- message )
-    dup
-    dup 0xf0 < [ 0xf0 bitand ] when
-    {
-        { 0x80 [
-            [
-                read1 "note" ,, read1 "velocity" ,,
-            ] read-channel "note-off" ] }
-        { 0x90 [
-            [
-                read1 "note" ,, read1 "velocity" ,,
-            ] read-channel "note-on" ] }
-        { 0xa0 [
-            [
-                read1 "note" ,, read1 "value" ,,
-            ] read-channel "polytouch" ] }
-        { 0xb0 [
-            [
-                read1 "control" ,, read1 "value" ,,
-            ] read-channel "control-change" ] }
+    dup 0xf0 < [
+        [
+            ! channel messages
+            [ 0x0f bitand "channel" ,, ] [ 0xf0 bitand ] bi {
+                { 0x80 [ "note-off"
+                    read1 "note" ,, read1 "velocity" ,, ] }
+                { 0x90 [ "note-on"
+                    read1 "note" ,, read1 "velocity" ,, ] }
+                { 0xa0 [ "polytouch"
+                    read1 "note" ,, read1 "value" ,, ] }
+                { 0xb0 [ "control-change"
+                    read1 "control" ,, read1 "value" ,, ] }
+                { 0xc0 [ "program-change"
+                    read1 "program" ,, ] }
+                { 0xd0 [ "aftertouch"
+                    read1 "value" ,, ] }
+                { 0xe0 [ "pitchwheel"
+                    read1 read1 7 shift + min-pitchwheel + "pitch" ,, ] }
+            } case
+        ] H{ } make
+    ] [
+        {
+            ! system common messages
+            { 0xf0 [ "sysex" { 0xf7 } read-until drop ] }
+            { 0xf1 [ "quarter-made" [
+                    read1
+                    [ -4 shift "frame-type" ,, ]
+                    [ 0x0f bitand "frame-value" ,, ] bi
+                ] H{ } make ] }
+            { 0xf2 [ "songpos" read1 read1 7 shift + ] }
+            { 0xf3 [ "song-select" read1 ] }
+            { 0xf6 [ "tune-request" f ] }
 
-        { 0xc0 [
-            [
-                read1 "program" ,,
-            ] read-channel "program-change" ] }
-        { 0xd0 [
-            [
-                read1 "value" ,,
-            ] read-channel "aftertouch" ] }
-        { 0xe0 [
-            [
-                read1 read1 7 shift + min-pitchwheel + "pitch" ,,
-            ] read-channel "pitchwheel" ] }
-
-        ! system common messages
-        { 0xf0 [ drop { 0xf7 } read-until drop "sysex" ] }
-        { 0xf1 [
-            drop [
-                read1
-                [ -4 shift "frame-type" ,, ]
-                [ 0x0f bitand "frame-value" ,, ] bi
-            ] H{ } make "quarter-made" ] }
-        { 0xf2 [ drop read1 read1 7 shift + "songpos" ] }
-        { 0xf3 [ drop read1 "song-select" ] }
-        { 0xf6 [ drop f "tune-request" ] }
-
-        ! real-time messages
-        { 0xf8 [ drop f "clock" ] }
-        { 0xfa [ drop f "start" ] }
-        { 0xfb [ drop f "continue" ] }
-        { 0xfc [ drop f "stop" ] }
-        { 0xfe [ drop f "active-sensing" ] }
-        { 0xff [ drop f "reset" ] }
-    } case swap <midi-event> ;
+            ! real-time messages
+            { 0xf8 [ "clock" f ] }
+            { 0xfa [ "start" f ] }
+            { 0xfb [ "continue" f ] }
+            { 0xfc [ "stop" f ] }
+            { 0xfe [ "active-sensing" f ] }
+            { 0xff [ "reset" f ] }
+        } case
+    ] if <midi-event> ;
 
 : read-event ( delta type -- event )
     {
