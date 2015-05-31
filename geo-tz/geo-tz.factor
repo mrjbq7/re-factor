@@ -11,16 +11,6 @@ IN: geo-tz
 
 CONSTANT: deg-pixels 32
 
-: <tile-key> ( size y x -- tile-key )
-    [ 3 bits 28 shift ]
-    [ 14 bits 14 shift ]
-    [ 14 bits ] tri* bitor bitor ;
-
-: >tile-key< ( tile-key -- size y x )
-    [ -28 shift 3 bits ]
-    [ -14 shift 14 bits ]
-    [ 14 bits ] tri ;
-
 <<
 BE-PACKED-STRUCT: tile
     { key uint }
@@ -60,20 +50,21 @@ CONSTANT: unique-leaves $[
 
 CONSTANT: ocean-index 0xffff
 
-:: lookup-leaf ( leaf x y tile-key -- zone/f )
-    {
-        { [ leaf string? ] [ leaf ] }
-        { [ leaf one-bit-tile? ] [
-            leaf bits>> y 3 bits 8 * x 3 bits + bit?
-            [ leaf idx1>> ] [ leaf idx0>> ] if
-            unique-leaves nth x y tile-key lookup-leaf ] }
-        { [ leaf byte-array? ] [
-            y 3 bits 8 * x 3 bits + 2 * :> i
-            i leaf nth 8 shift i 1 + leaf nth +
-            dup ocean-index = [ drop f ] [
-                unique-leaves nth x y tile-key lookup-leaf
-            ] if ] }
-    } cond ;
+GENERIC# lookup-leaf 3 ( leaf x y tile-key -- zone/f )
+
+M: string lookup-leaf 3drop ;
+
+M:: one-bit-tile lookup-leaf ( leaf x y tile-key -- zone/f )
+    leaf bits>> y 3 bits 3 shift x 3 bits bitor bit?
+    [ leaf idx1>> ] [ leaf idx0>> ] if
+    unique-leaves nth x y tile-key lookup-leaf ;
+
+M:: byte-array lookup-leaf ( leaf x y tile-key -- zone/f )
+    y 3 bits 3 shift x 3 bits bitor 2 * :> i
+    i leaf nth 8 shift i 1 + leaf nth +
+    dup ocean-index = [ drop f ] [
+        unique-leaves nth x y tile-key lookup-leaf
+    ] if ;
 
 :: lookup-zoom-level ( zoom-level x y tile-key -- zone/f )
     zoom-level [ key>> tile-key >=< ] search swap [
@@ -90,9 +81,8 @@ CONSTANT: ocean-index 0xffff
         y
         level
         level 3 + neg :> n
-        y n shift
-        x n shift
-        <tile-key>
+        y x [ n shift 14 bits ] bi@
+        { 0 14 28 } bitfield
         lookup-zoom-level
     ] map-find-last drop ;
 
