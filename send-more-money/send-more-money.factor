@@ -21,9 +21,9 @@ CONSTANT: digits { 0 1 2 3 4 5 6 7 8 9 }
         digits { s e n d m o } diff amb-lazy :> r
         digits { s e n d m o r } diff amb-lazy :> y
 
-        { s e n d } >number
-        { m o r e } >number
-        { m o n e y } >number
-        3dup [ + ] [ = ] bi*
+        { s e n d } { m o r e } { m o n e y }
+        [ >number ] tri@ 3dup :> ( send more money )
+
+        send more + money =
 
     ] [ f f f ] if-amb drop "   %s\n+  %s\n= %s\n" printf ;
