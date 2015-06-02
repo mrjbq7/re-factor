@@ -8,7 +8,7 @@ IN: send-more-money
 
 CONSTANT: digits { 0 1 2 3 4 5 6 7 8 9 }
 
-: >number ( seq -- n ) reverse 0 [ 10^ * + ] reduce-index ;
+: >number ( seq -- n ) 0 [ [ 10 * ] dip + ] reduce ;
 
 :: solve ( -- send more money )
     [
