@@ -10,7 +10,7 @@ CONSTANT: digits { 0 1 2 3 4 5 6 7 8 9 }
 
 : >number ( seq -- n ) 0 [ [ 10 * ] dip + ] reduce ;
 
-:: solve ( -- send more money )
+:: send-more-money ( -- )
     [
         digits { 0 } diff amb-lazy :> s
         digits { s } diff amb-lazy :> e
@@ -28,7 +28,6 @@ CONSTANT: digits { 0 1 2 3 4 5 6 7 8 9 }
 
         3dup [ + ] [ = ] bi*
 
-    ] [ f f f ] if-amb drop ;
+    ] [ f f f ] if-amb drop
 
-: solve. ( -- )
-    solve "   %s\n+  %s\n= %s\n" printf ;
+    "   %s\n+  %s\n= %s\n" printf ;
