@@ -121,7 +121,7 @@ TUPLE: text-analysis #paragraphs #sentences #chars #words
         ]
         [ members length ]
         [
-            "vocab:text-analysis/familiar.txt" ascii
+            "vocab:text-analysis/dale-chall.txt" ascii
             file-lines fast-set '[ >lower _ in? not ] count
         ]
     } cleave text-analysis boa ;
