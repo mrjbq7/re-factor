@@ -8,6 +8,11 @@ sorting splitting unicode.case unicode.categories utils ;
 
 IN: tf-idf
 
+! UTILS
+
+: assoc-merge-all ( seq -- merge )
+    H{ } clone [ assoc-merge! ] reduce ;
+
 ! TOKENIZE
 
 : split-words ( string -- words )
@@ -28,7 +33,7 @@ MEMO: stopwords ( -- words )
     histogram [ pick swap 2array ] assoc-map ;
 
 : index-all ( assoc -- index )
-    [ index1 ] assoc-map values assoc-merge ;
+    [ index1 ] assoc-map values assoc-merge-all ;
 
 TUPLE: db docs index ;
 
@@ -47,7 +52,7 @@ TUPLE: db docs index ;
 ! SEARCH
 
 : scores ( query db -- scores )
-    [ >lower split-words ] dip '[ _ tf-idf ] map assoc-merge ;
+    [ >lower split-words ] dip '[ _ tf-idf ] map assoc-merge-all ;
 
 : (normalize) ( path db -- value )
     [ docs>> at ] keep '[ _ idf 2 ^ ] map-sum sqrt ;
