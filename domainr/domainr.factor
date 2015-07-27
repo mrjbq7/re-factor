@@ -9,7 +9,7 @@ IN: domainr
 : domainr-url ( query -- url )
     URL" https://api.domainr.com/v1/search"
     swap "q" set-query-param
-    "factor_lib" "client_id" set-query-param ;
+    "{your-mashape-key}" "client_id" set-query-param ;
 
 TUPLE: result domain host path subdomain availability
 register_url ;
