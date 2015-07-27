@@ -6,10 +6,13 @@ json.reader kernel sequences urls urls.secure utils ;
 
 IN: domainr
 
+! See: http://domainr.build/docs/authentication
+SYMBOL: mashape-key
+
 : domainr-url ( query -- url )
-    URL" https://api.domainr.com/v1/search"
-    swap "q" set-query-param
-    "{your-mashape-key}" "client_id" set-query-param ;
+    URL" https://api.domainr.com/v2/search"
+    swap "query" set-query-param
+    mashape-key get "mashape-key" set-query-param ;
 
 TUPLE: result domain host path subdomain availability
 register_url ;
