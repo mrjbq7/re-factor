@@ -36,7 +36,7 @@ MATCH-VARS: ?x ?y ;
         [ drop "The expression could not be simplified to a Constant." ]
     } match-cond ;
 
-: quot>expr ( quot -- expr )
+: >expr ( quot -- expr )
     [
         {
             { [ dup string? ] [ '[ _ Var boa ] ] }
