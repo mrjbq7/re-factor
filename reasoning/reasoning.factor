@@ -1,4 +1,6 @@
-USING: kernel literals match math prettyprint ;
+USING: combinators fry kernel literals match math prettyprint
+quotations sequences strings ;
+FROM: fry => _ ;
 IN: reasoning
 
 TUPLE: Var s ;
@@ -33,3 +35,13 @@ MATCH-VARS: ?x ?y ;
         { T{ Const f ?x } [ ?x ] }
         [ drop "The expression could not be simplified to a Constant." ]
     } match-cond ;
+
+: quot>expr ( quot -- expr )
+    [
+        {
+            { [ dup string? ] [ '[ _ Var boa ] ] }
+            { [ dup integer? ] [ '[ _ Const boa ] ] }
+            { [ dup \ + = ] [ drop [ Add boa ] ] }
+            { [ dup \ * = ] [ drop [ Mul boa ] ] }
+        } cond
+    ] map concat call( -- expr ) ;
