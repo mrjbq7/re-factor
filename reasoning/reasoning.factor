@@ -1,5 +1,5 @@
-USING: combinators fry kernel literals match math prettyprint
-quotations sequences strings ;
+USING: accessors combinators fry kernel literals match math
+prettyprint quotations sequences strings ;
 FROM: fry => _ ;
 IN: reasoning
 
@@ -45,3 +45,11 @@ MATCH-VARS: ?x ?y ;
             { [ dup \ * = ] [ drop [ Mul boa ] ] }
         } cond
     ] map concat call( -- expr ) ;
+
+: expr> ( expr -- quot )
+    {
+        { [ dup Add? ] [ [ x>> ] [ y>> ] bi [ expr> ] bi@ '[ @ @ + ] ] }
+        { [ dup Mul? ] [ [ x>> ] [ y>> ] bi [ expr> ] bi@ '[ @ @ * ] ] }
+        { [ dup Const? ] [ n>> '[ _ ] ] }
+        { [ dup Var? ] [ s>> '[ _ ] ] }
+    } cond ;

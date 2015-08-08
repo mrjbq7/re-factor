@@ -1,4 +1,4 @@
-USING: math reasoning tools.test ;
+USING: kernel math reasoning tools.test ;
 
 {
     T{ Add f
@@ -15,3 +15,5 @@ USING: math reasoning tools.test ;
 { 15 } [
     [ "x" 0 * 1 + 3 * 12 + ] >expr simplify-value
 ] unit-test
+
+{ t } [ [ "x" 0 * 1 + 3 * 12 + ] dup >expr expr> = ] unit-test
