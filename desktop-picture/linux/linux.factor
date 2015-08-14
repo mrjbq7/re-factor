@@ -12,8 +12,8 @@ M: linux set-desktop-picture
         "set"
         "org.gnome.desktop.background"
         "picture-uri"
-    } swap "file://" prepend suffix try-process ;
+    } swap absolute-path "file://" prepend suffix try-process ;
 
 M: linux get-desktop-picture
-    { "gsettings" "get" "org.gnome.desktop.background" }
-    utf8 [ readln ] with-process-reader ;
+    { "gsettings" "get" "org.gnome.desktop.background" "picture-uri" }
+    utf8 [ readln ] with-process-reader "file://" ?head drop ;
