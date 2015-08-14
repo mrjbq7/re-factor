@@ -1,8 +1,8 @@
 ! Copyright (C) 2015 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: desktop-picture io io.encodings.utf8 io.launcher kernel
-sequences system ;
+USING: desktop-picture io io.encodings.utf8 io.launcher
+io.pathnames kernel sequences splitting system ;
 
 IN: desktop-picture.linux
 
