@@ -16,4 +16,5 @@ M: linux set-desktop-picture
 
 M: linux get-desktop-picture
     { "gsettings" "get" "org.gnome.desktop.background" "picture-uri" }
-    utf8 [ readln ] with-process-reader "file://" ?head drop ;
+    utf8 [ readln ] with-process-reader
+    "'file://" ?head drop "'" ?tail drop ;
