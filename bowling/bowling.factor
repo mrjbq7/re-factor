@@ -9,28 +9,22 @@ TUPLE: game frame# throw# score pins bonus ;
 
 : <game> ( -- game ) 0 0 0 10 0 game boa ;
 
-ERROR: invalid-throw ;
+ERROR: invalid-throw game ;
 
 <PRIVATE
 
-: in-game ( game before-last-frame last-frame -- game )
-    [ dup frame#>> 9 < ] 2dip if ; inline
-
 : next-frame ( game -- game )
-    [ [ 1 + ] change-frame# 0 >>throw# 10 >>pins ]
-    [ [ 1 + ] change-throw# 10 >>pins ] in-game ;
-
-: next-throw ( game -- game )
-    dup throw#>> zero? [ 1 >>throw# ] [ next-frame ] if ;
+    dup frame#>> 9 < [
+        [ 1 + ] change-frame#
+    ] when 0 >>throw# 10 >>pins ;
 
 : check-throw# ( game n -- game )
-    '[ dup throw#>> _ = [ invalid-throw ] unless ]
-    [ ] in-game ;
+    over throw#>> = [ invalid-throw ] unless ;
 
 : check-pins ( game n -- game n )
     over pins>> dupd <= [ invalid-throw ] unless ;
 
-: bonus ( game n -- game n' )
+: apply-bonus ( game n -- game n' )
     over bonus>> [
         2 >
         [ [ [ 2 - ] change-bonus ] dip 3 * ]
@@ -41,14 +35,16 @@ ERROR: invalid-throw ;
 : take-pins ( game n -- game )
     check-pins
     [ '[ _ - ] change-pins ]
-    [ bonus '[ _ + ] change-score ]
+    [ apply-bonus '[ _ + ] change-score ]
     bi ;
 
 : take-all-pins ( game -- game )
     dup pins>> take-pins ;
 
 : add-bonus ( game n -- game )
-    '[ [ _ + ] change-bonus ] [ ] in-game ;
+    over frame#>> 9 < [
+        '[ _ + ] change-bonus
+    ] [ drop ] if ;
 
 : strike ( game -- game )
     0 check-throw# 10 take-pins 2 add-bonus next-frame ;
@@ -57,7 +53,8 @@ ERROR: invalid-throw ;
     1 check-throw# take-all-pins 1 add-bonus next-frame ;
 
 : hit ( game n -- game )
-    take-pins next-throw ;
+    take-pins dup throw#>> zero?
+    [ 1 >>throw# ] [ next-frame ] if ;
 
 : throw-ball ( game ch -- game )
     {
