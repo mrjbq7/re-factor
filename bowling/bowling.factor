@@ -26,10 +26,11 @@ ERROR: invalid-throw game ;
 
 : apply-bonus ( game n -- game n' )
     over bonus>> [
-        2 >
-        [ [ [ 2 - ] change-bonus ] dip 3 * ]
-        [ [ [ 1 - ] change-bonus ] dip 2 * ]
-        if
+        2 > [
+            [ [ 2 - ] change-bonus ] dip 3 *
+        ] [
+            [ [ 1 - ] change-bonus ] dip 2 *
+        ] if
     ] unless-zero ;
 
 : take-pins ( game n -- game )
@@ -42,9 +43,7 @@ ERROR: invalid-throw game ;
     dup pins>> take-pins ;
 
 : add-bonus ( game n -- game )
-    over frame#>> 9 < [
-        '[ _ + ] change-bonus
-    ] [ drop ] if ;
+    over frame#>> 9 < [ '[ _ + ] change-bonus ] [ drop ] if ;
 
 : strike ( game -- game )
     0 check-throw# 10 take-pins 2 add-bonus next-frame ;
