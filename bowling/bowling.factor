@@ -1,9 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors colors.constants combinators formatting io
-io.styles kernel math math.parser math.ranges math.statistics
-sequences ;
+USING: accessors arrays combinators formatting io kernel math
+math.ranges math.statistics sequences ;
 
 IN: bowling
 
