@@ -1,74 +1,66 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators kernel math sequences fry ;
+USING: accessors colors.constants combinators formatting io
+io.styles kernel math math.parser math.ranges math.statistics
+sequences ;
 
 IN: bowling
 
-TUPLE: game frame# throw# score pins bonus ;
-
-: <game> ( -- game ) 0 0 0 10 0 game boa ;
-
-ERROR: invalid-throw game ;
-
-<PRIVATE
-
-: next-frame ( game -- game )
-    dup frame#>> 9 < [
-        [ 1 + ] change-frame#
-    ] when 0 >>throw# 10 >>pins ;
-
-: check-throw# ( game n -- game )
-    over throw#>> = [ invalid-throw ] unless ;
-
-: check-pins ( game n -- game n )
-    over pins>> dupd <= [ invalid-throw ] unless ;
-
-: apply-bonus ( game n -- game n' )
-    over bonus>> [
-        2 > [
-            [ [ 2 - ] change-bonus ] dip 3 *
-        ] [
-            [ [ 1 - ] change-bonus ] dip 2 *
-        ] if
-    ] unless-zero ;
-
-: take-pins ( game n -- game )
-    check-pins
-    [ '[ _ - ] change-pins ]
-    [ apply-bonus '[ _ + ] change-score ]
-    bi ;
-
-: take-all-pins ( game -- game )
-    dup pins>> take-pins ;
-
-: add-bonus ( game n -- game )
-    over frame#>> 9 < [ '[ _ + ] change-bonus ] [ drop ] if ;
-
-: strike ( game -- game )
-    0 check-throw# 10 take-pins 2 add-bonus next-frame ;
-
-: spare ( game -- game )
-    1 check-throw# take-all-pins 1 add-bonus next-frame ;
-
-: hit ( game n -- game )
-    take-pins dup throw#>> zero?
-    [ 1 >>throw# ] [ next-frame ] if ;
-
-: throw-ball ( game ch -- game )
+: pin ( last ch -- pin )
     {
-        { CHAR: - [ 0 hit ] }
-        { CHAR: X [ strike ] }
-        { CHAR: / [ spare ] }
-        [ CHAR: 0 - hit ]
-    } case ;
+        { CHAR: - [ 0 ] }
+        { CHAR: X [ 10 ] }
+        { CHAR: / [ 10 over - ] }
+        [ CHAR: 0 - ]
+    } case nip ;
 
-PRIVATE>
+: pins ( str -- pins )
+    f swap [ pin dup ] { } map-as nip ;
 
-: score-frame ( str -- score )
-    [ <game> ] dip [ throw-ball ] each
-    [ frame#>> 1 assert= ] [ score>> ] bi ;
+: frame ( pins -- rest frame )
+    dup ?first 10 = 1 2 ? short cut-slice swap ;
 
-: score-game ( str -- score )
-    [ <game> ] dip [ throw-ball ] each
-    [ frame#>> 9 assert= ] [ score>> ] bi ;
+: frames ( pins -- frames )
+    9 [ frame ] replicate swap suffix ;
+
+: bonus ( frame n -- bonus )
+    [ [ seq>> ] [ to>> ] bi tail ] dip head sum ;
+
+: scores ( frames -- scores )
+    [
+        dup [ sum ] [ length ] bi over 10 = [
+            3 swap - swapd bonus +
+        ] [
+            drop nip
+        ] if
+    ] map ;
+
+: bowl ( str -- score )
+    pins frames scores sum ;
+
+: bowl. ( str -- )
+    10 [1,b] [ "%3d" sprintf ] map " | " join print
+    10 "---" <array> "-+-" join print
+    pins frames [
+        [
+            [
+                [
+                    {
+                        { 0 [ CHAR: - ] }
+                        { 10 [ CHAR: X ] }
+                        [ CHAR: 0 + ]
+                    } case
+                ] "" map-as
+            ] [
+                dup length 1 > [
+                    first2 + 10 = [
+                        CHAR: / 1 pick set-nth
+                    ] when
+                ] [ drop ] if
+            ] bi "%3s" sprintf
+        ] map " | " join print
+    ] [
+        scores cum-sum
+        [ "%3d" sprintf ] map " | " join print
+    ] bi ;
