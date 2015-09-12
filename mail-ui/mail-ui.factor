@@ -4,8 +4,8 @@
 USING: accessors arrays colors.constants kernel sequences smtp
 splitting ui ui.commands ui.gadgets ui.gadgets.borders
 ui.gadgets.buttons ui.gadgets.editors ui.gadgets.labels
-ui.gadgets.scrollers ui.gadgets.tracks ui.gadgets.worlds
-ui.gestures ui.pens.solid ;
+ui.gadgets.scrollers ui.gadgets.toolbar ui.gadgets.tracks
+ui.gadgets.worlds ui.gestures ui.pens.solid ;
 
 IN: mail-ui
 
