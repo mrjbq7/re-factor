@@ -1,10 +1,10 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii assocs colors.constants fry html.parser
-html.entities html.parser.printer http.client io
-io.streams.string io.styles json.reader kernel memoize sequences
-sequences.extras splitting strings urls wrap.strings ;
+USING: ascii assocs colors.constants fry html.entities
+html.parser html.parser.printer http.client io io.styles
+json.reader kernel memoize sequences sequences.extras splitting
+strings urls wrap.strings ;
 
 IN: re-factor
 
@@ -12,7 +12,7 @@ IN: re-factor
     "http://re-factor.blogspot.com/" prepend ;
 
 : posts-url ( -- url )
-    "feeds/posts/default?alt=json&max-results=200" re-factor-url ;
+    "feeds/posts/default?alt=json&max-results=300" re-factor-url ;
 
 MEMO: all-posts ( -- posts )
     posts-url http-get nip json> { "feed" "entry" } [ of ] each ;
