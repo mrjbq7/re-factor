@@ -23,17 +23,11 @@ IN: bowling
 : frames ( pins -- frames )
     9 [ frame ] replicate swap suffix ;
 
-: bonus ( frame n -- bonus )
-    [ [ seq>> ] [ to>> ] bi tail ] dip head sum ;
+: bonus ( frame -- bonus )
+    [ seq>> ] [ to>> tail ] [ length 3 swap - ] tri head sum ;
 
 : scores ( frames -- scores )
-    [
-        dup [ sum ] [ length ] bi over 10 = [
-            3 swap - swapd bonus +
-        ] [
-            drop nip
-        ] if
-    ] map ;
+    [ [ sum ] keep over 10 = [ bonus + ] [ drop ] if ] map ;
 
 : bowl ( str -- score )
     pins frames scores sum ;
