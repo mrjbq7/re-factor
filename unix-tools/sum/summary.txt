@@ -1,1 +1,0 @@
-Implementation of "old Unix Sys V R4" sum command
