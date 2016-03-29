@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs classes.tuple formatting http.client
-json.reader kernel sequences urls urls.secure utils ;
+json.reader kernel sequences urls utils ;
 
 IN: domainr
 

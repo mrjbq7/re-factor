@@ -10,7 +10,6 @@ USE: math.parser
 USE: namespaces
 USE: sequences
 USE: urls
-USE: urls.secure
 USE: xml
 USE: xml.traversal
 

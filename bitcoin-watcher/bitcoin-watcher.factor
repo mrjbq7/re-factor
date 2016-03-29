@@ -2,7 +2,7 @@
 USING: accessors assocs classes.tuple combinators
 concurrency.combinators generalizations hashtables
 help.stylesheet http.client io io.styles json.reader kernel
-math.parser namespaces sequences strings urls.secure ;
+math.parser namespaces sequences strings ;
 
 IN: bitcoin-watcher
 

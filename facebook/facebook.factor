@@ -3,7 +3,7 @@
 
 USING: accessors assocs assocs.extras classes.tuple combinators
 http.client images.http json.reader kernel sequences urls
-urls.encoding urls.secure ;
+urls.encoding ;
 
 IN: facebook
 
