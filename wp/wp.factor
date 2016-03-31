@@ -3,7 +3,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs io math.parser math.statistics sequences splitting
-sorting unicode.categories ;
+sorting unicode ;
 
 IN: wp
 

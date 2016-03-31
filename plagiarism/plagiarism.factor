@@ -3,8 +3,7 @@
 
 USING: command-line grouping io io.encodings.utf8 io.files
 kernel math math.parser math.ranges namespaces regexp sequences
-sequences.extras sets splitting unicode.case unicode.categories
-unicode.data utils ;
+sequences.extras sets splitting unicode utils ;
 
 IN: plagiarism
 

@@ -1,5 +1,5 @@
 USING: assocs formatting io kernel math math.parser math.ranges
-memoize sequences sequences.extras splitting unicode.categories ;
+memoize sequences sequences.extras splitting unicode ;
 
 IN: cycles
 

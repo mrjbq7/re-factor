@@ -1,6 +1,6 @@
 
 USING: io io.files.info kernel math.order sequences sorting
-threads unicode.case ;
+threads unicode ;
 
 IN: emoji
 

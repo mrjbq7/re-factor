@@ -2,7 +2,7 @@
 USING: accessors combinators continuations fry html.parser
 html.parser.analyzer http.client images.http io io.styles kernel
 math math.parser present sequences sequences.extras splitting
-strings unicode.case urls ;
+strings unicode urls ;
 
 IN: beer-advocate
 

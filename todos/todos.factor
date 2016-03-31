@@ -35,7 +35,7 @@ IN: todos
     ] assoc-each ;
 
 USING: lexer namespaces strings strings.parser.private
-unicode.categories vocabs.parser ;
+unicode vocabs.parser ;
 
 SYNTAX: TODO:
     lexer get [ rest-of-line ] [ next-line ] bi

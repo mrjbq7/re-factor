@@ -4,7 +4,7 @@
 USING: accessors arrays assocs assocs.extras
 combinators.short-circuit fry io.encodings.utf8 io.files kernel
 math math.functions math.statistics memoize sequences sets
-sorting splitting unicode.case unicode.categories ;
+sorting splitting unicode ;
 
 IN: tf-idf
 

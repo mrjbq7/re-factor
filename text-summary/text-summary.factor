@@ -3,7 +3,7 @@
 
 USING: assocs fry io io.streams.string kernel math
 math.combinatorics regexp sequences sets splitting strings
-unicode.categories wikipedia wrap.strings ;
+unicode wikipedia wrap.strings ;
 
 IN: text-summary
 
