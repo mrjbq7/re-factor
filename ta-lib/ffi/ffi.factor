@@ -14,17 +14,17 @@ IN: ta-lib.ffi
 
 LIBRARY: ta-lib
 
-FUNCTION: c-string TA_GetVersionString ( ) ;
-FUNCTION: c-string TA_GetVersionMajor ( ) ;
-FUNCTION: c-string TA_GetVersionMinor ( ) ;
-FUNCTION: c-string TA_GetVersionBuild ( ) ;
-FUNCTION: c-string TA_GetVersionDate ( ) ;
-FUNCTION: c-string TA_GetVersionTime ( ) ;
+FUNCTION: c-string TA_GetVersionString ( )
+FUNCTION: c-string TA_GetVersionMajor ( )
+FUNCTION: c-string TA_GetVersionMinor ( )
+FUNCTION: c-string TA_GetVersionBuild ( )
+FUNCTION: c-string TA_GetVersionDate ( )
+FUNCTION: c-string TA_GetVersionTime ( )
 
 TYPEDEF: int TA_RetCode
 
-FUNCTION: TA_RetCode TA_Initialize ( ) ;
-FUNCTION: TA_RetCode TA_Shutdown ( ) ;
+FUNCTION: TA_RetCode TA_Initialize ( )
+FUNCTION: TA_RetCode TA_Shutdown ( )
 
 ENUM: RetCode
     TA_SUCCESS,
@@ -58,5 +58,5 @@ ENUM: MA_Type
     TA_MAType_MAMA,
     TA_MAType_T3 ;
 
-FUNCTION: TA_RetCode TA_MOM ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal ) ;
-FUNCTION: int TA_MOM_Lookback ( int optInTimePeriod ) ;
+FUNCTION: TA_RetCode TA_MOM ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
+FUNCTION: int TA_MOM_Lookback ( int optInTimePeriod )
