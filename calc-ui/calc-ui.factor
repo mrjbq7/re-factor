@@ -46,7 +46,7 @@ TUPLE: calculator < model x y op valid? ;
 
 : decimal ( model -- )
     dup valid?>>
-    [ [ dup "." subseq? [ "." append ] unless ] change-model ]
+    [ [ "." over subseq? [ "." append ] unless ] change-model ]
     [ t >>valid? "0." swap set-model ] if ;
 
 : digit ( n model -- )
