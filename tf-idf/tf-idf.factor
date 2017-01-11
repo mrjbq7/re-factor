@@ -22,18 +22,18 @@ MEMO: stopwords ( -- words )
     "vocab:tf-idf/stopwords.txt" utf8 file-lines fast-set ;
 
 : tokenize ( string -- words )
-    >lower split-words [ stopwords in? not ] filter ;
+    >lower split-words [ stopwords in? ] reject ;
 
 ! INDEX
 
 : tokenize-files ( paths -- assoc )
     [ dup utf8 file-contents tokenize ] H{ } map>assoc ;
 
-: index1 ( path words -- path index )
-    histogram [ pick swap 2array ] assoc-map ;
+: index1 ( path words -- index )
+    histogram [ 2array ] with assoc-map ;
 
 : index-all ( assoc -- index )
-    [ index1 ] assoc-map values assoc-merge-all ;
+    [ index1 ] { } assoc>map assoc-merge-all ;
 
 TUPLE: db docs index ;
 
