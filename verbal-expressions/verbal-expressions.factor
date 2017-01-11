@@ -62,6 +62,9 @@ PRIVATE>
 : start-of-line ( verbexp -- verbexp )
     [ "^" append ] change-prefix ;
 
+: -find- ( verbexp value -- verbexp )
+    re-escape "(" ")" surround add ;
+
 : then ( verbexp value -- verbexp )
     re-escape "(?:" ")" surround add ;
 
