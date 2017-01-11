@@ -17,7 +17,7 @@ whole    = ([0-9])*           => [[ >string ]]
 digit    = "." ([0-9])*       => [[ [ >string ] map concat ]]
 
 number_  = sign? whole digit? 
-         => [[ [ f eq? not ] filter concat string>number ]]
+         => [[ [ f eq? ] reject concat string>number ]]
 
 number   = space number_ space => [[ second 1quotation ]]
 

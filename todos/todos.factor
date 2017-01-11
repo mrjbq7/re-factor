@@ -27,7 +27,7 @@ IN: todos
 
 : all-todos ( vocab -- assoc )
     child-vocabs [ dup vocab-todo 2array ] map
-    [ second empty? not ] filter ;
+    [ second empty? ] reject ;
 
 : all-todos. ( vocab -- )
     all-todos [

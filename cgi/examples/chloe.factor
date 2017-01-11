@@ -29,7 +29,7 @@ begin-form
 
 <cgi-simple-form> "numbers" of "" or 
 [ write ] 
-[ "," split [ empty? not ] filter "numbers" set-value ] bi
+[ "," split [ empty? ] reject "numbers" set-value ] bi
 
 """
 ">

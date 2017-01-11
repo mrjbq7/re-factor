@@ -1,18 +1,17 @@
 ! Copyright (C) 2014 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel math sequences splitting unicode.case
-unicode.categories ;
+USING: kernel math sequences splitting unicode ;
 
 IN: sanitize-paths
 
 <PRIVATE
 
 : filter-special ( str -- str' )
-    [ "/\\?*:|\"<>" member? not ] filter ;
+    [ "/\\?*:|\"<>" member? ] reject ;
 
 : filter-control ( str -- str' )
-    [ control? not ] filter ;
+    [ control? ] reject ;
 
 : filter-blanks ( str -- str' )
     [ blank? ] split-when harvest " " join ;

@@ -12,7 +12,7 @@ IN: palindrome
 : main ( -- ) "racecar" palindrome? . ;
 
 : normalize-morse ( str -- str' )
-    normalize >morse [ blank? not ] filter ;
+    normalize >morse [ blank? ] reject ;
 
 : morse-palindrome? ( str -- ? )
     normalize-morse dup reverse = ;
