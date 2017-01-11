@@ -1,8 +1,8 @@
 ! Copyright (C) 2012 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs fry grouping io.encodings.utf8 io.files kernel
-make math memoize random sequences ;
+USING: assocs assocs.extras fry grouping io.encodings.utf8
+io.files kernel make math memoize random sequences splitting ;
 
 IN: random-names
 
@@ -23,17 +23,14 @@ MEMO: country-names ( -- seq )
 : transitions ( string -- enum )
     { f } { } append-as 2 clump <enum> ;
 
-: (transition-table) ( string assoc -- )
-    [ transitions ] dip '[ swap _ push-at ] assoc-each ;
-
-: transition-table ( seq -- assoc )
-    H{ } clone [ [ (transition-table) ] curry each ] keep ;
+: transition-table ( seq -- table )
+    H{ } clone swap [ transitions assoc-merge! ] each ;
 
 : next-char, ( prev index assoc -- next )
-    at swap [ [ nip = ] curry assoc-filter ] when*
+    at swap [ '[ drop _ = ] assoc-filter ] when*
     random [ first , ] [ second ] bi ;
 
-: (generate-name) ( table -- name )
+: random-name ( table -- name )
     [
         f 0 [
             [ pick next-char, ] [ 1 + ] bi over
@@ -43,7 +40,7 @@ MEMO: country-names ( -- seq )
 PRIVATE>
 
 : generate-name ( seq -- name )
-    transition-table (generate-name) ;
+    transition-table random-name ;
 
 : generate-names ( n seq -- names )
-    transition-table '[ _ (generate-name) ] replicate ;
+    transition-table '[ _ random-name ] replicate ;
