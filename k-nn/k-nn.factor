@@ -1,6 +1,6 @@
 USING: arrays byte-arrays formatting fry io.encodings.ascii
 io.files kernel kernel.private math math.parser sequences
-splitting ;
+sequences.extras splitting ;
 
 IN: k-nn
 
@@ -15,8 +15,10 @@ IN: k-nn
 : classify ( training pixels -- label )
     '[ first _ distance ] infimum-by second ;
 
+: validate ( training validation -- % )
+    [ first2 [ classify ] [ = ] bi* ] with count* ;
+
 : k-nn ( -- )
     "vocab:k-nn/trainingsample.csv" slurp-file
     "vocab:k-nn/validationsample.csv" slurp-file
-    [ [ first2 [ classify ] [ = ] bi* ] with count ]
-    [ length ] bi / 100.0 * "Percentage correct: %f\n" printf ;
+    validate 100.0 * "Percentage correct: %f\n" printf ;
