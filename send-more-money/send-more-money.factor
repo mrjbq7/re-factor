@@ -11,9 +11,28 @@ CONSTANT: digits { 0 1 2 3 4 5 6 7 8 9 }
 : >number ( seq -- n ) 0 [ [ 10 * ] dip + ] reduce ;
 
 : digit ( seq -- n )
-    digits swap amb-lazy ;
+    digits swap diff amb-lazy ;
 
 :: send-more-money ( -- )
+    { 0 } digit :> s
+    { s } digit :> e
+    { s e } digit :> n
+    { s e n } digit :> d
+    { s e n d } >number :> send
+
+    { 0 s e n d } digit :> m
+    { s e n d m } digit :> o
+    { s e n d m o } digit :> r
+    { m o r e } >number :> more
+
+    { s e n d m o r } digit :> y
+    { m o n e y } >number :> money
+
+    send more + money = [ fail ] unless
+
+    send more money "   %s\n+  %s\n= %s\n" printf ;
+
+:: send-more-money1 ( -- )
     [
         { 0 } digit :> s
         { s } digit :> e
