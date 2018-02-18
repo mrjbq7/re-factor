@@ -132,7 +132,7 @@ C: <config> config
                 [ "upload" of 1,000 * ]
                 [ "download" of 1,000 * ] tri
                 "%d-%d-%d-297aae72" sprintf md5 checksum-bytes
-                hex-string "hash" ,,
+                bytes>hex-string "hash" ,,
             ]
         } cleave
     ] { } make ;
