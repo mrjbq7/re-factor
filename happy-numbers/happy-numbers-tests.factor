@@ -13,6 +13,6 @@ USING: happy-numbers sequences tools.test ;
 [ t ] [ 1034567892987654301 happy? ] unit-test
 
 [ V{ 1 7 10 13 19 23 28 31 32 44 49 } ]
-[ 50 iota [ happy? ] filter ] unit-test
+[ 50 <iota> [ happy? ] filter ] unit-test
 
 [ { 1 7 10 13 19 23 28 31 } ] [ 8 happy-numbers ] unit-test

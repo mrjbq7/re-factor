@@ -36,7 +36,7 @@ CONSTANT: SYMBOLS "☀☁☂☃"
 
 : play-slots ( -- )
     "\e[0;0H\e[2J" write
-    f f f 20 iota [ spin-slots print-spin ] each winner? ;
+    f f f 20 <iota> [ spin-slots print-spin ] each winner? ;
 
 : continue? ( -- ? )
     "Press ENTER to play again." write flush readln ;

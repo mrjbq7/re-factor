@@ -14,5 +14,5 @@ IN: spark
 { "▁▅██▅█" } [ { 0 30 55 80 33 150 } 50 spark-max ] unit-test
 { "▁▁▄█▁█" } [ { 0 30 55 80 33 150 } 30 80 spark-range ] unit-test
 
-{ "▄▆█▆▄▂▁▂▄" } [ 9 iota [ pi 4 / * sin ] map spark ] unit-test
-{ "█▆▄▂▁▂▄▆█" } [ 9 iota [ pi 4 / * cos ] map spark ] unit-test
+{ "▄▆█▆▄▂▁▂▄" } [ 9 <iota> [ pi 4 / * sin ] map spark ] unit-test
+{ "█▆▄▂▁▂▄▆█" } [ 9 <iota> [ pi 4 / * cos ] map spark ] unit-test

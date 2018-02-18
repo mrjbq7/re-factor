@@ -20,7 +20,7 @@ BE-PACKED-STRUCT: tile
 SPECIALIZED-ARRAY: tile
 
 CONSTANT: zoom-levels $[
-    6 iota [
+    6 <iota> [
         number>string
         "vocab:geo-tz/zoom" ".dat" surround
         binary file-contents tile cast-array
@@ -75,7 +75,7 @@ M:: byte-array lookup-leaf ( leaf x y tile-key -- zone/f )
     ] [ drop f ] if ;
 
 :: lookup-pixel ( x y -- zone )
-    6 iota [| level |
+    6 <iota> [| level |
         level zoom-levels nth
         x
         y

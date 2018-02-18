@@ -43,9 +43,9 @@ CONSTANT: PRECISION3 $[ 1 BITS3 shift ]
 <<
 CONSTANT: MASK $[ PRECISION1 1 - ]
 
-CONSTANT: FRAC1 $[ 2 PRECISION1 iota [ PRECISION1 / ^ ] with map ]
-CONSTANT: FRAC2 $[ 2 PRECISION1 iota [ PRECISION2 / ^ ] with map ]
-CONSTANT: FRAC3 $[ 2 PRECISION1 iota [ PRECISION3 / ^ ] with map ]
+CONSTANT: FRAC1 $[ 2 PRECISION1 <iota> [ PRECISION1 / ^ ] with map ]
+CONSTANT: FRAC2 $[ 2 PRECISION1 <iota> [ PRECISION2 / ^ ] with map ]
+CONSTANT: FRAC3 $[ 2 PRECISION1 <iota> [ PRECISION3 / ^ ] with map ]
 >>
 
 ! a ^ ( b + c ) == a ^ b * a ^ c

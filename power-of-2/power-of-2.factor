@@ -10,7 +10,7 @@ splitting system typed wolfram-alpha ;
 IN: power-of-2
 
 <<
-CONSTANT: POWERS-OF-2 $[ 64 iota [ 2^ ] map ]
+CONSTANT: POWERS-OF-2 $[ 64 <iota> [ 2^ ] map ]
 >>
 
 : check-all/power-of-2? ( n -- ? )

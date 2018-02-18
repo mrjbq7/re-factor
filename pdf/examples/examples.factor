@@ -45,7 +45,7 @@ PRIVATE>
 
 : test4-pdf ( -- )
     [
-        10 iota [
+        10 <iota> [
             "Hello world\n"
             swap 10 / 1 <gray> foreground associate format
         ] each
