@@ -1,6 +1,6 @@
 
-USING: kernel math math.functions math.statistics random
-sequences ;
+USING: fry kernel math math.functions math.statistics namespaces
+random random.private sequences ;
 
 IN: monte-carlo
 
@@ -19,13 +19,19 @@ IN: monte-carlo
 
 ! Estimate pi
 
+: (random-point) ( obj -- x y )
+    [ (random-unit) ] [ (random-unit) ] bi ;
+
 : random-point ( -- x y )
-    random-unit random-unit ;
+    random-generator get (random-point) ;
 
 : inside-circle? ( x y -- ? )
     [ sq ] bi@ + sqrt 1.0 <= ;
 
 : estimate-pi ( points -- pi-estimate )
     0 swap [
-        [ random-point inside-circle? [ 1 + ] when ] times
+        random-generator get
+        '[
+            _ (random-point) inside-circle? [ 1 + ] when
+        ] times
     ] keep /f 4 * ;
