@@ -1,9 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors calendar calendar.format calendar.model colors
-fonts fry generalizations kernel math math.order models.arrow
-namespaces ui.gadgets.labels ui.pens.solid ;
+USING: accessors calendar calendar.format colors fonts fry
+generalizations kernel math math.order timers ui.gadgets
+ui.gadgets.labels ui.pens.solid ;
 
 IN: second-color
 
@@ -32,11 +32,19 @@ PRIVATE>
 
 PRIVATE>
 
+TUPLE: rgba-clock < label timer ;
+
+M: rgba-clock graft*
+    [ timer>> start-timer ] [ call-next-method ] bi ;
+
+M: rgba-clock ungraft*
+    [ timer>> stop-timer ] [ call-next-method ] bi ;
+
 : <rgba-clock> ( -- gadget )
-    f <label-control>
-        time get over '[
-            [ timestamp>rgba _ update-colors ]
-            [ timestamp>hms ] bi
-        ] <arrow> >>model
-        "HH:MM:SS" >>string
-        monospace-font >>font ;
+    "99:99:99" rgba-clock new-label
+        monospace-font >>font
+        dup '[
+            _ now
+            [ timestamp>hms >>string ]
+            [ timestamp>rgba swap update-colors ] bi
+        ] f 1 seconds <timer> >>timer ;
