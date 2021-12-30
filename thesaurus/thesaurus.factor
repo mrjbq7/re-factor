@@ -3,7 +3,7 @@
 
 USING: accessors combinators destructors io io.binary
 io.encodings.binary io.files kernel locals math math.order
-math.ranges math.vectors sequences strings ;
+math.vectors ranges sequences strings ;
 
 IN: thesaurus
 
@@ -43,7 +43,7 @@ IN: thesaurus
     word find-word [
         word-position word length + 1 + :> ptr
         ptr read-int :> #related
-        ptr #related [1,b] 4 v*n n+v
+        ptr #related [1..b] 4 v*n n+v
         [ read-int read-string ] map
     ] [ { } ] if* ;
 

@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license.
 
 USING: command-line grouping io io.encodings.utf8 io.files
-kernel math math.parser math.ranges namespaces regexp sequences
+kernel math math.parser namespaces ranges regexp sequences
 sequences.extras sets splitting unicode utils ;
 
 IN: plagiarism
@@ -19,7 +19,7 @@ IN: plagiarism
     "i" <optioned-regexp> ;
 
 : upper-matches ( str regexp -- )
-    [ [ [a,b) ] dip [ ch>upper ] change-nths ] each-match ;
+    [ [ [a..b) ] dip [ ch>upper ] change-nths ] each-match ;
 
 : detect-plagiarism ( suspect sources n -- suspect' )
     [ dupd ] dip common-n-grams [

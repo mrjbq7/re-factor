@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: combinators formatting io kernel math math.ranges
+USING: combinators formatting io kernel math ranges
 sequences ;
 
 IN: 99bottles.2
@@ -25,5 +25,5 @@ IN: 99bottles.2
     "no more bottles of beer on the wall!" print ;
 
 : bottles ( n -- )
-    1 [a,b] [ verse ] each verse-0 ;
+    1 [a..b] [ verse ] each verse-0 ;
 

@@ -2,13 +2,13 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays assocs kernel grouping sequences shuffle
-math math.functions math.ranges math.statistics math.vectors ;
+math math.functions math.statistics math.vectors ranges ;
 
 IN: n-partition
 
 <PRIVATE
 
-: percentages ( n -- seq ) [ [1,b] ] keep v/n ;
+: percentages ( n -- seq ) [ [1..b] ] keep v/n ;
 
 : steps ( x n -- seq ) percentages n*v ;
 

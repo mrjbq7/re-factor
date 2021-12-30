@@ -1,12 +1,12 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: io kernel literals math.ranges random sequences ;
+USING: io kernel literals random ranges sequences ;
 
 IN: random-string
 
 CONSTANT: valid-chars $[
-    CHAR: A CHAR: Z [a,b] CHAR: a CHAR: z [a,b] append
+    CHAR: A CHAR: Z [a..b] CHAR: a CHAR: z [a..b] append
 ]
 
 : random-string ( n -- string )

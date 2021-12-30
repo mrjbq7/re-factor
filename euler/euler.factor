@@ -24,11 +24,11 @@ IN: euler
 ! a function that calculates Pi to an accuracy of 5 decimal
 ! places.
 
-USE: math.ranges
+USE: ranges
 USE: math.vectors
 
 : approximate-pi ( n -- approx )
-    [1,b] 2 v*n 1 v-n 1 swap n/v
+    [1..b] 2 v*n 1 v-n 1 swap n/v
     [ odd? [ neg ] when ] map-index sum 4 * ;
 
 USE: locals

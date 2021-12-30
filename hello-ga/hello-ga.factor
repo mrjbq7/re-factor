@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: combinators.random fry kernel make math math.order
-math.ranges random sequences ;
+random ranges sequences ;
 
 IN: hello-ga
 
@@ -29,13 +29,13 @@ CONSTANT: CHILDREN-PROBABILITY 0.9
     [ tail ] [ head ] bi-curry bi* ;
 
 : children ( parent1 parent2 -- child1 child2 )
-    TARGET length 1 - [1,b) random
+    TARGET length 1 - [1..b) random
     [ head/tail append ] [ tail/head prepend ] 3bi ;
 
 CONSTANT: MUTATION-PROBABILITY 0.2
 
 : mutate ( chromosome -- chromosome' )
-    dup length random over [ -5 5 [a,b] random + ] change-nth ;
+    dup length random over [ -5 5 [a..b] random + ] change-nth ;
 
 : fittest ( parent1 parent2 -- parent1' parent2' )
     2dup [ fitness ] bi@ > [ swap ] when ;

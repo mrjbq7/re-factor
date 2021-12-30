@@ -1,7 +1,7 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: kernel math math.functions math.ranges memoize sequences
+USING: kernel math math.functions memoize ranges sequences
 strings ;
 
 IN: ten-ten
@@ -18,7 +18,7 @@ MEMO: BASE ( -- base ) ALPHABET length ;
     [ 3600000 * ] dip + ;
 
 : tt ( p -- tt )
-    [ BASE * ] keep 10 [1,b) [
+    [ BASE * ] keep 10 [1..b) [
         [ BASE /mod ] dip *
     ] map nip sum BASE mod + floor ;
 

@@ -1,5 +1,5 @@
 USING: ascii combinators.short-circuit io kernel math
-math.ranges random sequences splitting ;
+random ranges sequences splitting ;
 
 IN: mispell
 

@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors combinators formatting io kernel locals math
-math.ranges random sequences ;
+random ranges sequences ;
 
 IN: simple-rpg
 
@@ -84,11 +84,11 @@ TUPLE: character name class age str agi int gold hp max-hp ;
     character new
         random-name >>name
         classes random >>class
-        12 200 [a,b] random >>age
-        5 12 [a,b] random [ >>hp ] [ >>max-hp ] bi
-        20 [1,b] random >>str
-        20 [1,b] random >>agi
-        20 [1,b] random >>int
+        12 200 [a..b] random >>age
+        5 12 [a..b] random [ >>hp ] [ >>max-hp ] bi
+        20 [1..b] random >>str
+        20 [1..b] random >>agi
+        20 [1..b] random >>int
         50 random >>gold ;
 
 :: attack ( attacker defender -- )

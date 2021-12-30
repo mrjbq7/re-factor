@@ -1,11 +1,11 @@
 
-USING: assocs fizzbuzz kernel io.streams.string math.ranges
+USING: assocs fizzbuzz kernel io.streams.string ranges
 sequences sets tools.test ;
 
 IN: fizzbuzz
 
 [ t ] [
-    100 [1,b] {
+    100 [1..b] {
         [ fizzbuzz1 ]
         [ fizzbuzz2 ]
         [ fizzbuzz3 ]

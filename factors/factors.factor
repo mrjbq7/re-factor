@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: kernel math math.functions math.ranges math.vectors
+USING: kernel math math.functions math.vectors ranges
 sequences sets ;
 
 IN: factors
@@ -10,7 +10,7 @@ IN: factors
     mod zero? ;
 
 : factors ( n -- seq )
-    dup [1,b] [ factor? ] with filter ;
+    dup [1..b] [ factor? ] with filter ;
 
 : factors' ( n -- seq )
     dup sqrt ceiling >integer factors

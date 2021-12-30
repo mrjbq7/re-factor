@@ -1,5 +1,5 @@
-USING: assocs formatting io kernel math math.parser math.ranges
-memoize sequences sequences.extras splitting unicode ;
+USING: assocs formatting io kernel math math.parser memoize
+ranges sequences sequences.extras splitting unicode ;
 
 IN: cycles
 
@@ -25,7 +25,7 @@ MEMO: fast-cycle-length ( n -- m )
 : run-cycles ( -- )
     [
         [ blank? ] split-when harvest first2
-        [ string>number ] bi@ 2dup [a,b] max-cycle-length
+        [ string>number ] bi@ 2dup [a..b] max-cycle-length
         "%s %s %s\n" printf
     ] each-line ;
 

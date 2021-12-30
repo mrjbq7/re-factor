@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays combinators formatting io kernel math
-math.ranges math.statistics sequences ;
+math.statistics ranges sequences ;
 
 IN: bowling
 
@@ -33,7 +33,7 @@ IN: bowling
     pins frames scores sum ;
 
 : bowl. ( str -- )
-    10 [1,b] [ "%3d" sprintf ] map " | " join print
+    10 [1..b] [ "%3d" sprintf ] map " | " join print
     10 "---" <array> "-+-" join print
     pins frames [
         [
