@@ -1,10 +1,9 @@
 ! Copyright (C) 2010 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors colors.constants fry kernel math math.parser
-models sequences ui ui.gadgets ui.gadgets.borders
-ui.gadgets.buttons ui.gadgets.labels ui.gadgets.tracks
-ui.pens.solid ;
+USING: accessors colors kernel math math.parser models sequences
+ui ui.gadgets ui.gadgets.borders ui.gadgets.buttons
+ui.gadgets.labels ui.gadgets.tracks ui.pens.solid ;
 
 FROM: models => change-model ;
 

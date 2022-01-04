@@ -3,7 +3,7 @@
 
 USE: accessors
 USE: assocs
-USE: colors.constants
+USE: colors
 USE: colors.gray
 USE: fonts
 USE: hashtables

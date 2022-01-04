@@ -1,6 +1,6 @@
-USING: accessors assocs classes.tuple colors.constants
-formatting http.client io io.styles json.reader kernel locals
-math.parser sequences ;
+USING: accessors assocs classes.tuple colors formatting
+http.client io io.styles json.reader kernel locals math.parser
+sequences ;
 
 IN: worldcup
 

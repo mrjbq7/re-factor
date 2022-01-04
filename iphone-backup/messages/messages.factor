@@ -85,7 +85,7 @@ msg-group "msg_group" {
 USE: io
 USE: io.styles
 USE: combinators
-USE: colors.constants
+USE: colors
 
 <PRIVATE
 

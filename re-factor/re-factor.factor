@@ -1,10 +1,10 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: ascii assocs colors.constants fry html.entities
-html.parser html.parser.printer http.client io io.styles
-json.reader kernel memoize sequences sequences.extras splitting
-strings urls wrap.strings ;
+USING: ascii assocs colors html.entities html.parser
+html.parser.printer http.client io io.styles json.reader kernel
+memoize sequences sequences.extras splitting strings urls
+wrap.strings ;
 
 IN: re-factor
 
