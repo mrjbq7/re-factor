@@ -34,4 +34,4 @@ PRIVATE>
 : sanitize-path ( path -- path' )
     filter-special filter-control filter-blanks
     filter-windows-reserved filter-empty filter-dots
-    255 short head ;
+    255 index-or-length head ;

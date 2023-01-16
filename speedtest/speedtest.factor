@@ -3,9 +3,10 @@
 
 USING: accessors arrays assocs checksums checksums.md5
 combinators concurrency.combinators formatting fry http.client
-images.http io io.styles kernel locals make math math.constants
-math.functions math.libm math.parser sequences sorting strings
-tools.time urls urls.encoding xml xml.traversal ;
+images.http io io.encodings.string io.encodings.utf8 io.styles
+kernel locals make math math.constants math.functions math.libm
+math.parser sequences sorting strings tools.time urls
+urls.encoding xml xml.traversal ;
 
 IN: speedtest
 
@@ -25,7 +26,7 @@ C: <config> config
 
 : speedtest-config ( -- config )
     "http://www.speedtest.net/speedtest-config.php"
-    http-get nip string>xml {
+    http-get nip utf8 decode string>xml {
         [ "client" deep-tag-named attr-map ]
         [ "times" deep-tag-named attr-map ]
         [ "download" deep-tag-named attr-map ]
@@ -71,7 +72,7 @@ C: <config> config
     [ (server-latency) "latency" ] keep [ set-at ] keep ;
 
 : best-server ( -- server )
-    closest-servers 5 short head
+    closest-servers 5 index-or-length head
     [ server-latency ] parallel-map
     [ "latency" of ] sort-with first ;
 

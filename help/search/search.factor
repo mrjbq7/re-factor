@@ -21,6 +21,6 @@ PRIVATE>
 CONSTANT: max-results 20
 
 : search. ( string -- )
-    search-articles max-results short head [
+    search-articles max-results index-or-length head [
         [ \ $link swap 2array ] [ "%.5f" sprintf ] bi*
     ] assoc-map $table nl ;
