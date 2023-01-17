@@ -1,9 +1,9 @@
 # Re: Factor
 
-http://re-factor.blogspot.com
-
-This project contains various small utilities and libraries implemented in the
-Factor programming language (http://factorcode.org).  These include:
+This project contains the source code for the [Re: Factor
+blog](https://re-factor.blogspot.com) with various small utilities and
+libraries implemented in the [Factor programming
+language](https://factorcode.org).  These include:
 
 * 99bottles: 99 bottles of beer on the wall
 
