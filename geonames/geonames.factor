@@ -2,14 +2,17 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: assocs classes.tuple http.client json.reader kernel
-locals sequences urls ;
+locals namespaces sequences urls ;
 
 IN: geonames
+
+SYMBOL: geonames-username
 
 <PRIVATE
 
 : geonames-url ( path -- url )
-    "http://ws.geonames.org" prepend >url
+    "http://api.geonames.org" prepend >url
+        geonames-username get [ "username" set-query-param ] when*
         "en" "lang" set-query-param ;
 
 PRIVATE>
@@ -20,10 +23,11 @@ PRIVATE>
         country "country" set-query-param
     http-get nip json> ;
 
-TUPLE: country areaInSqKm bBoxEast bBoxNorth bBoxSouth bBoxWest
-capital continent countryCode countryName currencyCode fipsCode
-geonameId isoAlpha3 isoNumeric languages maxPostalCode
-minPostalCode numPostalCodes population ;
+TUPLE: country north south countryName continentName isoAlpha3
+    east west countryCode capital languages currencyCode
+    continent fipsCode postalCodeFormat isoNumeric geonameId
+    areaInSqKm population numPostalCodes minPostalCode
+    maxPostalCode ;
 
 : postal-code-countries ( -- countries )
     "/postalCodeCountryInfoJSON" geonames-url
@@ -107,7 +111,8 @@ minPostalCode numPostalCodes population ;
     http-get nip json> ;
 
 TUPLE: article countryCode distance elevation feature lang lat
-lng population rank summary thumbnailImg title wikipediaUrl ;
+lng population rank summary thumbnailImg title wikipediaUrl
+geoNameId ;
 
 :: wikipedia-nearby ( lat lon -- articles )
     "/findNearbyWikipediaJSON" geonames-url
