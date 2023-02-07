@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: arrays ascii byte-arrays combinators
-combinators.short-circuit grouping kernel math math.order
-math.parser sequences uuid ;
+combinators.short-circuit grouping ip-parser kernel math
+math.order math.parser sequences uuid ;
 
 IN: humanhash
 
@@ -74,3 +74,9 @@ ERROR: too-few-bytes seq #words ;
 
 : human-uuid4 ( -- uuid hash )
     uuid4 dup [ CHAR: - = ] reject humanhash ;
+
+: human-ipv4 ( ipv4 -- hash )
+    parse-ipv4 [ default-wordlist nth ] { } map-as "-" join  ;
+
+: human-ipv6 ( ipv6 -- hash )
+    parse-ipv6 [ default-wordlist nth ] { } map-as "-" join  ;
