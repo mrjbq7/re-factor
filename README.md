@@ -61,8 +61,6 @@ language](https://factorcode.org).  These include:
 
 * hello-ga: genetic "hello, world!"
 
-* ip-haiku: an IPv4/IPv6 to Haiku generator
-
 * iphone-backup: extract text messages from iPhone backups
 
 * ipinfodb: IP address geolocation tools using ipinfodb.com
