@@ -1,14 +1,16 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs combinators http.client json.reader kernel
-sequences urls ;
+USING: ascii assocs colors combinators html.parser
+html.parser.printer http.client images.http io
+io.encodings.string io.encodings.utf8 io.styles json kernel make
+sequences splitting urls wrap.strings ;
 
 IN: duckduckgo
 
 <PRIVATE
 
-: search-url ( query -- url )
+: duckduckgo-url ( query -- url )
     URL" http://api.duckduckgo.com"
         swap "q" set-query-param
         "json" "format" set-query-param
@@ -17,65 +19,39 @@ IN: duckduckgo
         "1" "no_html" set-query-param
         "1" "skip_disambig" set-query-param ;
 
-TUPLE: abstract html text url source heading ;
-TUPLE: answer text type url ;
-TUPLE: result html text url ;
-TUPLE: redirect url ;
-TUPLE: definition text url source ;
-TUPLE: results type image answer result related-topics abstract
-definition redirect ;
+: write-link ( title url -- )
+    '[
+        _ presented ,,
+        COLOR: blue foreground ,,
+    ] H{ } make format ;
 
-: >abstract ( json -- abstract )
-    {
-        [ "Abstract" of ]
-        [ "AbstractText" of ]
-        [ "AbstractURL" of ]
-        [ "AbstractSource" of ]
-        [ "Heading" of ]
-    } cleave abstract boa ;
+: result. ( result -- )
+    "Result" of [
+        "<a href=\"" ?head drop "\">" split1 "</a>" split1
+        [ swap >url write-object nl ]
+        [ parse-html html-text ] bi*
+        [ blank? ] trim-head "- " ?head drop
+        [ 78 wrap-string print ] unless-empty nl
+    ] when* ;
 
-: >answer ( json -- answer )
-    [ "Answer" of ]
-    [ "AnswerType" of ] bi f answer boa ;
-
-: >definition ( json -- definition )
-    [ "Definition" of ]
-    [ "DefinitionURL" of ]
-    [ "DefinitionSource" of ] tri definition boa ;
-
-: >redirect ( json -- redirect )
-    "Redirect" of redirect boa ;
-
-: >result ( json -- result )
-    [ "Result" of ]
-    [ "Text" of ]
-    [ "FirstURL" of ] tri result boa ;
-
-SYMBOLS: +article+ +disambiguation+ +category+ +name+
-+exclusive+ +nothing+ ;
-
-: >results ( json -- results )
-    {
-        [
-            "Type" of H{
-                { "A" +article+ }
-                { "D" +disambiguation+ }
-                { "C" +category+ }
-                { "N" +name+ }
-                { "E" +exclusive+ }
-                { "" +nothing+ }
-            } at
-        ]
-        [ "Image" of ]
-        [ >answer ]
-        [ "Results" of [ >result ] map ]
-        [ "RelatedTopics" of [ >result ] map ]
-        [ >abstract ]
-        [ >definition ]
-        [ >redirect ]
-    } cleave results boa ;
+: abstract. ( results -- )
+    dup "Heading" of [ drop ] [
+        swap {
+            [ "AbstractURL" of >url write-object nl ]
+            [ "AbstractText" of 78 wrap-string print ]
+            [ "AbstractSource" of "- " write print ]
+        } cleave nl
+    ] if-empty ;
 
 PRIVATE>
 
-: search ( query -- results )
-    search-url http-get nip "" like json> >results ;
+: duckduckgo ( query -- results )
+    duckduckgo-url http-get nip utf8 decode json> ;
+
+: duckduckgo. ( query -- )
+    duckduckgo {
+        [ "Image" of [ "https://duckduckgo.com" prepend http-image. ] when* ]
+        [ abstract. ]
+        [ "Results" of [ result. ] each ]
+        [ "RelatedTopics" of [ result. ] each ]
+    } cleave ;
