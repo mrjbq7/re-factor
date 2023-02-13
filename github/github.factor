@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs classes.tuple combinators formatting
-http.client json.reader kernel math sequences sorting ;
+http.client json kernel math sequences sorting ;
 
 IN: github
 

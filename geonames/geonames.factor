@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs classes.tuple http.client json.reader kernel
-locals namespaces sequences urls ;
+USING: assocs classes.tuple http.client json kernel locals
+namespaces sequences urls ;
 
 IN: geonames
 

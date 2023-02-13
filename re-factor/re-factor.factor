@@ -2,9 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: ascii assocs colors html.entities html.parser
-html.parser.printer http.client io io.styles json.reader kernel
-memoize sequences sequences.extras splitting strings urls
-wrap.strings ;
+html.parser.printer http.client io io.styles json kernel memoize
+sequences sequences.extras splitting strings urls wrap.strings ;
 
 IN: re-factor
 

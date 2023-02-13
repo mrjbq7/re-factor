@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs assocs.extras google http.client io json.reader
-kernel locals namespaces sequences urls utils ;
+USING: assocs assocs.extras google http.client io json kernel
+locals namespaces sequences urls utils ;
 
 IN: google.translate
 

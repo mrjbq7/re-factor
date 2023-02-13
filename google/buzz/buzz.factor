@@ -3,7 +3,7 @@ USE: assocs
 USE: formatting
 USE: google
 USE: http.client
-USE: json.reader
+USE: json
 USE: kernel
 USE: locals
 USE: math.parser

@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs assocs.extras classes.tuple combinators
-http.client images.http json.reader kernel sequences urls
-urls.encoding ;
+http.client images.http json kernel sequences urls urls.encoding
+;
 
 IN: facebook
 
