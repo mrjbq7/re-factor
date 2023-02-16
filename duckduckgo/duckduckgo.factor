@@ -50,7 +50,7 @@ PRIVATE>
 
 : duckduckgo. ( query -- )
     duckduckgo {
-        [ "Image" of [ "https://duckduckgo.com" prepend http-image. ] when* ]
+        [ "Image" of [ "https://duckduckgo.com" prepend http-image. ] unless-empty ]
         [ abstract. ]
         [ "Results" of [ result. ] each ]
         [ "RelatedTopics" of [ result. ] each ]
