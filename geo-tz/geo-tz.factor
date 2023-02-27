@@ -50,27 +50,26 @@ CONSTANT: unique-leaves $[
 
 CONSTANT: ocean-index 0xffff
 
-GENERIC# lookup-leaf 3 ( leaf x y tile-key -- zone/f )
+GENERIC#: lookup-leaf 2 ( leaf x y -- zone/f )
 
-M: string lookup-leaf 3drop ;
+M: string lookup-leaf 2drop ;
 
-M:: one-bit-tile lookup-leaf ( leaf x y tile-key -- zone/f )
+M:: one-bit-tile lookup-leaf ( leaf x y -- zone/f )
     leaf bits>> y 3 bits 3 shift x 3 bits bitor bit?
     [ leaf idx1>> ] [ leaf idx0>> ] if
-    unique-leaves nth x y tile-key lookup-leaf ;
+    unique-leaves nth x y lookup-leaf ;
 
-M:: byte-array lookup-leaf ( leaf x y tile-key -- zone/f )
+M:: byte-array lookup-leaf ( leaf x y -- zone/f )
     y 3 bits 3 shift x 3 bits bitor 2 * :> i
     i leaf nth 8 shift i 1 + leaf nth +
     dup ocean-index = [ drop f ] [
-        unique-leaves nth x y tile-key lookup-leaf
+        unique-leaves nth x y lookup-leaf
     ] if ;
 
 :: lookup-zoom-level ( zoom-level x y tile-key -- zone/f )
     zoom-level [ key>> tile-key >=< ] search swap [
         dup key>> tile-key = [
-            idx>> unique-leaves nth
-            x y tile-key lookup-leaf
+            idx>> unique-leaves nth x y lookup-leaf
         ] [ drop f ] if
     ] [ drop f ] if ;
 
