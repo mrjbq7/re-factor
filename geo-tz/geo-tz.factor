@@ -2,10 +2,11 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors alien.c-types alien.data alien.endian
-binary-search byte-arrays classes.struct combinators io
-io.encodings.binary io.encodings.string io.encodings.utf8
-io.files kernel literals locals math math.bitwise math.order
-math.parser sequences specialized-arrays strings ;
+binary-search byte-arrays classes.struct combinators
+command-line io io.encodings.binary io.encodings.string
+io.encodings.utf8 io.files kernel literals math math.bitwise
+math.order math.parser namespaces sequences specialized-arrays
+strings ;
 
 IN: geo-tz
 
@@ -89,3 +90,12 @@ M:: byte-array lookup-leaf ( leaf x y -- zone/f )
     lon 180 + deg-pixels * 0 360 deg-pixels * 1 - clamp
     90 lat - deg-pixels * 0 180 deg-pixels * 1 - clamp
     [ >integer ] bi@ lookup-pixel ;
+
+: geo-tz-main ( -- )
+     command-line get dup length 2 < [
+         drop "Usage: geo-tz latitude longitude" print
+     ] [
+         first2 [ string>number ] bi@ lookup-zone print
+     ] if ;
+
+MAIN: geo-tz-main
