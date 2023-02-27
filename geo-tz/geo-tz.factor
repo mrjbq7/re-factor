@@ -73,15 +73,15 @@ M:: byte-array lookup-leaf ( leaf x y -- zone/f )
         ] [ drop f ] if
     ] [ drop f ] if ;
 
+:: tile-key ( x y level -- tile-key )
+    level dup 3 + neg :> n
+    y x [ n shift 14 bits ] bi@
+    { 0 14 28 } bitfield ;
+
 :: lookup-pixel ( x y -- zone )
     6 <iota> [| level |
         level zoom-levels nth
-        x
-        y
-        level
-        level 3 + neg :> n
-        y x [ n shift 14 bits ] bi@
-        { 0 14 28 } bitfield
+        x y 2dup level tile-key
         lookup-zoom-level
     ] map-find-last drop ;
 
