@@ -61,7 +61,27 @@ CONSTANT: wordles qw{
     manly whine skirt antic layer sleek belie lemon opera pixie
     grimy sedan leapt human koala spire frock adopt chard mucky
     alter blurb matey elude count maize beefy worry flirt fishy
-    crave cross scold shirk tasty unlit
+    crave cross scold shirk tasty unlit dance ninth apple flail
+    stage heady debug giant usage sound salsa magic cache avail
+    kiosk sweat ruddy riper vague arbor fifty syrup worse polka
+    moose above squat trend toxic pinky horse regal where revel
+    email birth blame surly sweep cider mealy yacht credo glove
+    tough duvet staid grout voter untie guano hurry beset bread
+    every march stock flora ratio smash leafy locus ledge snafu
+    under qualm borax carat thief agony dwelt whiff hound thump
+    plate kayak broke unzip ditto joker metro logic circa cedar
+    plaza range sulky horde guppy below anger ghoul aglow cocoa
+    ethic broom snack acrid scarf canoe latte plank shorn grief
+    flask brash igloo clerk utter bagel swine ramen skimp mouse
+    kneel agile jazzy humid nanny beast ennui scout hater crumb
+    balsa again guard wrong plunk crime maybe strap ranch shyly
+    kazoo frost crane taste covet grand rodeo guest about tract
+    diner straw bleep mossy hotel irate venom windy donut cower
+    enter folly earth whirl barge fiend crone topaz droop flyer
+    tonic flank burly froze whale hobby wheel heart disco ethos
+    curly bathe style tenth beget party chart anode polyp brook
+    bully lover empty hello quick wrath snaky index scrub amiss
+    exact magma quest beach spice
 }
 
 : wordle. ( date -- )
