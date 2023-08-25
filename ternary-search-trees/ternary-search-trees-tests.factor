@@ -41,7 +41,7 @@ IN: ternary-search-trees
     <ternary-search-tree>
         "value" "key" pick set-at
         "bar" "foo" pick set-at
-    >alist natural-sort
+    >alist sort
 ] unit-test
 
 
