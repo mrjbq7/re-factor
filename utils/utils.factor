@@ -13,7 +13,7 @@ SYNTAX: =>
 <PRIVATE
 
 : (include) ( parsed name -- parsed )
-    [ file get path>> parent-directory ] dip
+    [ current-source-file get path>> parent-directory ] dip
     ".factor" append append-path parse-file append ;
 
 PRIVATE>
