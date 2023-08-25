@@ -120,12 +120,12 @@ MEMO: elements ( -- assoc )
         { "Ds" "Darmstadtium" }
         { "Rg" "Roentgenium" }
         { "Cn" "Copernicium" }
-        { "Uut" "Ununtrium" }
-        { "Uuq" "Ununquadium" }
-        { "Uup" "Ununpentium" }
-        { "Uuh" "Ununhexium" }
-        { "Uus" "Ununseptium" }
-        { "Uuo" "Ununoctium" }
+        { "Nh" "Nihonium" }
+        { "Fl" "Flerovium" }
+        { "Mc" "Moscovium" }
+        { "Lv" "Livermorium" }
+        { "Ts" "Tennesine" }
+        { "Og" "Oganesson" }
     } [ [ >lower ] dip ] assoc-map ;
 
 : element? ( from to word -- ? )
