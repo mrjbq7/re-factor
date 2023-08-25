@@ -88,15 +88,16 @@ TUPLE: calculator < model x y op valid? ;
         { 1 1/2 } >>align
         COLOR: gray <solid> >>boundary ;
 
-: <col> ( calc quot -- track )
+: <calculator-track> ( orientation calc quots -- track )
     [ call( calc -- gadget ) ] with map
-    vertical <track> 1 >>fill { 5 5 } >>gap
+    swap <track> 1 >>fill { 5 5 } >>gap
     swap [ 1 track-add ] each ; inline
 
 : <row> ( calc quots -- track )
-    [ call( calc -- gadget ) ] with map
-    horizontal <track> 1 >>fill { 5 5 } >>gap
-    swap [ 1 track-add ] each ; inline
+    horizontal -rot <calculator-track> ;
+
+: <col> ( calc quots -- track )
+    vertical -rot <calculator-track> ;
 
 : open-calc-window ( -- )
     <calculator> {
