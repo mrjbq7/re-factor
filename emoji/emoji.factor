@@ -8,7 +8,7 @@ ALIAS: 🆕 new
 
 ALIAS: 🔢 count
 
-ALIAS: 📶 natural-sort
+ALIAS: 📶 sort
 
 ALIAS: 🔄 reverse
 
