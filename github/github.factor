@@ -6,7 +6,7 @@ http.client json kernel math sequences sorting ;
 
 IN: github
 
-CONSTANT: API-URL "http://github.com/api/v2/json"
+CONSTANT: API-URL "https://github.com/api/v2/json"
 
 <PRIVATE
 
