@@ -1,8 +1,8 @@
 ! Copyright (C) 2013 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: alien alien.c-types alien.libraries alien.syntax
-combinators system ;
+USING: accessors alien alien.c-types alien.libraries
+alien.syntax combinators kernel sequences system words ;
 
 IN: ta-lib.ffi
 
@@ -376,3 +376,15 @@ FUNCTION: TA_RetCode TA_WILLR ( int startIdx, int endIdx, double* inHigh, double
 FUNCTION: int TA_WILLR_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_WMA ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
 FUNCTION: int TA_WMA_Lookback ( int optInTimePeriod )
+
+<PRIVATE
+
+: lookup-ta-function ( name -- word )
+    "TA_" over name>> append "ta-lib.ffi" lookup-word ;
+
+: lookup-ta-lookback ( name -- word )
+    "TA_" over name>> "_Lookback" 3append "ta-lib.ffi" lookup-word ;
+
+PRIVATE>
+
+! SYNTAX: TA_FUNCTION: scan-new-word ;
