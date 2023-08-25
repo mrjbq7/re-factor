@@ -1,7 +1,7 @@
 # Re: Factor
 
 This project contains the source code for the [Re: Factor
-blog](https://re-factor.blogspot.com) with various small utilities and
+blog](https://re.factorcode.org) with various small utilities and
 libraries implemented in the [Factor programming
 language](https://factorcode.org).  These include:
 
@@ -9,7 +9,13 @@ language](https://factorcode.org).  These include:
 
 * accessors.maybe: the "set if unset then get" accessor
 
+* anybar: support for AnyBar.app
+
+* beer-advocate: support the BeerAdvocate API
+
 * birthday: sing birthday wishes from the command line
+
+* bitcoin-watcher: watch some Bitcoins
 
 * bowling: bowling score calculator
 
@@ -17,19 +23,29 @@ language](https://factorcode.org).  These include:
 
 * calc-ui: a simple graphical calculator
 
+* cgi.examples: examples of Factor CGI pages
+
+* chemistry: parsing chemical symbols
+
 * cpu-speed: estimate the cpu speed of your computer
+
+* cycles: calculate cycle length between numbers
 
 * daytime: simple DAYTIME server
 
 * domainr: wrapper for domai.nr API
 
+* duckduckgo: wrapper for DuckDuckGo API
+
 * dupe: duplicate file checker
 
-* elapsed: "pretty" elapsed times
+* emoji: some fun emoji alias for normal words
 
-* enigma: implements an Enigma machine
+* euler: estimating pi using approximation
 
 * facebook: implementing Facebook Graph API
+
+* factors: classify numbers based on the sum of their factors
 
 * fake-data: generate "fake" information
 
@@ -41,39 +57,59 @@ language](https://factorcode.org).  These include:
 
 * fizzbuzz: implementations of FizzBuzz problem
 
-* flip-text: turns text upside-down
-
 * fortune: prints random quotations
 
 * friday-13th: date calculations for "Friday the 13th"
 
 * gaddafi: match the many names of Muammar al-Gaddafi
 
-* geonames: implementing GeoNames API
+* geekcode: the code of the geeks
+
+* geo-tz: convert lat/lon to timezones
+
+* geonames: support geonames API
 
 * github: implementing Github API v2
 
+* godel: support Gödel numbering
+
 * google.translate: implementing Google Translate API
 
-* gravatar: wrapping the Gravatar API
+* haikunator: making nice sounding random names
 
 * happy-numbers: tests if a number is "happy"
 
+* harshad: calculating harshad numbers
+
 * hello-ga: genetic "hello, world!"
+
+* help.search: experiment using tf-idf to search articles
 
 * iphone-backup: extract text messages from iPhone backups
 
 * ipinfodb: IP address geolocation tools using ipinfodb.com
 
+* isbn: working with ISBN
+
+* k-nn: implementation of K-nearest neighbors
+
+* magic-forest: implement magic forest benchmark
+
 * mail-ui simple UI for composing emails
 
-* metar: parse METAR weather reports
+* missing-assocs: experiment with "default assocs"
+
+* misspell: reorder letters in words to play with brains
+
+* n-numbers: check for valid FAA "N Numbers"
 
 * n-partition: evenly partition an integer
 
+* pagination: some paging stuff
+
 * periodic-words: calculates if a word is "periodic", like "GeNiUS".
 
-* picomath: implementation of picomath.org
+* pig-latin: making words into pig latin words
 
 * plagiarism: a simple plagiarism detector
 
@@ -91,11 +127,23 @@ language](https://factorcode.org).  These include:
 
 * random-string: port of a "Random String" tutorial
 
+* re-factor: scrapping the Re: Factor blog
+
+* reasoning: experiment with expression parsing
+
+* reference-server: barebones unix socket servers
+
 * repopular: scraping "popular" Github projects
 
-* robohash: wrapper for Robohash.org
+* rock-paper-scissors: implements the rock paper scissors game
 
-* second-color: implements a "colored" seconds hash
+* sanitize-paths: tool for sanitizing file paths
+
+* second-color: implements unique colored timestamps
+
+* semantic-versioning.ebnf: experiment, unfinished
+
+* send-more-money: implements SEND + MORE = MONEY puzzle
 
 * shortuuid implements "shortuuid" concept
 
@@ -107,7 +155,9 @@ language](https://factorcode.org).  These include:
 
 * square: determine if four points represent a square
 
-* successor: implementation of "successor" from slang.js
+* ta-lib: support for TA-Lib library
+
+* telnet-server: simple example telnet server
 
 * ten-ten: calculate the 10:10 code for geographic locations
 
@@ -115,7 +165,7 @@ language](https://factorcode.org).  These include:
 
 * text-or-binary: heuristic to detect if a file is text or binary
 
-* text-to-pdf: "text2pdf" converter
+* text-summary: generate a summary of a block of text
 
 * tf-idf: simple tf-idf search engine
 
@@ -125,16 +175,24 @@ language](https://factorcode.org).  These include:
 
 * todos: additional vocab metadata for todo lists
 
-* txon: reader and writer for TXON format
-
-* unix-tools: implementations of common Unix programs
-
 * utils: miscellaneous utility words
+
+* vigenere: implements Vigenere cipher
+
+* voting: implements voting algorithms
+
+* wavsum: implements "fun with wav" wavsum benchmark
 
 * wordcount: implementation of "counting words" meme
 
 * wordgen: example of statistical paragraph generation
 
+* wordle: implements wordle answers
+
+* worldcup: following the world cup in factor
+
 * wp: implementation of the "wp" benchmark (http://ptrace.fefe.de/wp/)
+
+* xmode.code2pdf: turn code into PDF files
 
 * yahoo.finance: wrapper for Yahoo! Finance market data
