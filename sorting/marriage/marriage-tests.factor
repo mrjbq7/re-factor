@@ -20,18 +20,18 @@ IN: sorting.marriage
 [ t ]
 [
     100 [ random-32 ] replicate
-    [ dup marriage-sort ] [ natural-sort ] bi =
+    [ dup marriage-sort ] [ sort ] bi =
 ] unit-test
 
 [ t ]
 [
     1000 [ random-32 ] replicate
-    [ dup marriage-sort ] [ natural-sort ] bi =
+    [ dup marriage-sort ] [ sort ] bi =
 ] unit-test
 
 [ t ]
 [
     10000 [ random-32 ] replicate
-    [ dup marriage-sort ] [ natural-sort ] bi =
+    [ dup marriage-sort ] [ sort ] bi =
 ] unit-test
 

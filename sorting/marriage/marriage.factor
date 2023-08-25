@@ -9,7 +9,7 @@ IN: sorting.marriage
 <PRIVATE
 
 ! FIXME: Add sorting quot: ( elt -- elt' )
-! FIXME: Use [ <=> ] from math.order (like natural-sort)
+! FIXME: Use [ <=> ] from math.order (like sort)
 ! FIXME: Implement find-max using <slice>, each-integer?
 
 :: find-max ( from to seq -- i )
