@@ -23,7 +23,7 @@ IN: telnet-server
         [ handle-telnet-client ] >>handler ;
 
 : start-telnet-server ( -- )
-    10666 <telnet-server> start-server drop ;
+    10666 <telnet-server> start-server wait-for-server ;
 
 MAIN: start-telnet-server
 
