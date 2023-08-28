@@ -135,11 +135,11 @@ language](https://factorcode.org).  These include:
 
 * repopular: scraping "popular" Github projects
 
+* rgba-clock: implements unique colored timestamps
+
 * rock-paper-scissors: implements the rock paper scissors game
 
 * sanitize-paths: tool for sanitizing file paths
-
-* second-color: implements unique colored timestamps
 
 * semantic-versioning.ebnf: experiment, unfinished
 
