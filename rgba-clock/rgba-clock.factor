@@ -1,11 +1,11 @@
-! Copyright (C) 2011 John Benediktsson
+! Copyright (C) 2023 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors calendar calendar.format colors colors.contrast
 fonts generalizations kernel math math.bitwise timers ui.gadgets
 ui.gadgets.labels ui.pens.solid ;
 
-IN: second-color
+IN: rgba-clock
 
 : timestamp>rgba ( timestamp -- color/f )
     timestamp>unix-time >integer 32 bits
