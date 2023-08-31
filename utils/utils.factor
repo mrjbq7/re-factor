@@ -85,3 +85,7 @@ M: bignum count-digits 1 swap (count-digits) ;
 
 : count-digits2 ( num radix -- n )
     [ log ] [ log ] bi* /i 1 + ; inline
+
+SYNTAX: ?:
+    [ scan-new-word parse-definition ] with-definition
+    dup infer define-declared ;
