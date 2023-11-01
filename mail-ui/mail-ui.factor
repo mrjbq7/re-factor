@@ -3,9 +3,7 @@
 
 USING: accessors arrays colors kernel sequences smtp splitting
 ui ui.commands ui.gadgets ui.gadgets.borders ui.gadgets.buttons
-ui.gadgets.editors ui.gadgets.labels ui.gadgets.scrollers
-ui.gadgets.toolbar ui.gadgets.tracks ui.gadgets.worlds
-ui.gestures ui.pens.solid ;
+ui.gadgets.editors ui.gadgets.labels ui.gadgets.scrollers ui.gadgets.toolbar ui.gadgets.tracks ui.gadgets.worlds ui.gestures ui.pens.solid ui.theme ui.tools.common ;
 
 IN: mail-ui
 
@@ -47,7 +45,7 @@ M: mail-gadget focusable-child* to>> ;
     subject>> "Subject:" label-on-left ;
 
 : <body> ( mail -- gadget )
-    body>> <scroller> COLOR: gray <solid> >>boundary ;
+    body>> <scroller> field-border-color <solid> >>boundary ;
 
 <PRIVATE
 
@@ -99,5 +97,5 @@ mail-gadget "toolbar" f {
 
 : open-compose-window ( -- )
     <mail-gadget>
-        { 5 5 } <border> { 1 1 } >>fill
+        { 5 5 } <border> { 1 1 } >>fill white-interior
     "Compose" open-window ;
