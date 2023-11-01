@@ -3,7 +3,8 @@
 
 USING: accessors colors kernel math math.parser models sequences
 ui ui.gadgets ui.gadgets.borders ui.gadgets.buttons
-ui.gadgets.labels ui.gadgets.tracks ui.pens.solid ;
+ui.gadgets.labels ui.gadgets.tracks ui.pens.solid ui.theme
+ui.tools.common ;
 
 FROM: models => change-model ;
 
@@ -86,7 +87,7 @@ TUPLE: calculator < model x y op valid? ;
 : <display> ( calc -- label )
     <label-control> { 5 5 } <border>
         { 1 1/2 } >>align
-        COLOR: gray <solid> >>boundary ;
+        field-border-color <solid> >>boundary ;
 
 : <calculator-track> ( orientation calc quots -- track )
     [ call( calc -- gadget ) ] with map
@@ -107,7 +108,7 @@ TUPLE: calculator < model x y op valid? ;
         [ { [ "4" [#] ] [ "5" [#] ] [ "6" [#] ] [ [+] ] } <row> ]
         [ { [ "1" [#] ] [ "2" [#] ] [ "3" [#] ] [ [=] ] } <row> ]
         [ { [ "0" [#] ] [     [.] ] [     [_] ] [ [_] ] } <row> ]
-    } <col> { 10 10 } <border> { 1 1 } >>fill
+    } <col> { 10 10 } <border> { 1 1 } >>fill white-interior
     "Calculator" open-window ;
 
 MAIN: open-calc-window
