@@ -6,7 +6,7 @@ IN: chemistry
 
 <PRIVATE
 
-EBNF: parse-symbol
+EBNF: parse-symbol [=[
 
 symbol = [A-Z] [a-z]? => [[ sift >string ]]
 
@@ -16,7 +16,7 @@ pair   = [0-9]* { symbol | "("~ pair+ ")"~ } [0-9]*
 
 pairs  = pair+ => [[ ]]
 
-;EBNF
+]=]
 
 : flatten-symbol, ( elt n -- )
     [ first2 ] [ * ] bi* over string?

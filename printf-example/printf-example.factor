@@ -6,7 +6,7 @@ peg.ebnf present quotations sequences strings ;
 
 IN: printf-example
 
-EBNF: parse-printf
+EBNF: parse-printf [=[
 
 fmt-%      = "%"   => [[ [ "%" ] ]]
 fmt-c      = "c"   => [[ [ 1string ] ]]
@@ -27,9 +27,9 @@ plain-text = (!("%").)+
 text       = (formats|plain-text)*
                    => [[ [ \ , suffix ] map ]]
 
-;EBNF
+]=]
 
- MACRO: printf ( format-string -- )
+MACRO: printf ( format-string -- )
     parse-printf reverse [ ] concat-as [
         { } make reverse [ write ] each
     ] curry ;

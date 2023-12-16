@@ -1,7 +1,7 @@
 USING: math.parser peg.ebnf sequences sequences.deep ;
 IN: semantic-versioning.ebnf
 
-EBNF: parse-semvar
+EBNF: parse-semvar [=[
 
 letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
        | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
@@ -66,4 +66,4 @@ valid-semvar
     | ( version-core "+"~ build )
     | version-core
 
-;EBNF
+]=]

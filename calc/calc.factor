@@ -8,7 +8,7 @@ IN: calc
 
 <PRIVATE
 
-EBNF: parse-calc
+EBNF: parse-calc [=[
 
 space    = (" "|"\t"|"\n")+
 
@@ -58,7 +58,7 @@ funcs    = space funcs_ space => [[ second ]]
 function = funcs_? "(" {function|number_}* ")" 
          => [[ [ third concat >quotation ] [ first ] bi [ append ] when* ]]
 
-;EBNF
+]=]
 
 ! expr     = function|number
 ! 
@@ -77,7 +77,7 @@ MACRO: calc ( string -- ) parse-calc ;
 
 
 
-EBNF: parse-calc2
+EBNF: parse-calc2 [=[
 
 number = ([0-9])+ => [[ >string string>number 1quotation ]]
 
@@ -107,7 +107,7 @@ equations = "(" {equations|equation}+ ")" => [[ second concat >quotation ]]
 
 text = (equation|equations)* => [[ concat ]]
 
-;EBNF
+]=]
 
 ! error = (.)* => [[ "Invalid expression" throw ]]
 ! text  = space? equation space? => [[ second concat ]] 
