@@ -5,7 +5,7 @@ USING: db.errors kernel peg.ebnf quoting strings ;
 
 IN: mysql.errors
 
-EBNF: parse-mysql-sql-error
+EBNF: parse-mysql-sql-error [=[
 
 TableError =
     "Table '" (!("'").)+:table "' already exists"
@@ -23,6 +23,6 @@ UnknownError = .* => [[ >string <sql-unknown-error> ]]
 
 MysqlSqlError = (TableError | SyntaxError | UnknownError)
 
-;EBNF
+]=]
 
 
