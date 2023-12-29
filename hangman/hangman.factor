@@ -147,7 +147,7 @@ CONSTANT: HANGED-MAN {
         [ game-over? ] [
             hanged-man.
             "Your word is: " write guessed-word print
-            "Current guesses: " write guessed-letters print
+            "Your guesses: " write guessed-letters print
 
             nl "What is your guess? " write flush
 
