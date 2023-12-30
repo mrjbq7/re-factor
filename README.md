@@ -77,6 +77,8 @@ language](https://factorcode.org).  These include:
 
 * haikunator: making nice sounding random names
 
+* hangman: simple command-line hangman game
+
 * happy-numbers: tests if a number is "happy"
 
 * harshad: calculating harshad numbers
