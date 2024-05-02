@@ -195,9 +195,9 @@ CONSTANT: THINGS-THAT-TAKE-TIME {
 }
 
 : human-time ( milliseconds -- string )
-    1000 /f dup 60 <
+    1000 / dup 60 <
     [ "%.1f seconds" sprintf ]
-    [ round >integer seconds duration>human-readable ] if ;
+    [ seconds duration>human-readable ] if ;
 
 : time-my-meeting. ( -- )
     now THINGS-THAT-TAKE-TIME [
@@ -208,7 +208,7 @@ CONSTANT: THINGS-THAT-TAKE-TIME {
 : next-thing-that-takes-time ( elapsed-millis -- i )
     THINGS-THAT-TAKE-TIME [ second < ] with find drop ;
 
-TUPLE: meeting-gadget < track timer current total start ;
+TUPLE: meeting-gadget < track timer total start ;
 
 : large-theme ( gadget -- gadget )
     [ clone 18 >>size ] change-font ;
@@ -227,14 +227,14 @@ TUPLE: meeting-gadget < track timer current total start ;
 
         100 CHAR: space <string> :> spaces
 
-        spaces <label> large-theme :> current-text
-        spaces <label> gray-theme  :> current-time
+        spaces <label> :> current-text
+        spaces <label> :> current-time
 
-        spaces <label> large-theme :> total-time
-        spaces <label> gray-theme  :> start-time
+        spaces <label> :> total-time
+        spaces <label> :> start-time
 
-        spaces <label> large-theme :> next-text
-        spaces <label> gray-theme  :> next-time
+        spaces <label> :> next-text
+        spaces <label> :> next-time
 
         [
             meeting total>>
@@ -244,19 +244,15 @@ TUPLE: meeting-gadget < track timer current total start ;
 
             [
                 [
-                    1 - THINGS-THAT-TAKE-TIME nth first2
-                    [ current-text string<< ]
-                    [ human-time current-time string<< ] bi*
+                    1 - THINGS-THAT-TAKE-TIME nth first2 human-time
+                    [ current-text string<< ] [ current-time string<< ] bi*
                 ] unless-zero
             ] [
-                THINGS-THAT-TAKE-TIME nth first2
-                [ next-text string<< ]
-                [ human-time next-time string<< ] bi*
+                THINGS-THAT-TAKE-TIME nth first2 human-time
+                [ next-text string<< ] [ next-time string<< ] bi*
             ] bi
 
             human-time total-time string<<
-
-            total-time relayout
         ] f 100 milliseconds <timer> >>timer
 
         vertical <track> { 5 5 } >>gap
