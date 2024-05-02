@@ -278,6 +278,7 @@ TUPLE: meeting-gadget < track timer total start ;
             +baseline+ >>align
             { 5 5 } >>gap
             start-label [
+                drop
                 meeting
                 dup start>> [
                     0 >>total now timestamp>hms
@@ -287,7 +288,6 @@ TUPLE: meeting-gadget < track timer total start ;
                 timer>> dup thread>>
                 [ stop-timer "Resume" start-label string<< ]
                 [ start-timer "Pause" start-label string<< ] if
-                relayout
             ] <border-button> f track-add
 
             reset-label [
