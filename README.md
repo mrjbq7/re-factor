@@ -175,6 +175,8 @@ language](https://factorcode.org).  These include:
 
 * time: simple TIME server
 
+* time-my-meeting: simple and funny meeting timer
+
 * todos: additional vocab metadata for todo lists
 
 * utils: miscellaneous utility words
