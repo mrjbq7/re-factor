@@ -205,8 +205,8 @@ CONSTANT: THINGS-THAT-TAKE-TIME {
         [ human-time "%s (%s)\n" printf flush ] bi
     ] assoc-each drop ;
 
-: next-thing-that-takes-time ( elapsed-millis -- i )
-    THINGS-THAT-TAKE-TIME [ second < ] with find drop ;
+: next-thing-that-takes-time ( elapsed-millis -- elt )
+    THINGS-THAT-TAKE-TIME [ second < ] with find nip ;
 
 TUPLE: meeting-gadget < track timer total start ;
 
@@ -233,24 +233,22 @@ TUPLE: meeting-gadget < track timer total start ;
         spaces <label> :> total-time
         spaces <label> :> start-time
 
-        spaces <label> :> next-text
-        spaces <label> :> next-time
+        THINGS-THAT-TAKE-TIME first first2 human-time
+        [ <label> ] bi@ :> ( next-text next-time )
 
         [
             meeting total>>
             meeting [ now dup ] change-start drop swap time- duration>milliseconds +
             dup meeting total<<
-            dup next-thing-that-takes-time
 
-            [
-                [
-                    1 - THINGS-THAT-TAKE-TIME nth first2 human-time
-                    [ current-text string<< ] [ current-time string<< ] bi*
-                ] unless-zero
-            ] [
-                THINGS-THAT-TAKE-TIME nth first2 human-time
-                [ next-text string<< ] [ next-time string<< ] bi*
-            ] bi
+            dup next-thing-that-takes-time first2
+            over next-text string>> = [ 2drop ] [
+                next-text string>> current-text string<<
+                next-time string>> current-time string<<
+                human-time
+                next-time string<<
+                next-text string<<
+            ] if
 
             human-time total-time string<<
         ] f 100 milliseconds <timer> >>timer
@@ -300,8 +298,9 @@ TUPLE: meeting-gadget < track timer total start ;
                 "" current-time string<<
                 "" total-time string<<
                 "" start-time string<<
-                "" next-text string<<
-                "" next-time string<<
+                THINGS-THAT-TAKE-TIME first first2 human-time
+                next-time string<<
+                next-text string<<
             ] <border-button> f track-add
         { 5 5 } <border> f track-add
 ;
