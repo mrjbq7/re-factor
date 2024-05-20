@@ -24,3 +24,11 @@ USING: math math.primes sequences tools.test transducers ;
     [ prime? ] xfilter
     transduce
 ] unit-test
+
+{ V{ 0 4 20 56 120 } } [
+    10 <iota>
+    xaccumulate
+    [ sq ] xmap
+    [ even? ] xfilter
+    transduce
+] unit-test

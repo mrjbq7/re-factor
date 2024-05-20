@@ -5,11 +5,26 @@ USING: kernel math sequences ;
 
 IN: transducers
 
+: xreduce ( quot: ( prev elt -- next ) -- reduce-quot )
+    [ f ] compose ; inline
+
 : xapply ( reduce-quot quot: ( elt -- newelt ) -- reduce-quot' )
     '[ @ [ _ unless ] keep ] ; inline
 
+: xsum ( -- reduce-quot )
+    [ + ] xreduce ; inline
+
+: xproduct ( -- reduce-quot )
+    [ * ] xreduce ; inline
+
+: xaccumulate-into ( -- reduce-quot )
+    [ over ?last 0 or + suffix! ] xreduce ; inline
+
+: xaccumulate ( -- identity reduce-quot )
+    V{ } clone xaccumulate-into ; inline
+
 : xcollect-into ( -- reduce-quot )
-    [ suffix! f ] ; inline
+    [ suffix! ] xreduce ; inline
 
 : xcollect ( -- identity reduce-quot )
     V{ } clone xcollect-into ; inline
