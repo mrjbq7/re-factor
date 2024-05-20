@@ -177,6 +177,8 @@ language](https://factorcode.org).  These include:
 
 * time-my-meeting: simple and funny meeting timer
 
+* transducers: a kind of [transducer](https://clojure.org/reference/transducers) lookalike
+
 * todos: additional vocab metadata for todo lists
 
 * utils: miscellaneous utility words
