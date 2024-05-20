@@ -10,6 +10,11 @@ IN: transducers
 
 ! traditional transducers have init, step, and completion slots
 
+! some questions about how/when to create the identity, whether
+! the implementations should be backwards, or forwards, and
+! whether the element that the stop value is triggered on
+! should not be acted on...
+
 : xreduce ( quot: ( prev elt -- next ) -- reduce-quot )
     [ f ] compose ; inline
 
@@ -22,11 +27,11 @@ IN: transducers
 : xbreak ( reduce-quot -- reduce-quot' )
     [ B ] prepose ; inline
 
-: xsum ( -- reduce-quot )
-    [ + ] xreduce ; inline
+: xsum ( -- identity reduce-quot )
+    0 [ + ] xreduce ; inline
 
-: xproduct ( -- reduce-quot )
-    [ * ] xreduce ; inline
+: xproduct ( -- identity reduce-quot )
+    1 [ * ] xreduce ; inline
 
 : xaccumulate-into ( -- reduce-quot )
     [ over ?last 0 or + suffix! ] xreduce ; inline
