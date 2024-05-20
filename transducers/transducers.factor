@@ -62,7 +62,7 @@ IN: transducers
 
 : xtake ( reduce-quot n -- reduce-quot' )
     [ { 0 } clone ] 2dip swap '[
-        0 _ [ 1 + dup ] change-nth _ <= _ [ drop f ] if
+        0 _ [ 1 + dup ] change-nth _ <= _ [ drop t ] if
     ] ; inline
 
 : xdrop ( reduce-quot n -- reduce-quot' )
