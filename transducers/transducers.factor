@@ -1,15 +1,26 @@
 ! Copyright (C) 2024 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel math sequences ;
+USING: kernel math prettyprint sequences ;
 
 IN: transducers
+
+! a "transducer" is defined as a quotation with a stack effect
+! of ( ... prev elt -- ... next stop? )
+
+! traditional transducers have init, step, and completion slots
 
 : xreduce ( quot: ( prev elt -- next ) -- reduce-quot )
     [ f ] compose ; inline
 
 : xapply ( reduce-quot quot: ( elt -- newelt ) -- reduce-quot' )
     '[ @ [ _ unless ] keep ] ; inline
+
+: xcat ( reduce-quot -- reduce-quot' )
+    '[ dup . @ ] ; inline
+
+: xbreak ( reduce-quot -- reduce-quot' )
+    [ B ] prepose ; inline
 
 : xsum ( -- reduce-quot )
     [ + ] xreduce ; inline
@@ -44,12 +55,12 @@ IN: transducers
 : xwhile ( reduce-quot quot: ( elt -- ? ) -- reduce-quot' )
     negate xuntil ; inline
 
-: xtake ( reduce-quot n -- reduce-quot )
+: xtake ( reduce-quot n -- reduce-quot' )
     [ { 0 } clone ] 2dip swap '[
         0 _ [ 1 + dup ] change-nth _ <= _ [ drop f ] if
     ] ; inline
 
-: xdrop ( reduce-quot n -- reduce-quot )
+: xdrop ( reduce-quot n -- reduce-quot' )
     [ { 0 } clone ] 2dip swap '[
         0 _ [ 1 + dup ] change-nth _ <= [ drop f ] _ if
     ] ; inline
