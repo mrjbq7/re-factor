@@ -1,7 +1,7 @@
 ! Copyright (C) 2024 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: kernel math prettyprint sequences ;
+USING: assocs kernel math prettyprint sequences ;
 
 IN: transducers
 
@@ -15,60 +15,72 @@ IN: transducers
 ! whether the element that the stop value is triggered on
 ! should not be acted on...
 
-: xreduce ( quot: ( prev elt -- next ) -- reduce-quot )
+: xreduce ( quot: ( prev elt -- next ) -- transducer )
     [ f ] compose ; inline
 
-: xapply ( reduce-quot quot: ( elt -- newelt ) -- reduce-quot' )
+: xapply ( transducer quot: ( elt -- newelt ) -- transducer' )
     '[ @ [ _ unless ] keep ] ; inline
 
-: xcat ( reduce-quot -- reduce-quot' )
+: xcat ( transducer -- transducer' )
     '[ dup . @ ] ; inline
 
-: xbreak ( reduce-quot -- reduce-quot' )
+: xbreak ( transducer -- transducer' )
     [ B ] prepose ; inline
 
-: xsum ( -- identity reduce-quot )
+: xcount ( -- identity transducer )
+    0 [ [ 1 + ] when ] xreduce ; inline
+
+: xsum ( -- identity transducer )
     0 [ + ] xreduce ; inline
 
-: xproduct ( -- identity reduce-quot )
+: xproduct ( -- identity transducer )
     1 [ * ] xreduce ; inline
 
-: xaccumulate-into ( -- reduce-quot )
+: xhistogram-into ( -- transducer )
+    [ over inc-at ] xreduce ; inline
+
+: xhistogram ( -- identity transducer )
+    H{ } clone xhistogram-into ; inline
+
+: xgroup-by ( quot: ( elt -- key ) -- transducer )
+    '[ _ keep swap pick push-at ] xreduce ; inline
+
+: xaccumulate-into ( -- transducer )
     [ over ?last 0 or + suffix! ] xreduce ; inline
 
-: xaccumulate ( -- identity reduce-quot )
+: xaccumulate ( -- identity transducer )
     V{ } clone xaccumulate-into ; inline
 
-: xcollect-into ( -- reduce-quot )
+: xcollect-into ( -- transducer )
     [ suffix! ] xreduce ; inline
 
-: xcollect ( -- identity reduce-quot )
+: xcollect ( -- identity transducer )
     V{ } clone xcollect-into ; inline
 
-: xfilter ( reduce-quot quot: ( elt -- ? ) -- reduce-quot' )
+: xfilter ( transducer quot: ( elt -- ? ) -- transducer' )
     swap '[ dup @ _ [ drop f ] if ] ; inline
 
-: xreject ( reduce-quot quot: ( elt -- ? ) -- reduce-quot' )
+: xreject ( transducer quot: ( elt -- ? ) -- transducer' )
     negate xfilter ; inline
 
-: xmap ( reduce-quot quot: ( elt -- newelt ) -- reduce-quot' )
+: xmap ( transducer quot: ( elt -- newelt ) -- transducer' )
     swap compose ; inline
 
-: xuntil ( reduce-quot quot: ( elt -- ? ) -- reduce-quot' )
+: xuntil ( transducer quot: ( elt -- ? ) -- transducer' )
     swap '[ dup @ [ drop t ] _ if ] ; inline
 
-: xwhile ( reduce-quot quot: ( elt -- ? ) -- reduce-quot' )
+: xwhile ( transducer quot: ( elt -- ? ) -- transducer' )
     negate xuntil ; inline
 
-: xtake ( reduce-quot n -- reduce-quot' )
+: xtake ( transducer n -- transducer' )
     [ { 0 } clone ] 2dip swap '[
         0 _ [ 1 + dup ] change-nth _ <= _ [ drop t ] if
     ] ; inline
 
-: xdrop ( reduce-quot n -- reduce-quot' )
+: xdrop ( transducer n -- transducer' )
     [ { 0 } clone ] 2dip swap '[
         0 _ [ 1 + dup ] change-nth _ <= [ drop f ] _ if
     ] ; inline
 
-: transduce ( ... seq identity reduce-quot: ( ... prev elt -- ... next stop? ) -- ... result )
+: transduce ( ... seq identity transducer: ( ... prev elt -- ... next stop? ) -- ... result )
     swapd find 2drop ; inline

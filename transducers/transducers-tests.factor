@@ -32,3 +32,10 @@ USING: math math.primes sequences tools.test transducers ;
     [ even? ] xfilter
     transduce
 ] unit-test
+
+{ 328350 } [
+    100 <iota>
+    xsum
+    [ sq ] xmap
+    transduce
+] unit-test
