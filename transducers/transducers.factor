@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs combinators.short-circuit kernel
-math prettyprint random sequences vectors ;
+math prettyprint random sequences sets vectors ;
 
 IN: transducers
 
@@ -154,3 +154,5 @@ C: <reduced> reduced
 : xenumerate ( xf -- xf' )
     [let 0 :> n! [ n dup 1 + n! swap 2array ] xmap ] ; inline
 
+: xunique ( xf -- xf' )
+    HS{ } clone '[ [ _ ?adjoin ] keep null ? ] xmap ; inline
