@@ -129,3 +129,10 @@ transducers ;
         xcollect
     ] transduce
 ] unit-test
+
+{ 5 } [
+    10 <iota> [
+        [ even? ] xmap
+        xcount
+    ] transduce
+] unit-test
