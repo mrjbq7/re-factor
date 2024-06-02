@@ -93,3 +93,9 @@ USING: math math.primes ranges sequences tools.test transducers ;
         3 xgroup
     ] transduce
 ] unit-test
+
+{ V{ V{ 0 1 2 } V{ 3 4 5 } V{ 6 7 8 } V{ 9 } } } [
+    10 <iota> [
+       [ 3 mod 0 = ] xsplit-when
+    ] transduce
+] unit-test

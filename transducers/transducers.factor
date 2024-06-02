@@ -6,9 +6,11 @@ math prettyprint random sequences vectors ;
 
 IN: transducers
 
-! reducing function: ( prev elt -- next )
+! reducing function
+! rf: ( prev elt -- next )
 
-! transducing function: ( prev elt -- next )
+! transducing function
+! xf: ( prev elt -- next )
 ! if elt is null, skip applying the xf
 ! if next is reduced, early exit
 ! if next is null, keep previous result
@@ -17,13 +19,13 @@ TUPLE: reduced obj ;
 
 C: <reduced> reduced
 
-: (transduce) ( ... seq xf: ( ... prev elt -- ... next ) -- ... result )
-    f -rot '[
+: (transduce) ( ... seq identity xf: ( ... prev elt -- ... next ) -- ... result )
+    swapd '[
         _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
     ] find 2drop dup reduced? [ obj>> ] when ; inline
 
 : transduce ( seq quot: ( xf -- xf' ) -- result )
-    [ nip ] swap call (transduce) ; inline
+    [ null [ nip ] ] dip call (transduce) ; inline
 
 : xf ( rf: ( prev elt -- next ) -- xf )
     '[ { [ over reduced? ] [ dup null eq? ] } 0|| [ drop ] _ if ] ;
@@ -129,6 +131,15 @@ C: <reduced> reduced
             ] [
                 [ 1vector ] [ push ] bi*
             ] if*
+        ] keep
+    ] xmap ; inline
+
+:: xsplit-when ( xf quot: ( elt -- ? ) -- xf' )
+    V{ } clone :> accum
+    xf [
+        accum [
+            over quot call [ V{ } clone suffix! ] when
+            index-of-last [ ?push ] change-nth
         ] keep
     ] xmap ; inline
 
