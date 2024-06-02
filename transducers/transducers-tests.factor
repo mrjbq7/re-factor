@@ -1,4 +1,5 @@
-USING: math math.primes ranges sequences tools.test transducers ;
+USING: kernel math math.primes ranges sequences tools.test
+transducers ;
 
 { V{ 2 4 } } [
     { 1 2 3 4 5 6 7 } [
@@ -97,5 +98,21 @@ USING: math math.primes ranges sequences tools.test transducers ;
 { V{ V{ 0 1 2 } V{ 3 4 5 } V{ 6 7 8 } V{ 9 } } } [
     10 <iota> [
        [ 3 mod 0 = ] xsplit-when
+    ] transduce
+] unit-test
+
+{
+    V{
+        V{ 1 1 1 }
+        V{ 2 2 }
+        V{ 3 3 }
+        V{ 4 4 }
+        V{ 5 }
+        V{ 6 }
+        V{ 7 7 }
+    }
+} [
+    { 1 1 1 2 2 3 3 4 4 5 6 7 7 } [
+        [ = not ] xpartition
     ] transduce
 ] unit-test

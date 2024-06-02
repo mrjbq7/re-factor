@@ -143,6 +143,11 @@ C: <reduced> reduced
         ] keep
     ] xmap ; inline
 
+: xpartition ( xf quot: ( elt1 elt2 -- ? ) -- xf' )
+    [let null :> prior!
+        '[ prior swap dup prior! @ ] xsplit-when
+    ] ; inline
+
 : xenumerate ( xf -- xf' )
     [let 0 :> n! [ n dup 1 + n! swap 2array ] xmap ] ; inline
 
