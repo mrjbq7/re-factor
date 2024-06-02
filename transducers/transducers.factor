@@ -1,14 +1,29 @@
 ! Copyright (C) 2024 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors assocs combinators.short-circuit kernel math
-prettyprint random sequences vectors ;
+USING: accessors arrays assocs combinators.short-circuit kernel
+math prettyprint random sequences vectors ;
 
 IN: transducers
+
+! reducing function: ( prev elt -- next )
+
+! transducing function: ( prev elt -- next )
+! if elt is null, skip applying the xf
+! if next is reduced, early exit
+! if next is null, keep previous result
 
 TUPLE: reduced obj ;
 
 C: <reduced> reduced
+
+: (transduce) ( ... seq xf: ( ... prev elt -- ... next ) -- ... result )
+    f -rot '[
+        _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
+    ] find 2drop dup reduced? [ obj>> ] when ; inline
+
+: transduce ( seq quot: ( xf -- xf' ) -- result )
+    [ nip ] swap call (transduce) ; inline
 
 : xf ( rf: ( prev elt -- next ) -- xf )
     '[ { [ over reduced? ] [ dup null eq? ] } 0|| [ drop ] _ if ] ;
@@ -17,7 +32,7 @@ C: <reduced> reduced
     '[ @ dup { [ reduced? ] [ null eq? ] } 1|| _ unless ] xf ;
 
 : xfind ( xf quot: ( elt -- ? ) -- xf' )
-    swap '[ _ keep swap [ t ] _ if ] ; inline
+    '[ dup @ [ <reduced> ] when ] xmap ; inline
 
 : xpprint ( xf -- xf' )
     [ dup . ] xmap ; inline
@@ -117,10 +132,6 @@ C: <reduced> reduced
         ] keep
     ] xmap ; inline
 
-: (transduce) ( ... seq xf: ( ... prev elt -- ... next ) -- ... result )
-    f -rot '[
-        _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
-    ] find 2drop dup reduced? [ obj>> ] when ; inline
+: xenumerate ( xf -- xf' )
+    [let 0 :> n! [ n dup 1 + n! swap 2array ] xmap ] ; inline
 
-: transduce ( seq quot: ( xf -- xf' ) -- result )
-    [ nip ] swap call (transduce) ; inline
