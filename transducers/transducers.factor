@@ -148,6 +148,9 @@ C: <reduced> reduced
         '[ prior swap dup prior! @ ] xsplit-when
     ] ; inline
 
+: xmonotonic-split ( xf quot: ( elt1 elt2 -- ? ) -- xf' )
+    '[ over null eq? [ 2drop t ] [ @ not ] if ] xpartition ; inline
+
 : xenumerate ( xf -- xf' )
     [let 0 :> n! [ n dup 1 + n! swap 2array ] xmap ] ; inline
 

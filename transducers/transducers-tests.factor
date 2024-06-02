@@ -116,3 +116,9 @@ transducers ;
         [ = not ] xpartition
     ] transduce
 ] unit-test
+
+{ V{ V{ 1 2 3 4 } V{ 3 } V{ 2 } V{ 1 2 3 4 5 6 7 } } } [
+    { 1 2 3 4 3 2 1 2 3 4 5 6 7 } [
+        [ < ] xmonotonic-split
+    ] transduce
+] unit-test
