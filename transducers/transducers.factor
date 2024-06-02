@@ -24,8 +24,8 @@ C: <reduced> reduced
         _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
     ] find 2drop dup reduced? [ obj>> ] when ; inline
 
-: transduce ( seq quot: ( xf -- xf' ) -- result )
-    [ null [ nip ] ] dip call (transduce) ; inline
+MACRO: transduce ( quot: ( xf -- xf' ) -- result )
+    [ nip ] swap call '[ null _ (transduce) ] ;
 
 : xf ( rf: ( prev elt -- next ) -- xf )
     '[ { [ over reduced? ] [ dup null eq? ] } 0|| [ drop ] _ if ] ;
