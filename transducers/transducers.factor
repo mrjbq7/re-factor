@@ -1,86 +1,126 @@
 ! Copyright (C) 2024 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: assocs kernel math prettyprint sequences ;
+USING: accessors assocs combinators.short-circuit kernel math
+prettyprint random sequences vectors ;
 
 IN: transducers
 
-! a "transducer" is defined as a quotation with a stack effect
-! of ( ... prev elt -- ... next stop? )
+TUPLE: reduced obj ;
 
-! traditional transducers have init, step, and completion slots
+C: <reduced> reduced
 
-! some questions about how/when to create the identity, whether
-! the implementations should be backwards, or forwards, and
-! whether the element that the stop value is triggered on
-! should not be acted on...
+: xf ( rf: ( prev elt -- next ) -- xf )
+    '[ { [ over reduced? ] [ dup null eq? ] } 0|| [ drop ] _ if ] ;
 
-: xreduce ( quot: ( prev elt -- next ) -- transducer )
-    [ f ] compose ; inline
+: xmap ( xf quot: ( elt -- newelt ) -- xf' )
+    '[ @ dup { [ reduced? ] [ null eq? ] } 1|| _ unless ] xf ;
 
-: xapply ( transducer quot: ( elt -- newelt ) -- transducer' )
-    '[ @ [ _ unless ] keep ] ; inline
+: xfind ( xf quot: ( elt -- ? ) -- xf' )
+    swap '[ _ keep swap [ t ] _ if ] ; inline
 
-: xcat ( transducer -- transducer' )
-    '[ dup . @ ] ; inline
+: xpprint ( xf -- xf' )
+    [ dup . ] xmap ; inline
 
-: xbreak ( transducer -- transducer' )
-    [ B ] prepose ; inline
+: xbreak ( xf -- xf' )
+    [ B ] xmap ; inline
 
-: xcount ( -- identity transducer )
-    0 [ [ 1 + ] when ] xreduce ; inline
+: xcount-from ( xf n -- xf' )
+    [let :> n! [ [ n 1 + n! ] when n ] xmap ] ; inline
 
-: xsum ( -- identity transducer )
-    0 [ + ] xreduce ; inline
+: xcount ( xf -- xf' )
+    0 xcount-from ;
 
-: xproduct ( -- identity transducer )
-    1 [ * ] xreduce ; inline
+: xsum ( xf -- xf' )
+    [let 0 :> n! [ n + n! n ] xmap ] ; inline
 
-: xhistogram-into ( -- transducer )
-    [ over inc-at ] xreduce ; inline
+: xproduct ( xf -- xf' )
+    [let 1 :> n! [ n * n! n ] xmap ] ; inline
 
-: xhistogram ( -- identity transducer )
+: xhistogram-into ( xf assoc -- xf' )
+    '[ _ [ inc-at ] keep ] xmap ; inline
+
+: xhistogram ( xf -- xf' )
     H{ } clone xhistogram-into ; inline
 
-: xgroup-by ( quot: ( elt -- key ) -- transducer )
-    '[ _ keep swap pick push-at ] xreduce ; inline
+: xcollect-into ( xf growable -- xf' )
+    '[ _ [ push ] keep ] xmap ; inline
 
-: xaccumulate-into ( -- transducer )
-    [ over ?last 0 or + suffix! ] xreduce ; inline
-
-: xaccumulate ( -- identity transducer )
-    V{ } clone xaccumulate-into ; inline
-
-: xcollect-into ( -- transducer )
-    [ suffix! ] xreduce ; inline
-
-: xcollect ( -- identity transducer )
+: xcollect ( xf -- xf' )
     V{ } clone xcollect-into ; inline
 
-: xfilter ( transducer quot: ( elt -- ? ) -- transducer' )
-    swap '[ dup @ _ [ drop f ] if ] ; inline
+: xgroup-by-into ( xf quot: ( elt -- key ) assoc -- xf' )
+    '[ _ keep swap _ [ push-at ] keep ] xmap ; inline
 
-: xreject ( transducer quot: ( elt -- ? ) -- transducer' )
+: xgroup-by ( xf quot: ( elt -- key ) -- xf' )
+    H{ } clone xgroup-by-into ; inline
+
+: xdedupe-when ( xf quot: ( elt1 elt2 -- ? ) -- xf' )
+    [let null :> prior!
+        '[ prior over @ [ drop null ] [ dup prior! ] if ] xmap
+    ] ; inline
+
+: xdedupe-eq ( xf -- xf' ) [ eq? ] xdedupe-when ;
+
+: xdedupe ( xf -- xf' ) [ = ] xdedupe-when ;
+
+: xfilter ( xf quot: ( elt -- ? ) -- xf' )
+    '[ dup @ [ drop null ] unless ] xmap ; inline
+
+: xreject ( xf quot: ( elt -- ? ) -- xf' )
     negate xfilter ; inline
 
-: xmap ( transducer quot: ( elt -- newelt ) -- transducer' )
-    swap compose ; inline
+: xsample ( xf prob -- xf' )
+    '[ drop random-unit _ < ] xfilter ;
 
-: xuntil ( transducer quot: ( elt -- ? ) -- transducer' )
-    swap '[ dup @ [ drop t ] _ if ] ; inline
-
-: xwhile ( transducer quot: ( elt -- ? ) -- transducer' )
-    negate xuntil ; inline
-
-: xtake ( transducer n -- transducer' )
-    [ { 0 } clone ] 2dip swap '[
-        0 _ [ 1 + dup ] change-nth _ <= _ [ drop t ] if
+: xtake ( xf n -- xf )
+    [let :> n!
+        '[
+            n [ drop <reduced> ] [
+                _ dip over { [ reduced? ] [ null eq? ] } 1||
+                [ drop ] [ 1 - n! ] if
+            ] if-zero ] xf
     ] ; inline
 
-: xdrop ( transducer n -- transducer' )
-    [ { 0 } clone ] 2dip swap '[
-        0 _ [ 1 + dup ] change-nth _ <= [ drop f ] _ if
+: xdrop ( xf n -- xf' )
+    [let :> n! '[ n [ 1 - n! drop null ] unless-zero ] xmap ] ; inline
+
+: xtake-until ( xf quot: ( elt -- ? ) -- xf' )
+    '[
+        _ keepd over dup { [ reduced? ] [ null eq? ] } 1||
+        [ 2drop ] [ @ [ nip <reduced> ] [ drop ] if ] if
     ] ; inline
 
-: transduce ( ... seq identity transducer: ( ... prev elt -- ... next stop? ) -- ... result )
-    swapd find 2drop ; inline
+: xtake-while ( xf quot: ( elt -- ? ) -- xf' )
+    negate xtake-until ; inline
+
+: xdrop-while ( xf quot: ( elt -- ? ) -- xf' )
+    '[ dup @ [ drop null ] unless ] xmap ; inline
+
+: xdrop-until ( xf quot: ( elt -- ? ) -- xf' )
+    negate xdrop-while ;
+
+: xaccumulate ( xf identity quot: ( prev elt -- next ) -- xf' )
+    [ 1vector ] dip '[ _ [ last @ ] [ push ] [ ] tri ] xmap ; inline
+
+:: xgroup ( xf n -- xf' )
+    V{ } clone :> accum
+    xf [
+        accum [
+            dup ?last [
+                dup length n < [ nip push ] [
+                    drop [ 1vector ] [ push ] bi*
+                ] if
+            ] [
+                [ 1vector ] [ push ] bi*
+            ] if*
+        ] keep
+    ] xmap ; inline
+
+: (transduce) ( ... seq xf: ( ... prev elt -- ... next ) -- ... result )
+    f -rot '[
+        _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
+    ] find 2drop dup reduced? [ obj>> ] when ; inline
+
+: transduce ( seq quot: ( xf -- xf' ) -- result )
+    [ nip ] swap call (transduce) ; inline
