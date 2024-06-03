@@ -24,11 +24,12 @@ C: <reduced> reduced
         _ keepd over null eq? [ nip f ] [ drop dup reduced? ] if
     ] find 2drop dup reduced? [ obj>> ] when ; inline
 
-: xinit ( quot -- )
-    \ xinit [ prepose ] change ;
+! each transducer can optionally add ``init`` and ``done``
+! logic when being compiled, typically the function returns
+! the ``step`` quotation
 
-: xdone ( quot -- )
-    \ xdone [ prepose ] change ;
+: xinit ( quot -- ) \ xinit [ prepose ] change ;
+: xdone ( quot -- ) \ xdone [ prepose ] change ;
 
 MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     H{ { xinit [ ] } { xdone [ ] } } [
