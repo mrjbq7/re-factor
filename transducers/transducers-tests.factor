@@ -1,5 +1,6 @@
 USING: kernel math math.primes ranges sequences tools.test
 transducers ;
+IN: transducers.tests
 
 { V{ 2 4 } } [
     { 1 2 3 4 5 6 7 } [
@@ -136,3 +137,10 @@ transducers ;
         xcount
     ] transduce
 ] unit-test
+
+: foo ( seq -- n ) [ xsum ] transduce ;
+
+! verify the word doesn't have "memory" from previous calls
+{ 45 } [ 10 <iota> foo ] unit-test
+{ 45 } [ 10 <iota> foo ] unit-test
+{ 45 } [ 10 <iota> foo ] unit-test

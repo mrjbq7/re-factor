@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs combinators.short-circuit kernel
-math prettyprint random sequences sets vectors ;
+make math prettyprint random sequences sets vectors ;
 
 IN: transducers
 
@@ -25,7 +25,7 @@ C: <reduced> reduced
     ] find 2drop dup reduced? [ obj>> ] when ; inline
 
 MACRO: transduce ( quot: ( xf -- xf' ) -- result )
-    [ nip ] swap call '[ null _ (transduce) ] ;
+    [ [ nip ] swap call ] [ ] make swap '[ @ null _ (transduce) ] ;
 
 : xf ( rf: ( prev elt -- next ) -- xf )
     '[ { [ over reduced? ] [ dup null eq? ] } 0|| [ drop ] _ if ] ;
@@ -43,37 +43,34 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     [ B ] xmap ; inline
 
 : xcount-from ( xf n -- xf' )
-    [let :> n! [ [ n 1 + n! ] when n ] xmap ] ; inline
+    [let f :> n! '[ _ n! ] % [ [ n 1 + n! ] when n ] xmap ] ; inline
 
 : xcount ( xf -- xf' )
     0 xcount-from ;
 
 : xsum ( xf -- xf' )
-    [let 0 :> n! [ n + n! n ] xmap ] ; inline
+    [let f :> n! [ 0 n! ] % [ n + n! n ] xmap ] ; inline
 
 : xproduct ( xf -- xf' )
-    [let 1 :> n! [ n * n! n ] xmap ] ; inline
-
-: xhistogram-into ( xf assoc -- xf' )
-    '[ _ [ inc-at ] keep ] xmap ; inline
+    [let f :> n! [ 1 n! ] % [ n * n! n ] xmap ] ; inline
 
 : xhistogram ( xf -- xf' )
-    H{ } clone xhistogram-into ; inline
-
-: xcollect-into ( xf growable -- xf' )
-    '[ _ [ push ] keep ] xmap ; inline
+    [let f :> h! [ H{ } clone h! ] %
+        [ h [ inc-at ] keep ] xmap
+    ] ; inline
 
 : xcollect ( xf -- xf' )
-    V{ } clone xcollect-into ; inline
-
-: xgroup-by-into ( xf quot: ( elt -- key ) assoc -- xf' )
-    '[ _ keep swap _ [ push-at ] keep ] xmap ; inline
+    [let f :> v! [ V{ } clone v! ] %
+        [ v [ push ] keep ] xmap
+    ] ; inline
 
 : xgroup-by ( xf quot: ( elt -- key ) -- xf' )
-    H{ } clone xgroup-by-into ; inline
+    [let f :> h! [ H{ } clone h! ] %
+        '[ _ keep swap h [ push-at ] keep ] xmap
+    ] ; inline
 
 : xdedupe-when ( xf quot: ( elt1 elt2 -- ? ) -- xf' )
-    [let null :> prior!
+    [let null :> prior! [ null prior! ] %
         '[ prior over @ [ drop null ] [ dup prior! ] if ] xmap
     ] ; inline
 
@@ -91,7 +88,7 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     '[ drop random-unit _ < ] xfilter ;
 
 : xtake ( xf n -- xf )
-    [let :> n!
+    [let f :> n! '[ _ n! ] %
         '[
             n [ drop <reduced> ] [
                 _ dip over { [ reduced? ] [ null eq? ] } 1||
@@ -100,7 +97,9 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     ] ; inline
 
 : xdrop ( xf n -- xf' )
-    [let :> n! '[ n [ 1 - n! drop null ] unless-zero ] xmap ] ; inline
+    [let f :> n! '[ _ n! ] %
+        '[ n [ 1 - n! drop null ] unless-zero ] xmap
+    ] ; inline
 
 : xtake-until ( xf quot: ( elt -- ? ) -- xf' )
     '[
@@ -121,7 +120,7 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     [ 1vector ] dip '[ _ [ last @ ] [ push ] [ ] tri ] xmap ; inline
 
 :: xgroup ( xf n -- xf' )
-    V{ } clone :> accum
+    f :> accum! [ V{ } clone accum! ] %
     xf [
         accum [
             dup ?last [
@@ -135,7 +134,7 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     ] xmap ; inline
 
 :: xsplit-when ( xf quot: ( elt -- ? ) -- xf' )
-    V{ } clone :> accum
+    f :> accum! [ V{ } clone accum! ] %
     xf [
         accum [
             over quot call [ V{ } clone suffix! ] when
@@ -144,7 +143,7 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     ] xmap ; inline
 
 : xpartition ( xf quot: ( elt1 elt2 -- ? ) -- xf' )
-    [let null :> prior!
+    [let null :> prior! [ null prior! ] %
         '[ prior swap dup prior! @ ] xsplit-when
     ] ; inline
 
@@ -152,7 +151,9 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     '[ over null eq? [ 2drop t ] [ @ not ] if ] xpartition ; inline
 
 : xenumerate ( xf -- xf' )
-    [let 0 :> n! [ n dup 1 + n! swap 2array ] xmap ] ; inline
+    [let f :> n! [ 0 n! ] % [ n dup 1 + n! swap 2array ] xmap ] ; inline
 
 : xunique ( xf -- xf' )
-    HS{ } clone '[ [ _ ?adjoin ] keep null ? ] xmap ; inline
+    [let f :> s! [ HS{ } clone s! ] %
+        '[ [ s ?adjoin ] keep null ? ] xmap
+    ] ; inline
