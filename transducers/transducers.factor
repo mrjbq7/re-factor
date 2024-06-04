@@ -43,7 +43,7 @@ MACRO: transduce ( quot: ( xf -- xf' ) -- result )
     '[ @ dup { [ reduced? ] [ null eq? ] } 1|| _ unless ] xf ;
 
 : xfind ( xf quot: ( elt -- ? ) -- xf' )
-    '[ dup @ [ <reduced> ] when ] xmap ;
+    '[ dup @ [ <reduced> ] [ drop null ] if ] xmap ;
 
 : xpprint ( xf -- xf' )
     [ dup . ] xmap ;
