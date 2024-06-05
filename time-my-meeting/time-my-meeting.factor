@@ -210,6 +210,9 @@ CONSTANT: THINGS-THAT-TAKE-TIME {
 
 TUPLE: meeting-gadget < track timer total start ;
 
+M: meeting-gadget ungraft*
+    [ timer>> stop-timer ] [ call-next-method ] bi ;
+
 : large-theme ( gadget -- gadget )
     [ clone 18 >>size ] change-font ;
 
