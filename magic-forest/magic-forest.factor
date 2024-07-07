@@ -1,21 +1,29 @@
-USING: arrays combinators.short-circuit command-line hash-sets
-kernel math math.parser namespaces prettyprint sequences sets ;
+USING: accessors arrays classes.tuple combinators.short-circuit
+command-line hash-sets kernel math math.parser namespaces
+prettyprint sequences sets ;
 
 IN: magic-forest
 
 ! brute force
 
+TUPLE: forest goats wolves lions ;
+
+C: <forest> forest
+
+: >forest< ( forest -- goats wolves lions )
+    [ goats>> ] [ wolves>> ] [ lions>> ] tri ;
+
 : wolf-devours-goat ( forest -- forest/f )
-    first3 { [ pick 0 > ] [ over 0 > ] } 0&&
-    [ [ 1 - ] [ 1 - ] [ 1 + ] tri* 3array ] [ 3drop f ] if ;
+    >forest< { [ pick 0 > ] [ over 0 > ] } 0&&
+    [ [ 1 - ] [ 1 - ] [ 1 + ] tri* <forest> ] [ 3drop f ] if ;
 
 : lion-devours-goat ( forest -- forest/f )
-    first3 { [ pick 0 > ] [ dup 0 > ] } 0&&
-    [ [ 1 - ] [ 1 + ] [ 1 - ] tri* 3array ] [ 3drop f ] if ;
+    >forest< { [ pick 0 > ] [ dup 0 > ] } 0&&
+    [ [ 1 - ] [ 1 + ] [ 1 - ] tri* <forest> ] [ 3drop f ] if ;
 
 : lion-devours-wolf ( forest -- forest/f )
-    first3 { [ dup 0 > ] [ over 0 > ] } 0&&
-    [ [ 1 + ] [ 1 - ] [ 1 - ] tri* 3array ] [ 3drop f ] if ;
+    >forest< { [ dup 0 > ] [ over 0 > ] } 0&&
+    [ [ 1 + ] [ 1 - ] [ 1 - ] tri* <forest> ] [ 3drop f ] if ;
 
 : next-forests ( set forest -- set' )
     [ wolf-devours-goat [ over adjoin ] when* ]
@@ -26,7 +34,7 @@ IN: magic-forest
     [ length 3 * <hash-set> ] keep [ next-forests ] each members ;
 
 : stable? ( forest -- ? )
-    first3 rot zero? [ [ zero? ] either? ] [ [ zero? ] both? ] if ;
+    >forest< rot zero? [ [ zero? ] either? ] [ [ zero? ] both? ] if ;
 
 : devouring-possible? ( forests -- ? )
     [ stable? ] none? ;
@@ -38,6 +46,6 @@ IN: magic-forest
     1array [ dup devouring-possible? ] [ meal ] while stable-forests ;
 
 MAIN: [
-    command-line get [ string>number ] map
+    command-line get [ string>number ] map forest slots>tuple
     find-stable-forests .
 ]
