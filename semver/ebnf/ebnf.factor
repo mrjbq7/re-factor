@@ -1,5 +1,5 @@
 USING: math.parser peg.ebnf sequences sequences.deep ;
-IN: semantic-versioning.ebnf
+IN: semver.ebnf
 
 EBNF: parse-semvar [=[
 
