@@ -1,6 +1,6 @@
 
-USING: arrays fry kernel make math math.parser peg.ebnf
-sequences strings ;
+USING: arrays fry kernel make math math.parser multiline
+peg.ebnf sequences strings ;
 
 IN: chemistry
 
@@ -14,7 +14,9 @@ pair   = [0-9]* { symbol | "("~ pair+ ")"~ } [0-9]*
 
        => [[ first3 swapd [ [ 1 ] [ string>number ] if-empty ] bi@ * 2array ]]
 
-pairs  = pair+ => [[ ]]
+bracket = "["~ pair "]"~
+
+pairs  = (bracket | pair)+ => [[ ]]
 
 ]=]
 

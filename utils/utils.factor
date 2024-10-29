@@ -1,10 +1,11 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors arrays assocs combinators fry generic
-io.pathnames kernel lexer math math.functions math.order
+USING: accessors arrays assocs combinators effects.parser fry
+generic io.pathnames kernel lexer math math.functions math.order
 math.parser math.private namespaces parser random sequences
-sorting source-files tools.annotations ;
+sorting source-files stack-checker tools.annotations words ;
+
 IN: utils
 
 SYNTAX: =>

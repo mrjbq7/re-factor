@@ -25,7 +25,7 @@ CONSTANT: FORTUNES {
     ascii file-contents parse-fortune ;
 
 MEMO: default-fortunes ( -- seq )
-    FORTUNES [ exists? ] find nip load-fortunes ;
+    FORTUNES [ file-exists? ] find nip load-fortunes ;
 
 : fortune ( -- )
     default-fortunes random >string print ;

@@ -2,7 +2,7 @@
 ! See http://factorcode.org/license.txt for BSD license.
 
 USING: io io.streams.string kernel macros make math math.parser
-peg.ebnf present quotations sequences strings ;
+multiline peg.ebnf present quotations sequences strings ;
 
 IN: printf-example
 
@@ -29,7 +29,7 @@ text       = (formats|plain-text)*
 
 ]=]
 
-MACRO: printf ( format-string -- )
+MACRO: printf ( format-string -- quot )
     parse-printf reverse [ ] concat-as [
         { } make reverse [ write ] each
     ] curry ;

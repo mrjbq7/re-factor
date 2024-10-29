@@ -52,7 +52,7 @@ PRIVATE>
     [ article. ] with-string-writer
     R/ \[\d+\]/ "" re-replace summary. ;
 
-CONSTANT: example-content """
+CONSTANT: example-content "
 Lior Degani, the Co-Founder and head of Marketing of Swayy,
 pinged me last week when I was in California to tell me about
 his startup and give me beta access. I heard his pitch and was
@@ -147,7 +147,7 @@ secret URL and enter the promotion code thenextweb . The first
 300 people to use the code will get access.
 
 Image credit: Thinkstock
-"""
+"
 
 : run-example ( -- )
     example-content summary. ;

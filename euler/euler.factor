@@ -6,7 +6,7 @@ USING: kernel math random sequences ;
 IN: euler
 
 : random-float ( -- n )
-    0.0 1.0 uniform-random-float ;
+    0.0 1.0 uniform-random ;
 
 : numbers-added ( -- n )
     0 0 [ dup 1 < ] [

@@ -8,7 +8,7 @@ IN: icalendar
 <PRIVATE
 
 : next-content-line ( string n -- i )
-    "\r\n" 2over start* dup [
+    "\r\n" 2over subseq-start-from dup [
         pick [ dup 2 + ] [ ?nth ] bi* CHAR: \s =
         [ nip 2 + next-content-line ] [ 2nip ] if
     ] [ 2nip ] if ; recursive

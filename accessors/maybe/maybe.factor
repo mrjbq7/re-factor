@@ -5,7 +5,7 @@ slots words ;
 IN: accessors.maybe
 
 : maybe-word ( name -- word )
-    "maybe-" prepend "accessors" create ;
+    "maybe-" prepend "accessors" create-word ;
 
 : define-maybe ( name -- )
     dup maybe-word dup deferred? [

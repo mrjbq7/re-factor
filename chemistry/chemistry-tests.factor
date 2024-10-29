@@ -34,6 +34,7 @@ IN: chemistry
             "(CH3)16(Tc(H2O)3CO(BrFe3(ReCl)3(SO4)2)2)2MnO4"
             "16C 48H 2Tc 12H 6O 2C 2O 4Br 12Fe 12Re 12Cl 8S 32O Mn 4O"
         }
+        { "K4[Fe(SCN)6]" "4K Fe 6S 6C 6N" }
     } [
         [ first symbol>string ] [ second ] bi =
     ] all?

@@ -18,7 +18,7 @@ IN: bowling
     f swap [ pin dup ] { } map-as nip ;
 
 : frame ( pins -- rest frame )
-    dup first 10 = 1 2 ? short cut-slice swap ;
+    dup first 10 = 1 2 ? index-or-length cut-slice swap ;
 
 : frames ( pins -- frames )
     9 [ frame ] replicate swap suffix ;

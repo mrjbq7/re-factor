@@ -24,7 +24,7 @@ PACKED-STRUCT: header
 SPECIALIZED-ARRAY: short
 
 : sum-contents ( -- sum )
-    contents short cast-array [ abs ] map-sum ;
+    read-contents short cast-array [ abs ] map-sum ;
 
 : wavsum ( path -- header sum )
     binary [ header read-struct sum-contents ] with-file-reader ;

@@ -1,7 +1,7 @@
 ! Copyright (C) 2010 John Benediktsson.
 ! See http://factorcode.org/license.txt for BSD license.
 
-USING: db.errors kernel peg.ebnf quoting strings ;
+USING: db.errors kernel multiline peg.ebnf quoting strings ;
 
 IN: mysql.errors
 

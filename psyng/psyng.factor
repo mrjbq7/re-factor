@@ -104,7 +104,7 @@ PRIVATE>
 : tag>assoc ( tag -- assoc )
     [
         dup children-tags [ children>string ] [
-            nip [ tag>assoc ] map assoc-combine
+            nip [ tag>assoc ] map assoc-union-all
         ] if-empty
     ] [ name>> main>> ] bi associate ;
 

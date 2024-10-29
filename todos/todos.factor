@@ -10,10 +10,10 @@ IN: todos
     vocab-dir "todo.txt" append-path ;
 
 : vocab-todo ( vocab -- todos )
-    dup vocab-todo-path vocab-file-contents ;
+    dup vocab-todo-path vocab-file-lines ;
 
 : set-vocab-todo ( todos vocab -- )
-    dup vocab-todo-path set-vocab-file-contents ;
+    dup vocab-todo-path set-vocab-file-lines ;
 
 :: add-vocab-todo ( todo vocab -- )
     CHAR: \n todo member? [ "invalid" throw ] when
@@ -26,7 +26,7 @@ IN: todos
     vocab-todo [ print ] each ;
 
 : all-todos ( vocab -- assoc )
-    child-vocabs [ dup vocab-todo 2array ] map
+    loaded-child-vocab-names [ dup vocab-todo 2array ] map
     [ second empty? ] reject ;
 
 : all-todos. ( vocab -- )

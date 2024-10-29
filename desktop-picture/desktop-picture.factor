@@ -1,8 +1,9 @@
 ! Copyright (C) 2015 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors html.parser.analyzer http.client io.files.temp
-kernel regexp sequences splitting strings system vocabs ;
+USING: accessors html.parser.analyzer http.client http.download
+io.files.temp kernel regexp sequences splitting strings system
+vocabs ;
 
 IN: desktop-picture
 
@@ -17,7 +18,7 @@ HOOK: set-desktop-picture os ( path -- )
 
 : random-xkcd ( -- url )
     "http://dynamic.xkcd.com/random/comic/" http-get nip
-    R@ http://imgs\.xkcd\.com/comics/[^\.]+\.(png|jpg)@
+    R/ http:\/\/imgs\.xkcd\.com\/comics\/[^\.]+\.(png|jpg)/
     first-match >string ;
 
 : random-wallpaperstock ( -- url )
@@ -31,6 +32,6 @@ HOOK: set-desktop-picture os ( path -- )
 
 : download-and-set-desktop-picture ( url -- )
     dup "/" split1-last nip cache-file
-    [ download-to ] [ set-desktop-picture ] bi ;
+    [ download-into ] [ set-desktop-picture ] bi ;
 
 "desktop-picture." os name>> append require

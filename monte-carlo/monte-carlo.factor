@@ -19,11 +19,11 @@ IN: monte-carlo
 
 ! Estimate pi
 
-: (random-point) ( obj -- x y )
-    [ (random-unit) ] [ (random-unit) ] bi ;
+: random-point* ( obj -- x y )
+    [ random-unit* ] [ random-unit* ] bi ;
 
 : random-point ( -- x y )
-    random-generator get (random-point) ;
+    random-generator get random-point* ;
 
 : inside-circle? ( x y -- ? )
     [ sq ] bi@ + sqrt 1.0 <= ;
@@ -32,6 +32,6 @@ IN: monte-carlo
     0 swap [
         random-generator get
         '[
-            _ (random-point) inside-circle? [ 1 + ] when
+            _ random-point* inside-circle? [ 1 + ] when
         ] times
     ] keep /f 4 * ;

@@ -4,7 +4,8 @@
 USING: accessors arrays assocs combinators.short-circuit
 grouping hashtables html.parser html.parser.analyzer
 html.parser.printer http.client io io.styles kernel memoize
-sequences splitting unicode.categories wrap.strings ;
+sequences splitting unicode wrap.strings ;
+
 FROM: sequences => change-nth ;
 
 IN: geekcode

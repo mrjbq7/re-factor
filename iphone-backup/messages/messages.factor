@@ -1,8 +1,9 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors db db.sqlite db.tuples db.types io.directories
-io.files.info io.files.unique io.pathnames iphone-backup kernel
+USING: accessors assocs colors combinators db db.sqlite
+db.tuples db.types io io.directories io.files.info
+io.files.unique io.pathnames io.styles iphone-backup kernel
 math.statistics sequences sorting utils ;
 
 IN: iphone-backup.messages

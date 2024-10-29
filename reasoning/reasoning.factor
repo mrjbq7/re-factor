@@ -1,6 +1,6 @@
 USING: accessors combinators fry kernel literals match math
 prettyprint quotations sequences strings ;
-FROM: fry => _ ;
+FROM: syntax => _ ;
 IN: reasoning
 
 TUPLE: Var s ;

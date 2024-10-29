@@ -1,8 +1,8 @@
 ! Copyright (C) 2008 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: fry kernel macros math math.functions math.parser 
-peg.ebnf quotations sequences strings ;
+USING: fry kernel macros math math.functions math.parser
+multiline peg.ebnf quotations sequences strings ;
 
 IN: calc
 
@@ -69,7 +69,7 @@ function = funcs_? "(" {function|number_}* ")"
 
 PRIVATE>
 
-MACRO: calc ( string -- ) parse-calc ;
+MACRO: calc ( string -- quot ) parse-calc ;
 
 
 
@@ -113,7 +113,7 @@ text = (equation|equations)* => [[ concat ]]
 ! text  = space? equation space? => [[ second concat ]] 
 ! text_ = text|error
 
-MACRO: calc2 ( string -- ) parse-calc2 ;
+MACRO: calc2 ( string -- quot ) parse-calc2 ;
 
 
 

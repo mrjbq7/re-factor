@@ -2,10 +2,10 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors arrays assocs checksums checksums.md5
-combinators concurrency.combinators formatting fry http.client
-images.http io io.encodings.string io.encodings.utf8 io.styles
-kernel locals make math math.constants math.functions math.libm
-math.parser sequences sorting strings tools.time urls
+combinators concurrency.combinators formatting fry hex-strings
+http.client images.http io io.encodings.string io.encodings.utf8
+io.styles kernel locals make math math.constants math.functions
+math.libm math.parser sequences sorting strings tools.time urls
 urls.encoding xml xml.traversal ;
 
 IN: speedtest

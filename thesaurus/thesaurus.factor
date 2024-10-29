@@ -1,7 +1,7 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: accessors combinators destructors io io.binary
+USING: accessors combinators destructors endian io
 io.encodings.binary io.files kernel locals math math.order
 math.vectors ranges sequences strings ;
 

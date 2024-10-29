@@ -73,7 +73,7 @@ TYPED: decrement+short+typed/power-of-2? ( n: fixnum -- ? )
 USING: alien alien.c-types alien.syntax alien.libraries ;
 "libpowerof2" "power-of-2.dylib" cdecl add-library
 LIBRARY: libpowerof2
-FUNCTION: int isPowerOfTwo ( int x ) ;
+FUNCTION: int isPowerOfTwo ( int x )
 
 : alien/power-of-2? ( n -- ? )
     isPowerOfTwo 1 = ;

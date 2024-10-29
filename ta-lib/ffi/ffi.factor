@@ -8,7 +8,7 @@ IN: ta-lib.ffi
 
 << "ta-lib" {
     { [ os windows? ] [ "libta_lib.dll" ] }
-    { [ os macosx?  ] [ "libta_lib.dylib" ] }
+    { [ os macos?   ] [ "libta_lib.dylib" ] }
     { [ os unix?    ] [ "libta_lib.so" ] }
 } cond cdecl add-library >>
 

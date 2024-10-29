@@ -21,7 +21,7 @@ MEMO: country-names ( -- seq )
 <PRIVATE
 
 : transitions ( string -- enum )
-    { f } { } append-as 2 clump <enum> ;
+    { f } { } append-as 2 clump <enumerated> ;
 
 : transition-table ( seq -- table )
     H{ } clone swap [ transitions assoc-merge! ] each ;

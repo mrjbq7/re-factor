@@ -16,7 +16,7 @@ IN: k-nn
     '[ first _ distance ] infimum-by second ;
 
 : validate ( training validation -- % )
-    [ first2 [ classify ] [ = ] bi* ] with count* ;
+    [ first2 [ classify ] [ = ] bi* ] with percent-of ;
 
 : k-nn ( -- )
     "vocab:k-nn/trainingsample.csv" slurp-file

@@ -8,7 +8,7 @@ sorting unicode ;
 IN: wp
 
 : count-words ( -- assoc )
-    contents [ blank? ] split-when harvest histogram ;
+    read-contents [ blank? ] split-when harvest histogram ;
 
 : print-results ( seq -- )
    [ number>string "    " glue print ] assoc-each ;

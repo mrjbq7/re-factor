@@ -1,6 +1,6 @@
 USING: accessors arrays classes.tuple combinators.short-circuit
-command-line hash-sets kernel math math.parser namespaces
-prettyprint sequences sets ;
+command-line hash-sets kernel math math.order math.parser
+namespaces prettyprint sequences sets ;
 
 IN: magic-forest
 
@@ -44,6 +44,10 @@ C: <forest> forest
 
 : find-stable-forests ( forest -- forests )
     1array [ dup devouring-possible? ] [ meal ] while stable-forests ;
+
+: super-fast-find-stable-animals ( forest -- n )
+    >forest< min + ;
+
 
 MAIN: [
     command-line get [ string>number ] map forest slots>tuple

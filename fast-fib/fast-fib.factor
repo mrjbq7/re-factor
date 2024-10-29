@@ -1,8 +1,8 @@
 ! Copyright (C) 2011 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
-USING: combinators kernel locals math math.matrices math.parser
-memoize sequences ;
+USING: combinators kernel locals math math.matrices
+math.matrices.extras math.parser memoize sequences ;
 
 IN: fast-fib
 

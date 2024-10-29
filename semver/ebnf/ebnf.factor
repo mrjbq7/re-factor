@@ -1,4 +1,5 @@
-USING: math.parser peg.ebnf sequences sequences.deep ;
+USING: math.parser multiline peg.ebnf sequences sequences.deep ;
+
 IN: semver.ebnf
 
 EBNF: parse-semvar [=[

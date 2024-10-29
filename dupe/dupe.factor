@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors assocs checksums checksums.md5 command-line
-formatting fry io.directories.search io.files.types io.pathnames
-kernel math math.parser namespaces sequences ;
+formatting fry hex-strings io.directories io.files.types
+io.pathnames kernel math math.parser namespaces sequences ;
 
 IN: dupe
 

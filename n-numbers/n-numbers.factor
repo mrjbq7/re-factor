@@ -32,3 +32,20 @@ IN: n-numbers
 : reserved? ( str -- ? )
     "N" ?head drop
     { [ length 1 2 between? ] [ [ digit? ] all? ] } 1&& ;
+
+H{
+    { CHAR: A "4" }
+    { CHAR: B "86" }
+    { CHAR: E "3" }
+    { CHAR: 6 "69" }
+    { CHAR: I "1" }
+    { CHAR: J "1" }
+    { CHAR: L "17" }
+    { CHAR: O "0" }
+    { CHAR: P "9" }
+    { CHAR: Q "92" }
+    { CHAR: S "52" }
+    { CHAR: T "7" }
+    { CHAR: Y "7" }
+    { CHAR: 2 "Z" }
+} drop

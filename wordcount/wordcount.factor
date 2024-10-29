@@ -2,8 +2,8 @@
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors ascii assocs combinators.short-circuit
-formatting fry io io.directories.search io.encodings.ascii
-io.files io.files.info kernel sequences sorting splitting ;
+formatting fry io io.directories io.encodings.ascii io.files
+io.files.info kernel sequences sorting splitting ;
 
 IN: wordcount
 

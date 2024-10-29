@@ -52,4 +52,4 @@ bookmark "bookmarks" {
     all-bookmarks [ [ url>> ] [ title>> ] bi ] { } map>assoc ;
 
 : all-domains ( -- seq )
-    all-bookmarks [ url>> >url host>> ] map unique keys ;
+    all-bookmarks [ url>> >url host>> ] map members ;
