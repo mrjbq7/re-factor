@@ -1,4 +1,5 @@
-USING: calendar kernel math prettyprint qw sequences ;
+USING: ascii calendar calendar.format io kernel math prettyprint
+qw sequences ;
 IN: wordle
 
 CONSTANT: wordles qw{
@@ -81,9 +82,62 @@ CONSTANT: wordles qw{
     tonic flank burly froze whale hobby wheel heart disco ethos
     curly bathe style tenth beget party chart anode polyp brook
     bully lover empty hello quick wrath snaky index scrub amiss
-    exact magma quest beach spice
+    exact magma quest beach spice verve wordy ocean choir peace
+    write caper audio bride space onion await giddy birch gnash
+    dwell rouse lucky quote older whisk clear rayon exert angel
+    music frank close snare stone brush carol right rocky loyal
+    smile coach azure daddy beret merry while spurt bunch chime
+    viola binge truth snail skunk knelt uncle agent leaky graph
+    adult mercy splat occur smirk given tempo cause retry pique
+    noble mason phony grail bleak noise until ardor mania flare
+    trade limit ninja glaze leash actor meant green sassy sight
+    trust tardy think queue candy piano pixel queen throw guide
+    solid tawny scope sushi resin taken genre adapt worst young
+    woman sleep sharp shift chain house these spent would topic
+    globe bacon funny table small built touch slope grace evoke
+    phone daisy learn child three salty bulky expel leggy ember
+    snake aloof block relic still tweak north large thing stole
+    court blond lunch doing heard route brief threw liner final
+    stony cable lunge scant twirl aging mural alive cleft micro
+    verge repel which after place stiff fried never pasta scram
+    talon ascot stash psalm ridge price match build heavy apart
+    piper smith often sense devil image forty urban state flame
+    hunch teary clone early cheer grasp pesky heave local since
+    erupt toxic snort spelt abide lingo shade decay risen towel
+    sally mayor stung speak realm force taboo frond serum plait
+    climb wrist finch voila breed merge broth louse whiny steel
+    blimp equip shank tithe facet raise lucid jolly laser rover
+    overt intro vapid gleam prune craft prowl diary slice ebony
+    value decal shave musty pious jerky media tidal outer cumin
+    amass pinch stall tutor briny hitch nicer dingo exalt swish
+    glide titan bevel skier minus papal gummy chaos basin bravo
+    stark groom organ ether melon hence crowd manga swung deter
+    angst vault proud grind prior cover terse scent paint edict
+    bugle dolly savor knead order drove zebra buddy adage inlay
+    thigh debut crush scoff canon shape blare gaunt cameo jiffy
+    enact video swoon decoy quite nerdy refer shaft speck cadet
+    prong forte porch awash juice smock super feral penne chalk
+    flake scale lower ensue anvil macaw saucy ounce medic scone
+    skiff neigh shore acorn brace storm lanky meter delay mulch
+    brute leech filet skate stake crown lithe flunk knave spout
+    mushy camel faint stern widen rerun owner drawn debit rebel
+    aisle brass harsh broad recur honey beaut fully press smoke
+    seven teach steam handy torch thank faith brain rider cloud
+    modem shell wagon title miner lager flour joint mommy carve
+    gusty stain prone gamut corer grant halve stint fiber dicey
+    spoon shout goofy bossy frown wreak sandy bawdy tunic easel
+    weird sixth snoop blaze vinyl octet truly event ready swell
+    inner stoic flown primp uvula tacky visor tally frail going
 }
 
 : wordle. ( date -- )
     2021 6 19 <date> time- duration>days >integer
     wordles [ length mod ] [ nth ] bi . ;
+
+: all-wordles. ( -- )
+    2021 6 19 <date> wordles [
+        over
+        [ timestamp>ymd write bl ]
+        [ >upper print ]
+        [ 1 days time+ ] tri*
+    ] each drop ;
