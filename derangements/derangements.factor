@@ -14,7 +14,7 @@ IN: derangements
 
 : derangements-quot ( seq quot -- seq quot' )
     [ [ <derangement-iota> ] [ length <iota> >array ] [ ] tri ] dip
-    '[ drop _ [ _ nths-unsafe @ ] keep next-derangement drop ] ; inline
+    '[ drop _ next-derangement _ nths-unsafe @ ] ; inline
 
 : each-derangement ( ... seq quot: ( ... elt -- ... ) -- ... )
     derangements-quot each ; inline

@@ -2,7 +2,6 @@ USING: derangements tools.test ;
 
 {
     {
-        "ABCD"
         "BADC"
         "BCDA"
         "BDAC"
@@ -11,5 +10,6 @@ USING: derangements tools.test ;
         "CDBA"
         "DABC"
         "DCAB"
+        "DCBA"
     }
 } [ "ABCD" all-derangements ] unit-test
