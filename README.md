@@ -33,6 +33,8 @@ language](https://factorcode.org).  These include:
 
 * daytime: simple DAYTIME server
 
+* derangements: compute the derangements of a sequence
+
 * domainr: wrapper for domai.nr API
 
 * duckduckgo: wrapper for DuckDuckGo API
