@@ -31,5 +31,8 @@ IN: derangements
 : all-derangements? ( ... seq quot: ( ... elt -- ... ? ) -- ... ? )
     derangements-quot all? ; inline
 
+: find-derangement ( ... seq quot: ( ... elt -- ... ? ) -- ... elt/f )
+    '[ _ keep and ] derangements-quot map-find drop ; inline
+
 : reduce-derangements ( ... seq identity quot: ( ... prev elt -- ... next ) -- ... result )
     swapd each-derangement ; inline
