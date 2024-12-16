@@ -1,5 +1,7 @@
-USING: arrays kernel math.combinatorics
-math.combinatorics.private math.factorials sequences ;
+USING: arrays kernel math math.combinatorics
+math.combinatorics.private math.factorials random ranges
+sequences ;
+FROM: sequences.private => nth-unsafe exchange-unsafe ;
 
 IN: derangements
 
@@ -36,3 +38,17 @@ IN: derangements
 
 : reduce-derangements ( ... seq identity quot: ( ... prev elt -- ... next ) -- ... result )
     swapd each-derangement ; inline
+
+:: random-derangement-indices ( n -- indices )
+    n <iota> >array :> seq
+    f [
+        dup :> v
+        n 0 (a..b) [| j |
+            j 1 + random :> p
+            p v nth-unsafe j =
+            [ t ] [ j p v exchange-unsafe f ] if
+        ] any? v first zero? or
+    ] [ drop seq clone ] do while ;
+
+: random-derangement ( seq -- seq' )
+    [ length random-derangement-indices ] [ nths-unsafe ] bi ;
