@@ -43,7 +43,7 @@ IN: derangements
     n <iota> >array :> seq
     f [
         dup :> v
-        n 0 (a..b) [| j |
+        n 1 (a..b] [| j |
             j 1 + random :> p
             p v nth-unsafe j =
             [ t ] [ j p v exchange-unsafe f ] if
