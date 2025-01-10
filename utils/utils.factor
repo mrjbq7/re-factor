@@ -4,7 +4,8 @@
 USING: accessors arrays assocs combinators effects.parser fry
 generic io.pathnames kernel lexer math math.functions math.order
 math.parser math.private namespaces parser random sequences
-sorting source-files stack-checker tools.annotations words ;
+sorting source-files stack-checker tools.annotations words
+words.constant ;
 
 IN: utils
 
@@ -90,3 +91,10 @@ M: bignum count-digits 1 swap (count-digits) ;
 SYNTAX: ?:
     [ scan-new-word parse-definition ] with-definition
     dup infer define-declared ;
+
+SYNTAX: CONSTANTS:
+    ";" [
+        create-word-in
+        [ reset-generic ]
+        [ scan-object define-constant ] bi
+    ] each-token ;
