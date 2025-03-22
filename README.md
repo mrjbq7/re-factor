@@ -11,6 +11,8 @@ language](https://factorcode.org).  These include:
 
 * anybar: support for AnyBar.app
 
+* base256emoji: multibase compatible base256-emoji
+
 * beer-advocate: support the BeerAdvocate API
 
 * birthday: sing birthday wishes from the command line
