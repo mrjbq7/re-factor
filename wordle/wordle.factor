@@ -128,6 +128,27 @@ CONSTANT: wordles qw{
     spoon shout goofy bossy frown wreak sandy bawdy tunic easel
     weird sixth snoop blaze vinyl octet truly event ready swell
     inner stoic flown primp uvula tacky visor tally frail going
+    niche spine pearl jelly twist brown witch slang chock hippo
+    dogma mauve guile shaky crypt endow shove hilly hyena flung
+    patio plumb vying boxer drool funky boast scowl hefty stray
+    flash blade brawn sauna eagle share affix grain decry mambo
+    stare lemur nerve chose cheap relax cyber sprig atlas draft
+    wafer crawl dingy total cloak fancy knack flint prose silly
+    rower squid icing reach upper crepe crisp sunny shunt fever
+    udder false toast rivet chore revue tooth pedal pupil swath
+    steep bonus goody score rapid rumba ditty crook suave trail
+    indie madly roach clove cream otter gland dryer award lodge
+    fuzzy hover deity spear check scrum alert troop navel greed
+    spite track mango chase piece ladle stamp lasso timer spark
+    baste nudge amble dopey angle shelf elbow sheet verse sorry
+    quota booty jewel curse shear krill foamy villa hazel spare
+    wheat turbo arrow nurse laugh crest ashen moral stood dirge
+    inbox patch spate artsy ozone genie known clash weedy dummy
+    bliss idler adept whose patsy trout shush suite macho balmy
+    tripe yeast dowel bicep aware bongo eager fifth grown livid
+    pitch borne alarm folio shuck suede grift drone sport polar
+    quash idiom habit rough preen admin cease datum edify reuse
+    lease board taffy plaid vixen bilge ghost quail petty prank
 }
 
 : wordle. ( date -- )
