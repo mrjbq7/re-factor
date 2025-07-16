@@ -57,9 +57,9 @@ TYPED:: loops-benchmark5 ( u: fixnum -- )
         i a [ r fixnum+fast ] change-nth-unsafe
     ] each-integer r a nth-unsafe . ;
 
-:: loops-benchmark6 ( u -- )
-    10,000 random :> r
-    10,000 0 <array> :> a
+TYPED:: loops-benchmark6 ( u: fixnum -- )
+    10,000 random { fixnum } declare :> r
+    10,000 uint32_t <c-array> :> a
     10,000 [| i |
         100,000 <iota> [ u mod ] map-sum :> v
         i a [ v + ] change-nth

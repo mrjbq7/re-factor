@@ -1,84 +1,84 @@
-4958905
-Running time: 4.708807393 seconds
+4958308
+Running time: 4.696348864 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4959109
-Running time: 4.718237543 seconds
+4955779
+Running time: 4.713511828 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4959353
-Running time: 4.436620819 seconds
+4956694
+Running time: 4.465102261 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4951168
-Running time: 3.55429673 seconds
+4952023
+Running time: 3.515781969 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4958844
-Running time: 3.067992181 seconds
+4956499
+Running time: 3.0720181 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4951091
-Running time: 3.533516226 seconds
+4951458
+Running time: 2.353829542 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4955874
-Running time: 0.000268377 seconds
+4951056
+Running time: 0.00027036 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4951940
-Running time: 0.0002695 seconds
+4959600
+Running time: 0.000269942 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4956611
-Running time: 0.000258296 seconds
+4959636
+Running time: 0.000264133 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-4957430
-Running time: 0.000322827 seconds
+4958740
+Running time: 0.000322609 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
 gc-events.       - Print all garbage collection events
 gc-stats.        - Print breakdown of different garbage collection events
 gc-summary.      - Print aggregate garbage collection statistics
-Running time: 0.212703866 seconds
+Running time: 0.212523763 seconds
 
 Additional information was collected.
 dispatch-stats.  - Print method dispatch statistics
