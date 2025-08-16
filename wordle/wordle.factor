@@ -149,11 +149,16 @@ CONSTANT: wordles qw{
     pitch borne alarm folio shuck suede grift drone sport polar
     quash idiom habit rough preen admin cease datum edify reuse
     lease board taffy plaid vixen bilge ghost quail petty prank
+    munch curio taupe glade thrum oddly elite comfy offer plain
+    stump witty blink moldy incur poppy curve baler atria stilt
+    dread novel jumpy brand exile gnome undid foist nervy modal
+    loris sword blank tizzy burnt water quake gofer haunt whole
+    savvy omega assay frill banjo daunt lumpy rigid stork groan
+    coral imbue nasal minty south nomad kefir knell level
 }
 
 : wordle. ( date -- )
-    2021 6 19 <date> time- duration>days >integer
-    wordles [ length mod ] [ nth ] bi . ;
+    2021 6 19 <date> time- duration>days >integer wordles ?nth . ;
 
 : all-wordles. ( -- )
     2021 6 19 <date> wordles [
