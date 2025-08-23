@@ -1,4 +1,4 @@
-! Copyright (C) 2013 John Benediktsson
+! Copyright (C) 2025 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: accessors alien alien.c-types alien.libraries
@@ -7,9 +7,9 @@ alien.syntax combinators kernel sequences system words ;
 IN: ta-lib.ffi
 
 << "ta-lib" {
-    { [ os windows? ] [ "libta_lib.dll" ] }
-    { [ os macos?   ] [ "libta_lib.dylib" ] }
-    { [ os unix?    ] [ "libta_lib.so" ] }
+    { [ os windows? ] [ "libta-lib.dll" ] }
+    { [ os macos?   ] [ "libta-lib.dylib" ] }
+    { [ os unix?    ] [ "libta-lib.so" ] }
 } cond cdecl add-library >>
 
 LIBRARY: ta-lib
@@ -60,6 +60,8 @@ ENUM: MA_Type
     TA_MAType_MAMA,
     TA_MAType_T3 ;
 
+FUNCTION: TA_RetCode TA_ACCBANDS ( int startIdx, int endIdx, double* inHigh, double* inLow, double* inClose, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outRealUpperBand, double* outRealMiddleBand, double* outRealLowerBand )
+FUNCTION: int TA_ACCBANDS_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_ACOS ( int startIdx, int endIdx, double* inReal, int* outBegIdx, int* outNBElement, double* outReal )
 FUNCTION: int TA_ACOS_Lookback ( )
 FUNCTION: TA_RetCode TA_AD ( int startIdx, int endIdx, double* inHigh, double* inLow, double* inClose, double* inVolume, int* outBegIdx, int* outNBElement, double* outReal )
@@ -86,6 +88,8 @@ FUNCTION: TA_RetCode TA_ATR ( int startIdx, int endIdx, double* inHigh, double* 
 FUNCTION: int TA_ATR_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_AVGPRICE ( int startIdx, int endIdx, double* inOpen, double* inHigh, double* inLow, double* inClose, int* outBegIdx, int* outNBElement, double* outReal )
 FUNCTION: int TA_AVGPRICE_Lookback ( )
+FUNCTION: TA_RetCode TA_AVGDEV ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
+FUNCTION: int TA_AVGDEV_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_BBANDS ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, double optInNbDevUp, double optInNbDevDn, TA_MAType optInMAType, int* outBegIdx, int* outNBElement, double* outRealUpperBand, double* outRealMiddleBand, double* outRealLowerBand )
 FUNCTION: int TA_BBANDS_Lookback ( int optInTimePeriod, double optInNbDevUp, double optInNbDevDn, TA_MAType optInMAType )
 FUNCTION: TA_RetCode TA_BETA ( int startIdx, int endIdx, double* inReal0, double* inReal1, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
@@ -250,6 +254,8 @@ FUNCTION: TA_RetCode TA_HT_TRENDLINE ( int startIdx, int endIdx, double* inReal,
 FUNCTION: int TA_HT_TRENDLINE_Lookback ( )
 FUNCTION: TA_RetCode TA_HT_TRENDMODE ( int startIdx, int endIdx, double* inReal, int* outBegIdx, int* outNBElement, int* outInteger )
 FUNCTION: int TA_HT_TRENDMODE_Lookback ( )
+FUNCTION: TA_RetCode TA_IMI ( int startIdx, int endIdx, double* inOpen, double* inClose, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
+FUNCTION: int TA_IMI_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_KAMA ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
 FUNCTION: int TA_KAMA_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_LINEARREG ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
@@ -376,15 +382,3 @@ FUNCTION: TA_RetCode TA_WILLR ( int startIdx, int endIdx, double* inHigh, double
 FUNCTION: int TA_WILLR_Lookback ( int optInTimePeriod )
 FUNCTION: TA_RetCode TA_WMA ( int startIdx, int endIdx, double* inReal, int optInTimePeriod, int* outBegIdx, int* outNBElement, double* outReal )
 FUNCTION: int TA_WMA_Lookback ( int optInTimePeriod )
-
-<PRIVATE
-
-: lookup-ta-function ( name -- word )
-    "TA_" over name>> append "ta-lib.ffi" lookup-word ;
-
-: lookup-ta-lookback ( name -- word )
-    "TA_" over name>> "_Lookback" 3append "ta-lib.ffi" lookup-word ;
-
-PRIVATE>
-
-! SYNTAX: TA_FUNCTION: scan-new-word ;
