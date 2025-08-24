@@ -1418,7 +1418,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outreal lookback tail-slice TA_FLOOR ta-check-success
     outreal ;
 
-:: HT_DCPERIOD ( real -- real )
+:: HT-DCPERIOD ( real -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1430,7 +1430,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outreal lookback tail-slice TA_HT_DCPERIOD ta-check-success
     outreal ;
 
-:: HT_DCPHASE ( real -- real )
+:: HT-DCPHASE ( real -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1442,7 +1442,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outreal lookback tail-slice TA_HT_DCPHASE ta-check-success
     outreal ;
 
-:: HT_PHASOR ( real -- inphase quadrature )
+:: HT-PHASOR ( real -- inphase quadrature )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1455,7 +1455,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outinphase lookback tail-slice outquadrature lookback tail-slice TA_HT_PHASOR ta-check-success
     outinphase outquadrature ;
 
-:: HT_SINE ( real -- sine leadsine )
+:: HT-SINE ( real -- sine leadsine )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1468,7 +1468,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outsine lookback tail-slice outleadsine lookback tail-slice TA_HT_SINE ta-check-success
     outsine outleadsine ;
 
-:: HT_TRENDLINE ( real -- real )
+:: HT-TRENDLINE ( real -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1480,7 +1480,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice outbegidx outnbelement outreal lookback tail-slice TA_HT_TRENDLINE ta-check-success
     outreal ;
 
-:: HT_TRENDMODE ( real -- integer )
+:: HT-TRENDMODE ( real -- integer )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1529,7 +1529,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice timeperiod outbegidx outnbelement outreal lookback tail-slice TA_LINEARREG ta-check-success
     outreal ;
 
-:: LINEARREG_ANGLE ( real timeperiod -- real )
+:: LINEARREG-ANGLE ( real timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1541,7 +1541,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice timeperiod outbegidx outnbelement outreal lookback tail-slice TA_LINEARREG_ANGLE ta-check-success
     outreal ;
 
-:: LINEARREG_INTERCEPT ( real timeperiod -- real )
+:: LINEARREG-INTERCEPT ( real timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1553,7 +1553,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice timeperiod outbegidx outnbelement outreal lookback tail-slice TA_LINEARREG_INTERCEPT ta-check-success
     outreal ;
 
-:: LINEARREG_SLOPE ( real timeperiod -- real )
+:: LINEARREG-SLOPE ( real timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     real check-array :> inreal
@@ -1800,7 +1800,7 @@ PRIVATE>
     lookback len outmaxidx <slice> [ begidx + ] map! drop
     outminidx outmaxidx ;
 
-:: MINUS_DI ( high low close timeperiod -- real )
+:: MINUS-DI ( high low close timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     high check-array :> inhigh
@@ -1814,7 +1814,7 @@ PRIVATE>
     0 endidx inhigh begidx tail-slice inlow begidx tail-slice inclose begidx tail-slice timeperiod outbegidx outnbelement outreal lookback tail-slice TA_MINUS_DI ta-check-success
     outreal ;
 
-:: MINUS_DM ( high low timeperiod -- real )
+:: MINUS-DM ( high low timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     high check-array :> inhigh
@@ -1879,7 +1879,7 @@ PRIVATE>
     0 endidx inreal begidx tail-slice involume begidx tail-slice outbegidx outnbelement outreal lookback tail-slice TA_OBV ta-check-success
     outreal ;
 
-:: PLUS_DI ( high low close timeperiod -- real )
+:: PLUS-DI ( high low close timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     high check-array :> inhigh
@@ -1893,7 +1893,7 @@ PRIVATE>
     0 endidx inhigh begidx tail-slice inlow begidx tail-slice inclose begidx tail-slice timeperiod outbegidx outnbelement outreal lookback tail-slice TA_PLUS_DI ta-check-success
     outreal ;
 
-:: PLUS_DM ( high low timeperiod -- real )
+:: PLUS-DM ( high low timeperiod -- real )
     0 int <ref> :> outbegidx
     0 int <ref> :> outnbelement
     high check-array :> inhigh
