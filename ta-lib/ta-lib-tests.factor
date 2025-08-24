@@ -1,4 +1,6 @@
-USING: accessors sequences ta-lib tools.test ;
+USING: accessors kernel sequences specialized-arrays ta-lib tools.test ;
+
+SPECIALIZED-ARRAY: double
 
 { t } [
     10 <iota> 3 SUM
