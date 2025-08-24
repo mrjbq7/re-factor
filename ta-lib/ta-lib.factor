@@ -1,4 +1,4 @@
-! Copyright (C) 2013 John Benediktsson
+! Copyright (C) 2025 John Benediktsson
 ! See http://factorcode.org/license.txt for BSD license
 
 USING: alien.c-types alien.data combinators
@@ -98,12 +98,12 @@ ERROR: different-array-lengths ;
 
 :: make-double-array ( len lookback -- seq )
     len double (c-array) :> out
-    len lookback min [ 0/0. swap out set-nth-unsafe ] each
+    len lookback min [ 0/0. swap out set-nth-unsafe ] each-integer
     out ;
 
 :: make-int-array ( len lookback -- seq )
     len int (c-array) :> out
-    len lookback min [ 0 swap out set-nth-unsafe ] each
+    len lookback min [ 0 swap out set-nth-unsafe ] each-integer
     out ;
 
 PRIVATE>
