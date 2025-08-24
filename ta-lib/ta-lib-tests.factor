@@ -1,4 +1,5 @@
-USING: accessors kernel sequences specialized-arrays ta-lib tools.test ;
+USING: accessors alien.c-types kernel sequences
+specialized-arrays ta-lib tools.test ;
 
 SPECIALIZED-ARRAY: double
 
