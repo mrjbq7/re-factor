@@ -1,35 +1,39 @@
 
-USING: arrays fry kernel make math math.parser multiline
-peg.ebnf sequences strings ;
+USING: arrays assocs fry kernel make math math.parser multiline
+peg.ebnf sequences sorting strings ;
 
 IN: chemistry
 
 <PRIVATE
 
-EBNF: parse-symbol [=[
+EBNF: split-formula [=[
 
 symbol = [A-Z] [a-z]? => [[ sift >string ]]
 
-pair   = [0-9]* { symbol | "("~ pair+ ")"~ } [0-9]*
+number = [0-9]+ { "." [0-9]+ }? { { "e" | "E" } { "+" | "-" }? [0-9]+ }?
+
+       => [[ first3 [ concat ] bi@ "" 3append-as ]]
+
+pair   = number? { symbol | "("~ pair+ ")"~ | "["~ pair+ "]"~ } number?
 
        => [[ first3 swapd [ [ 1 ] [ string>number ] if-empty ] bi@ * 2array ]]
 
-bracket = "["~ pair "]"~
-
-pairs  = (bracket | pair)+ => [[ ]]
+pairs  = pair+
 
 ]=]
 
-: flatten-symbol, ( elt n -- )
-    [ first2 ] [ * ] bi* over string?
-    [ 2array , ] [ '[ _ flatten-symbol, ] each ] if ;
-
-: flatten-symbol ( str -- seq )
-    parse-symbol [ [ 1 flatten-symbol, ] each ] { } make ;
+: flatten-formula ( elt n assoc -- )
+    [ [ first2 ] [ * ] bi* ] dip pick string?
+    [ swapd at+ ] [ '[ _ _ flatten-formula ] each ] if ;
 
 PRIVATE>
 
-: symbol>string ( str -- str' )
-    flatten-symbol [
-        first2 dup 1 = [ drop ] [ number>string prepend ] if
-    ] map " " join ;
+: parse-formula ( str -- seq )
+    split-formula H{ } clone [
+        '[ 1 _ flatten-formula ] each
+    ] keep ;
+
+: formula>string ( str -- str' )
+    parse-formula sort-keys [
+        dup 1 number= [ drop ] [ number>string prepend ] if
+    ] { } assoc>map " " join ;

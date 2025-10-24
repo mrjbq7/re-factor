@@ -4,38 +4,125 @@ IN: chemistry
 
 { t } [
     {
-        { "H" "H" }
-        { "Pb" "Pb" }
-        { "Pb2" "2Pb" }
-        { "H2" "2H" }
-        { "3Pb2" "6Pb" }
-        { "Pb2SO4" "2Pb S 4O" }
-        { "PbH2" "Pb 2H" }
-        { "(PbH2)2" "2Pb 4H" }
-        { "(CCC)2" "2C 2C 2C" }
-        { "Pb(H2)2" "Pb 4H" }
-        { "(Pb(H2)2)2" "2Pb 8H" }
-        { "(Pb(H2)2)2NO3" "2Pb 8H N 3O" }
-        { "(Ag(Pb(H2)2)2)2SO4" "2Ag 4Pb 16H S 4O" }
-        { "Pb(CH3(CH2)2CH3)2" "Pb 2C 6H 4C 8H 2C 6H" }
-        { "Na2(CH3(CH2)2CH3)2" "2Na 2C 6H 4C 8H 2C 6H" }
-        { "Tc(H2O)3Fe3(SO4)2" "Tc 6H 3O 3Fe 2S 8O" }
-        { "Tc(H2O)3(Fe3(SO4)2)2" "Tc 6H 3O 6Fe 4S 16O" }
-        { "(Tc(H2O)3(Fe3(SO4)2)2)2" "2Tc 12H 6O 12Fe 8S 32O" }
+        { "H" H{ { "H" 1 } } }
+        { "Pb" H{ { "Pb" 1 } } }
+        { "Pb2" H{ { "Pb" 2 } } }
+        { "H2" H{ { "H" 2 } } }
+        { "H2O" H{ { "H" 2 } { "O" 1 } } }
+        { "C1.5O3" H{ { "C" 1.5 } { "O" 3 } } }
+        { "3Pb2" H{ { "Pb" 6 } } }
+        { "Pb2SO4" H{ { "S" 1 } { "Pb" 2 } { "O" 4 } } }
+        { "PbH2" H{ { "H" 2 } { "Pb" 1 } } }
+        { "(PbH2)2" H{ { "H" 4 } { "Pb" 2 } } }
+        { "(CCC)2" H{ { "C" 6 } } }
+        { "Pb(H2)2" H{ { "H" 4 } { "Pb" 1 } } }
+        { "(Pb(H2)2)2" H{ { "H" 8 } { "Pb" 2 } } }
+        {
+            "(Pb(H2)2)2NO3"
+            H{ { "H" 8 } { "O" 3 } { "Pb" 2 } { "N" 1 } }
+        }
+        {
+            "(Ag(Pb(H2)2)2)2SO4"
+            H{
+                { "H" 16 }
+                { "O" 4 }
+                { "S" 1 }
+                { "Ag" 2 }
+                { "Pb" 4 }
+            }
+        }
+        { "Pb(CH3(CH2)2CH3)2" H{ { "H" 20 } { "C" 8 } { "Pb" 1 } } }
+        {
+            "Na2(CH3(CH2)2CH3)2"
+            H{ { "H" 20 } { "Na" 2 } { "C" 8 } }
+        }
+        {
+            "Tc(H2O)3Fe3(SO4)2"
+            H{
+                { "Fe" 3 }
+                { "S" 2 }
+                { "H" 6 }
+                { "Tc" 1 }
+                { "O" 11 }
+            }
+        }
+        {
+            "Tc(H2O)3(Fe3(SO4)2)2"
+            H{
+                { "Fe" 6 }
+                { "S" 4 }
+                { "H" 6 }
+                { "Tc" 1 }
+                { "O" 19 }
+            }
+        }
+        {
+            "(Tc(H2O)3(Fe3(SO4)2)2)2"
+            H{
+                { "Fe" 12 }
+                { "S" 8 }
+                { "H" 12 }
+                { "Tc" 2 }
+                { "O" 38 }
+            }
+        }
         {
             "(Tc(H2O)3CO(Fe3(SO4)2)2)2"
-            "2Tc 12H 6O 2C 2O 12Fe 8S 32O"
+            H{
+                { "Fe" 12 }
+                { "C" 2 }
+                { "S" 8 }
+                { "H" 12 }
+                { "Tc" 2 }
+                { "O" 40 }
+            }
         }
         {
             "(Tc(H2O)3CO(BrFe3(ReCl)3(SO4)2)2)2MnO4"
-            "2Tc 12H 6O 2C 2O 4Br 12Fe 12Re 12Cl 8S 32O Mn 4O"
+            H{
+                { "Br" 4 }
+                { "C" 2 }
+                { "H" 12 }
+                { "Re" 12 }
+                { "Tc" 2 }
+                { "Mn" 1 }
+                { "O" 44 }
+                { "Fe" 12 }
+                { "S" 8 }
+                { "Cl" 12 }
+            }
         }
         {
             "(CH3)16(Tc(H2O)3CO(BrFe3(ReCl)3(SO4)2)2)2MnO4"
-            "16C 48H 2Tc 12H 6O 2C 2O 4Br 12Fe 12Re 12Cl 8S 32O Mn 4O"
+            H{
+                { "Br" 4 }
+                { "C" 18 }
+                { "H" 60 }
+                { "Re" 12 }
+                { "Tc" 2 }
+                { "Mn" 1 }
+                { "O" 44 }
+                { "Fe" 12 }
+                { "S" 8 }
+                { "Cl" 12 }
+            }
         }
-        { "K4[Fe(SCN)6]" "4K Fe 6S 6C 6N" }
+        {
+            "K4[Fe(SCN)6]"
+            H{ { "Fe" 1 } { "K" 4 } { "S" 6 } { "C" 6 } { "N" 6 } }
+        }
+        {
+            "K4[Fe(SCN)6]2"
+            H{
+                { "Fe" 2 }
+                { "K" 4 }
+                { "S" 12 }
+                { "C" 12 }
+                { "N" 12 }
+            }
+
+        }
     } [
-        [ first symbol>string ] [ second ] bi =
+        [ first parse-formula ] [ second ] bi =
     ] all?
 ] unit-test
