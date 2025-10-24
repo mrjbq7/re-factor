@@ -12,11 +12,11 @@ symbol = [A-Z] [a-z]? => [[ sift >string ]]
 
 number = [0-9]+ { "." [0-9]+ }? { { "e" | "E" } { "+" | "-" }? [0-9]+ }?
 
-       => [[ first3 [ concat ] bi@ "" 3append-as ]]
+       => [[ first3 [ concat ] bi@ "" 3append-as string>number ]]
 
 pair   = number? { symbol | "("~ pair+ ")"~ | "["~ pair+ "]"~ } number?
 
-       => [[ first3 swapd [ [ 1 ] [ string>number ] if-empty ] bi@ * 2array ]]
+       => [[ first3 swapd [ 1 or ] bi@ * 2array ]]
 
 pairs  = pair+
 
