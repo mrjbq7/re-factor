@@ -7,13 +7,8 @@ sequences sets ui ui.commands ui.gadgets ui.gestures ;
 
 IN: floodfill
 
-CONSTANT: black B{ 0 0 0 255 }
-
 :: random-color ( -- color )
-    f [
-        drop 255 random 255 random 255 random 255 4byte-array
-        dup black =
-    ] loop ;
+    255 random 255 random 255 random 255 4byte-array ;
 
 CONSTANT: neighbors { { 1 0 } { 0 1 } { -1 0 } { 0 -1 } }
 
@@ -22,13 +17,12 @@ CONSTANT: neighbors { { 1 0 } { 0 1 } { -1 0 } { 0 -1 } }
     {
         [ x 0 >= ] [ x w < ]
         [ y 0 >= ] [ y h < ]
-        [ x y image pixel-at black = not ]
     } 0&& [
-
-        V{ { x y } } :> queue
-        random-color :> color
+        x y image pixel-at :> initial
+        f [ drop random-color dup initial = ] loop :> color
 
         color x y image set-pixel-at
+        V{ { x y } } :> queue
 
         [ queue empty? ] [
             queue pop first2 :> ( tx ty )
@@ -39,10 +33,7 @@ CONSTANT: neighbors { { 1 0 } { 0 1 } { -1 0 } { 0 -1 } }
                 {
                     [ nx 0 >= ] [ nx w < ]
                     [ ny 0 >= ] [ ny h < ]
-                    [
-                        nx ny image pixel-at
-                        [ black = ] [ color = ] bi or not
-                    ]
+                    [ nx ny image pixel-at initial = ]
                 } 0&& [
                     color nx ny image set-pixel-at
                     { nx ny } queue push
