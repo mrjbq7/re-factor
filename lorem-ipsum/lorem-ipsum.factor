@@ -66,20 +66,20 @@ CONSTANT: words qw{
 
 CONSTANT: OPTIONS {
     T{ option
-        { name "--words" }
-        { help "Returns lorem ipsum words" }
+        { name "--w" }
+        { help "Generate some lorem ipsum words" }
         { #args 1 }
         { type integer }
     }
     T{ option
         { name "--s" }
-        { help "Returns lorem ipsum sentence" }
+        { help "Generate a lorem ipsum sentence" }
         { const t }
         { default f }
     }
     T{ option
         { name "--p" }
-        { help "Returns lorem ipsum paragraph" }
+        { help "Generate a lorem ipsum paragraph" }
         { const t }
         { default f }
     }
@@ -87,7 +87,7 @@ CONSTANT: OPTIONS {
 
 MAIN: [
     OPTIONS [
-        "words" get [ random-words print ] when*
+        "w" get [ random-words print ] when*
         "s" get [ random-sentence print ] when
         "p" get [ random-paragraph print ] when
     ] with-options
