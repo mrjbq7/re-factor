@@ -8,7 +8,7 @@ sequences sets ui ui.commands ui.gadgets ui.gestures ;
 IN: floodfill
 
 :: random-color ( -- color )
-    255 random 255 random 255 random 255 random 4byte-array ;
+    4 [ 255 random ] B{ } replicate-as ;
 
 CONSTANT: neighbors { { 1 0 } { 0 1 } { -1 0 } { 0 -1 } }
 
