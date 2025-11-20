@@ -156,7 +156,7 @@ CONSTANT: HANGED-MAN {
         ] until
 
         hanged-man.
-        lose? "Congrats! You did it!" "Sorry, you lost!" ? print
+        lose? "Sorry, you lost!" "Congrats! You did it!" ? print
         "Your word was: " write target-word get print
     ] with-hangman ;
 
