@@ -59,10 +59,10 @@ CONSTANT: words qw{
     ] map "\n" join ;
 
 :: random-words ( n -- str )
-    words length n min :> c
+    words length :> w
     [
-        n [ dup 0 > ] [ c - words c sample % ] while drop
-    ] { } make " " join ;
+        n [ words over w min sample % w [-] ] until-zero
+    ] { } make ;
 
 CONSTANT: OPTIONS {
     T{ option
