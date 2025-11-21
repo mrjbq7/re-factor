@@ -48,5 +48,8 @@ IN: fizzbuzz
     1 lfrom
     { "" "" "Fizz" } <circular>
     { "" "" "" "" "Buzz" } <circular>
-    lzip [ concat ] lmap-lazy lzip
+    lzip [ concat ] lmap-lazy lzip ;
+
+: lfizzbuzz. ( n -- )
+    [ lfizzbuzz ] dip ltake
     [ first2 [ nip ] unless-empty ] lmap-lazy ;
