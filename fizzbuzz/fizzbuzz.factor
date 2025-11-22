@@ -53,3 +53,10 @@ IN: fizzbuzz
 : lfizzbuzz. ( n -- )
     [ lfizzbuzz ] dip ltake
     [ first2 [ nip ] unless-empty ] lmap-lazy ;
+
+:: fizzbuzz6 ( n -- val )
+    11/15
+    2/3 n * pi * cos 2/3 * +
+    2/5 n * pi * cos 4/5 * +
+    4/5 n * pi * cos + round >integer
+    { n "Fizz" "Buzz" "FizzBuzz" } nth ;
