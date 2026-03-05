@@ -154,7 +154,27 @@ CONSTANT: wordles qw{
     dread novel jumpy brand exile gnome undid foist nervy modal
     loris sword blank tizzy burnt water quake gofer haunt whole
     savvy omega assay frill banjo daunt lumpy rigid stork groan
-    coral imbue nasal minty south nomad kefir knell level
+    coral imbue nasal minty south nomad kefir knell level matte
+    lousy issue rowdy llama extol ratty union spore mirth annex
+    tower split graft elate petal least might fetch blend drift
+    bulge tenor chirp trick pouty chair throb nadir noisy along
+    lefty teeth knife later defer coven quill mouth blunt drape
+    dally fritz gooey civil geese spoil width spasm relay plane
+    amuse nylon annoy hardy lever stack wound beard forum spoof
+    catty gross haven ideal limbo detox stunt drill tuber gauge
+    plump fetid holly glare lathe abhor motel rabid awoke venue
+    short guise peril arise fugue tabby gizmo deuce tinge lurid
+    clung wield clamp opine maker grave vowel thick bunny dough
+    plead hovel remit colic gruff muggy leach cacti haste tulip
+    among waist flute gravy snide erase guess truck miser swing
+    dodgy segue grass rugby myrrh white quilt conch glint spool
+    prism speed batch abbot fruit decor siren fable proof sitar
+    posse filly oomph pecan blast eight manic quark trial gumbo
+    avoid chasm racer fiery sumac waxen sully cubic clink baron
+    cliff strut freak dusky cruel flaky jumbo allot spiny cigar
+    weigh chide swoop gavel bleat embed cello scene vegan surge
+    mooch bloom skull roost squad mogul hoist stank awake guava
+    attic buyer shred lance dizzy hydra fluke slime linen theft
 }
 
 : wordle. ( date -- )
