@@ -175,6 +175,14 @@ CONSTANT: wordles qw{
     weigh chide swoop gavel bleat embed cello scene vegan surge
     mooch bloom skull roost squad mogul hoist stank awake guava
     attic buyer shred lance dizzy hydra fluke slime linen theft
+    sheep gunky vogue lobby hasty shoal teddy smell eaten ankle
+    grade drama clasp amply rehab oasis slick basil serif brood
+    wiser befit ivory afoot chump comet swamp fizzy sober singe
+    sandy envoy sworn dense inlet laden carom prude alley elfin
+    cycle begun cubit belle toady stand weave clump snore tweet
+    drunk women gloss eerie quack rural crock plume bring puffy
+    riser latch liken budge umbra satin parka newly clock dowdy
+    waver creed mover bylaw
 }
 
 : wordle. ( date -- )
