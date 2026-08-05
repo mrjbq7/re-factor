@@ -2,7 +2,7 @@
 USING: accessors arrays kernel make quotations sequences
 slots words ;
 
-IN: accessors.maybe
+IN: maybe
 
 : maybe-word ( name -- word )
     "maybe-" prepend "accessors" create-word ;

@@ -1,7 +1,7 @@
 
 USING: accessors accessors.maybe kernel tools.test ;
 
-IN: accessors.maybe
+IN: maybe
 
 <<
 TUPLE: person name age ;
