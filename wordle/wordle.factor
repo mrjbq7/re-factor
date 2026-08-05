@@ -182,7 +182,15 @@ CONSTANT: wordles qw{
     cycle begun cubit belle toady stand weave clump snore tweet
     drunk women gloss eerie quack rural crock plume bring puffy
     riser latch liken budge umbra satin parka newly clock dowdy
-    waver creed mover bylaw
+    waver creed mover bylaw loath dusty wreck agree vocal chuck
+    niece visit couch stuff divot clang smile etude chili basis
+    notch alloy nobly morph thumb mafia wharf align testy break
+    quell sepia broil amaze token entry emoji drake alibi ovate
+    curry queer unity acute scoop emcee crude puppy demur maven
+    baton pizza swami toddy sling demon amend canal avian clack
+    stout steak pshaw butte legal booth churn diver shill lorry
+    orbit putty aloha grape poser sonar valve flume purse slush
+    penal reply motif posit
 }
 
 : wordle. ( date -- )
