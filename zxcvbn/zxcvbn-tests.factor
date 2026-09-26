@@ -1010,3 +1010,27 @@ sequences splitting strings tools.test zxcvbn zxcvbn.private ;
 
 ! Emoji in password (should be bruteforce)
 { t } [ "pass🔒word" zxcvbn "score" of [ 0 >= ] [ 4 <= ] bi and ] unit-test
+
+! Crack-time display: unit boundaries, rounding, and pluralization
+{ t } [
+    {
+        { 0 "less than a second" }
+        { 1/2 "less than a second" }
+        { 1 "1 second" }
+        { 2 "2 seconds" }
+        { 59 "59 seconds" }
+        { 60 "1 minute" }
+        { 89 "1 minute" }
+        { 91 "2 minutes" }
+        { 3599 "60 minutes" }
+        { 3600 "1 hour" }
+        { 7200 "2 hours" }
+        { 86400 "1 day" }
+        { 172800 "2 days" }
+        { 2592000 "1 month" }
+        { 5184000 "2 months" }
+        { 31536000 "1 year" }
+        { 63072000 "2 years" }
+        { 3153600000 "centuries" }
+    } [ first2 [ crack-time. ] dip = ] all?
+] unit-test

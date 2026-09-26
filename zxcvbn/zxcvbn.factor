@@ -678,6 +678,50 @@ CONSTANT: DATE_SPLITS H{
         } cond
     ] [ f ] if ;
 
+:: parse-separated-date ( token -- ints/separator/f )
+    ! Try to parse: digits separator digits separator digits
+    f :> parsed!
+    4 [1..b] [| len1 |
+        {
+            [ parsed not len1 1 + token length < and ]
+            [ token len1 head [ digit? ] all? ]
+        } 0&& [
+            len1 token nth :> sep
+            sep " /\\._-" member? [
+                ! Find second separator (middle part is 1-2 digits)
+                len1 1 + :> start2
+                2 [1..b] [| len2 |
+                    {
+                        [ parsed not start2 len2 + token length < and ]
+                        [ start2 start2 len2 + token <slice> [ digit? ] all? ]
+                        [ start2 len2 + token nth sep = ]
+                    } 0&& [
+                        ! Found matching separator
+                        start2 len2 + 1 + :> start3
+                        token start3 tail-slice {
+                            [ [ digit? ] all? ]
+                            [ length 1 4 between? ]
+                        } 1&& [
+                            V{ } clone :> ints
+                            token len1 head string>number ints push
+                            start2 start2 len2 + token subseq string>number ints push
+                            token start3 tail string>number ints push
+                            ints sep 1string 2array parsed!
+                        ] when
+                    ] when
+                ] each
+            ] when
+        ] when
+    ] each
+    parsed ;
+
+:: <date-match> ( i j token separator date -- match )
+    "date" i j 1 - token <match>
+        separator >>separator
+        date "year" of >>year
+        date "month" of >>month
+        date "day" of >>day ;
+
 :: date-match ( password -- matches )
     password length :> len
     V{ } clone :> matches
@@ -701,11 +745,7 @@ CONSTANT: DATE_SPLITS H{
                         ] map sift [
                             ! Pick the best candidate: year closest to REFERENCE_YEAR
                             [ "year" of REFERENCE_YEAR - abs ] infimum-by :> best
-                            "date" i j 1 - token <match>
-                                "" >>separator
-                                best "year" of >>year
-                                best "month" of >>month
-                                best "day" of >>day
+                            i j token "" best <date-match>
                             matches push
                         ] unless-empty
                     ] when*
@@ -722,48 +762,10 @@ CONSTANT: DATE_SPLITS H{
         min-j2 max-j2 <= [
             min-j2 max-j2 [a..b] [| j |
                 i j password subseq :> token
-                ! Try to parse: digits separator digits separator digits
-                f :> parsed!
-                4 [1..b] [| len1 |
-                    {
-                        [ parsed not len1 1 + token length < and ]
-                        [ token len1 head [ digit? ] all? ]
-                    } 0&& [
-                        len1 token nth :> sep
-                        sep " /\\._-" member? [
-                            ! Find second separator (middle part is 1-2 digits)
-                            len1 1 + :> start2
-                            2 [1..b] [| len2 |
-                                {
-                                    [ parsed not start2 len2 + token length < and ]
-                                    [ start2 start2 len2 + token <slice> [ digit? ] all? ]
-                                    [ start2 len2 + token nth sep = ]
-                                } 0&& [
-                                    ! Found matching separator
-                                    start2 len2 + 1 + :> start3
-                                    token start3 tail-slice {
-                                        [ [ digit? ] all? ]
-                                        [ length 1 4 between? ]
-                                    } 1&& [
-                                        V{ } clone :> ints
-                                        token len1 head string>number ints push
-                                        start2 start2 len2 + token subseq string>number ints push
-                                        token start3 tail string>number ints push
-                                        ints sep 1string 2array parsed!
-                                    ] when
-                                ] when
-                            ] each
-                        ] when
-                    ] when
-                ] each
-                parsed [
+                token parse-separated-date [
                     first2 :> sep
                     first3 check-date [| date |
-                        "date" i j 1 - token <match>
-                            sep >>separator
-                            date "year" of >>year
-                            date "month" of >>month
-                            date "day" of >>day
+                        i j token sep date <date-match>
                         matches push
                     ] when*
                 ] when*
@@ -824,25 +826,27 @@ CONSTANT: MIN_YEAR_SPACE 20
         ]
     } cond ;
 
+:: mixed-variations ( changed unchanged -- #variations )
+    changed 0 = unchanged 0 = or [
+        2
+    ] [
+        changed unchanged min [1..b]
+        [ changed unchanged + swap nCk ] map-sum
+    ] if ;
+
 :: l33t-variations ( match -- #variations )
     match l33t>> [
         match token>> >lower :> token-lower
         match sub>> 1 [| subbed-chr unsubbed-chr |
             token-lower [ subbed-chr = ] count :> S
             token-lower [ unsubbed-chr = ] count :> U
-            S 0 = U 0 = or [
-                ! Fully subbed or fully unsubbed - doubles the space
-                2
-            ] [
-                ! Mixed case - calculate combinations
-                S U min [1..b] [| i | S U + i nCk ] map-sum
-            ] if *
+            S U mixed-variations *
         ] assoc-reduce
     ] [ 1 ] if ;
 
 :: dictionary-guesses ( match -- #guesses )
     match reversed>> 2 1 ?
-    match l33t>> [ match l33t-variations ] [ 1 ] if
+    match l33t-variations
     match token>> uppercase-variations * *
     match rank>> * ;
 
@@ -870,12 +874,7 @@ CONSTANT: MIN_YEAR_SPACE 20
     match shifted-count>> 0 > [
         match shifted-count>> :> S
         L S - :> U  ! unshifted count
-        S 0 = U 0 = or [
-            guesses 2 * guesses!
-        ] [
-            S U min [1..b] [| i | S U + i nCk ] map-sum :> shift-variations
-            guesses shift-variations * guesses!
-        ] if
+        guesses S U mixed-variations * guesses!
     ] when
     guesses ;
 
@@ -956,14 +955,9 @@ CONSTANT: CHAR_CLASS_BASES H{
         l factorial pi *
         MIN_GUESSES_BEFORE_GROWING_SEQUENCE l 1 - ^ + :> g
 
-        f :> dominated?!
         k opt-g nth [| existing-l existing-g |
-            existing-l l <= existing-g g <= and [
-                t dominated?!
-            ] when
-        ] assoc-each
-
-        dominated? [
+            existing-l l <= existing-g g <= and
+        ] assoc-any? [
             g l k opt-g nth set-at
             m l k opt-m nth set-at
             pi l k opt-pi nth set-at
@@ -1097,33 +1091,20 @@ CONSTANT: score-labels {
     "score" of dup score-labels nth
     "Score:\n  %d/4 (%s)\n" printf ;
 
+:: format-duration ( seconds unit-seconds unit -- string )
+    seconds unit-seconds / round >integer :> count
+    count unit "%d %s" sprintf
+    count 1 = [ "s" append ] unless ;
+
 : crack-time. ( seconds -- string )
     {
         { [ dup 1 < ] [ drop "less than a second" ] }
-        { [ dup 60 < ] [
-            round >integer dup "%d second" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
-        { [ dup 3600 < ] [
-            60 / round >integer dup "%d minute" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
-        { [ dup 86400 < ] [
-            3600 / round >integer dup "%d hour" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
-        { [ dup 2592000 < ] [
-            86400 / round >integer dup "%d day" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
-        { [ dup 31536000 < ] [
-            2592000 / round >integer dup "%d month" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
-        { [ dup 3153600000 < ] [
-            31536000 / round >integer dup "%d year" sprintf
-            swap 1 = [ "s" append ] unless
-        ] }
+        { [ dup 60 < ] [ 1 "second" format-duration ] }
+        { [ dup 3600 < ] [ 60 "minute" format-duration ] }
+        { [ dup 86400 < ] [ 3600 "hour" format-duration ] }
+        { [ dup 2592000 < ] [ 86400 "day" format-duration ] }
+        { [ dup 31536000 < ] [ 2592000 "month" format-duration ] }
+        { [ dup 3153600000 < ] [ 31536000 "year" format-duration ] }
         [ drop "centuries" ]
     } cond ;
 
