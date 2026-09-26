@@ -1,7 +1,7 @@
 
 USING: accessors combinators continuations fry html.parser
-html.parser.analyzer http.client images.http io io.styles kernel
-math math.parser present sequences sequences.extras splitting
+html.parser.analyzer http.client images.http io io.styles kernel locals
+math math.parser present regexp sequences sequences.extras sets.extras splitting
 strings unicode urls ;
 
 IN: beer-advocate
@@ -15,38 +15,46 @@ TUPLE: beer-profile link ba-score bro-score style abv ;
 C: <beer-profile> beer-profile
 
 : beer-search-url ( query -- url )
-    URL" http://www.beeradvocate.com/search/"
-        swap "q" set-query-param
-        "beer" "qt" set-query-param ;
+    URL" https://www.beeradvocate.com/search/"
+        swap "q" set-query-param ;
+
+: html-text ( tags -- string )
+    [ text>> ] map sift concat >string [ blank? ] trim ;
+
+: link-path ( link -- path )
+    first "href" attribute >url path>> ;
+
+: beer-profile-link? ( link -- ? )
+    link-path R/ \/beer\/profile\/[0-9]+\/[0-9]+\/?/ matches? ;
+
+: brewery-link? ( link -- ? )
+    link-path R/ \/beer\/profile\/[0-9]+\/?/ matches? ;
+
+:: parse-beer-result ( tags -- beer/f )
+    tags find-links :> links
+    links [ beer-profile-link? ] find nip [| link |
+        URL" https://www.beeradvocate.com/"
+        link first "href" attribute derive-url
+        "https" >>protocol present
+        link html-text
+        links [ brewery-link? ] find nip
+        [ html-text ] [ "" ] if*
+        tags [ name>> "span" = ] find-between-all
+        [ html-text ] map
+        [ >lower "retired" swap subseq? ] reject
+        dup empty? [ drop "" ] [ last "| " ?head drop ] if
+        tags html-text >lower "retired" swap subseq?
+        <beer-link>
+    ] [ f ] if* ;
+
+: parse-beer-search ( html -- results )
+    parse-html
+    [ name>> { "li" "tr" } member? ] find-between-all
+    [ parse-beer-result ] map sift
+    [ url>> ] unique-by ;
 
 : beer-search ( query -- results )
-    beer-search-url http-get nip parse-html
-    [ name>> "li" = ] find-between-all
-    [
-        find-all-links
-        [ present "/beer/profile/" head? ] any?
-    ] filter
-    [
-        [
-            find-links first2
-            [
-                [
-                    first "href" attribute
-                    "http://www.beeradvocate.com" prepend
-                ] keep
-            ] dip
-            [ [ text>> ] map-find drop ] bi@
-        ]
-        [
-            [ name>> "span" = ] find-between-all dup length
-            {
-                { 1 [ first f ] }
-                { 2 [ last t ] }
-            } case
-            [ [ text>> ] map-find drop "| " ?head drop ] dip
-        ] bi
-        <beer-link>
-    ] map ;
+    beer-search-url http-get nip parse-beer-search ;
 
 ERROR: too-many-beers results ;
 
@@ -89,11 +97,11 @@ M: object beer-image. lookup-beer beer-image. ;
 M: beer-profile beer-image.
     link>> url>> "/" split harvest last
     '[
-        _ "http://cdn.beeradvocate.com/im/beers/" ".jpg" surround
+        _ "https://cdn.beeradvocate.com/im/beers/" ".jpg" surround
         http-image.
     ] [
         drop
-        "http://cdn.beeradvocate.com/im/beers/no_beer_pic.jpg"
+        "https://cdn.beeradvocate.com/im/beers/no_beer_pic.jpg"
         http-image.
     ] recover ;
 
