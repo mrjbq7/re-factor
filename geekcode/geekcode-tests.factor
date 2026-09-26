@@ -1,4 +1,5 @@
-USING: tools.test ;
+USING: accessors assocs geekcode.private html.parser io.streams.string
+kernel multiline sequences sets splitting tools.test ;
 IN: geekcode
 
 {
@@ -78,12 +79,223 @@ IN: geekcode
         }
     }
 } [
-    """
+    [[
     -----BEGIN GEEK CODE BLOCK-----
     Version: 3.1
-    GED/J d-- s:++>: a-- C++(++++) ULU++ P+ L++ E---- W+(-) N+++ o+ K+++ w---
-    O- M+ V-- PS++>$ PE++>$ Y++ PGP++ t- 5+++ X++ R+++>$ tv+ b+ DI+++ D+++
-    G+++++ e++ h r-- y++**
+    d-- a-- P+ L++ E---- N+++ o+ K+++ w---
+    O- M+ V-- Y++ PGP++ t- 5+++ X++ tv+ b+ DI+++ D+++
+    G+++++ e++ h r--
     ------END GEEK CODE BLOCK------
-    """ geekcode
+    ]] geekcode
+] unit-test
+
+
+! Every published table entry must remain available without network access.
+{ 34 303 } [ geekcode-spec length code-table assoc-size ] unit-test
+{ t } [
+    code-table [ [ geekcode first ] dip = ] assoc-all?
+] unit-test
+
+! Headings and term/definition boundaries, rather than positional offsets.
+{ { { "Books" H{ { "b" "Read books & magazines." } } } } } [
+    [[ <html><h1>Introduction</h1><p>Not a rating.</p>
+    <h2><em>Books</em></h2><dl><dt><b>b</b></dt>
+    <dd> Read books &amp;
+ magazines. </dd></dl></html> ]]
+    parse-html parse-spec
+] unit-test
+
+{ { } } [ "" geekcode ] unit-test
+{ { } } [ " \t\r\n " geekcode-unknown ] unit-test
+{ t } [ "d-- a--" geekcode "d--\t\r\na--" geekcode = ] unit-test
+{ { { "Type" "Geek of Education; Geek of Jurisprudence (Law)" } } } [
+    "GED/J" geekcode
+] unit-test
+{ { "GCS/invalid" } } [ "GCS/invalid" geekcode-unknown ] unit-test
+
+! Case is significant: W is the Web, w is Windows.
+{ { "World Wide Web" "Microsoft Windows" } } [
+    "W+ w+" geekcode [ first ] map
+] unit-test
+{ { "Television" "Star Trek" "Dilbert" "DOOM!" "PGP" "Perl" } } [
+    "tv t DI D PGP P" geekcode [ first ] map
+] unit-test
+
+! Category-specific meanings take precedence over generic variables.
+{ "immortal" } [ "a?" geekcode first second ] unit-test
+{ t } [ "!d" geekcode first second "!d" lookup-code second = ] unit-test
+{ "I have no knowledge of this category." } [ "E?" geekcode first second ] unit-test
+{ "I refuse to participate in this category." } [ "!E" geekcode first second ] unit-test
+
+{ t } [
+    "C++(++++)" geekcode first second
+    "C++" lookup-code second "C++++" lookup-code second "Range: " prepend " " glue =
+] unit-test
+{ t } [
+    "W+(-)" geekcode first second
+    "W+" lookup-code second "W-" lookup-code second "Range: " prepend " " glue =
+] unit-test
+{ t } [
+    "C++>++++" geekcode first second
+    "C++" lookup-code second "C++++" lookup-code second "Goal: " prepend " " glue =
+] unit-test
+{ t } [
+    "L++$" geekcode first second
+    "L++" lookup-code second " I do this for a living." append =
+] unit-test
+{ t } [
+    "t++@" geekcode first second
+    "t++" lookup-code second " This rating varies with circumstances." append =
+] unit-test
+{ t } [
+    "PS++>$" geekcode first second
+    "PS++" lookup-code second " I would like to do this for a living." append =
+] unit-test
+{ t } [ "C++@$" geekcode "C++$@" geekcode = ] unit-test
+{ t } [ "C++()" geekcode first second "C" lookup-code second tail? ] unit-test
+{ t } [
+    "C++(+++)>++++$" geekcode first second
+    " I do this for a living." tail?
+] unit-test
+
+! Decoding a modified rating must not mutate the cached plain rating.
+{ t } [
+    "L++" geekcode "L++$" geekcode drop "L++" geekcode =
+] unit-test
+
+! Unknown or partly invalid tokens are preserved whole, in input order.
+{ { "unknown" } } [
+    "unknown d-- s:++>: a-- ULU++ y++**" geekcode-unknown
+] unit-test
+{ t } [
+    {
+        "C++(" "C++)" "C++(oops)" "C++((+))" "C++>"
+        "C++>oops" "C++>+++>++++" "C++@@" "C++$$"
+        "C++?" "!C++" "G!(+++)" "G!>++++" "!E>GCS" "GCS/" "GCS//MU" "GCS/invalid"
+    } [ dup geekcode-unknown first = ] all?
+] unit-test
+
+STRING: hayden-code
+-----BEGIN GEEK CODE BLOCK-----
+Version: 3.12
+GED/J d-- s:++>: a-- C++(++++) ULU++ P+ L++ E---- W+(-) N+++ o+ K+++ w---
+O- M+ V-- PS++>$ PE++>$ Y++ PGP++ t- 5+++ X++ R+++>$ tv+ b+ DI+++ D+++
+G+++++ e++ h r-- y++**
+------END GEEK CODE BLOCK------
+;
+
+{ 34 } [ hayden-code geekcode length ] unit-test
+{ { } } [ hayden-code geekcode-unknown ] unit-test
+{ t } [
+    hayden-code geekcode hayden-code "3.12" "3.1" replace geekcode =
+] unit-test
+[ "Version: 6.0\nGCS" geekcode ] [ unsupported-geekcode-version? ] must-fail-with
+
+! The display API also reports what it could not decode.
+{ t } [
+    [ "e++ unknown" geekcode. ] with-string-writer
+    "Unrecognized codes: unknown\n" tail?
+] unit-test
+
+
+! Shape components are independent; goals reuse the normal modifier path.
+{ "Height: average; build: heavy. Goal: I'm an average geek" } [
+    "s:++>:" geekcode first second
+] unit-test
+{ "Height: tall; build: very thin." } [
+    "s++:--" geekcode first second
+] unit-test
+{ t } [
+    { "s+++:" "s:+++" "s---:" "s:---" "s+:-" "s-:+" }
+    [ geekcode-unknown empty? ] all?
+] unit-test
+
+! Unix flavor letters preserve the shared U rating, including modifiers.
+{ t } [
+    "ULU++" geekcode first second
+    "U++" lookup-code second " Systems: Linux, Ultrix." append =
+] unit-test
+{ t } [
+    "UL++$" geekcode first second
+    "U++" lookup-code second " Systems: Linux. I do this for a living." append =
+] unit-test
+{ t } [
+    "U*++>+++" geekcode first second
+    "U++" lookup-code second " Systems: other Unix. Goal: " append
+    "U+++" lookup-code second append " Systems: other Unix." append =
+] unit-test
+{ t } [
+    "UBLUAVHIOSCX*++++" geekcode-unknown empty?
+] unit-test
+
+! Gender is an alias for the z table; * and ** add their own descriptions.
+{ t } [
+    "y++**" geekcode first second
+    "z++" lookup-code second "z**" lookup-code second " " glue
+    " Male." append =
+] unit-test
+{ t } [
+    "x+*" geekcode first second
+    "z+" lookup-code second "z*" lookup-code second " " glue
+    " Female." append =
+] unit-test
+{ t } [
+    "z++**" geekcode first second
+    "z++" lookup-code second "z**" lookup-code second " " glue
+    " Gender undisclosed." append =
+] unit-test
+{ t } [
+    "!y+" geekcode first second
+    "!z+" lookup-code second " Male." append =
+] unit-test
+{ t } [
+    "x?" geekcode first second
+    "z?" lookup-code second " Female." append =
+] unit-test
+{ t } [
+    "y**" geekcode first second
+    "z**" lookup-code second " Male." append =
+] unit-test
+{ t } [
+    { "s++++:" "s:----" "s+:?:" "s++" "UZ++" "UL+++++"
+      "y++***" "x++++++" "y?garbage" "y*+" "!y++" }
+    [ dup geekcode-unknown first = ] all?
+] unit-test
+
+
+! Generic shape variables do not require a bare s rating in the table.
+{ {
+    { "Shape" "I have no knowledge of this category." }
+    { "Shape" "I refuse to participate in this category." }
+} } [ "s? !s" geekcode ] unit-test
+{ { } } [ "s? !s" geekcode-unknown ] unit-test
+{ t } [
+    { "s++?" "!s++" "unknown?" "!unknown" }
+    [ dup geekcode-unknown first = ] all?
+] unit-test
+
+! Public rows and their strings must not share mutable cache storage.
+{ t } [
+    "e++" geekcode first "changed" swap set-second
+    "e++" geekcode first second "Got a Bachelors degree" =
+] unit-test
+{ t } [
+    "e++" geekcode first first CHAR: X 0 rot set-nth
+    "e++" geekcode first second CHAR: X 0 rot set-nth
+    "e++" geekcode first { "Education" "Got a Bachelors degree" } =
+] unit-test
+{ t } [
+    "e++ e++" geekcode dup first "changed" swap set-second
+    second second "Got a Bachelors degree" =
+] unit-test
+
+! Decoding once for display preserves duplicate tokens and input order.
+{ { "unknown" "unknown" } } [ "unknown e++ unknown" geekcode-unknown ] unit-test
+{ t } [
+    [ "e++ e++ unknown unknown" geekcode. ] with-string-writer
+    "Education" split-subseq length 3 =
+] unit-test
+{ t } [
+    [ "e++ e++ unknown unknown" geekcode. ] with-string-writer
+    "Unrecognized codes: unknown unknown\n" tail?
 ] unit-test
