@@ -1,52 +1,55 @@
-
-USING: accessors accessors.maybe arrays assocs combinators fry
-kernel make math math.order sequences strings ;
+USING: accessors arrays assocs combinators kernel locals make
+math math.order sbufs sequences strings ;
 
 IN: ternary-search-trees
 
 <PRIVATE
 
-<<
 TUPLE: tree-node ch value exists lt eq gt ;
-tree-node define-maybe-accessors
->>
 
 : <tree-node> ( -- node )
     tree-node new ;
 
-: (search) ( node ch -- node/f )
-    over ch>> [
-        dupd <=> swapd {
-            { +lt+ [ lt>> dup [ swap (search) ] [ nip ] if ] }
-            { +gt+ [ gt>> dup [ swap (search) ] [ nip ] if ] }
-            [ drop nip ]
-        } case [ eq>> ] [ f ] if*
-    ] [ 2drop f ] if* ; inline recursive
+: ensure-lt ( node -- child )
+    dup lt>> [ nip ] [ <tree-node> >>lt lt>> ] if* ;
+
+: ensure-eq ( node -- child )
+    dup eq>> [ nip ] [ <tree-node> >>eq eq>> ] if* ;
+
+: ensure-gt ( node -- child )
+    dup gt>> [ nip ] [ <tree-node> >>gt gt>> ] if* ;
+
+:: (search) ( node ch -- node/f )
+    node [
+        ch node ch>> <=> {
+            { +lt+ [ node lt>> ch (search) ] }
+            { +gt+ [ node gt>> ch (search) ] }
+            [ drop node ]
+        } case
+    ] [ f ] if ; inline recursive
 
 : search ( node key -- node/f )
-    [ over [ (search) ] [ drop ] if dup not ] find 2drop ;
-
-! FIXME: don't have leaf nodes, store value in eq?
+    [ over [ [ eq>> ] dip (search) ] [ drop ] if dup not ]
+    find 2drop ;
 
 : (insert) ( node ch -- node' )
     over ch>> [
         dupd <=> swapd {
-            { +lt+ [ [ <tree-node> ] maybe-lt swap (insert) ] }
-            { +gt+ [ [ <tree-node> ] maybe-gt swap (insert) ] }
+            { +lt+ [ ensure-lt swap (insert) ] }
+            { +gt+ [ ensure-gt swap (insert) ] }
             [ drop nip ]
         } case
-    ] [ >>ch ] if* [ <tree-node> ] maybe-eq ; inline recursive
+    ] [ >>ch ] if* ; inline recursive
 
 : insert ( value key node -- ? )
-    swap [ (insert) ] each swap >>value
+    swap [ [ ensure-eq ] dip (insert) ] each swap >>value
     [ exists>> ] [ t >>exists drop ] bi ;
 
 PRIVATE>
 
-<<
+! The root is a sentinel: its value represents the empty key, and
+! its eq link points to the first character level.
 TUPLE: ternary-search-tree root count ;
-ternary-search-tree define-maybe-accessors
->>
 
 : <ternary-search-tree> ( -- tree )
     f 0 ternary-search-tree boa ;
@@ -73,34 +76,57 @@ M: ternary-search-tree delete-at
 
 M: ternary-search-tree assoc-size count>> ;
 
+<PRIVATE
+
+: ensure-root ( tree -- node )
+    dup root>> [ nip ] [ <tree-node> >>root root>> ] if* ;
+
+PRIVATE>
+
 M: ternary-search-tree set-at
-    [ [ <tree-node> ] maybe-root insert ] keep
+    [ ensure-root insert ] keep
     swap [ [ 1 + ] change-count ] unless drop ;
 
-: (>alist) ( key node/f -- )
-    [
-        dup exists>> [ over over value>> 2array , ] when
-        [ dupd lt>> (>alist) ]
+<PRIVATE
+
+:: emit-entry ( key node -- )
+    node exists>> [ key >string node value>> 2array , ] when ;
+
+:: (>alist) ( key node/f -- )
+    node/f [ :> node
+        key node lt>> (>alist)
+        node ch>> key push
+        key node emit-entry
+        key node eq>> (>alist)
+        key pop drop
+        key node gt>> (>alist)
+    ] when* ;
+
+PRIVATE>
+
+:: prefix>alist ( prefix tree -- alist )
+    tree root>> prefix search [ :> node
+        prefix >sbuf :> key
         [
-            dupd
-            [ ch>> [ 1string append ] when* ] [ eq>> ] bi
-            (>alist)
-        ]
-        [ dupd gt>> (>alist) ] tri drop
-    ] [ drop ] if* ;
+            key node emit-entry
+            key node eq>> (>alist)
+        ] { } make
+    ] [ { } ] if* ;
 
 M: ternary-search-tree >alist
-    "" swap root>> [ (>alist) ] { } make ;
+    "" swap prefix>alist ;
+
+M: tree-node clone
+    call-next-method
+    [ dup [ clone ] when ] change-lt
+    [ dup [ clone ] when ] change-eq
+    [ dup [ clone ] when ] change-gt ;
 
 M: ternary-search-tree clone
-    >alist >ternary-search-tree ;
+    call-next-method [ dup [ clone ] when ] change-root ;
 
 M: ternary-search-tree assoc-like
     drop dup ternary-search-tree?
     [ >ternary-search-tree ] unless ;
 
 INSTANCE: ternary-search-tree assoc
-
-! FIXME: : partial-search ( str -- ) drop ;
-! FIXME: : near-search ( str -- ) drop ;
-
