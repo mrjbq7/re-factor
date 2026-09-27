@@ -1,5 +1,5 @@
-USING: arrays ascii combinators kernel locals math sequences
-splitting strings vectors ;
+USING: arrays ascii combinators combinators.short-circuit kernel
+locals math sequences splitting strings vectors ;
 IN: shlex
 
 ERROR: shlex-unclosed-quote quote ;
@@ -7,12 +7,7 @@ ERROR: shlex-missing-escape ;
 
 <PRIVATE
 
-: shlex-whitespace? ( ch -- ? ) " \t\r\n" member? ;
-
 : shlex-quote? ( ch -- ? ) "'\"" member? ;
-
-: emit-shlex-token ( token tokens -- )
-    [ >string ] dip push ;
 
 PRIVATE>
 
@@ -24,6 +19,13 @@ PRIVATE>
     f :> quote!
     f :> escaped?!
     f :> comment?!
+    [
+        started? [
+            token >string tokens push
+            V{ } clone token!
+            f started?!
+        ] when
+    ] :> finish-token
     string [| ch |
         {
             { [ comment? ] [
@@ -40,14 +42,10 @@ PRIVATE>
             { [ quote ] [
                 ch quote = [
                     posix? [
-                        f quote!
-                    ] [
                         ch token push
-                        token tokens emit-shlex-token
-                        V{ } clone token!
-                        f started?!
-                        f quote!
-                    ] if
+                        finish-token call
+                    ] unless
+                    f quote!
                 ] [
                     posix? quote CHAR: " = and ch CHAR: \\ = and
                     [ t escaped?! ] [ ch token push ] if
@@ -55,19 +53,9 @@ PRIVATE>
             ] }
             { [ comments? ch CHAR: # = and ] [
                 t comment?!
-                posix? started? and [
-                    token tokens emit-shlex-token
-                    V{ } clone token!
-                    f started?!
-                ] when
+                posix? [ finish-token call ] when
             ] }
-            { [ ch shlex-whitespace? ] [
-                started? [
-                    token tokens emit-shlex-token
-                    V{ } clone token!
-                    f started?!
-                ] when
-            ] }
+            { [ ch blank? ] [ finish-token call ] }
             { [ posix? ch CHAR: \\ = and ] [
                 t started?! t escaped?!
             ] }
@@ -81,7 +69,7 @@ PRIVATE>
     ] each
     escaped? [ shlex-missing-escape ] when
     quote [ quote shlex-unclosed-quote ] when
-    started? [ token tokens emit-shlex-token ] when
+    finish-token call
     tokens >array ;
 
 : parse-shlex ( string -- tokens ) f t shlex-split ;
@@ -89,9 +77,7 @@ PRIVATE>
 <PRIVATE
 
 : shlex-safe? ( ch -- ? )
-    dup Letter? [ drop t ] [
-        dup digit? [ drop t ] [ "_@%+=:,./-" member? ] if
-    ] if ;
+    { [ alpha? ] [ "_@%+=:,./-" member? ] } 1|| ;
 
 PRIVATE>
 
