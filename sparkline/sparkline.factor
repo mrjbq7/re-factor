@@ -4,23 +4,23 @@
 USING: kernel locals math math.order math.parser math.statistics
 namespaces sequences splitting strings ;
 
-IN: spark
+IN: sparkline
 
 SYMBOL: ticks
 "▁▂▃▄▅▆▇█" ticks set-global
 
-:: spark-range ( seq min max -- str )
+:: sparkline-range ( seq min max -- str )
     max min - ticks get length 1 - / [ 1 ] when-zero :> unit
     seq [ min max clamp min - unit /i ticks get nth ] "" map-as ;
 
-: spark-min ( seq min -- str )
-    over supremum spark-range ;
+: sparkline-min ( seq min -- str )
+    over supremum sparkline-range ;
 
-: spark-max ( seq max -- str )
-    [ dup infimum ] dip spark-range ;
+: sparkline-max ( seq max -- str )
+    [ dup infimum ] dip sparkline-range ;
 
-GENERIC: spark ( seq -- str )
+GENERIC: sparkline ( seq -- str )
 
-M: object spark dup minmax spark-range ;
+M: object sparkline dup minmax sparkline-range ;
 
-M: string spark "," split [ string>number ] map spark ;
+M: string sparkline "," split [ string>number ] map sparkline ;
