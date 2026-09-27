@@ -16,3 +16,15 @@ IN: sparkline
 
 { "▄▆█▆▄▂▁▂▄" } [ 9 <iota> [ pi 4 / * sin ] map sparkline ] unit-test
 { "█▆▄▂▁▂▄▆█" } [ 9 <iota> [ pi 4 / * cos ] map sparkline ] unit-test
+
+{ { "▁▂▃" "▆▇█" } } [
+    { { 0 1 2 } { 5 6 7 } } sparklines
+] unit-test
+
+{ { "█▄" "▁▄█" } } [
+    { { 7 0 } { -7 0 7 } } sparklines
+] unit-test
+
+{ { "▁▁" "▁" } } [
+    { { 5 5 } { 5 } } sparklines
+] unit-test

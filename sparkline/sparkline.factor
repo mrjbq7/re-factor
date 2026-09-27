@@ -24,3 +24,6 @@ GENERIC: sparkline ( seq -- str )
 M: object sparkline dup minmax sparkline-range ;
 
 M: string sparkline "," split [ string>number ] map sparkline ;
+
+: sparklines ( seqs -- strs )
+    dup concat minmax [ sparkline-range ] 2curry map ;
