@@ -1,0 +1,3 @@
+libfactor-fuse*.dylib
+libfactor-fuse*.so
+__pycache__/
